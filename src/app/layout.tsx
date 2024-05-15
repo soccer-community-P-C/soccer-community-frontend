@@ -1,10 +1,9 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import MainHeader from '@/components/MainHeader/MainHeader';
 import localFont from 'next/font/local';
+import MainHeader from '@/components/MainHeader/MainHeader';
+import MainFooter from '@/components/MainFooter/MainFooter';
 
-const inter = Inter({ subsets: ['latin'] });
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: '해외축구 커뮤니티',
@@ -25,10 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/*<body className={inter.className}>*/}
-      <body className={pretendard.className}>
+      <body className={`${pretendard.className} bg-gray-200`}>
         <MainHeader />
         {children}
+        <MainFooter />
       </body>
     </html>
   );

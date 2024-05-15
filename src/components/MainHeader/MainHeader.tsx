@@ -1,34 +1,31 @@
+'use client';
+
 import Link from 'next/link';
+import { IconUser } from '@tabler/icons-react';
+
+import { IconBallFootball } from '@tabler/icons-react';
+import NavLinkList from '@/components/MainHeader/NavLinkList';
 
 export default function MainHeader() {
   return (
-    <div className={'sticky top-0 z-40 w-full h-16 bg-black duration-500'}>
-      <header
-        className={
-          'w-[var(--max-content-width)] mx-auto flex text-white items-center justify-start h-full '
-        }
-      >
-        <Link href={'/'} className={'mr-8'}>
-          로고
+    <div className="sticky top-0 z-40 h-[60px] w-full bg-gray-600 duration-500">
+      <header className="mx-auto flex h-full w-[var(--max-content-width)] items-center justify-start px-4 text-white ">
+        <Link className="mr-8 flex items-center gap-2" href="/">
+          <IconBallFootball size={36} />
+          <span className="text-xl font-extrabold">커뮤니티</span>
         </Link>
 
-        <nav className={'text-slate-300'}>
-          <ul className={'flex space-x-8'}>
-            <li>
-              <Link href={'/premierLeague'}>프리미어리그</Link>
-            </li>
-            <li>
-              <Link href={'/laliga'}>라리가</Link>
-            </li>
-            <li>
-              <Link href={'/board'}>게시판</Link>
-            </li>
+        <nav className="h-[74px]">
+          <ul className="flex h-full items-center space-x-8">
+            <NavLinkList />
           </ul>
         </nav>
 
-        <div className={'text-amber-200 ml-auto'}>
-          <Link href={'/login'}>로그인</Link>
-          <Link href={'/login'}>Test</Link>
+        <div className="ml-auto hover:text-amber-200">
+          <Link className="flex gap-2" href="/login">
+            <IconUser stroke={2} />
+            <span>로그인</span>
+          </Link>
         </div>
       </header>
     </div>
