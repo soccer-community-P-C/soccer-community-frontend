@@ -1,5 +1,6 @@
 import localFont from 'next/font/local';
 import MainHeader from '@/components/MainHeader/MainHeader';
+import MainFooter from '@/components/MainFooter/MainFooter';
 
 import type { Metadata } from 'next';
 import './globals.css';
@@ -23,10 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/*<body className={inter.className}>*/}
-      <body className={pretendard.className}>
+      <body className={`${pretendard.className} bg-gray-200`}>
         <MainHeader />
         {children}
+        <MainFooter />
       </body>
     </html>
   );
