@@ -9,7 +9,7 @@ import NavLinkList from '@/components/MainHeader/NavLinkList';
 export default function MainHeader() {
   return (
     <div className="sticky top-0 z-40 h-[60px] w-full bg-gray-600 duration-500">
-      <header className="mx-auto flex h-full w-[var(--max-content-width)] items-center justify-start px-4 text-white ">
+      <header className="mx-auto flex h-full w-4/5 items-center justify-start px-4 text-white ">
         <Link className="mr-8 flex items-center gap-2" href="/">
           <IconBallFootball size={36} />
           <span className="text-xl font-extrabold">커뮤니티</span>

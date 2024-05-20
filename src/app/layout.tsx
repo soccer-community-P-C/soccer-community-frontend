@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${pretendard.className} bg-gray-200`}>
         <MainHeader />
-        {children}
+        <main>{children}</main>
         <MainFooter />
       </body>
     </html>
