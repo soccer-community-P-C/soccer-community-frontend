@@ -1,4 +1,4 @@
-import { IconChevronRight, IconShirtSport } from '@tabler/icons-react';
+import { IconChevronRight } from '@tabler/icons-react';
 import LinkItem from '@/components/Common/LinkItem';
 import ResultOfGameItem from '@/components/Result/ResultOfGameItem';
 
