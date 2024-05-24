@@ -1,6 +1,6 @@
 import localFont from 'next/font/local';
-import MainHeader from '@/components/MainHeader/MainHeader';
-import MainFooter from '@/components/MainFooter/MainFooter';
+import MainHeader from '@/components/main-header/main-header';
+import MainFooter from '@/components/main-footer/main-footer';
 
 import type { Metadata } from 'next';
 import './globals.css';

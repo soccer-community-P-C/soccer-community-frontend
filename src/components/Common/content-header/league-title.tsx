@@ -2,7 +2,7 @@
  * 해당 항목 로고와 리그명을 나타내는 컴포넌트
  */
 import Image from 'next/image';
-import BoxHeading from '@/components/Common/box-heading';
+import BoxHeading from '@/components/common/box-heading';
 
 type LeagueTitleProps = {
   title: string;

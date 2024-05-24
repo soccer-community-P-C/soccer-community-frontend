@@ -1,7 +1,7 @@
-import LeagueTitle from '@/components/Common/contentHeader/leagueTitle';
+import LeagueTitle from '@/components/common/content-header/league-title';
 import PremierLogo from '@/assets/img/logo/logo_premier.png';
-import LinkItem from '@/components/Common/LinkItem';
-import Box from '@/components/Common/box';
+import LinkItem from '@/components/common/linkItem';
+import Box from '@/components/common/box';
 
 export default function ContentHeader() {
   return (

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { IconUser } from '@tabler/icons-react';
 
 import { IconBallFootball } from '@tabler/icons-react';
-import NavLinkList from '@/components/MainHeader/NavLinkList';
+import NavLinkList from '@/components/main-header/nav-link-list';
 
 export default function MainHeader() {
   return (
