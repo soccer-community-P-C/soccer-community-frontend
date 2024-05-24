@@ -1,5 +1,5 @@
 import { IconCaretLeftFilled, IconCaretRightFilled } from '@tabler/icons-react';
-import Button from '@/components/Common/button';
+import Button from '@/components/common/button';
 import { TDay } from '@/utils/date-helper';
 
 type DatePickerProps = {

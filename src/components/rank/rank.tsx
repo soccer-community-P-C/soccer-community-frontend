@@ -1,5 +1,5 @@
-import BoxHeading from '@/components/Common/box-heading';
-import Box from '@/components/Common/box';
+import BoxHeading from '@/components/common/box-heading';
+import Box from '@/components/common/box';
 
 export default function Rank() {
   return (
