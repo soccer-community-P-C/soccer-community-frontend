@@ -11,7 +11,7 @@ export default function NavSubLinkList({ linkInfo }: NavSubLinkListProps) {
       <div className="flex flex-col gap-1 text-slate-500">
         <h2 className="text-md bg-gray-100 px-2 py-0.5">{linkInfo.name}</h2>
         {linkInfo.subLinkList.map((subLink, index) => (
-          <Link href={subLink.link} key={index}>
+          <Link href={subLink.href} key={index}>
             <li className="px-2 py-0.5 text-sm hover:bg-gray-300">{subLink.subName}</li>
           </Link>
         ))}
