@@ -2,41 +2,44 @@ import NavLinkItem from '@/components/MainHeader/NavLinkItem';
 
 export type TLinkList = {
   name: string;
-  subLinkList: { subName: string; link: string }[];
+  href: string;
+  subLinkList: { subName: string; href: string }[];
 };
 
 const linkList = [
   {
     name: '프리미어리그',
+    href: '/premier',
     subLinkList: [
       {
         subName: '게시판',
-        link: '/premier',
+        href: '/premier',
       },
       {
         subName: '일정 및 결과',
-        link: '/premier/result',
+        href: '/premier/result',
       },
       {
         subName: '순위',
-        link: '/premier/rank',
+        href: '/premier/rank',
       },
     ],
   },
   {
     name: '라리가',
+    href: '/laliga',
     subLinkList: [
       {
         subName: '게시판',
-        link: '/laliga',
+        href: '/laliga',
       },
       {
         subName: '일정 및 결과',
-        link: '/laliga/result',
+        href: '/laliga/result',
       },
       {
         subName: '순위',
-        link: '/laliga/rank',
+        href: '/laliga/rank',
       },
     ],
   },

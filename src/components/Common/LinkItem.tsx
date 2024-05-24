@@ -4,13 +4,13 @@ import { twMerge } from 'tailwind-merge';
 
 type LinkItemProps = {
   children: ReactNode;
-  addClassName?: string;
+  className?: string;
 } & LinkProps;
 
-export default function LinkItem({ children, addClassName = '', ...otherProps }: LinkItemProps) {
+export default function LinkItem({ children, className = '', ...otherProps }: LinkItemProps) {
   return (
     <Link
-      className={twMerge('text-xl transition hover:text-slate-500 hover:underline', addClassName)}
+      className={twMerge('text-xl transition hover:text-slate-500 hover:underline', className)}
       {...otherProps}
     >
       {children}
