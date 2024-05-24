@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import ContentHeader from '@/components/Common/content-header/content-header';
+import ContentHeader from '@/components/common/content-header/content-header';
 
 type LayoutProps = {
   children: ReactNode;

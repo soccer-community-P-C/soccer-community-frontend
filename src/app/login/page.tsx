@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Input from '@/components/Common/input';
+import Input from '@/components/common/input';
 
 export default function LogInPage() {
   return (

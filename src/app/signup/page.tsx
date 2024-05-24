@@ -1,4 +1,4 @@
-import Input from '@/components/Common/input';
+import Input from '@/components/common/input';
 
 export default function SignUpPage() {
   return (
