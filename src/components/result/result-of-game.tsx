@@ -1,6 +1,6 @@
 import { IconChevronRight } from '@tabler/icons-react';
-import LinkItem from '@/components/Common/LinkItem';
-import ResultOfGameItem from '@/components/Result/ResultOfGameItem';
+import LinkItem from '@/components/Common/linkItem';
+import ResultOfGameItem from '@/components/result/result-of-game-item';
 import Box from '@/components/Common/box';
 import BoxHeading from '@/components/Common/box-heading';
 import { dayOfWeekMapper } from '@/utils/date-helper';

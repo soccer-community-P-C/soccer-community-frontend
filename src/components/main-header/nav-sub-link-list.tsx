@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { TLinkList } from '@/components/MainHeader/NavLinkList';
+import { TLinkList } from '@/components/main-header/nav-link-list';
 
 type NavSubLinkListProps = {
   linkInfo: TLinkList;

@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Box from '@/components/Common/box';
-import DatePicker from '@/components/Result/DatePicker';
-import ResultOfGame from '@/components/Result/ResultOfGame';
+import DatePicker from '@/components/result/date-picker';
+import ResultOfGame from '@/components/result/result-of-game';
 import BoxHeading from '@/components/Common/box-heading';
 import { addDays, getFiveDays, getTodayDate, shortISO } from '@/utils/date-helper';
 
