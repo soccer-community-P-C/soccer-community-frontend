@@ -1,7 +1,7 @@
 import { IconCaretDownFilled, IconCaretUpFilled } from '@tabler/icons-react';
 import Link from 'next/link';
-import NavSubLinkList from '@/components/MainHeader/NavSubLinkList';
-import { TLinkList } from '@/components/MainHeader/NavLinkList';
+import NavSubLinkList from '@/components/main-header/nav-sub-link-list';
+import { TLinkList } from '@/components/main-header/nav-link-list';
 
 type NavLinkItemProps = { link: TLinkList };
 

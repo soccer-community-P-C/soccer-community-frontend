@@ -1,4 +1,4 @@
-import NavLinkItem from '@/components/MainHeader/NavLinkItem';
+import NavLinkItem from '@/components/main-header/nav-link-item';
 
 export type TLinkList = {
   name: string;

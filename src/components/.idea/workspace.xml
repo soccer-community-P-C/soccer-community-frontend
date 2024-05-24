@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e701cf77-17e1-4579-bdc9-b12231a4cbb9" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/../app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../app/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/premier/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../app/premier/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/premier/result/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../app/premier/result/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../app/signup/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Common/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/LinkItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Common/linkItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/contentHeader/contentHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Common/content-header/content-header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/contentHeader/leagueTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Common/content-header/league-title.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainFooter/MainFooter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/main-footer/main-footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainHeader/MainHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/main-header/main-header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainHeader/NavLinkItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/main-header/nav-link-item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainHeader/NavLinkList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/main-header/nav-link-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainHeader/NavSubLinkList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/main-header/nav-sub-link-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result/DatePicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/result/date-picker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result/Result.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/result/result.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result/ResultOfGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/result/result-of-game.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result/ResultOfGameItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/result/result-of-game-item.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2guAF9X87a4aheU2Y4IfiYzvomw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Style/#17-change-name",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="e701cf77-17e1-4579-bdc9-b12231a4cbb9" name="변경" comment="" />
+      <created>1716536982992</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716536982992</updated>
+      <workItem from="1716536984346" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
