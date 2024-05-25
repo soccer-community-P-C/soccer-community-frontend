@@ -1,12 +1,12 @@
 import NavLinkItem from '@/components/main-header/nav-link-item';
 
-export type TLinkList = {
+export type TLink = {
   name: string;
   href: string;
   subLinkList: { subName: string; href: string }[];
 };
 
-const linkList = [
+const linkList: TLink[] = [
   {
     name: '프리미어리그',
     href: '/premier',

@@ -1,50 +1,51 @@
 import { IconCaretLeftFilled, IconCaretRightFilled } from '@tabler/icons-react';
 import Button from '@/components/common/button';
-import { TDay } from '@/utils/date-helper';
+import { shortISO, TDate } from '@/utils/date-helper';
 
 type DatePickerProps = {
-  selectedDay: string;
-  onSelectDay: (day: string) => void;
-  onMoveDay: (daysToAdd: number) => void;
-  dayList: TDay[];
+  selectedDate: Date;
+  onSelectDate: (date: Date) => void;
+  onMoveDate: (daysToAdd: number) => void;
+  dateList: TDate[];
 };
 
 export default function DatePicker({
-  onMoveDay,
-  dayList,
-  selectedDay,
-  onSelectDay,
+  onMoveDate,
+  dateList,
+  selectedDate,
+  onSelectDate,
 }: DatePickerProps) {
-  function handleClickMoveDay(daysToAdd: number) {
-    onMoveDay(daysToAdd);
+  function handleClickMoveDate(daysToAdd: number) {
+    onMoveDate(daysToAdd);
   }
 
   return (
     <nav className="flex justify-center gap-4">
-      <Button onClick={() => handleClickMoveDay(-5)}>
+      <Button onClick={() => handleClickMoveDate(-5)}>
         <IconCaretLeftFilled className="h-4 w-4" />
       </Button>
 
-      {dayList.map((day) => {
-        if (day.day === selectedDay) {
+      {dateList.map((dateObj, index) => {
+        const shortDate = shortISO(dateObj.date);
+        if (dateObj.date === selectedDate) {
           return (
             <Button
               className="bg-gray-900 text-white hover:bg-gray-900 hover:text-white"
-              key={day.day}
+              key={index}
             >
-              {day.day} ({day.dayOfWeek})
+              {shortDate} ({dateObj.dayOfWeek})
             </Button>
           );
         }
 
         return (
-          <Button key={day.day} onClick={() => onSelectDay(day.day)}>
-            {day.day} ({day.dayOfWeek})
+          <Button key={index} onClick={() => onSelectDate(dateObj.date)}>
+            {shortDate} ({dateObj.dayOfWeek})
           </Button>
         );
       })}
 
-      <Button onClick={() => handleClickMoveDay(5)}>
+      <Button onClick={() => handleClickMoveDate(5)}>
         <IconCaretRightFilled className="h-4 w-4" />
       </Button>
     </nav>
