@@ -1,4 +1,4 @@
-export function addDate(date: Date, daysToAdd: number) {
+export function addDays(date: Date, daysToAdd: number) {
   const cloneDate = new Date(date.getTime());
 
   cloneDate.setDate(cloneDate.getDate() + daysToAdd);
@@ -24,7 +24,7 @@ export function getFiveDate(date: Date) {
   const dateList: TDate[] = [];
 
   for (let i = -2; i < 3; i++) {
-    const addedDate = addDate(date, i);
+    const addedDate = addDays(date, i);
 
     dateList.push({
       dayOfWeek: dayOfWeekMapper[addedDate.getDay()],
@@ -33,4 +33,13 @@ export function getFiveDate(date: Date) {
   }
 
   return dateList;
+}
+
+export function getDateTitle(date: Date) {
+  const dayOfWeek = dayOfWeekMapper[date.getDay()];
+  const shortDate = shortISO(date);
+
+  const [, month, day] = shortDate.split('-').map((elem) => String(Number(elem)));
+
+  return `${month}월 ${day}일 ${dayOfWeek}요일`;
 }
