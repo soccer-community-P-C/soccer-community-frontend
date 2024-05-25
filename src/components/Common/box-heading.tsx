@@ -10,19 +10,17 @@ type BoxHeadingProps = {
   children: ReactNode;
 };
 
+const textSizes = {
+  h1: 'text-4xl',
+  h2: 'text-3xl',
+  h3: 'text-2xl',
+};
+
 export default function BoxHeading({ hTagType = 'h1', children }: BoxHeadingProps) {
   const Component = hTagType;
 
-  let size = 'text-4xl';
-
-  if (hTagType === 'h2') {
-    size = 'text-3xl';
-  } else if (hTagType === 'h3') {
-    size = 'text-2xl';
-  }
-
   return (
-    <Component className={twMerge('font-semibold leading-none text-gray-600', size)}>
+    <Component className={twMerge('font-semibold leading-none text-gray-600', textSizes[hTagType])}>
       {children}
     </Component>
   );
