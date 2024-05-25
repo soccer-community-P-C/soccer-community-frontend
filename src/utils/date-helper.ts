@@ -1,4 +1,4 @@
-export function addDays(date: Date, daysToAdd: number) {
+export function addDate(date: Date, daysToAdd: number) {
   const cloneDate = new Date(date.getTime());
 
   cloneDate.setDate(cloneDate.getDate() + daysToAdd);
@@ -14,23 +14,23 @@ export function shortISO(date: Date) {
   return date.toISOString().split('T')[0];
 }
 
-export type TDay = { dayOfWeek: string; day: string };
+export type TDate = { dayOfWeek: (typeof dayOfWeekMapper)[number]; date: Date };
 
-export const dayOfWeekMapper = ['일', '월', '화', '수', '목', '금', '토'];
+export const dayOfWeekMapper = ['일', '월', '화', '수', '목', '금', '토'] as const;
 
-export function getFiveDays(date: Date) {
+export function getFiveDate(date: Date) {
   // 오늘 날짜 기준 -2 ~ +2 날짜 구하는 함수
   // const days: { [key: string]: string } = {};
-  const dayList: TDay[] = [];
+  const dateList: TDate[] = [];
 
   for (let i = -2; i < 3; i++) {
-    const day = addDays(date, i);
+    const addedDate = addDate(date, i);
 
-    dayList.push({
-      dayOfWeek: dayOfWeekMapper[day.getDay()],
-      day: shortISO(day),
+    dateList.push({
+      dayOfWeek: dayOfWeekMapper[addedDate.getDay()],
+      date: addedDate,
     });
   }
 
-  return dayList;
+  return dateList;
 }

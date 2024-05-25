@@ -7,10 +7,8 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <section className="mx-auto my-4 w-4/5">
-      <header>
-        <ContentHeader />
-      </header>
+    <section className="mx-auto w-4/5">
+      <ContentHeader />
 
       <article className="mt-4">{children}</article>
     </section>

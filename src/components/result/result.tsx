@@ -1,47 +1,44 @@
 'use client';
 
 import { useState } from 'react';
-import Box from '@/components/common/box';
 import DatePicker from '@/components/result/date-picker';
 import ResultOfGame from '@/components/result/result-of-game';
-import BoxHeading from '@/components/common/box-heading';
-import { addDays, getFiveDays, getTodayDate, shortISO } from '@/utils/date-helper';
+import { addDate, getFiveDate, getTodayDate } from '@/utils/date-helper';
 
 const todayDate = getTodayDate();
 
 export default function Result() {
-  const [standardDay, setStandardDay] = useState(todayDate);
-  const [selectedDay, setSelectedDay] = useState(() => shortISO(todayDate));
-  const dayList = getFiveDays(standardDay);
+  const [standardDate, setStandardDate] = useState(todayDate);
+  const [selectedDate, setSelectedDate] = useState(todayDate);
+  const dateList = getFiveDate(standardDate);
 
-  function handleSelectDay(day: string) {
-    setSelectedDay(day);
+  function handleSelectDate(date: Date) {
+    setSelectedDate(date);
   }
 
-  function handleMoveDay(daysToAdd: number) {
-    const movedDay = addDays(standardDay, daysToAdd);
+  function handleMoveDate(daysToAdd: number) {
+    const movedDay = addDate(standardDate, daysToAdd);
 
-    setStandardDay(movedDay);
+    setStandardDate(movedDay);
 
     if (daysToAdd > 0) {
       // 오른쪽 화살표 입력 => 첫번째 날짜 선택
-      setSelectedDay(shortISO(addDays(movedDay, -2)));
+      setSelectedDate(addDate(movedDay, -2));
     } else {
       // 왼쪽 화살표 입력 => 마지막 날짜 선택
-      setSelectedDay(shortISO(addDays(movedDay, 2)));
+      setSelectedDate(addDate(movedDay, 2));
     }
   }
 
   return (
-    <Box>
-      <BoxHeading hTagType="h2">프리미어리그 일정 및 결과</BoxHeading>
+    <>
       <DatePicker
-        dayList={dayList}
-        onMoveDay={handleMoveDay}
-        onSelectDay={handleSelectDay}
-        selectedDay={selectedDay}
+        dateList={dateList}
+        onMoveDate={handleMoveDate}
+        onSelectDate={handleSelectDate}
+        selectedDate={selectedDate}
       />
-      <ResultOfGame selectedDay={selectedDay} />
-    </Box>
+      <ResultOfGame selectedDate={selectedDate} />
+    </>
   );
 }
