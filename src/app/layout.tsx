@@ -23,10 +23,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${pretendard.className} bg-gray-200`}>
+    <html className="h-full" lang="en">
+      <body className={`${pretendard.className} h-full bg-gray-200`}>
         <MainHeader />
-        <main>{children}</main>
+        <main className="min-h-[calc(100%-8rem-4rem)] py-8">{children}</main>
         <MainFooter />
       </body>
     </html>

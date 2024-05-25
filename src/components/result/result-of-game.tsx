@@ -3,37 +3,28 @@ import LinkItem from '@/components/common/linkItem';
 import ResultOfGameItem from '@/components/result/result-of-game-item';
 import Box from '@/components/common/box';
 import BoxHeading from '@/components/common/box-heading';
-import { dayOfWeekMapper } from '@/utils/date-helper';
+import { dayOfWeekMapper, shortISO } from '@/utils/date-helper';
 
 type ResultOfGameProps = {
-  selectedDay: string;
+  selectedDate: Date;
 };
 
-function getDayTitle(day: string) {
-  const dayOfWeek = dayOfWeekMapper[new Date(day).getDay()];
-  let month = day.split('-')[1];
-  let d = day.split('-')[2];
+function getDateTitle(date: Date) {
+  const dayOfWeek = dayOfWeekMapper[date.getDay()];
+  const shortDate = shortISO(date);
 
-  if (month[0] === '0') {
-    month = month[1];
-  }
+  const [, month, day] = shortDate.split('-').map((elem) => String(Number(elem)));
 
-  if (d[0] === '0') {
-    d = d[1];
-  }
-
-  return { month, d, dayOfWeek };
+  return `${month}월 ${day}일 ${dayOfWeek}요일`;
 }
 
-export default function ResultOfGame({ selectedDay }: ResultOfGameProps) {
-  const { month, d, dayOfWeek } = getDayTitle(selectedDay);
+export default function ResultOfGame({ selectedDate }: ResultOfGameProps) {
+  const dateTitle = getDateTitle(selectedDate);
 
   return (
-    <Box>
-      <BoxHeading hTagType="h3">
-        {month}월 {d}일 {dayOfWeek}요일
-      </BoxHeading>
-      <div className="items-center divide-y-2 divide-slate-200 rounded-md border-2 text-lg">
+    <Box isSub={true}>
+      <BoxHeading hTagType="h3">{dateTitle}</BoxHeading>
+      <div className="items-center divide-y divide-[#777784] rounded-md border border-[#777784] text-lg">
         <ResultOfGameItem away="에버튼" home="첼시" score="2 - 2" />
         <ResultOfGameItem away="맨유" home="맨시티" score="1 - 1" />
       </div>

@@ -8,8 +8,8 @@ import NavLinkList from '@/components/main-header/nav-link-list';
 
 export default function MainHeader() {
   return (
-    <div className="sticky top-0 z-40 h-[60px] w-full bg-gray-600 duration-500">
-      <header className="mx-auto flex h-full w-4/5 items-center justify-start px-4 text-white ">
+    <header className="sticky top-0 z-40 h-[4rem] w-full bg-gray-600 duration-500">
+      <div className="mx-auto flex h-full w-4/5 items-center justify-start px-4 text-white ">
         <Link className="mr-8 flex items-center gap-2" href="/">
           <IconBallFootball size={36} />
           <span className="text-xl font-extrabold">커뮤니티</span>
@@ -27,7 +27,7 @@ export default function MainHeader() {
             <span>로그인</span>
           </Link>
         </div>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 }
