@@ -2,9 +2,11 @@ import { ReactNode } from 'react';
 import RankItem from '@/components/rank/rank-item';
 
 function RankTableContainer({ children }: { children: ReactNode }) {
-  <div className="overflow-hidden rounded-md border border-[#777784] shadow">
-    <div className="relative w-full text-center">{children}</div>
-  </div>;
+  return (
+    <div className="overflow-hidden rounded-md border border-[#777784] shadow">
+      <div className="relative w-full text-center">{children}</div>
+    </div>
+  );
 }
 
 export default function RankTable() {
