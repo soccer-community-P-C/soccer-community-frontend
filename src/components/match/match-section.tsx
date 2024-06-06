@@ -9,7 +9,7 @@ export default function MatchSection() {
   const [homeCheeringCount, setHomeCheeringCount] = useState(0);
   const [awayCheeringCount, setAwayCheeringCount] = useState(0);
 
-  const [talkIsOpen, setTalkIsOpen] = useState(false);
+  const [isTalkOpen, setIsTalkOpen] = useState(false);
 
   return (
     <section className="flex gap-2">
@@ -73,8 +73,8 @@ export default function MatchSection() {
         <Box>
           <div className="flex w-full justify-between">
             <strong>응원 오픈톡</strong>
-            <button onClick={() => setTalkIsOpen((prevState) => !prevState)} type="button">
-              {talkIsOpen ? <IconChevronUp stroke={2} /> : <IconChevronDown stroke={2} />}
+            <button onClick={() => setIsTalkOpen((prevState) => !prevState)} type="button">
+              {isTalkOpen ? <IconChevronUp stroke={2} /> : <IconChevronDown stroke={2} />}
             </button>
           </div>
           <hr />

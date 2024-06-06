@@ -35,7 +35,7 @@ export default function MomVote() {
 
   const [totalVote, setTotalVote] = useState(0);
 
-  const [allPlayerIsOpen, setAllPlayerIsOpen] = useState(false);
+  const [isAllPlayerOpen, setIsAllPlayerOpen] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -60,7 +60,7 @@ export default function MomVote() {
   }, []);
 
   function handleClickOpen() {
-    setAllPlayerIsOpen((prevState) => !prevState);
+    setIsAllPlayerOpen((prevState) => !prevState);
   }
 
   return (
@@ -75,14 +75,14 @@ export default function MomVote() {
         <ul className="flex w-full flex-col gap-2">
           {homeVoteInfoList
             ? homeVoteInfoList
-                .slice(0, allPlayerIsOpen ? homeVoteInfoList.length : 3)
+                .slice(0, isAllPlayerOpen ? homeVoteInfoList.length : 3)
                 .map((info) => <MomVotePlayer key={info.id} name={info.name} score={info.score} />)
             : null}
         </ul>
         <ul className="flex w-full flex-col gap-2">
           {awayVoteInfoList
             ? awayVoteInfoList
-                .slice(0, allPlayerIsOpen ? awayVoteInfoList.length : 3)
+                .slice(0, isAllPlayerOpen ? awayVoteInfoList.length : 3)
                 .map((info) => <MomVotePlayer key={info.id} name={info.name} score={info.score} />)
             : null}
         </ul>
@@ -97,7 +97,7 @@ export default function MomVote() {
           type="button"
         >
           전체 선수 펼처보기
-          {allPlayerIsOpen ? <IconArrowNarrowUp /> : <IconArrowNarrowDown />}
+          {isAllPlayerOpen ? <IconArrowNarrowUp /> : <IconArrowNarrowDown />}
         </button>
       </div>
     </div>
