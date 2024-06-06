@@ -1,4 +1,5 @@
 import { IconBallFootball } from '@tabler/icons-react';
+import { twMerge } from 'tailwind-merge';
 
 type GoalInfoProps = {
   player: string;
@@ -7,25 +8,12 @@ type GoalInfoProps = {
 };
 
 export default function GoalInfo({ away = false, player, goalTimeList }: GoalInfoProps) {
-  let content = (
-    <>
+  return (
+    <div className={twMerge('flex items-center gap-2', away ? 'flex-row-reverse' : '')}>
       <span>
         {player} {goalTimeList.map((time) => `${time}' `)}
       </span>
       <IconBallFootball size={18} />
-    </>
+    </div>
   );
-
-  if (away) {
-    content = (
-      <>
-        <IconBallFootball size={18} />
-        <span>
-          {player} {goalTimeList.map((time) => `${time}' `)}
-        </span>
-      </>
-    );
-  }
-
-  return <div className="flex items-center gap-2">{content}</div>;
 }

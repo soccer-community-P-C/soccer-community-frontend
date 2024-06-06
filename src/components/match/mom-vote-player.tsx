@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-type MomVoteItemProps = {
+type MomVotePlayerProps = {
   name: string;
   score: number;
 };
-export default function MomVotePlayer({ name, score }: MomVoteItemProps) {
+export default function MomVotePlayer({ name, score }: MomVotePlayerProps) {
   const [currentScore, setCurrentScore] = useState(score);
   return (
     <li
