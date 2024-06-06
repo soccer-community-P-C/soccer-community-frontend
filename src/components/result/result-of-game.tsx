@@ -1,5 +1,5 @@
 import { IconChevronRight } from '@tabler/icons-react';
-import LinkItem from '@/components/common/linkItem';
+import LinkItem from '@/components/common/link-item';
 import ResultOfGameItem from '@/components/result/result-of-game-item';
 import BoxHeading from '@/components/common/box-heading';
 import { getDateTitle } from '@/utils/date-helper';

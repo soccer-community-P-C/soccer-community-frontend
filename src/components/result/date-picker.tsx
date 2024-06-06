@@ -27,7 +27,8 @@ export default function DatePicker({
 
       {dateList.map((dateObj, index) => {
         const shortDate = shortISO(dateObj.date);
-        if (dateObj.date === selectedDate) {
+        if (shortISO(dateObj.date) === shortISO(selectedDate)) {
+          // Todo
           return (
             <Button
               className="bg-gray-900 text-white hover:bg-gray-900 hover:text-white"

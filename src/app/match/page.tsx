@@ -1,13 +1,12 @@
-import Match from '@/components/match/match';
-import SectionContainer from '@/components/common/section-container';
-import ArticleContainer from '@/components/common/article-container';
+import MatchHeader from '@/components/match/match-header';
+import MatchSection from '@/components/match/match-section';
+import Container from '@/components/common/container';
 
 export default function MatchPage() {
   return (
-    <SectionContainer>
-      <ArticleContainer>
-        <Match />
-      </ArticleContainer>
-    </SectionContainer>
+    <Container>
+      <MatchHeader />
+      <MatchSection />
+    </Container>
   );
 }
