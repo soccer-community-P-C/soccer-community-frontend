@@ -8,7 +8,7 @@ type MatchRecordCategoryItemProps = {
 export default function MatchRecordCategoryItem({
   homeCount,
   awayCount,
-  isShare = false, // 점유율 인지
+  isShare = false, // 점유율 % 이면 true, 횟수면 false
   title,
 }: MatchRecordCategoryItemProps) {
   return (
@@ -25,7 +25,7 @@ export default function MatchRecordCategoryItem({
           {isShare ? '%' : null}
         </strong>
       </div>
-      <div className="w-[120px] text-center font-[16px]">{title}</div>
+      <div className="text- w-[120px] text-center font-[16px] opacity-60">{title}</div>
       <div className="flex items-center justify-center text-left">
         <strong className="w-[50px] text-xs">
           {awayCount}
