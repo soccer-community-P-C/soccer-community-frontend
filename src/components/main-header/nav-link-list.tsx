@@ -9,11 +9,11 @@ export type TLink = {
 const linkList: TLink[] = [
   {
     name: '프리미어리그',
-    href: '/premier',
+    href: '/premier/board',
     subLinkList: [
       {
         subName: '게시판',
-        href: '/premier',
+        href: '/premier/board',
       },
       {
         subName: '일정 및 결과',
@@ -27,11 +27,11 @@ const linkList: TLink[] = [
   },
   {
     name: '라리가',
-    href: '/laliga',
+    href: '/laliga/board',
     subLinkList: [
       {
         subName: '게시판',
-        href: '/laliga',
+        href: '/laliga/board',
       },
       {
         subName: '일정 및 결과',

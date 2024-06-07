@@ -1,16 +1,16 @@
 import { ReactNode } from 'react';
 import ContentHeader from '@/components/common/content-header/content-header';
+import Container from '@/components/common/container';
 
 type LayoutProps = {
   children: ReactNode;
 };
 
-export default function Layout({ children }: LayoutProps) {
+export default function LeagueLayout({ children }: LayoutProps) {
   return (
-    <section className="mx-auto w-4/5">
+    <Container>
       <ContentHeader />
-
-      <article className="mt-4">{children}</article>
-    </section>
+      {children}
+    </Container>
   );
 }
