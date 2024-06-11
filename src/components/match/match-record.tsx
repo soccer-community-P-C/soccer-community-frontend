@@ -3,6 +3,7 @@ import Box from '@/components/common/box';
 import MatchRecordTab from '@/components/match/match-record-tab';
 import MatchRecordCategory from '@/components/match/match-record-category';
 import MomVote from '@/components/match/mom-vote';
+import RankTable from '@/components/rank/rank-table';
 
 export type TVoteInfo = {
   id: string;
