@@ -8,6 +8,7 @@ import { ReactNode } from 'react';
 type BoxHeadingProps = {
   hTagType?: 'h1' | 'h2' | 'h3';
   children: ReactNode;
+  className?: string;
 };
 
 const textSizes = {
@@ -16,11 +17,17 @@ const textSizes = {
   h3: 'text-2xl',
 };
 
-export default function BoxHeading({ hTagType = 'h1', children }: BoxHeadingProps) {
+export default function BoxHeading({ hTagType = 'h1', children, className = '' }: BoxHeadingProps) {
   const Component = hTagType;
 
   return (
-    <Component className={twMerge('font-semibold leading-none text-gray-600', textSizes[hTagType])}>
+    <Component
+      className={twMerge(
+        'font-semibold leading-none text-gray-600',
+        textSizes[hTagType],
+        className,
+      )}
+    >
       {children}
     </Component>
   );
