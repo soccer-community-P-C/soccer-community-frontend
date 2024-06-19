@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { IconMessage, IconEye, IconThumbUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
 import Input from '@/components/common/input';
@@ -6,6 +9,9 @@ import Button from '@/components/common/button';
 import Pagination from '@/components/board/pagination';
 
 export default function PremierBoardPage() {
+  const league = usePathname().split('/')[1];
+  const router = useRouter();
+
   return (
     <>
       <Box className="mx-auto gap-0 px-0 pb-4 pt-2">
@@ -32,7 +38,13 @@ export default function PremierBoardPage() {
             </div>
           </div>
         </div>
-        <Pagination />
+        <div className="flex items-center justify-between px-6 pt-4">
+          <div />
+          <Pagination />
+          <Button className="w-28" onClick={() => router.push(`/${league}/write`)} role="link">
+            글쓰기
+          </Button>
+        </div>
       </Box>
       <div className="mx-auto mt-4 flex max-w-sm">
         <Input />
