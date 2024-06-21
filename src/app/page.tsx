@@ -1,4 +1,15 @@
-export default function HomePage() {
+// async function getData() {
+//   const res = await fetch(`${process.env.API_URL}/leagueGame/date/2024-02-01`);
+//   if (!res.ok) {
+//     throw new Error('fail');
+//   }
+//
+//   return res.json();
+// }
+
+export default async function HomePage() {
+  // const data = await getData();
+
   return (
     <>
       <header>헤더</header>
