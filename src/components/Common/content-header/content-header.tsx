@@ -27,7 +27,7 @@ export default function ContentHeader() {
           <LinkItem href={`/${pathname}/board`}>게시판</LinkItem>
           <LinkItem href={`/${pathname}/result`}>일정 및 결과</LinkItem>
           <LinkItem href={`/${pathname}/rank`}>팀 순위</LinkItem>
-          <LinkItem href={`/${pathname}/player/rank`}>선수 순위</LinkItem>
+          <LinkItem href={`/${pathname}/player-rank`}>선수 순위</LinkItem>
         </nav>
       </Box>
     </header>

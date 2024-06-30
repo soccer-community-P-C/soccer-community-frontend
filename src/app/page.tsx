@@ -1,4 +1,4 @@
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <>
       <header>헤더</header>
