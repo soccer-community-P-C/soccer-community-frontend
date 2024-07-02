@@ -4,12 +4,21 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   async rewrites() {
-    return process.env.NODE_ENV === 'develop'
+    // return {
+    //   fallback: [
+    //     {
+    //       source: '/:path*',
+    //       destination: `${process.env.API_URL}/:path*`,
+    //     },
+    //   ],
+    // };
+
+    return process.env.NODE_ENV === 'development'
       ? {
           fallback: [
             {
               source: '/:path*',
-              destination: `${process.env.API_URL}/api/:path*`,
+              destination: `${process.env.API_URL}/:path*`,
             },
           ],
         }

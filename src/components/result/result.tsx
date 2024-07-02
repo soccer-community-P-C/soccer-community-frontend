@@ -1,29 +1,34 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 import DatePicker from '@/components/result/date-picker';
 import ResultOfGame from '@/components/result/result-of-game';
-import { addDays, getFiveDate, getTodayDate } from '@/utils/date-helper';
+import { addDays, getFiveDate, shortISO } from '@/utils/date-helper';
+import Loading from '@/app/(league)/loading';
 
-const todayDate = getTodayDate();
+// const todayDate = getTodayDate();
 
 export default function Result() {
-  const [standardDate, setStandardDate] = useState(todayDate);
-  const [selectedDate, setSelectedDate] = useState(todayDate);
+  // const [standardDate, setStandardDate] = useState(todayDate);
+  // const [selectedDate, setSelectedDate] = useState(todayDate);
+  // 임시로 "2024-02-01" 지정
+  const [standardDate, setStandardDate] = useState(new Date('2024-02-01'));
+  const [selectedDate, setSelectedDate] = useState(new Date('2024-02-01'));
   const dateList = getFiveDate(standardDate);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get('/leagueGame/date/2024-02-01');
-
-      const data = await response.data;
-
-      console.log(data);
-    }
-
-    fetchData();
-  }, []);
+  const {
+    isPending,
+    data: gameList,
+    error,
+  } = useQuery({
+    queryKey: ['resultOfGameList', shortISO(selectedDate)],
+    queryFn: async () => {
+      const { data } = await axios.get(`/leagueGame/date/${shortISO(selectedDate)}`);
+      return data;
+    },
+  });
 
   function handleSelectDate(date: Date) {
     setSelectedDate(date);
@@ -51,7 +56,11 @@ export default function Result() {
         onSelectDate={handleSelectDate}
         selectedDate={selectedDate}
       />
-      <ResultOfGame selectedDate={selectedDate} />
+      {isPending ? <Loading /> : null}
+      {error ? <div>Error</div> : null}
+      {gameList?.responses ? (
+        <ResultOfGame gameList={gameList?.responses} selectedDate={selectedDate} />
+      ) : null}
     </>
   );
 }
