@@ -5,7 +5,12 @@ import { IconBrandHipchat, IconChevronDown, IconChevronUp } from '@tabler/icons-
 import Box from '@/components/common/box';
 import MatchRecord from '@/components/match/match-record';
 
-export default function MatchSection() {
+type MatchSectionProps = {
+  home: string;
+  away: string;
+};
+
+export default function MatchSection({ home, away }: MatchSectionProps) {
   const [homeCheeringCount, setHomeCheeringCount] = useState(0);
   const [awayCheeringCount, setAwayCheeringCount] = useState(0);
 
@@ -17,12 +22,12 @@ export default function MatchSection() {
       <aside className="flex w-[640px] flex-col gap-2">
         <Box className="gap-2">
           <strong>승부예측</strong>
-          <div className="relative flex h-[60px] w-full select-none items-center overflow-hidden rounded-2xl bg-gray-200 text-center">
+          <div className="relative flex h-[60px] w-full select-none items-center overflow-hidden rounded-2xl bg-gray-200 text-center text-xs">
             <button
               className="button-vote-item flex-all-center flex-1 flex-col border-r border-white hover:bg-gray-300 active:scale-110"
               type="button"
             >
-              <span>첼시</span>
+              <span>{home}</span>
               <em className="text-xs">20%</em>
             </button>
             <button
@@ -36,7 +41,7 @@ export default function MatchSection() {
               className="button-vote-item flex-all-center flex-1 flex-col border-l border-white hover:bg-gray-300 active:scale-110"
               type="button"
             >
-              <span>토트넘</span>
+              <span>{away}</span>
               <em className="text-xs">20%</em>
             </button>
           </div>
@@ -53,7 +58,7 @@ export default function MatchSection() {
               }}
               type="button"
             >
-              <span>첼시</span>
+              <span>{home}</span>
               <span className="text-xs">{homeCheeringCount}</span>
             </button>
             <button
@@ -65,7 +70,7 @@ export default function MatchSection() {
               }}
               type="button"
             >
-              <span>첼시</span>
+              <span>{away}</span>
               <span className="text-xs">{awayCheeringCount}</span>
             </button>
           </div>

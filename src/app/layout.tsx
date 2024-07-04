@@ -2,6 +2,7 @@ import localFont from 'next/font/local';
 import MainHeader from '@/components/main-header/main-header';
 import MainFooter from '@/components/main-footer/main-footer';
 import ReactQueryProviders from '@/hooks/useReactQuery';
+import { ResultOfGameListProvider } from '@/context/result-of-game-context';
 
 import type { Metadata } from 'next';
 import './globals.css';
@@ -28,7 +29,9 @@ export default function RootLayout({
       <body className={`${pretendard.className} h-full bg-gray-200`}>
         <ReactQueryProviders>
           <MainHeader />
-          <main className="min-h-[calc(100%-8rem-4rem)] py-8">{children}</main>
+          <ResultOfGameListProvider>
+            <main className="min-h-[calc(100%-8rem-4rem)] py-8">{children}</main>
+          </ResultOfGameListProvider>
           <MainFooter />
         </ReactQueryProviders>
       </body>

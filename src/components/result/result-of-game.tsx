@@ -22,10 +22,11 @@ export default function ResultOfGame({ selectedDate, gameList }: ResultOfGamePro
           gameList.map(({ homeTeamName, homeScore, awayScore, awayTeamName }, index) => (
             <ResultOfGameItem
               away={awayTeamName}
+              awayScore={awayScore}
               date={selectedDate}
               home={homeTeamName}
+              homeScore={homeScore}
               key={index}
-              score={`${homeScore} - ${awayScore}`}
             />
           ))
         ) : (

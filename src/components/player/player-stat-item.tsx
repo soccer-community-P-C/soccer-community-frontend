@@ -1,6 +1,6 @@
 type PlayerStatItemProps = {
   title: string;
-  description: string;
+  description: string | number;
 };
 export default function PlayerStatItem({ title, description }: PlayerStatItemProps) {
   return (

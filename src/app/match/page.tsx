@@ -1,12 +1,14 @@
-import MatchHeader from '@/components/match/match-header';
-import MatchSection from '@/components/match/match-section';
+import { Suspense } from 'react';
 import Container from '@/components/common/container';
+import Match from '@/components/match/match';
+import Loading from '@/app/(league)/loading';
 
 export default function MatchPage() {
   return (
     <Container>
-      <MatchHeader />
-      <MatchSection />
+      <Suspense fallback={<Loading />}>
+        <Match />
+      </Suspense>
     </Container>
   );
 }

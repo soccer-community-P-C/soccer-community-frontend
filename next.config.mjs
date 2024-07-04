@@ -4,25 +4,25 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   async rewrites() {
-    // return {
-    //   fallback: [
-    //     {
-    //       source: '/:path*',
-    //       destination: `${process.env.API_URL}/:path*`,
-    //     },
-    //   ],
-    // };
+    // return process.env.NODE_ENV === 'development'
+    //   ? {
+    //       fallback: [
+    //         {
+    //           source: '/api/:path*',
+    //           destination: `${process.env.NEXT_PUBLIC_API_URL}/api/:path*`,
+    //         },
+    //       ],
+    //     }
+    //   : [];
 
-    return process.env.NODE_ENV === 'development'
-      ? {
-          fallback: [
-            {
-              source: '/:path*',
-              destination: `${process.env.API_URL}/:path*`,
-            },
-          ],
-        }
-      : [];
+    return {
+      fallback: [
+        {
+          source: '/api/:path*',
+          destination: `${process.env.NEXT_PUBLIC_API_URL}/api/:path*`,
+        },
+      ],
+    };
   },
 };
 

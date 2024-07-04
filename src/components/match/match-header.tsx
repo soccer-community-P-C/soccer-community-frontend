@@ -1,18 +1,20 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import { IconShirtSport } from '@tabler/icons-react';
-import Link from 'next/link';
 import { getDateTitle } from '@/utils/date-helper';
 import Box from '@/components/common/box';
 import GoalInfo from '@/components/match/goal-Info';
+import useResultOfGame from '@/hooks/useResultOfGame';
 
-export default function MatchHeader() {
-  const searchParams = useSearchParams();
-  const dateParam = searchParams.get('date');
-  const teamList = searchParams.get('team')?.split('-');
+type MatchHeaderProps = {
+  home: string;
+  away: string;
+  date: string;
+};
 
-  const [home, away] = teamList as string[];
+export default function MatchHeader({ home, away, date }: MatchHeaderProps) {
+  // Todo: Context Api를 이용해 관리한다면, url로 접근했을 시 데이터값이 없을 확률이 많다. 추후 api를 통해 데이터를 가져오게 끔 변경 필요.
+  const { resultOfGame } = useResultOfGame();
 
   return (
     <header>
@@ -21,28 +23,19 @@ export default function MatchHeader() {
           <div className="flex justify-between text-gray-200">
             <strong>프리미어리그 26R</strong>
             <div className="flex gap-4">
-              <dl>{dateParam ? getDateTitle(new Date(dateParam)) : null} 04:00</dl>|
-              <dl>스탬포트 브릿지</dl>
+              <dl>{date ? getDateTitle(new Date(date)) : null} 04:00</dl>|<dl>스탬포트 브릿지</dl>
             </div>
           </div>
         </header>
         <section className="flex flex-col items-center justify-center gap-2 ">
           <div className="flex h-14 w-full items-center justify-center gap-6 text-5xl font-semibold">
-            <Link
-              className="flex-[0.5_0.5_25%] text-right font-semibold hover:text-gray-200"
-              href="/premier/team/첼시"
-            >
+            <div className="flex-[0.5_0.5_25%] text-right font-semibold hover:text-gray-200">
               {home}
-            </Link>
+            </div>
             <IconShirtSport size={60} stroke={2} />
-            <div className="mx-8 min-w-16 text-center text-4xl">2 - 5</div>
+            <div className="mx-8 min-w-16 text-center text-4xl">{`${resultOfGame?.homeScore || 2} - ${resultOfGame?.awayScore || 1}`}</div>
             <IconShirtSport size={60} stroke={2} />
-            <Link
-              className="flex-[0.5_0.5_25%] font-semibold hover:text-gray-200"
-              href="/premier/team/첼시"
-            >
-              {away}
-            </Link>
+            <div className="flex-[0.5_0.5_25%] font-semibold hover:text-gray-200">{away}</div>
           </div>
         </section>
         <section className="grid grid-cols-2 border-t border-[#777784] py-4">

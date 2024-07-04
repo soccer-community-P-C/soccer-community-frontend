@@ -1,12 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import DatePicker from '@/components/result/date-picker';
 import ResultOfGame from '@/components/result/result-of-game';
 import { addDays, getFiveDate, shortISO } from '@/utils/date-helper';
 import Loading from '@/app/(league)/loading';
+import { instance } from '@/utils/intance';
 
 // const todayDate = getTodayDate();
 
@@ -25,7 +25,8 @@ export default function Result() {
   } = useQuery({
     queryKey: ['resultOfGameList', shortISO(selectedDate)],
     queryFn: async () => {
-      const { data } = await axios.get(`/leagueGame/date/${shortISO(selectedDate)}`);
+      const { data } = await instance.get(`/leagueGame/date/${shortISO(selectedDate)}`);
+
       return data;
     },
   });
