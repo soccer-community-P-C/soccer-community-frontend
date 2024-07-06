@@ -2,7 +2,7 @@ import { IconChevronRight } from '@tabler/icons-react';
 import LinkItem from '@/components/common/link-item';
 import ResultOfGameItem from '@/components/result/result-of-game-item';
 import BoxHeading from '@/components/common/box-heading';
-import { getDateTitle } from '@/utils/date-helper';
+import { getDateTitle, shortISO } from '@/utils/date-helper';
 import { TResultOfGame } from '@/types/result-of-game-type';
 
 type ResultOfGameProps = {
@@ -21,11 +21,11 @@ export default function ResultOfGame({ selectedDate, gameList }: ResultOfGamePro
         {gameList.length > 0 ? (
           gameList.map(({ homeTeamName, homeScore, awayScore, awayTeamName }, index) => (
             <ResultOfGameItem
-              away={awayTeamName}
               awayScore={awayScore}
-              date={selectedDate}
-              home={homeTeamName}
+              awayTeamName={awayTeamName}
+              date={shortISO(selectedDate)}
               homeScore={homeScore}
+              homeTeamName={homeTeamName}
               key={index}
             />
           ))
