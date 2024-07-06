@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import ContentHeader from '@/components/common/content-header/content-header';
 import Container from '@/components/common/container';
+import ContentHeader from '@/components/common/content-header/content-header';
 
 type LayoutProps = {
   children: ReactNode;
