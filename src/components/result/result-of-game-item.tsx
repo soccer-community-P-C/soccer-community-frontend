@@ -1,31 +1,44 @@
 import { IconShirtSport } from '@tabler/icons-react';
 import Link from 'next/link';
-import { shortISO } from '@/utils/date-helper';
+import useResultOfGame from '@/hooks/useResultOfGame';
+import { TResultOfGame } from '@/types/result-of-game-type';
 
-type ResultOfGameItemProps = {
-  home: string;
-  away: string;
-  score: string;
-  date: Date;
-};
+export default function ResultOfGameItem({
+  awayScore,
+  awayTeamName,
+  date,
+  homeScore,
+  homeTeamName,
+}: TResultOfGame) {
+  const { setResultOfGame } = useResultOfGame();
 
-export default function ResultOfGameItem({ home, away, score, date }: ResultOfGameItemProps) {
+  function handleClickLink() {
+    setResultOfGame({
+      homeScore,
+      awayScore,
+      homeTeamName,
+      awayTeamName,
+      date: date,
+    });
+  }
+
   return (
     <Link
       className="flex h-14 w-full cursor-pointer items-center justify-center gap-6 transition-colors hover:bg-gray-200"
       href={{
         pathname: `/match/`,
         query: {
-          date: shortISO(date),
-          team: `${home}-${away}`,
+          date: date,
+          team: `${homeTeamName}-${awayTeamName}`,
         },
       }}
+      onClick={handleClickLink}
     >
-      <p className="flex-[0.5_0.5_25%] text-right font-bold">{home}</p>
+      <p className="flex-[0.5_0.5_25%] text-right font-bold">{homeTeamName}</p>
       <IconShirtSport stroke={2} />
-      <div className="mx-8 min-w-16 text-center text-lg font-extrabold">{score}</div>
+      <div className="mx-8 min-w-16 text-center text-lg font-extrabold">{`${homeScore} - ${awayScore}`}</div>
       <IconShirtSport stroke={2} />
-      <p className="flex-[0.5_0.5_25%] font-bold">{away}</p>
+      <p className="flex-[0.5_0.5_25%] font-bold">{awayTeamName}</p>
     </Link>
   );
 }

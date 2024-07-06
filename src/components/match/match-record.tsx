@@ -42,7 +42,7 @@ export default function MatchRecord() {
                 isSelected={isHomeSelect}
                 logoSrc={Chelsea}
                 onClick={() => setIsHomeSelect(true)}
-                team="첼시"
+                team={home}
               />
             </li>
             <li className="relative z-10 min-w-0 flex-1 text-center">
@@ -50,7 +50,7 @@ export default function MatchRecord() {
                 isSelected={!isHomeSelect}
                 logoSrc={Chelsea}
                 onClick={() => setIsHomeSelect(false)}
-                team="토트넘"
+                team={away}
               />
             </li>
           </ul>
