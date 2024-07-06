@@ -5,10 +5,10 @@ import MatchRecordTab from '@/components/match/match-record-tab';
 import MatchRecordCategory from '@/components/match/match-record-category';
 import MomVote from '@/components/match/mom-vote';
 import PlayerRank from '@/components/player-rank/player-rank';
-import TableContainer from '@/components/common/table/table-container';
 
 import Chelsea from '@/assets/Chelsea.png';
 import MatchSelectTeamButton from '@/components/match/match-select-team-button';
+import TableContainer from '@/components/common/table/table-container';
 
 export type TVoteInfo = {
   id: string;

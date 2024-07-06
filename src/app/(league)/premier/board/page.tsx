@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { IconMessage, IconEye, IconThumbUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
-import Input from '@/components/common/input';
-import Button from '@/components/common/button';
 import Pagination from '@/components/board/pagination';
+import Button from '@/components/common/button';
+import Input from '@/components/common/input';
 
 export default function PremierBoardPage() {
   const league = usePathname().split('/')[1];
