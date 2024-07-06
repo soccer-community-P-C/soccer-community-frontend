@@ -1,10 +1,10 @@
 'use client';
 
 import Box from '@/components/common/box';
-import Button from '@/components/common/button';
-import Input from '@/components/common/input';
 import Editor from '@/components/write/editor';
 import useInput from '@/hooks/useInput';
+import Input from '@/components/common/input';
+import Button from '@/components/common/button';
 
 export default function WritePage() {
   const title = useInput('');
