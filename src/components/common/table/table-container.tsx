@@ -8,7 +8,10 @@ export default function TableContainer({
   isMatch?: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-md border border-[#777784] shadow">
+    <div
+      className="scrollbar-hidden overflow-hidden overflow-y-auto rounded-md border border-[#777784] shadow"
+      // style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
+    >
       <div className={`${isMatch ? 'container' : 'w-full'} text-center`}>
         <div className="relative bg-[#f7f7f9]">
           <div className="overflow-auto border-b border-t bg-white">{children}</div>

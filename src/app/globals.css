@@ -26,6 +26,15 @@
   .flex-all-center {
     @apply flex items-center justify-center;
   }
+
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .loader {

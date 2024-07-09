@@ -24,7 +24,7 @@ export default function ResultOfGameItem({
 
   return (
     <Link
-      className="flex h-14 w-full cursor-pointer items-center justify-center gap-6 transition-colors hover:bg-gray-200"
+      className="flex h-14 w-full cursor-pointer items-center justify-center gap-6 px-4 transition-colors hover:bg-gray-200"
       href={{
         pathname: `/match/`,
         query: {
@@ -34,11 +34,11 @@ export default function ResultOfGameItem({
       }}
       onClick={handleClickLink}
     >
-      <p className="flex-[0.5_0.5_25%] text-right font-bold">{homeTeamName}</p>
+      <p className="flex-[0.5_0.5_25%] truncate text-right font-bold">{homeTeamName}</p>
       <IconShirtSport stroke={2} />
-      <div className="mx-8 min-w-16 text-center text-lg font-extrabold">{`${homeScore} - ${awayScore}`}</div>
+      <div className="mx-2 min-w-16 text-center text-lg font-extrabold xl:mx-8">{`${homeScore} - ${awayScore}`}</div>
       <IconShirtSport stroke={2} />
-      <p className="flex-[0.5_0.5_25%] font-bold">{awayTeamName}</p>
+      <p className="flex-[0.5_0.5_25%] truncate font-bold">{awayTeamName}</p>
     </Link>
   );
 }
