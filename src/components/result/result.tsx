@@ -1,12 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import DatePicker from '@/components/result/date-picker';
 import ResultOfGame from '@/components/result/result-of-game';
 import { addDays, getFiveDate, shortISO } from '@/utils/date-helper';
 import Loading from '@/app/(league)/loading';
-import { instance } from '@/utils/intance';
+import { useGetLeagueGameByDate } from '@/api/league-game';
 
 // const todayDate = getTodayDate();
 
@@ -18,18 +17,7 @@ export default function Result() {
   const [selectedDate, setSelectedDate] = useState(new Date('2024-02-01'));
   const dateList = getFiveDate(standardDate);
 
-  const {
-    isPending,
-    data: gameList,
-    error,
-  } = useQuery({
-    queryKey: ['resultOfGameList', shortISO(selectedDate)],
-    queryFn: async () => {
-      const { data } = await instance.get(`/leagueGame/date/${shortISO(selectedDate)}`);
-
-      return data;
-    },
-  });
+  const { isPending, data: gameList, error } = useGetLeagueGameByDate(shortISO(selectedDate));
 
   function handleSelectDate(date: Date) {
     setSelectedDate(date);
@@ -48,6 +36,8 @@ export default function Result() {
       setSelectedDate(addDays(movedDay, 2));
     }
   }
+
+  console.log(gameList);
 
   return (
     <>

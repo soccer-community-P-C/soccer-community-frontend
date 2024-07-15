@@ -1,11 +1,11 @@
 'use client';
 
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
-import { TResultOfGame } from '@/types/result-of-game-type';
+import { TLeagueGame } from '@/types/league-game-types';
 
-export const ResultOfGameContext = createContext<TResultOfGame | null>(null);
+export const ResultOfGameContext = createContext<TLeagueGame | null>(null);
 
-export const ResultOfGameSetContext = createContext<Dispatch<SetStateAction<TResultOfGame | null>>>(
+export const ResultOfGameSetContext = createContext<Dispatch<SetStateAction<TLeagueGame | null>>>(
   () => {},
 );
 
@@ -14,7 +14,7 @@ type ResultOfGameListProviderProps = {
 };
 
 export function ResultOfGameListProvider({ children }: ResultOfGameListProviderProps) {
-  const [resultOfGame, setResultOfGame] = useState<TResultOfGame | null>(null);
+  const [resultOfGame, setResultOfGame] = useState<TLeagueGame | null>(null);
 
   return (
     <ResultOfGameContext.Provider value={resultOfGame}>
