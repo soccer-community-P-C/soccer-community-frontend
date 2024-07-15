@@ -6,7 +6,7 @@ type FullViewLinkItemProps = {
   href: string | UrlObject;
 };
 
-export default function FullViewLinkItem({ href }: FullViewLinkItemProps) {
+export default function ViewAllLinkItem({ href }: FullViewLinkItemProps) {
   return (
     <Link
       className="inline-flex cursor-pointer text-black/80 transition-colors hover:text-black/50 hover:underline"

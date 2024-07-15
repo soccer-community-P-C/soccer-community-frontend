@@ -1,6 +1,6 @@
 import Box from '@/components/common/box';
 import BoxHeading from '@/components/common/box-heading';
-import FullViewLinkItem from '@/components/common/full-view-link-item';
+import ViewAllLinkItem from '@/components/common/view-all-link-item';
 import PremierResult from '@/components/home/premier-result';
 import LaligaResult from '@/components/home/laliga-result';
 import RankTable from '@/components/rank/rank-table';
@@ -15,13 +15,13 @@ export default async function HomePage() {
           <Box>
             <div className="flex-all-center flex justify-between">
               <BoxHeading hTagType="h4">프리미어리그 최신 게시글</BoxHeading>
-              <FullViewLinkItem href="/premier/board" />
+              <ViewAllLinkItem href="/premier/board" />
             </div>
           </Box>
           <Box>
             <div className="flex-all-center flex justify-between">
               <BoxHeading hTagType="h4">라리가 최신 게시글</BoxHeading>
-              <FullViewLinkItem href="/laliga/board" />
+              <ViewAllLinkItem href="/laliga/board" />
             </div>
           </Box>
         </div>
@@ -37,7 +37,7 @@ export default async function HomePage() {
               <BoxHeading hTagType="h4">프리미어리그 순위</BoxHeading>
               <Dropdown />
             </div>
-            <FullViewLinkItem href="/premier/rank" />
+            <ViewAllLinkItem href="/premier/rank" />
           </div>
 
           <RankTable />
