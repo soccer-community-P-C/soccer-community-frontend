@@ -19,7 +19,7 @@ export default function RankTable() {
           <col width={300} />
         </colgroup>
         <thead>
-          <tr className="bg-gray-200 *:pl-2 *:text-[13px] [&>*>span]:leading-[40px]">
+          <tr className="h-8 bg-gray-200 *:pl-2 *:text-[13px]">
             <th>
               <span>순위</span>
             </th>

@@ -18,9 +18,9 @@ export default function Pagination() {
               <path
                 d="M5 1 1 5l4 4"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               />
             </svg>
           </a>
@@ -82,9 +82,9 @@ export default function Pagination() {
               <path
                 d="m1 9 4-4-4-4"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               />
             </svg>
           </a>
