@@ -19,7 +19,7 @@ export default function ResultOfGame({
 }: ResultOfGameProps) {
   const dateTitle = getDateTitle(selectedDate);
   return (
-    <div className="divide-y divide-[#777784] overflow-hidden rounded-md border border-[#777784] shadow">
+    <div className="divide-y divide-[#777784] overflow-hidden rounded-md border border-[#777784]">
       <BoxHeading
         className={twMerge('flex h-[60px] items-center bg-[#f7f7f9] pl-4', isHome && 'h-[40px]')}
         hTagType={isHome ? 'h4' : 'h3'}
@@ -38,6 +38,7 @@ export default function ResultOfGame({
               date={shortISO(selectedDate)}
               homeScore={homeScore}
               homeTeamName={homeTeamName}
+              isHome={isHome}
               key={index}
             />
           ))

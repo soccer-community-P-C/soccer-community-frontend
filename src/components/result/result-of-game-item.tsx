@@ -1,7 +1,12 @@
 import { IconShirtSport } from '@tabler/icons-react';
 import Link from 'next/link';
+import { twMerge } from 'tailwind-merge';
 import useResultOfGame from '@/hooks/useResultOfGame';
 import { TResultOfGame } from '@/types/result-of-game-type';
+
+type ResultOfGameItemProps = TResultOfGame & {
+  isHome?: boolean;
+};
 
 export default function ResultOfGameItem({
   awayScore,
@@ -9,7 +14,8 @@ export default function ResultOfGameItem({
   date,
   homeScore,
   homeTeamName,
-}: TResultOfGame) {
+  isHome = false,
+}: ResultOfGameItemProps) {
   const { setResultOfGame } = useResultOfGame();
 
   function handleClickLink() {
@@ -24,7 +30,10 @@ export default function ResultOfGameItem({
 
   return (
     <Link
-      className="flex h-14 w-full cursor-pointer items-center justify-center gap-6 px-4 transition-colors hover:bg-gray-200"
+      className={twMerge(
+        'flex h-14 w-full cursor-pointer items-center justify-center gap-6 px-4 transition-colors hover:bg-gray-200',
+        isHome && 'h-10',
+      )}
       href={{
         pathname: `/match/`,
         query: {

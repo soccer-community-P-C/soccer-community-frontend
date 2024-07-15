@@ -5,7 +5,6 @@ import BoxHeading from '@/components/common/box-heading';
 import FullViewLinkItem from '@/components/common/full-view-link-item';
 import Loading from '@/app/(league)/loading';
 import ResultOfGame from '@/components/result/result-of-game';
-import Box from '@/components/common/box';
 import { instance } from '@/utils/intance';
 
 export default function PremierResult() {
@@ -23,9 +22,9 @@ export default function PremierResult() {
   });
 
   return (
-    <Box className="col-span-2 lg:col-span-1">
+    <div className="flex w-full flex-col gap-2 rounded-lg bg-white">
       <div className="flex-all-center flex justify-between">
-        <BoxHeading hTagType="h3">프리미어리그 경기 일정</BoxHeading>
+        <BoxHeading hTagType="h4">프리미어리그 경기 일정</BoxHeading>
         <FullViewLinkItem href="/premier/result" />
       </div>
       {isPending ? <Loading /> : null}
@@ -37,6 +36,6 @@ export default function PremierResult() {
           selectedDate={new Date('2024-02-01')}
         />
       ) : null}
-    </Box>
+    </div>
   );
 }
