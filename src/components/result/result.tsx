@@ -5,7 +5,7 @@ import DatePicker from '@/components/result/date-picker';
 import ResultOfGame from '@/components/result/result-of-game';
 import { addDays, getFiveDate, shortISO } from '@/utils/date-helper';
 import Loading from '@/app/(league)/loading';
-import { useGetLeagueGameByDate } from '@/api/league-game';
+import { useGetGameListByDate } from '@/api/league-game';
 
 // const todayDate = getTodayDate();
 
@@ -17,7 +17,7 @@ export default function Result() {
   const [selectedDate, setSelectedDate] = useState(new Date('2024-02-01'));
   const dateList = getFiveDate(standardDate);
 
-  const { isPending, data: gameList, error } = useGetLeagueGameByDate(shortISO(selectedDate));
+  const { isPending, data, error } = useGetGameListByDate(shortISO(selectedDate));
 
   function handleSelectDate(date: Date) {
     setSelectedDate(date);
@@ -37,8 +37,6 @@ export default function Result() {
     }
   }
 
-  console.log(gameList);
-
   return (
     <>
       <DatePicker
@@ -49,9 +47,7 @@ export default function Result() {
       />
       {isPending ? <Loading /> : null}
       {error ? <div>Error</div> : null}
-      {gameList?.responses ? (
-        <ResultOfGame gameList={gameList?.responses} selectedDate={selectedDate} />
-      ) : null}
+      {data ? <ResultOfGame gameList={data} selectedDate={selectedDate} /> : null}
     </>
   );
 }

@@ -4,7 +4,7 @@ import LinkItem from '@/components/common/link-item';
 import ResultOfGameItem from '@/components/result/result-of-game-item';
 import BoxHeading from '@/components/common/box-heading';
 import { getDateTitle, shortISO } from '@/utils/date-helper';
-import { TLeagueGame } from '@/types/league-game-types';
+import { TLeagueGame } from '@/types/league-games';
 
 type ResultOfGameProps = {
   selectedDate: Date;

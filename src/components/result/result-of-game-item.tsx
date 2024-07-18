@@ -2,7 +2,7 @@ import { IconShirtSport } from '@tabler/icons-react';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import useResultOfGame from '@/hooks/useResultOfGame';
-import { TLeagueGame } from '@/types/league-game-types';
+import { TLeagueGame } from '@/types/league-games';
 
 type ResultOfGameItemProps = TLeagueGame & {
   isHome?: boolean;

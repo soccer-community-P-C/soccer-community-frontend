@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
-import { TLeagueGame } from '@/types/league-game-types';
+import { TLeagueGame } from '@/types/league-games';
 
 export const ResultOfGameContext = createContext<TLeagueGame | null>(null);
 
