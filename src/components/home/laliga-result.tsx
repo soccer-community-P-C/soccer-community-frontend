@@ -5,7 +5,7 @@ import BoxHeading from '@/components/common/box-heading';
 import ViewAllLinkItem from '@/components/common/view-all-link-item';
 import Loading from '@/app/(league)/loading';
 import ResultOfGame from '@/components/result/result-of-game';
-import { instance } from '@/utils/intance';
+import { instance } from '@/api/intance';
 
 export default function LaligaResult() {
   const {

@@ -2,9 +2,9 @@ import { IconShirtSport } from '@tabler/icons-react';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import useResultOfGame from '@/hooks/useResultOfGame';
-import { TResultOfGame } from '@/types/result-of-game-type';
+import { TLeagueGame } from '@/types/league-games';
 
-type ResultOfGameItemProps = TResultOfGame & {
+type ResultOfGameItemProps = TLeagueGame & {
   isHome?: boolean;
 };
 
@@ -14,6 +14,8 @@ export default function ResultOfGameItem({
   date,
   homeScore,
   homeTeamName,
+  homeLogo,
+  awayLogo,
   isHome = false,
 }: ResultOfGameItemProps) {
   const { setResultOfGame } = useResultOfGame();
@@ -25,6 +27,8 @@ export default function ResultOfGameItem({
       homeTeamName,
       awayTeamName,
       date: date,
+      awayLogo,
+      homeLogo,
     });
   }
 

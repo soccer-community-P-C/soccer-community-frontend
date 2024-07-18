@@ -4,11 +4,11 @@ import LinkItem from '@/components/common/link-item';
 import ResultOfGameItem from '@/components/result/result-of-game-item';
 import BoxHeading from '@/components/common/box-heading';
 import { getDateTitle, shortISO } from '@/utils/date-helper';
-import { TResultOfGame } from '@/types/result-of-game-type';
+import { TLeagueGame } from '@/types/league-games';
 
 type ResultOfGameProps = {
   selectedDate: Date;
-  gameList: TResultOfGame[];
+  gameList: TLeagueGame[];
   isHome?: boolean; // 홈페이지에서 사용하는 컴포넌트인지?
 };
 
@@ -31,17 +31,21 @@ export default function ResultOfGame({
         className={twMerge('items-center divide-y divide-[#777784] text-lg', isHome && 'text-base')}
       >
         {gameList.length > 0 ? (
-          gameList.map(({ homeTeamName, homeScore, awayScore, awayTeamName }, index) => (
-            <ResultOfGameItem
-              awayScore={awayScore}
-              awayTeamName={awayTeamName}
-              date={shortISO(selectedDate)}
-              homeScore={homeScore}
-              homeTeamName={homeTeamName}
-              isHome={isHome}
-              key={index}
-            />
-          ))
+          gameList.map(
+            ({ homeTeamName, homeScore, awayScore, awayTeamName, homeLogo, awayLogo }, index) => (
+              <ResultOfGameItem
+                awayLogo={awayLogo}
+                awayScore={awayScore}
+                awayTeamName={awayTeamName}
+                date={shortISO(selectedDate)}
+                homeLogo={homeLogo}
+                homeScore={homeScore}
+                homeTeamName={homeTeamName}
+                isHome={isHome}
+                key={index}
+              />
+            ),
+          )
         ) : (
           <div>No Data</div>
         )}
