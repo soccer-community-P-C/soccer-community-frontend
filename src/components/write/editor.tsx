@@ -1,10 +1,14 @@
 'use client';
 
+import { IconLoader2 } from '@tabler/icons-react';
 import dynamic from 'next/dynamic';
 import { ReactQuillProps } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+const ReactQuill = dynamic(() => import('react-quill'), {
+  ssr: false,
+  loading: () => <IconLoader2 aria-label="로딩중" className="mx-auto animate-spin" role="status" />,
+});
 
 const modules = {
   toolbar: [
