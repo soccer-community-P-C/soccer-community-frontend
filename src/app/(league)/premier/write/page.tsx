@@ -9,6 +9,13 @@ import Button from '@/components/common/button';
 import { useWritePost } from '@/api/post';
 import { TWritePost } from '@/types/posts';
 
+const emptyContentPattern = /<[^>]+>\s*(<br>\s*)*<\/[^>]+>/g;
+
+const isEmptyContent = (content: string) => {
+  const sanitizedInput = content.replace(emptyContentPattern, '').trim();
+  return sanitizedInput === '';
+};
+
 export default function WritePage() {
   const { mutate: writePost } = useWritePost();
   const leagueName = useLeagueName();
@@ -17,10 +24,18 @@ export default function WritePage() {
 
   const memberId = 2; // 임시 멤버 아이디
 
-  const newPost: TWritePost = { title: title.value, content: content.value, category: leagueName };
+  const newPost: TWritePost = {
+    title: title.value.trim(),
+    content: content.value,
+    category: leagueName,
+  };
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (title.value === '' || isEmptyContent(content.value)) {
+      alert('제목 또는 내용을 입력해주세요.');
+    }
+
     writePost({ post: newPost, memberId });
   }
 
