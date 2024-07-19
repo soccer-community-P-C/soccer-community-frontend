@@ -1,7 +1,7 @@
 import localFont from 'next/font/local';
 import MainHeader from '@/components/main-header/main-header';
 import MainFooter from '@/components/main-footer/main-footer';
-import ReactQueryProviders from '@/hooks/useReactQuery';
+import ReactQueryProviders from '@/components/react-query-providers';
 import { ResultOfGameListProvider } from '@/context/result-of-game-context';
 
 import type { Metadata } from 'next';

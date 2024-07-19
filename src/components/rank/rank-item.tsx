@@ -1,6 +1,6 @@
 export default function RankItem() {
   return (
-    <tr className="h-[40px] border-b *:pl-2 even:bg-gray-100">
+    <tr className="h-8 border-b *:pl-2 even:bg-gray-100">
       <td>1</td>
       <td className="text-left font-semibold">맨체스터 시티</td>
       <td>38</td>
