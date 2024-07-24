@@ -6,7 +6,6 @@ import Loading from '@/app/(league)/loading';
 import { useGetGameListByLeagueGameIdYearMonth } from '@/api/league-game';
 import Calendar from '@/components/league-game/calendar';
 import { GameListService } from '@/components/league-game/service/game-list';
-import LeagueGameContent from '@/components/league-game/league-game-content';
 import LeagueGameContentList from '@/components/league-game/league-game-content-list';
 
 const todayDate = getTodayDate();

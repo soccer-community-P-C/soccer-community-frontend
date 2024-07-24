@@ -1,4 +1,3 @@
-import { IconShirtSport } from '@tabler/icons-react';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import Image from 'next/image';
