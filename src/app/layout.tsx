@@ -2,9 +2,9 @@ import localFont from 'next/font/local';
 import MainHeader from '@/components/main-header/main-header';
 import MainFooter from '@/components/main-footer/main-footer';
 import ReactQueryProviders from '@/components/react-query-providers';
-import { ResultOfGameListProvider } from '@/context/result-of-game-context';
-
+import { LeagueGameContextProvider } from '@/context/league-game-content-context';
 import type { Metadata } from 'next';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -29,9 +29,9 @@ export default function RootLayout({
       <body className={`${pretendard.className} h-full bg-gray-200`}>
         <ReactQueryProviders>
           <MainHeader />
-          <ResultOfGameListProvider>
+          <LeagueGameContextProvider>
             <main className="min-h-[calc(100%-8rem-4rem)] py-8">{children}</main>
-          </ResultOfGameListProvider>
+          </LeagueGameContextProvider>
           <MainFooter />
         </ReactQueryProviders>
       </body>

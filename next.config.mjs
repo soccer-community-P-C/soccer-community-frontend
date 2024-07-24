@@ -24,6 +24,17 @@ const nextConfig = {
       ],
     };
   },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'crests.football-data.org',
+        port: '',
+        // pathname: '/account123/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

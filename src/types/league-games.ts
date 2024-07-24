@@ -36,11 +36,10 @@ export type TGameByLeagueGameId = {
   };
 };
 
+export type TGameListWithDate = { date: string; games: TGame[] };
+
 export type TGameListByLeagueIdYearMonth = {
-  responses: {
-    date: string;
-    games: TGame[];
-  }[];
+  responses: TGameListWithDate[];
 };
 
 export type TGameListByDate = {

@@ -17,7 +17,7 @@ const linkList: TLink[] = [
       },
       {
         subName: '일정 및 결과',
-        href: '/premier/result',
+        href: '/premier/league-game',
       },
       {
         subName: '순위',
@@ -35,7 +35,7 @@ const linkList: TLink[] = [
       },
       {
         subName: '일정 및 결과',
-        href: '/laliga/result',
+        href: '/laliga/league-game',
       },
       {
         subName: '순위',

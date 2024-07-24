@@ -1,14 +1,15 @@
 import { IconShirtSport } from '@tabler/icons-react';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
-import useResultOfGame from '@/hooks/useResultOfGame';
-import { TLeagueGame } from '@/types/league-games';
+import Image from 'next/image';
+import { TGame } from '@/types/league-games';
+import useLeagueGameContent from '@/hooks/use-league-game-content';
 
-type ResultOfGameItemProps = TLeagueGame & {
+type LeagueGameOfGameItemProps = TGame & {
   isHome?: boolean;
 };
 
-export default function ResultOfGameItem({
+export default function LeagueGameContentItem({
   awayScore,
   awayTeamName,
   date,
@@ -17,11 +18,11 @@ export default function ResultOfGameItem({
   homeLogo,
   awayLogo,
   isHome = false,
-}: ResultOfGameItemProps) {
-  const { setResultOfGame } = useResultOfGame();
+}: LeagueGameOfGameItemProps) {
+  const { setLeagueGameContent } = useLeagueGameContent();
 
   function handleClickLink() {
-    setResultOfGame({
+    setLeagueGameContent({
       homeScore,
       awayScore,
       homeTeamName,
@@ -48,9 +49,12 @@ export default function ResultOfGameItem({
       onClick={handleClickLink}
     >
       <p className="flex-[0.5_0.5_25%] truncate text-right font-bold">{homeTeamName}</p>
-      <IconShirtSport stroke={2} />
+      <Image alt="홈로고" height={24} src={homeLogo} width={24} />
+      {/*<IconShirtSport stroke={2} />*/}
       <div className="mx-2 min-w-16 text-center text-lg font-extrabold xl:mx-8">{`${homeScore} - ${awayScore}`}</div>
-      <IconShirtSport stroke={2} />
+      {/*<IconShirtSport stroke={2} />*/}
+      <Image alt="원정로고" height={24} src={awayLogo} width={24} />
+
       <p className="flex-[0.5_0.5_25%] truncate font-bold">{awayTeamName}</p>
     </Link>
   );
