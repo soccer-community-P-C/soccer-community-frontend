@@ -42,7 +42,7 @@ export class GameListService {
     return [];
   }
 
-  get hasGameList() {
+  hasGameList() {
     return this.gameList.length > 0;
   }
 
@@ -57,13 +57,13 @@ export class GameListService {
   }
 
   get firstDate() {
-    if (this.hasGameList) {
+    if (this.hasGameList()) {
       return new Date(this.sortedGameList[0].date);
     }
   }
 
   get lastDate() {
-    if (this.hasGameList) {
+    if (this.hasGameList()) {
       return new Date(this.sortedGameList[-1].date);
     }
   }

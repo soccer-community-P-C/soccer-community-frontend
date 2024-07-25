@@ -3,15 +3,15 @@
 import { ReactNode, useState } from 'react';
 import BoxHeading from '@/components/common/box-heading';
 import ViewAllLinkItem from '@/components/common/view-all-link-item';
-import RankTapList from '@/components/home/rank-tap-list';
+import RankTabList from '@/components/home/rank-tab-list';
 
-export type TTapList = {
+export type TTabList = {
   title: string;
   content: ReactNode;
 };
 
 type HomeRankProps = {
-  tabList: TTapList[];
+  tabList: TTabList[];
 };
 export default function HomeRank({ tabList }: HomeRankProps) {
   const [activeTab, setActiveTab] = useState(0);
@@ -29,7 +29,7 @@ export default function HomeRank({ tabList }: HomeRankProps) {
         </div>
         <ViewAllLinkItem href="/premier/rank" />
       </div>
-      <RankTapList activeTab={activeTab} onActiveTab={handleTabChange} tabList={tabList} />
+      <RankTabList activeTab={activeTab} onActiveTab={handleTabChange} tabList={tabList} />
       {tabList[activeTab].content}
     </div>
   );

@@ -1,13 +1,13 @@
 import { twMerge } from 'tailwind-merge';
-import { TTapList } from '@/components/home/home-rank';
+import { TTabList } from '@/components/home/home-rank';
 
-type RankTapListProps = {
-  tabList: TTapList[];
+type RankTabListProps = {
+  tabList: TTabList[];
   onActiveTab: (index: number) => void;
   activeTab: number;
 };
 
-export default function RankTapList({ tabList, onActiveTab, activeTab }: RankTapListProps) {
+export default function RankTabList({ tabList, onActiveTab, activeTab }: RankTabListProps) {
   function handleTabChange(index: number) {
     onActiveTab(index);
   }

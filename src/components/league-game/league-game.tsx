@@ -7,6 +7,7 @@ import { useGetGameListByLeagueGameIdYearMonth } from '@/api/league-game';
 import Calendar from '@/components/league-game/calendar';
 import { GameListService } from '@/components/league-game/service/game-list';
 import LeagueGameContentList from '@/components/league-game/league-game-content-list';
+import { PREMIER_LEAGUE_ID } from '@/constants/league-game-id';
 
 const todayDate = getTodayDate();
 
@@ -16,11 +17,11 @@ export default function LeagueGame() {
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
 
   const { isPending, data, error } = useGetGameListByLeagueGameIdYearMonth(
-    1,
+    PREMIER_LEAGUE_ID,
     shortISOYearMonth(selectedYearMonthDate),
   );
 
-  if (!gameListService.hasGameList && data) {
+  if (!gameListService.hasGameList() && data) {
     gameListService.setGameList(data);
   }
 
@@ -61,7 +62,7 @@ export default function LeagueGame() {
       {/*/>*/}
       {isPending ? <Loading /> : null}
       {error ? <div>Error</div> : null}
-      {gameListService.hasGameList ? (
+      {gameListService.hasGameList() ? (
         <LeagueGameContentList monthlyGameList={gameListService.sortedMonthlyGameList} />
       ) : null}
     </>
