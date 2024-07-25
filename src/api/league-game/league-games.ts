@@ -16,7 +16,7 @@ export async function getGameByLeagueGameId(leagueGameId: number) {
 
 export async function getGameListByLeagueIdYearMonth(leagueId: number, yearMonth: string) {
   const { data } = await instance.get<TGameListByLeagueIdYearMonth>(
-    `${ENDPOINT}/${leagueId}/${yearMonth}`,
+    `${ENDPOINT}/league/${leagueId}/${yearMonth}`,
   );
 
   return data.responses;

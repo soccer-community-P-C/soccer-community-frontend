@@ -1,30 +1,25 @@
 import { IconChevronRight } from '@tabler/icons-react';
 import { twMerge } from 'tailwind-merge';
 import LinkItem from '@/components/common/link-item';
-import ResultOfGameItem from '@/components/result/result-of-game-item';
 import BoxHeading from '@/components/common/box-heading';
-import { getDateTitle, shortISO } from '@/utils/date-helper';
-import { TLeagueGame } from '@/types/league-games';
+import { getDateTitle } from '@/utils/date-helper';
+import { TGame } from '@/types/league-games';
+import LeagueGameContentItem from '@/components/league-game/league-game-content-item';
 
-type ResultOfGameProps = {
-  selectedDate: Date;
-  gameList: TLeagueGame[];
-  isHome?: boolean; // 홈페이지에서 사용하는 컴포넌트인지?
+type LeagueGameContentProps = {
+  gameList: TGame[];
+  date: string;
+  isHome: boolean;
 };
 
-export default function ResultOfGame({
-  selectedDate,
-  gameList,
-  isHome = false,
-}: ResultOfGameProps) {
-  const dateTitle = getDateTitle(selectedDate);
+export default function LeagueGameContent({ gameList, date, isHome }: LeagueGameContentProps) {
   return (
     <div className="divide-y divide-[#777784] overflow-hidden rounded-md border border-[#777784]">
       <BoxHeading
         className={twMerge('flex h-[60px] items-center bg-[#f7f7f9] pl-4', isHome && 'h-[40px]')}
         hTagType={isHome ? 'h4' : 'h3'}
       >
-        {dateTitle}
+        {getDateTitle(new Date(date))}
       </BoxHeading>
 
       <div
@@ -32,12 +27,15 @@ export default function ResultOfGame({
       >
         {gameList.length > 0 ? (
           gameList.map(
-            ({ homeTeamName, homeScore, awayScore, awayTeamName, homeLogo, awayLogo }, index) => (
-              <ResultOfGameItem
+            (
+              { homeTeamName, homeLogo, homeScore, awayTeamName, awayLogo, awayScore, date },
+              index,
+            ) => (
+              <LeagueGameContentItem
                 awayLogo={awayLogo}
                 awayScore={awayScore}
                 awayTeamName={awayTeamName}
-                date={shortISO(selectedDate)}
+                date={date}
                 homeLogo={homeLogo}
                 homeScore={homeScore}
                 homeTeamName={homeTeamName}
@@ -47,7 +45,9 @@ export default function ResultOfGame({
             ),
           )
         ) : (
-          <div>No Data</div>
+          <div className="p-2">
+            <span>오늘은 경기가 없습니다.</span>
+          </div>
         )}
       </div>
       {isHome ? null : (

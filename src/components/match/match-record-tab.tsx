@@ -13,12 +13,12 @@ export default function MatchRecordTab({ home, away, tab, date }: MatchRecordTab
       <ul className="flex flex-row items-center justify-center gap-8">
         <li>
           <LinkItem
-            className={tab === 'result' ? 'underline' : undefined}
+            className={tab === 'league-game' ? 'underline' : undefined}
             href={{
               query: {
                 date: date,
                 team: `${home}-${away}`,
-                tab: 'result',
+                tab: 'league-game',
               },
             }}
           >

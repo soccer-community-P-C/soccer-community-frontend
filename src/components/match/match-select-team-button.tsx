@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge';
 import Image from 'next/image';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { MouseEventHandler } from 'react';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 export default function MatchSelectTeamButton({
   isSelected,
