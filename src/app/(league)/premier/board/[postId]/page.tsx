@@ -5,9 +5,21 @@ import { IconEye, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
 import Button from '@/components/common/button';
 import 'react-quill/dist/quill.snow.css';
+import { useDeletePost } from '@/api/post';
 
-export default function PostPage() {
+type PostPageProps = {
+  params: { postId: string };
+};
+
+export default function PostPage({ params }: PostPageProps) {
+  const { mutate: deletePost } = useDeletePost();
   const body = '<p>내용</p>';
+
+  function handleDeletePost() {
+    if (confirm('글을 삭제하시겠습니까?')) {
+      deletePost(params.postId);
+    }
+  }
 
   return (
     <Box>
@@ -45,9 +57,17 @@ export default function PostPage() {
           }}
         />
       </div>
-      <button className="flex w-14 cursor-pointer items-center gap-1" type="button">
-        <IconThumbUp className="h-7 w-7" /> 0
-      </button>
+      <div className="flex justify-between">
+        <button className="flex w-14 cursor-pointer items-center gap-1" type="button">
+          <IconThumbUp className="h-7 w-7" /> 0
+        </button>
+        <div className="flex gap-2">
+          <button type="button">수정</button>
+          <button className="text-red-500" onClick={handleDeletePost} type="button">
+            삭제
+          </button>
+        </div>
+      </div>
       <hr />
       <form className="flex flex-col gap-2">
         <div>1개의 댓글</div>
