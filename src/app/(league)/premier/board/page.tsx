@@ -18,11 +18,9 @@ export default function PremierBoardPage() {
 
   const currentPage = Number(pageParam) - 1;
 
-  const { data, isPending, refetch } = useGetPostList(leagueName, currentPage);
+  const { data, isPending } = useGetPostList(leagueName, currentPage);
 
   const hasPosts = isPending || (data?.totalElements && data?.totalElements > 0);
-
-  refetch();
 
   return (
     <>
