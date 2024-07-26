@@ -8,3 +8,9 @@ export async function writePost(post: TWritePost, memberId: number) {
 
   return data;
 }
+
+export async function deletePost(postId: string) {
+  const { data } = await instance.delete(`${ENDPOINT}/${postId}`);
+
+  return data;
+}
