@@ -34,7 +34,7 @@ export default function WritePage() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (title.value === '' || isEmptyContent(content.value)) {
-      alert('제목 또는 내용을 입력해주세요.');
+      return alert('제목 또는 내용을 입력해주세요.');
     }
 
     writePost({ post: newPost, memberId });
