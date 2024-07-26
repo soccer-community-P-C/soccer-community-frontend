@@ -1,7 +1,6 @@
 import { IconEye, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Link from 'next/link';
 import Box from '@/components/common/box';
-import Pagination from '@/components/board/pagination';
 import Input from '@/components/common/input';
 import Button from '@/components/common/button';
 
@@ -32,7 +31,7 @@ export default function LaligaBoardPage() {
             </div>
           </div>
         </div>
-        <Pagination />
+        {/*<Pagination />*/}
       </Box>
       <div className="mx-auto mt-4 flex max-w-sm">
         <Input />
