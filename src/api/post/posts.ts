@@ -4,7 +4,6 @@ import { TGetPostList, TWritePost } from '@/types/posts';
 const ENDPOINT = '/post';
 
 export async function getPostList(category: string, page: number) {
-  console.log(category, page);
   const { data } = await instance.get<TGetPostList>('/post/search', {
     params: { category, page },
   });
