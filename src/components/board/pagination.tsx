@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 const PAGE_LIMIT = 5;
@@ -31,7 +32,7 @@ export default function Pagination({ totalPages }: PaginationProps) {
     <nav aria-label="페이지 네비게이션" className="mx-auto mt-4">
       <ul className="flex h-10 items-center -space-x-px text-base">
         <li>
-          <a
+          <Link
             className="ms-0 flex h-10 items-center justify-center rounded-s-lg border border-e-0 border-gray-300 bg-white px-4 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             href={`${pathname}?page=${Math.max(1, currentPage - 1)}`}
           >
@@ -51,32 +52,32 @@ export default function Pagination({ totalPages }: PaginationProps) {
                 strokeWidth="2"
               />
             </svg>
-          </a>
+          </Link>
         </li>
         {pageGroups[currentPageGroup]?.map((index) =>
           index === currentPage ? (
             <li key={index}>
-              <a
+              <Link
                 aria-current="page"
                 className="z-10 flex h-10 items-center justify-center border border-blue-300 bg-blue-50 px-4 leading-tight text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
                 href={`${pathname}?page=${index}`}
               >
                 {index}
-              </a>
+              </Link>
             </li>
           ) : (
             <li key={index}>
-              <a
+              <Link
                 className="flex h-10 items-center justify-center border border-gray-300 bg-white px-4 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 href={`${pathname}?page=${index}`}
               >
                 {index}
-              </a>
+              </Link>
             </li>
           ),
         )}
         <li>
-          <a
+          <Link
             className="flex h-10 items-center justify-center rounded-e-lg border border-gray-300 bg-white px-4 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             href={`${pathname}?page=${Math.min(currentPage + 1, totalPages)}`}
           >
@@ -96,7 +97,7 @@ export default function Pagination({ totalPages }: PaginationProps) {
                 strokeWidth="2"
               />
             </svg>
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
