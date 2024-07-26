@@ -8,6 +8,7 @@ import Input from '@/components/common/input';
 import Button from '@/components/common/button';
 import { useWritePost } from '@/api/post';
 import { TWritePost } from '@/types/posts';
+import { PREMIER_LEAGUE_ID } from '@/constants/league-game-id';
 
 const emptyContentPattern = /<[^>]+>\s*(<br>\s*)*<\/[^>]+>/g;
 
@@ -22,7 +23,7 @@ export default function WritePage() {
   const title = useInput('');
   const content = useInput('');
 
-  const memberId = 2; // 임시 멤버 아이디
+  const memberId = PREMIER_LEAGUE_ID; // 임시 멤버 아이디
 
   const newPost: TWritePost = {
     title: title.value.trim(),
