@@ -13,8 +13,7 @@ type PostPageProps = {
 };
 
 export default function PostPage({ params }: PostPageProps) {
-  const { data } = useGetPost(params.postId);
-
+  const { data: post } = useGetPost(params.postId);
   const { mutate: deletePost } = useDeletePost();
 
   function handleDeletePost() {
@@ -25,36 +24,36 @@ export default function PostPage({ params }: PostPageProps) {
 
   return (
     <Box>
-      <div className="text-2xl">{data?.title}</div>
+      <div className="text-2xl">{post?.title}</div>
       <div className="flex justify-between">
         <div className="flex items-center gap-2">
           <div className="h-9 w-9 rounded-full bg-gray-400" />
-          <div>{data?.memberName}</div>
+          <div>{post?.memberName}</div>
         </div>
         <div className="flex items-center gap-3">
-          {data?.postRegisterDate ? <div>{getTimeAgoString(data?.postRegisterDate)}</div> : null}
+          {post?.postRegisterDate ? <div>{getTimeAgoString(post?.postRegisterDate)}</div> : null}
           <div className="h-3 w-[1px] bg-gray-400" />
           <div className="flex items-center gap-1">
             <IconEye className="h-5 w-5" />
-            {data?.viewCount}
+            {post?.viewCount}
           </div>
           <div className="h-3 w-[1px] bg-gray-400" />
           <div className="flex items-center gap-1">
-            <IconThumbUp /> {data?.likeCount}
+            <IconThumbUp /> {post?.likeCount}
           </div>
           <div className="h-3 w-[1px] bg-gray-400" />
           <div className="flex items-center gap-1">
-            <IconMessage /> {data?.commentSize}
+            <IconMessage /> {post?.commentSize}
           </div>
         </div>
       </div>
       <div className="ql-snow">
-        {data?.content ? (
+        {post?.content ? (
           <div
             className="ql-editor"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
-              __html: sanitizeHtml(data?.content, {
+              __html: sanitizeHtml(post?.content, {
                 allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
               }),
             }}
@@ -63,7 +62,7 @@ export default function PostPage({ params }: PostPageProps) {
       </div>
       <div className="flex justify-between">
         <button className="flex w-14 cursor-pointer items-center gap-1" type="button">
-          <IconThumbUp className="h-7 w-7" /> {data?.likeCount}
+          <IconThumbUp className="h-7 w-7" /> {post?.likeCount}
         </button>
         <div className="flex gap-2">
           <button type="button">수정</button>
@@ -74,7 +73,7 @@ export default function PostPage({ params }: PostPageProps) {
       </div>
       <hr />
       <form className="flex flex-col gap-2">
-        <div>{data?.commentSize}개의 댓글</div>
+        <div>{post?.commentSize}개의 댓글</div>
         <textarea
           className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           id="message"
