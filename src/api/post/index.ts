@@ -1,4 +1,5 @@
 import { useWritePost } from './use-write-post';
 import { useDeletePost } from './use-delete-post';
+import { useGetPost } from './use-get-post';
 
-export { useWritePost, useDeletePost };
+export { useGetPost, useWritePost, useDeletePost };

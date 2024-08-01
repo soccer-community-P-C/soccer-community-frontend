@@ -17,3 +17,16 @@ export type TGetPostList = {
   totalPages: number;
   totalElements: number;
 };
+
+export type TPost = {
+  postId: number;
+  title: string;
+  content: string;
+  postRegisterDate: string;
+  postCategory: string;
+  memberId: number;
+  memberName: string;
+  viewCount: number;
+  likeCount: number;
+  commentSize: number;
+};
