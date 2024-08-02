@@ -4,6 +4,7 @@ import sanitizeHtml from 'sanitize-html';
 import { IconEye, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
 import Button from '@/components/common/button';
+import LoadingSpinner from '@/components/common/loading-spinner';
 import { useDeletePost, useGetPost } from '@/api/post';
 import { getTimeAgoString } from '@/utils/date-helper';
 import 'react-quill/dist/quill.snow.css';
@@ -13,13 +14,25 @@ type PostPageProps = {
 };
 
 export default function PostPage({ params }: PostPageProps) {
-  const { data: post } = useGetPost(params.postId);
+  const { data: post, isError, isPending } = useGetPost(params.postId);
   const { mutate: deletePost } = useDeletePost();
 
   function handleDeletePost() {
     if (confirm('글을 삭제하시겠습니까?')) {
       deletePost(params.postId);
     }
+  }
+
+  if (isPending) {
+    return (
+      <Box>
+        <LoadingSpinner />
+      </Box>
+    );
+  }
+
+  if (isError && !isPending) {
+    return <Box>글을 불러오는데 실패했습니다.</Box>;
   }
 
   return (
