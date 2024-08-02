@@ -1,21 +1,20 @@
 'use client';
 
 import { IconShirtSport } from '@tabler/icons-react';
-import { getDateTitle } from '@/utils/date-helper';
+import { getDateTitle, shortISOTimeHourMinute } from '@/utils/date-helper';
 import Box from '@/components/common/box';
 import GoalInfo from '@/components/match/goal-Info';
-import useLeagueGameContent from '@/hooks/use-league-game-content';
 
 type MatchHeaderProps = {
   home: string;
   away: string;
   date: string;
+  awayScore: string;
+  homeScore: string;
 };
 
-export default function MatchHeader({ home, away, date }: MatchHeaderProps) {
-  // Todo: Context Api를 이용해 관리한다면, url로 접근했을 시 데이터값이 없을 확률이 많다. 추후 api를 통해 데이터를 가져오게 끔 변경 필요.
-  const { leagueGameContent } = useLeagueGameContent();
-
+export default function MatchHeader({ home, away, date, awayScore, homeScore }: MatchHeaderProps) {
+  // Todo: 추가 필요 데이터 - 로고, 골 기록
   return (
     <header>
       <Box className="overflow-hidden bg-gray-600 px-0 pb-0 pt-0 text-white">
@@ -23,7 +22,10 @@ export default function MatchHeader({ home, away, date }: MatchHeaderProps) {
           <div className="flex justify-between text-gray-200">
             <strong>프리미어리그 26R</strong>
             <div className="flex gap-4">
-              <dl>{date ? getDateTitle(new Date(date)) : null} 04:00</dl>|<dl>스탬포트 브릿지</dl>
+              <dl>
+                {date ? getDateTitle(new Date(date)) : null} {shortISOTimeHourMinute(date)}
+              </dl>
+              |<dl>스탬포트 브릿지</dl>
             </div>
           </div>
         </header>
@@ -33,7 +35,7 @@ export default function MatchHeader({ home, away, date }: MatchHeaderProps) {
               {home}
             </div>
             <IconShirtSport size={60} stroke={2} />
-            <div className="mx-8 min-w-16 text-center text-4xl">{`${leagueGameContent?.homeScore || 2} - ${leagueGameContent?.awayScore || 1}`}</div>
+            <div className="mx-8 min-w-16 text-center text-4xl">{`${homeScore} - ${awayScore}`}</div>
             <IconShirtSport size={60} stroke={2} />
             <div className="flex-[0.5_0.5_25%] font-semibold hover:text-gray-200">{away}</div>
           </div>

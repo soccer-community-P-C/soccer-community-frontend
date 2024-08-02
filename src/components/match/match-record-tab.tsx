@@ -1,13 +1,10 @@
 import LinkItem from '@/components/common/link-item';
 
 type MatchRecordTabProps = {
-  home: string;
-  away: string;
   tab: string | null;
-  date: string | null;
 };
 
-export default function MatchRecordTab({ home, away, tab, date }: MatchRecordTabProps) {
+export default function MatchRecordTab({ tab }: MatchRecordTabProps) {
   return (
     <div className="text-xl">
       <ul className="flex flex-row items-center justify-center gap-8">
@@ -16,8 +13,6 @@ export default function MatchRecordTab({ home, away, tab, date }: MatchRecordTab
             className={tab === 'league-game' ? 'underline' : undefined}
             href={{
               query: {
-                date: date,
-                team: `${home}-${away}`,
                 tab: 'league-game',
               },
             }}
@@ -30,8 +25,6 @@ export default function MatchRecordTab({ home, away, tab, date }: MatchRecordTab
             className={tab === 'mom' ? 'underline' : undefined}
             href={{
               query: {
-                date: date,
-                team: `${home}-${away}`,
                 tab: 'mom',
               },
             }}

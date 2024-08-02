@@ -16,6 +16,20 @@ export function shortISO(date: Date) {
   return date.toISOString().split('T')[0];
 }
 
+export function shortISOTimeHourMinute(date: Date | string) {
+  // 시간 문자열을 반환하는 함수
+
+  let time: string;
+
+  if (typeof date === 'string') {
+    time = date.split('T')[1];
+  } else {
+    time = date.toISOString().split('T')[1];
+  }
+
+  return time.split(':').slice(0, 2).join(':');
+}
+
 export function shortISOYearMonth(date: Date) {
   const splitDate = shortISO(date).split('-');
 

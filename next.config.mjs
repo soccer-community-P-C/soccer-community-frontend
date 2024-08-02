@@ -3,6 +3,15 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  async redirects() {
+    return [
+      {
+        source: '/match',
+        destination: '/premier/league-game',
+        permanent: true, // or false if it's a temporary redirect
+      },
+    ];
+  },
   async rewrites() {
     // return process.env.NODE_ENV === 'development'
     //   ? {
