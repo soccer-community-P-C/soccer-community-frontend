@@ -13,6 +13,7 @@ const todayDate = getTodayDate();
 const gameListService = new GameListService();
 
 export default function LeagueGame() {
+  const [selectedTeamId, setSelectedTeamId] = useState(20);
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
 
   const { isPending, data, error } = useGetGameListByLeagueGameIdYearMonth({
@@ -29,13 +30,17 @@ export default function LeagueGame() {
     gameListService.resetGameList();
   }
 
+  function handleSelectTeamId(teamId: number) {
+    setSelectedTeamId(teamId);
+  }
+
   return (
     <>
       <Calendar
         onSelectedYearMonthDate={handleSelectYearMonth}
         selectedYearMonthDate={selectedYearMonthDate}
       />
-      <TeamList />
+      <TeamList onSelectedTeamId={handleSelectTeamId} selectedTeamId={selectedTeamId} />
 
       {isPending ? <Loading /> : null}
       {error ? <div>Error</div> : null}

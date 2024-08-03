@@ -28,7 +28,12 @@ const teams = [
   { teamId: 19, name: '울버햄튼 원더러스', logo: 'wolverhampton-wanderers.png' },
 ];
 
-export default function TeamList() {
+type TeamListProps = {
+  onSelectedTeamId: (teamId: number) => void;
+  selectedTeamId: number;
+};
+
+export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
@@ -82,9 +87,15 @@ export default function TeamList() {
         className="flex divide-x divide-[#777784] overflow-x-hidden scroll-smooth"
         ref={containerRef}
       >
-        {teams.map((team, index) => (
-          <div className="w-1/10 flex-shrink-0" key={index}>
-            <TeamLogo logo={team.logo} name={team.name} teamId={team.teamId} />
+        {teams.map((team) => (
+          <div className="w-1/10 flex-shrink-0" key={team.teamId}>
+            <TeamLogo
+              logo={team.logo}
+              name={team.name}
+              onSelectedTeamId={onSelectedTeamId}
+              selectedTeamId={selectedTeamId}
+              teamId={team.teamId}
+            />
           </div>
         ))}
       </div>
