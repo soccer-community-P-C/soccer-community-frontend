@@ -9,6 +9,7 @@ import PlayerRank from '@/components/player-rank/player-rank';
 import Chelsea from '@/assets/Chelsea.png';
 import MatchSelectTeamButton from '@/components/match/match-select-team-button';
 import TableContainer from '@/components/common/table/table-container';
+import { TGameDetails } from '@/types/league-games';
 
 export type TVoteInfo = {
   id: string;
@@ -16,45 +17,41 @@ export type TVoteInfo = {
   score: number;
 };
 
-export default function MatchRecord() {
-  const searchParams = useSearchParams();
-  const date = searchParams.get('date');
-  const teamList = searchParams.get('team')?.split('-');
-  const tab = searchParams.get('tab');
+type MatchRecordProps = TGameDetails;
 
-  const [home, away] = teamList as string[];
+export default function MatchRecord({ home, away }: MatchRecordProps) {
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab');
 
   const [isHomeSelect, setIsHomeSelect] = useState(true);
 
   return (
     <div className="flex flex-col gap-2">
       <Box className="h-full px-0">
-        <MatchRecordTab away={away} date={date} home={home} tab={tab} />
+        <MatchRecordTab tab={tab} />
         <hr />
 
         {tab === 'mom' ? <MomVote /> : <MatchRecordCategory />}
       </Box>
       <Box>
-        <div>
-          <ul className="relative flex overflow-hidden rounded-lg border bg-[#f7f8f9]">
-            <li className="relative z-10 min-w-0 flex-1 text-center">
-              <MatchSelectTeamButton
-                isSelected={isHomeSelect}
-                logoSrc={Chelsea}
-                onClick={() => setIsHomeSelect(true)}
-                team={home}
-              />
-            </li>
-            <li className="relative z-10 min-w-0 flex-1 text-center">
-              <MatchSelectTeamButton
-                isSelected={!isHomeSelect}
-                logoSrc={Chelsea}
-                onClick={() => setIsHomeSelect(false)}
-                team={away}
-              />
-            </li>
-          </ul>
-        </div>
+        <ul className="relative flex overflow-hidden rounded-lg border bg-[#f7f8f9]">
+          <li className="relative z-10 min-w-0 flex-1 text-center">
+            <MatchSelectTeamButton
+              isSelected={isHomeSelect}
+              logoSrc={Chelsea}
+              onClick={() => setIsHomeSelect(true)}
+              team={home}
+            />
+          </li>
+          <li className="relative z-10 min-w-0 flex-1 text-center">
+            <MatchSelectTeamButton
+              isSelected={!isHomeSelect}
+              logoSrc={Chelsea}
+              onClick={() => setIsHomeSelect(false)}
+              team={away}
+            />
+          </li>
+        </ul>
         <TableContainer isMatch={true}>
           <PlayerRank />
         </TableContainer>

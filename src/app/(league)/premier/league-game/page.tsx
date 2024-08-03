@@ -1,6 +1,6 @@
 import BoxHeading from '@/components/common/box-heading';
 import Box from '@/components/common/box';
-import LeagueGame from '@/components/league-game/league-game';
+import { LeagueGame } from '@/components/league-game';
 
 export default function PremierLeagueGamePage() {
   return (

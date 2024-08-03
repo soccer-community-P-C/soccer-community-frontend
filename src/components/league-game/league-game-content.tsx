@@ -1,6 +1,4 @@
-import { IconChevronRight } from '@tabler/icons-react';
 import { twMerge } from 'tailwind-merge';
-import LinkItem from '@/components/common/link-item';
 import BoxHeading from '@/components/common/box-heading';
 import { getDateTitle } from '@/utils/date-helper';
 import { TGame } from '@/types/league-games';
@@ -16,7 +14,7 @@ export default function LeagueGameContent({ gameList, date, isHome }: LeagueGame
   return (
     <div className="divide-y divide-[#777784] overflow-hidden rounded-md border border-[#777784]">
       <BoxHeading
-        className={twMerge('flex h-[60px] items-center bg-[#f7f7f9] pl-4', isHome && 'h-[40px]')}
+        className={twMerge('flex h-[50px] items-center bg-[#f7f7f9] pl-4', isHome && 'h-[40px]')}
         hTagType={isHome ? 'h4' : 'h3'}
       >
         {getDateTitle(new Date(date))}
@@ -50,18 +48,6 @@ export default function LeagueGameContent({ gameList, date, isHome }: LeagueGame
           </div>
         )}
       </div>
-      {isHome ? null : (
-        <footer className="flex h-[60px] items-center justify-end gap-8 bg-[#f7f7f9] pr-8">
-          <LinkItem className="flex text-base" href="/premier">
-            <p>게시판</p>
-            <IconChevronRight />
-          </LinkItem>
-          <LinkItem className="flex text-base" href="/premier/rank">
-            <p>순위보기</p>
-            <IconChevronRight />
-          </LinkItem>
-        </footer>
-      )}
     </div>
   );
 }

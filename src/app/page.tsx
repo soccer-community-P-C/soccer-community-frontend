@@ -3,8 +3,8 @@ import BoxHeading from '@/components/common/box-heading';
 import ViewAllLinkItem from '@/components/common/view-all-link-item';
 import RankTable from '@/components/rank/rank-table';
 import HomeRank from '@/components/home/home-rank';
-import LaligaLeagueGame from '@/components/home/laliga-result';
-import PremierLeagueGame from '@/components/home/premier-result';
+import LaligaLeagueGame from '@/components/home/laliga-league-game';
+import PremierLeagueGame from '@/components/home/premier-league-game';
 
 const tabList = [
   { title: '프리미어리그 순위', content: <RankTable /> },
