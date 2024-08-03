@@ -65,3 +65,44 @@ export function getDateTitle(date: Date) {
 
   return `${month}월 ${day}일 ${dayOfWeek}요일`;
 }
+
+export function getTimeAgoString(dateString: string) {
+  const date = new Date(dateString).getTime();
+  const now = new Date().getTime();
+  const secondsDiff = Math.floor((now - date) / 1000);
+
+  const second = 1;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+  const week = day * 7;
+  const month = day * 30;
+  const year = day * 365;
+
+  const seconds = {
+    minute,
+    hour,
+    day,
+    week,
+    month,
+    year,
+  };
+
+  const intervals = [
+    { label: '년', seconds: seconds.year },
+    { label: '달', seconds: seconds.month },
+    { label: '주', seconds: seconds.week },
+    { label: '일', seconds: seconds.day },
+    { label: '시간', seconds: seconds.hour },
+    { label: '분', seconds: seconds.minute },
+  ];
+
+  for (const interval of intervals) {
+    const count = Math.floor(secondsDiff / interval.seconds);
+    if (count >= 1) {
+      return `${count}${interval.label} 전`;
+    }
+  }
+
+  return '방금 전';
+}
