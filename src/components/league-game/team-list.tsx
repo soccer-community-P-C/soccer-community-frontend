@@ -90,7 +90,7 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
         {teams.map((team) => (
           <div className="w-1/10 flex-shrink-0" key={team.teamId}>
             <TeamLogo
-              logo={team.logo}
+              // logo={team.logo}
               name={team.name}
               onSelectedTeamId={onSelectedTeamId}
               selectedTeamId={selectedTeamId}

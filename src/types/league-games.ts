@@ -115,3 +115,5 @@ export type TAllGameList = {
   totalElements: number;
   totalPages: number;
 };
+
+export type TGameListByLeagueTeamId = TAllGameList;

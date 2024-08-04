@@ -7,7 +7,7 @@ type TSortArray<T extends 'string' | 'number'> = T[];
 
 export type GetGameListByTeamIdProps = {
   leagueTeamId: number;
-  sort: TSortArray<'string' | 'number'>;
+  sort?: TSortArray<'string' | 'number'>;
   page?: number;
   size?: number;
 };
@@ -18,14 +18,12 @@ export function getQueryKey({ leagueTeamId, size, sort, page }: GetGameListByTea
 
 export default function useGetGameListByTeamId({
   leagueTeamId,
-  size,
-  sort,
-  page,
+  size = 10,
+  sort = ['string'],
+  page = 0,
 }: GetGameListByTeamIdProps) {
   return useQuery({
     queryKey: getQueryKey({ leagueTeamId, sort, page, size }),
-    // Todo: 임시 주석
-    // queryFn: () => getGameByTeamId({ leagueTeamId, sort, page, size }),
-    queryFn: () => getGameByTeamId(),
+    queryFn: () => getGameByTeamId({ leagueTeamId, sort, page, size }),
   });
 }

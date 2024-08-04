@@ -4,11 +4,13 @@ import {
   TGameByLeagueGameId,
   TGameListByDate,
   TGameListByLeagueIdYearMonth,
+  TGameListByLeagueTeamId,
 } from '@/types/league-games';
 import { GetGameByLeagueGameIdProps } from '@/api/league-game/use-get-game-by-league-game-id';
 import { GetGameListByLeagueGameIdYearMonthProps } from '@/api/league-game/use-get-game-list-by-league-game-id-year-month';
 import { GetGameListByDateProps } from '@/api/league-game/use-get-game-list-by-date';
 import { GetAllGameList } from '@/api/league-game/use-get-all-game-list';
+import { GetGameListByTeamIdProps } from '@/api/league-game/use-get-game-list-by-team-id';
 
 const ENDPOINT = '/league-game/search';
 
@@ -20,25 +22,25 @@ export async function getGameByLeagueGameId({ leagueGameId }: GetGameByLeagueGam
 }
 
 // 특정 팀 경기들 조회
-export async function getGameByTeamId() {
-  //   {
-  //   leagueTeamId,
-  //   size,
-  //   sort,
-  //   page,
-  // }: GetGameListByTeamIdProps
-  // Todo: teamId api 생길시 수정 필요
-  const { data } = await instance.get<TGameByLeagueGameId>(`${ENDPOINT}/team/${1}`, {
+export async function getGameByTeamId({
+  leagueTeamId,
+  size,
+  sort,
+  page,
+}: GetGameListByTeamIdProps) {
+  const { data } = await instance.get<TGameListByLeagueTeamId>(`${ENDPOINT}/team/${leagueTeamId}`, {
     params: {
       pageable: {
-        page: 0,
-        size: 10,
-        sort: ['string'],
+        page,
+        size,
+        sort,
       },
     },
   });
 
-  return data.response;
+  const { findLeagueGames, totalElements, totalPages } = data;
+
+  return { findLeagueGames, totalElements, totalPages };
 }
 
 // 특정 년월 경기들 조회
