@@ -19,6 +19,10 @@
 }
 
 @layer components {
+  .min-h-screen-custom {
+    @apply min-h-[calc(100%-8rem-4rem)];
+  }
+
   .button-vote-item {
     @apply h-full cursor-pointer transition duration-150 ease-in-out;
   }

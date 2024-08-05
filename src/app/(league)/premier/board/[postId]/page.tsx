@@ -4,10 +4,10 @@ import sanitizeHtml from 'sanitize-html';
 import { IconEye, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
 import Button from '@/components/common/button';
-import LoadingSpinner from '@/components/common/loading-spinner';
 import { useDeletePost, useGetPost } from '@/api/post';
 import { getTimeAgoString } from '@/utils/date-helper';
 import 'react-quill/dist/quill.snow.css';
+import { LoadingBox } from '@/components/common/loading-spinner';
 
 type PostPageProps = {
   params: { postId: string };
@@ -24,11 +24,7 @@ export default function PostPage({ params }: PostPageProps) {
   }
 
   if (isPending) {
-    return (
-      <Box>
-        <LoadingSpinner />
-      </Box>
-    );
+    return <LoadingBox />;
   }
 
   if (isError && !isPending) {

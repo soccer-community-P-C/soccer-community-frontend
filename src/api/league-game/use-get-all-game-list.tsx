@@ -11,11 +11,11 @@ export type GetAllGameList = {
   size?: number;
 };
 
-export function getQueryKey({ startDate, endDate, leagueId, page, size }: GetAllGameList) {
+function getQueryKey({ startDate, endDate, leagueId, page, size }: GetAllGameList) {
   return [QUERY_KEY, startDate, endDate, leagueId, { page: page, size: size }];
 }
 
-export default function useGetAllGameList(
+export function useGetAllGameList(
   startDate: string,
   endDate: string,
   leagueId: number,

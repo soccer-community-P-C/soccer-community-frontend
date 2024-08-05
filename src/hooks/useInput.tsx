@@ -1,9 +1,11 @@
-import { useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
+
+type InputElement = HTMLInputElement | HTMLTextAreaElement;
 
 export default function useInput(initialValue = '') {
   const [value, setValue] = useState(initialValue);
 
-  const handleChange = useCallback((input: string | React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((input: string | ChangeEvent<InputElement>) => {
     if (typeof input === 'string') {
       setValue(input);
     } else {
@@ -11,7 +13,9 @@ export default function useInput(initialValue = '') {
     }
   }, []);
 
-  const clear = useCallback(() => setValue(''), []);
+  const clear = useCallback(() => {
+    setValue('');
+  }, []);
 
   return { value, onChange: handleChange, clear };
 }

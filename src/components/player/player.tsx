@@ -1,11 +1,34 @@
+'use client';
+
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import player_img from '@/assets/img/player_test_img.jpeg';
 import Box from '@/components/common/box';
 import BoxHeading from '@/components/common/box-heading';
 import PlayerInfo from '@/components/player/player-info';
 import PlayerStat from '@/components/player/player-stat';
+import { useGetPlayer } from '@/api/player';
+import { LoadingBox } from '@/components/common/loading-spinner';
+import PlayerInfoTab from '@/components/player/player-info-tab';
+import PlayerCareer from '@/components/player/player-career';
+import PlayerComment from '@/components/player/player-comment';
 
 export default function Player() {
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab') || 'career';
+
+  const { isPending, error, data: playerData } = useGetPlayer({ playerId: 1 });
+
+  if (isPending) {
+    return <LoadingBox />;
+  }
+
+  if (error) {
+    return <div>선수 불러오기 실패</div>;
+  }
+
+  const { playerName, position, national, leagueTeamName, leagueTeamId } = playerData;
+
   return (
     <>
       <Box>
@@ -19,21 +42,20 @@ export default function Player() {
               src={player_img}
             />
           </span>
-          <PlayerInfo />
+          <PlayerInfo
+            leagueTeamId={leagueTeamId}
+            leagueTeamName={leagueTeamName}
+            national={national}
+            playerName={playerName}
+            position={position}
+          />
           <PlayerStat />
         </div>
       </Box>
       <Box>
-        <BoxHeading hTagType="h3">경력 사항</BoxHeading>
+        <PlayerInfoTab tab={tab} />
         <hr />
-        <table className="relative table-fixed overflow-hidden">
-          <tbody>
-            <tr>
-              <th className="w-[200px] text-left text-[16px]">2024.01~</th>
-              <td className="text-left text-[16px]">맨체스터 시티</td>
-            </tr>
-          </tbody>
-        </table>
+        {tab === 'career' ? <PlayerCareer /> : <PlayerComment />}
       </Box>
     </>
   );

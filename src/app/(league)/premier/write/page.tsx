@@ -9,13 +9,7 @@ import Button from '@/components/common/button';
 import { useWritePost } from '@/api/post';
 import { TWritePost } from '@/types/posts';
 import { PREMIER_LEAGUE_ID } from '@/constants/league-game-id';
-
-const emptyContentPattern = /<[^>]+>\s*(<br>\s*)*<\/[^>]+>/g;
-
-const isEmptyContent = (content: string) => {
-  const sanitizedInput = content.replace(emptyContentPattern, '').trim();
-  return sanitizedInput === '';
-};
+import { isEmptyContent } from '@/utils/check-content';
 
 export default function WritePage() {
   const { mutate: writePost } = useWritePost();

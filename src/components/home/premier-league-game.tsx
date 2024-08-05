@@ -2,10 +2,10 @@
 
 import BoxHeading from '@/components/common/box-heading';
 import ViewAllLinkItem from '@/components/common/view-all-link-item';
-import Loading from '@/app/(league)/loading';
 import LeagueGameContent from '@/components/league-game/league-game-content';
 import { useGetGameListByDate } from '@/api/league-game';
 import { getTodayDate, shortISO } from '@/utils/date-helper';
+import { LoadingBox } from '@/components/common/loading-spinner';
 
 const todayDate = shortISO(getTodayDate());
 
@@ -18,7 +18,7 @@ export default function PremierLeagueGame() {
         <BoxHeading hTagType="h4">프리미어리그 경기 일정</BoxHeading>
         <ViewAllLinkItem href="/premier/league-game" />
       </div>
-      {isPending ? <Loading /> : null}
+      {isPending ? <LoadingBox isHome={true} /> : null}
       {error ? <div>Error</div> : null}
       {gameList ? <LeagueGameContent date={todayDate} gameList={gameList} isHome={true} /> : null}
     </div>
