@@ -16,7 +16,7 @@ type PostPageProps = {
 };
 
 export default function PostPage({ params }: PostPageProps) {
-  const { data: post, isError, isPending } = useGetPost(params.postId);
+  const { data: post, isError: isErrorPost, isPending: isPendingPost } = useGetPost(params.postId);
   const { mutate: deletePost } = useDeletePost();
   const { mutateAsync: writeComment, isPending: isPendingWriteComment } = useWriteComment(
     params.postId,
@@ -42,7 +42,7 @@ export default function PostPage({ params }: PostPageProps) {
     }
   }
 
-  if (isPending) {
+  if (isPendingPost) {
     return (
       <Box>
         <LoadingSpinner />
@@ -50,7 +50,7 @@ export default function PostPage({ params }: PostPageProps) {
     );
   }
 
-  if (isError && !isPending) {
+  if (isErrorPost && !isPendingPost) {
     return <Box>글을 불러오는데 실패했습니다.</Box>;
   }
 
