@@ -10,7 +10,7 @@ import { getTodayDate, shortISO } from '@/utils/date-helper';
 const todayDate = shortISO(getTodayDate());
 
 export default function LaligaLeagueGame() {
-  const { isPending, data: gameList, error } = useGetGameListByDate(todayDate);
+  const { isPending, data: gameList, error } = useGetGameListByDate({ targetDate: todayDate });
 
   return (
     <div className="flex w-full flex-col gap-2 rounded-lg bg-white">

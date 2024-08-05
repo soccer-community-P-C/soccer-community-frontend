@@ -1,15 +1,23 @@
 import { useQuery } from '@tanstack/react-query';
 import { getGameListByLeagueIdYearMonth } from '@/api/league-game/league-games';
 
-const QUERY_KEY = 'gameListByLeagueGameIdYearMonth';
+const QUERY_KEY = 'leagueGameListByLeagueGameIdYearMonth';
 
-export function getQueryKey(leagueId: number, yearMonth: string) {
+export type GetGameListByLeagueGameIdYearMonthProps = {
+  leagueId: number;
+  yearMonth: string;
+};
+
+export function getQueryKey({ leagueId, yearMonth }: GetGameListByLeagueGameIdYearMonthProps) {
   return [QUERY_KEY, leagueId, yearMonth];
 }
 
-export default function useGetGameListByLeagueGameIdYearMonth(leagueId: number, yearMonth: string) {
+export default function useGetGameListByLeagueGameIdYearMonth({
+  leagueId,
+  yearMonth,
+}: GetGameListByLeagueGameIdYearMonthProps) {
   return useQuery({
-    queryKey: getQueryKey(leagueId, yearMonth),
-    queryFn: () => getGameListByLeagueIdYearMonth(leagueId, yearMonth),
+    queryKey: getQueryKey({ leagueId, yearMonth }),
+    queryFn: () => getGameListByLeagueIdYearMonth({ leagueId, yearMonth }),
   });
 }

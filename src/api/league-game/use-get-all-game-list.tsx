@@ -3,13 +3,15 @@ import { getAllGameList } from '@/api/league-game/league-games';
 
 const QUERY_KEY = 'leagueGameAll';
 
-export function getQueryKey(
-  startDate: string,
-  endDate: string,
-  leagueId: number,
-  page?: number,
-  size?: number,
-) {
+export type GetAllGameList = {
+  startDate: string;
+  endDate: string;
+  leagueId: number;
+  page?: number;
+  size?: number;
+};
+
+export function getQueryKey({ startDate, endDate, leagueId, page, size }: GetAllGameList) {
   return [QUERY_KEY, startDate, endDate, leagueId, { page: page, size: size }];
 }
 
@@ -21,7 +23,7 @@ export default function useGetAllGameList(
   size?: number,
 ) {
   return useQuery({
-    queryKey: getQueryKey(startDate, endDate, leagueId, page, size),
-    queryFn: () => getAllGameList(startDate, endDate, leagueId, page, size),
+    queryKey: getQueryKey({ startDate, endDate, leagueId, page, size }),
+    queryFn: () => getAllGameList({ startDate, endDate, leagueId, page, size }),
   });
 }
