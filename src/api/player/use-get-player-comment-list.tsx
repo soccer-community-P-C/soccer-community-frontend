@@ -4,13 +4,13 @@ import { TPlayerId } from '@/types/players';
 
 const QUERY_KEY = 'useGetPlayerCommentList';
 
-function getQueryKey({ playerId }: TPlayerId) {
+export function getQueryKeyPlayerCommentList({ playerId }: TPlayerId) {
   return [QUERY_KEY, playerId];
 }
 
 export function useGetPlayerCommentList({ playerId }: TPlayerId) {
   return useQuery({
-    queryKey: getQueryKey({ playerId }),
+    queryKey: getQueryKeyPlayerCommentList({ playerId }),
     queryFn: () => getPlayerCommentList({ playerId }),
   });
 }

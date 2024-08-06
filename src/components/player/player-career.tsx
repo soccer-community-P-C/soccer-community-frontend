@@ -1,6 +1,7 @@
 import BoxHeading from '@/components/common/box-heading';
 
 export default function PlayerCareer() {
+  // Todo: 경력사항 추가 필요
   return (
     <>
       <BoxHeading hTagType="h3">경력 사항</BoxHeading>

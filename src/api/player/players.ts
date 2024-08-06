@@ -34,10 +34,7 @@ async function getPlayerCommentList({ playerId }: TPlayerId) {
 
 // /api/player/comment/{playerId}
 async function writePlayerComment({ playerId, comment }: TWritePlayerComment) {
-  console.log(playerId, comment);
-  const { data } = await instance.post(`${ENDPOINT}/comment/${playerId}}`, comment);
-
-  return data;
+  await instance.post(`${ENDPOINT}/comment/${playerId}`, { comment });
 }
 
 export { getPlayer, getAllPlayerList, getPlayerCommentList, writePlayerComment };

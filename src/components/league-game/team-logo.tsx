@@ -4,7 +4,6 @@ import cimg from '@/assets/Chelsea.png';
 
 type TeamLogoProps = {
   name: string;
-  logo: string;
   teamId: number;
   onSelectedTeamId: (teamId: number) => void;
   selectedTeamId: number;
@@ -14,11 +13,9 @@ export default function TeamLogo({
   selectedTeamId,
   onSelectedTeamId,
   name,
-  logo,
   teamId,
 }: TeamLogoProps) {
   // Todo: 로고 받아야함
-  console.log(logo);
 
   return (
     <div className="flex h-20 w-24 flex-col items-center">

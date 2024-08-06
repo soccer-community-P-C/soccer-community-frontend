@@ -13,7 +13,7 @@ export type MatchProps = {
 
 export default function Match({ leagueGameId }: MatchProps) {
   const { isPending, data, error } = useGetGameByLeagueGameId({ leagueGameId });
-  // Todo: 필요 정보 - 로고, 기록, 투표 정보, 뛴 선수 정보
+  // Todo: 필요 정보 - 로고, 기록, 투표 정보, 뛴 선수 정보(선수 id, 프로필, 시즌 기록, 경력사항)
   const router = useRouter();
 
   if (isPending) {
@@ -32,7 +32,6 @@ export default function Match({ leagueGameId }: MatchProps) {
   const { gameDate, away, home, homeScore, awayScore } = data;
   return (
     <>
-      q
       <MatchHeader
         away={away}
         awayScore={awayScore}

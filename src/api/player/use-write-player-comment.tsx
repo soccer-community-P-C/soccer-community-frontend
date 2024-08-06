@@ -1,14 +1,13 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { writePlayerComment } from '@/api/player/players';
 import { TPlayerId, TWritePlayerComment } from '@/types/players';
+import { getQueryKeyPlayerCommentList } from '@/api/player/use-get-player-comment-list';
 
-const QUERY_KEY = 'useWritePlayerComment';
+type UseWritePlayerCommentProps = TPlayerId & {
+  clear: () => void;
+};
 
-function getQueryKey({ playerId }: TPlayerId) {
-  return [QUERY_KEY, playerId];
-}
-
-export function useWritePlayerComment({ playerId }: TPlayerId) {
+export function useWritePlayerComment({ playerId, clear }: UseWritePlayerCommentProps) {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -16,7 +15,8 @@ export function useWritePlayerComment({ playerId }: TPlayerId) {
       writePlayerComment({ playerId, comment }),
 
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: getQueryKey({ playerId }) });
+      queryClient.invalidateQueries({ queryKey: getQueryKeyPlayerCommentList({ playerId }) });
+      clear();
     },
   });
 }
