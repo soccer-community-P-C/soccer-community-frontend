@@ -9,7 +9,7 @@ import PlayerCommentItem from '@/components/player/player-comment-item';
 export default function PlayerComment() {
   const { data: commentList, error, isPending } = useGetPlayerCommentList({ playerId: 1 });
   const { value, onChange, clear } = useInput('');
-  const { mutate: writeComment } = useWritePlayerComment({ playerId: 1, clear });
+  const { mutateAsync: writeComment } = useWritePlayerComment({ playerId: 1 });
   let reversedCommentList: typeof commentList = [];
 
   if (isPending) {
@@ -24,14 +24,22 @@ export default function PlayerComment() {
     reversedCommentList = [...commentList].reverse();
   }
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     if (isEmptyContent(value)) {
       return alert('댓글 내용을 입력해주세요.');
     }
 
-    writeComment({ playerId: 1, comment: value });
+    try {
+      await writeComment({ playerId: 1, comment: value });
+      clear();
+    } catch {
+      alert('댓글 작성에 실패했습니다.');
+    }
   }
+
+  // Todo: key로 설정할 값이 없어 임시로 index로 키설정
+
   return (
     <>
       <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
@@ -49,9 +57,8 @@ export default function PlayerComment() {
           댓글 작성
         </Button>
       </form>
-      <ul className="flex flex-col gap-2">
+      <ul className="flex flex-col gap-2 divide-y border-t">
         {reversedCommentList?.map(({ comment, nickName }, index) => (
-          // Todo: key로 설정할 값이 없어 임시로 index로 키설정
           <PlayerCommentItem comment={comment} key={index} nickName={nickName} />
         ))}
       </ul>

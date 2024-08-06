@@ -3,11 +3,7 @@ import { writePlayerComment } from '@/api/player/players';
 import { TPlayerId, TWritePlayerComment } from '@/types/players';
 import { getQueryKeyPlayerCommentList } from '@/api/player/use-get-player-comment-list';
 
-type UseWritePlayerCommentProps = TPlayerId & {
-  clear: () => void;
-};
-
-export function useWritePlayerComment({ playerId, clear }: UseWritePlayerCommentProps) {
+export function useWritePlayerComment({ playerId }: TPlayerId) {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -16,7 +12,6 @@ export function useWritePlayerComment({ playerId, clear }: UseWritePlayerComment
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: getQueryKeyPlayerCommentList({ playerId }) });
-      clear();
     },
   });
 }
