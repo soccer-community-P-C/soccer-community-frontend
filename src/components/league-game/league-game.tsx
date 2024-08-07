@@ -22,7 +22,9 @@ export default function LeagueGame() {
     error: gameListError,
   } = useGetGameListByLeagueGameIdYearMonth({
     leagueId: PREMIER_LEAGUE_ID,
-    yearMonth: shortISOYearMonth(selectedYearMonthDate),
+    // yearMonth: shortISOYearMonth(selectedYearMonthDate),
+
+    yearMonth: '2024-05',
   });
 
   // const {
