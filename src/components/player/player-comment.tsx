@@ -2,7 +2,6 @@ import { FormEvent } from 'react';
 import Button from '@/components/common/button';
 import { useGetPlayerCommentList, useWritePlayerComment } from '@/api/player';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
-import { isEmptyContent } from '@/utils/check-content';
 import useInput from '@/hooks/useInput';
 import PlayerCommentItem from '@/components/player/player-comment-item';
 
@@ -26,7 +25,8 @@ export default function PlayerComment() {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    if (isEmptyContent(value)) {
+    if (value.trim() === '') {
+      clear();
       return alert('댓글 내용을 입력해주세요.');
     }
 

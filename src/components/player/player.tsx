@@ -27,7 +27,7 @@ export default function Player() {
     return <div>선수 불러오기 실패</div>;
   }
 
-  const { playerName, position, national, leagueTeamName, leagueTeamId } = playerData;
+  const { playerName, position, national, leagueTeamName } = playerData;
 
   return (
     <>
@@ -43,7 +43,6 @@ export default function Player() {
             />
           </span>
           <PlayerInfo
-            leagueTeamId={leagueTeamId}
             leagueTeamName={leagueTeamName}
             national={national}
             playerName={playerName}

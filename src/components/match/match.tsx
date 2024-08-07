@@ -17,7 +17,7 @@ export default function Match({ leagueGameId }: MatchProps) {
   const router = useRouter();
 
   if (isPending) {
-    return <LoadingBox />; // 스켈레톤 로딩이나 로딩 바를 추가할 수 있습니다.
+    return <LoadingBox />;
   }
 
   if (error) {

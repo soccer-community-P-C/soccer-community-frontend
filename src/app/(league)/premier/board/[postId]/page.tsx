@@ -7,7 +7,7 @@ import Button from '@/components/common/button';
 import { useDeletePost, useGetPost } from '@/api/post';
 import { getTimeAgoString } from '@/utils/date-helper';
 import 'react-quill/dist/quill.snow.css';
-import { LoadingBox } from '@/components/common/loading-spinner';
+import { LoadingSpinner } from '@/components/common/loading-spinner';
 
 type PostPageProps = {
   params: { postId: string };
@@ -24,7 +24,11 @@ export default function PostPage({ params }: PostPageProps) {
   }
 
   if (isPending) {
-    return <LoadingBox />;
+    return (
+      <Box>
+        <LoadingSpinner />
+      </Box>
+    );
   }
 
   if (isError && !isPending) {

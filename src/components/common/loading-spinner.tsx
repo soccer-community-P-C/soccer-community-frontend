@@ -15,7 +15,7 @@ export function LoadingBox({ isHome }: LoadingBoxProps) {
   }
 
   return (
-    <Box className="flex-all-center h-[calc(100vh-8rem-6rem-4rem)]">
+    <Box className="flex-all-center h-screen-box">
       <LoadingSpinner />
     </Box>
   );
