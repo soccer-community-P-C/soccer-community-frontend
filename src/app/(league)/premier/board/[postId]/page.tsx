@@ -5,7 +5,9 @@ import { IconEye, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
 import Button from '@/components/common/button';
 import LoadingSpinner from '@/components/common/loading-spinner';
+import useInput from '@/hooks/useInput';
 import { useDeletePost, useGetPost } from '@/api/post';
+import { useWriteComment } from '@/api/comment';
 import { getTimeAgoString } from '@/utils/date-helper';
 import 'react-quill/dist/quill.snow.css';
 
@@ -14,8 +16,13 @@ type PostPageProps = {
 };
 
 export default function PostPage({ params }: PostPageProps) {
-  const { data: post, isError, isPending } = useGetPost(params.postId);
+  const { data: post, isError: isErrorPost, isPending: isPendingPost } = useGetPost(params.postId);
   const { mutate: deletePost } = useDeletePost();
+  const { mutateAsync: writeComment, isPending: isPendingWriteComment } = useWriteComment(
+    params.postId,
+  );
+
+  const comment = useInput();
 
   function handleDeletePost() {
     if (confirm('글을 삭제하시겠습니까?')) {
@@ -23,7 +30,19 @@ export default function PostPage({ params }: PostPageProps) {
     }
   }
 
-  if (isPending) {
+  async function handleWriteComment(e: React.FormEvent) {
+    e.preventDefault();
+    if (comment.value.trim() === '') return alert('댓글을 입력해주세요.');
+
+    try {
+      await writeComment(comment.value);
+      comment.clear();
+    } catch {
+      alert('댓글 작성에 실패했습니다.');
+    }
+  }
+
+  if (isPendingPost) {
     return (
       <Box>
         <LoadingSpinner />
@@ -31,7 +50,7 @@ export default function PostPage({ params }: PostPageProps) {
     );
   }
 
-  if (isError && !isPending) {
+  if (isErrorPost && !isPendingPost) {
     return <Box>글을 불러오는데 실패했습니다.</Box>;
   }
 
@@ -85,16 +104,22 @@ export default function PostPage({ params }: PostPageProps) {
         </div>
       </div>
       <hr />
-      <form className="flex flex-col gap-2">
+      <form className="flex flex-col gap-2" onSubmit={handleWriteComment}>
         <div>{post?.commentSize}개의 댓글</div>
         <textarea
           className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           id="message"
+          onChange={comment.onChange}
           placeholder="댓글을 작성하세요."
           rows={4}
+          value={comment.value}
         />
-        <Button className="w-28 self-end" type="submit">
-          댓글 작성
+        <Button
+          className="w-28 self-end"
+          disabled={isPendingWriteComment ? true : false}
+          type="submit"
+        >
+          {isPendingWriteComment ? <LoadingSpinner /> : '댓글 작성'}
         </Button>
       </form>
       <ul className="flex flex-col gap-2">
