@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { getTodayDate, shortISOYearMonth } from '@/utils/date-helper';
+import { getTodayDate } from '@/utils/date-helper';
 import Loading from '@/app/(league)/loading';
 import { useGetGameListByLeagueGameIdYearMonth } from '@/api/league-game';
 import { PREMIER_LEAGUE_ID } from '@/constants/league-game-id';
