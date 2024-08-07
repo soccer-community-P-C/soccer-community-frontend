@@ -8,7 +8,6 @@ import Input from '@/components/common/input';
 import Button from '@/components/common/button';
 import { useWritePost } from '@/api/post';
 import { TWritePost } from '@/types/posts';
-import { PREMIER_LEAGUE_ID } from '@/constants/league-game-id';
 
 const emptyContentPattern = /<[^>]+>\s*(<br>\s*)*<\/[^>]+>/g;
 
@@ -23,8 +22,6 @@ export default function WritePage() {
   const title = useInput('');
   const content = useInput('');
 
-  const memberId = PREMIER_LEAGUE_ID; // 임시 멤버 아이디
-
   const newPost: TWritePost = {
     title: title.value.trim(),
     content: content.value,
@@ -37,7 +34,7 @@ export default function WritePage() {
       return alert('제목 또는 내용을 입력해주세요.');
     }
 
-    writePost({ post: newPost, memberId });
+    writePost({ post: newPost });
   }
 
   return (

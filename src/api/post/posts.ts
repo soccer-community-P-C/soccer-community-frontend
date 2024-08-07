@@ -17,8 +17,8 @@ export async function getPost(postId: string) {
   return data;
 }
 
-export async function writePost(post: TWritePost, memberId: number) {
-  const { data } = await instance.post<number>(`${ENDPOINT}/${memberId}`, post);
+export async function writePost(post: TWritePost) {
+  const { data } = await instance.post<number>(`${ENDPOINT}`, post);
 
   return data;
 }

@@ -10,8 +10,7 @@ export function useWritePost() {
   const leagueName = useLeagueName();
 
   return useMutation({
-    mutationFn: ({ post, memberId }: { post: TWritePost; memberId: number }) =>
-      writePost(post, memberId),
+    mutationFn: ({ post }: { post: TWritePost }) => writePost(post),
     onSuccess: (postId) => {
       queryClient.invalidateQueries({ queryKey: ['posts', leagueName] });
       router.push(`/${leagueName}/board/${postId}`);
