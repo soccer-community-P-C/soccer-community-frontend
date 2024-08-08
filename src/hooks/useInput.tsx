@@ -14,7 +14,9 @@ export default function useInput(initialValue = '') {
     [],
   );
 
-  const clear = useCallback(() => setValue(''), []);
+  const clear = useCallback(() => {
+    setValue('');
+  }, []);
 
   return { value, onChange: handleChange, clear };
 }

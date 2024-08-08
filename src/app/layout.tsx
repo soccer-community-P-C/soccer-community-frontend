@@ -30,7 +30,7 @@ export default function RootLayout({
         <ReactQueryProviders>
           <MainHeader />
           <LeagueGameContextProvider>
-            <main className="min-h-[calc(100%-8rem-4rem)] py-8">{children}</main>
+            <main className="min-h-screen-custom py-8">{children}</main>
           </LeagueGameContextProvider>
           <MainFooter />
         </ReactQueryProviders>

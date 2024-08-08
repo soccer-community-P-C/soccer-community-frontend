@@ -5,11 +5,11 @@ const QUERY_KEY = 'leagueGameByDate';
 
 export type GetGameListByDateProps = { targetDate: string };
 
-export function getQueryKey({ targetDate }: GetGameListByDateProps) {
+function getQueryKey({ targetDate }: GetGameListByDateProps) {
   return [QUERY_KEY, targetDate];
 }
 
-export default function useGetGameListByDate({ targetDate }: GetGameListByDateProps) {
+export function useGetGameListByDate({ targetDate }: GetGameListByDateProps) {
   return useQuery({
     queryKey: getQueryKey({ targetDate }),
     queryFn: () => getGameListByDate({ targetDate }),

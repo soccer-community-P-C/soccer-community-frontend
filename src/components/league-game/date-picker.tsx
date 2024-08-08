@@ -19,8 +19,6 @@ export default function DatePicker({
     onMoveDate(daysToAdd);
   }
 
-  console.log(dateList);
-
   return (
     <nav className="flex justify-center gap-4">
       <Button onClick={() => handleClickMoveDate(-5)}>

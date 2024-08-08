@@ -10,6 +10,7 @@ import { useDeletePost, useGetPost } from '@/api/post';
 import { useWriteComment } from '@/api/comment';
 import { getTimeAgoString } from '@/utils/date-helper';
 import 'react-quill/dist/quill.snow.css';
+import { LoadingSpinner } from '@/components/common/loading-spinner';
 
 type PostPageProps = {
   params: { postId: string };
