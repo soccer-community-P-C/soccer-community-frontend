@@ -3,11 +3,11 @@ import { getGameByTeamId } from '@/api/league-game/league-games';
 
 const QUERY_KEY = 'leagueGameByTeamId';
 
-type TSortArray<T extends 'string' | 'number'> = T[];
+type TSortType = 'string' | 'number';
 
 export type GetGameListByTeamIdProps = {
   leagueTeamId: number;
-  sort?: TSortArray<'string' | 'number'>;
+  sort?: TSortType[];
   page?: number;
   size?: number;
 };

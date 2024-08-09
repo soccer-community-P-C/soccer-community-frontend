@@ -5,15 +5,15 @@ type TDateComparable = {
   date: string;
 };
 
-function compareDates<T extends TDateComparable>(a: T, b: T) {
+function compareDates(a: TDateComparable, b: TDateComparable) {
   const dateA = new Date(a.date);
   const dateB = new Date(b.date);
   return dateA.getTime() - dateB.getTime();
 }
 
-export class GameListService<T extends TGameListWithDate> {
-  private gameList: T[];
-  private sortedGameList: T[] = [];
+export class GameListService {
+  private gameList: TGameListWithDate[];
+  private sortedGameList: TGameListWithDate[] = [];
 
   constructor() {
     this.gameList = [];
@@ -25,7 +25,7 @@ export class GameListService<T extends TGameListWithDate> {
     }
   }
 
-  setGameList(gameList: T[]) {
+  setGameList(gameList: TGameListWithDate[]) {
     this.gameList = gameList;
     this.sortGameList();
   }
@@ -51,10 +51,6 @@ export class GameListService<T extends TGameListWithDate> {
     return this.hasGameList()
       ? new Date(this.sortedGameList[this.sortedGameList.length - 1].date)
       : undefined;
-  }
-
-  get monthlyGameList() {
-    return this.gameList;
   }
 
   get sortedMonthlyGameList() {

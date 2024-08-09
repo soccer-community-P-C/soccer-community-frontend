@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { getTodayDate } from '@/utils/date-helper';
+import { getTodayDate, shortISOYearMonth } from '@/utils/date-helper';
 import Loading from '@/app/(league)/loading';
 import { useGetGameListByLeagueGameIdYearMonth } from '@/api/league-game';
 import { PREMIER_LEAGUE_ID } from '@/constants/league-game-id';
@@ -17,21 +17,13 @@ export default function LeagueGame() {
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
 
   const {
-    isPending: gameListIsPending,
+    isPending: isPendingGameListI,
     data: gameList,
-    error: gameListError,
+    error: errorGameList,
   } = useGetGameListByLeagueGameIdYearMonth({
     leagueId: PREMIER_LEAGUE_ID,
-    // yearMonth: shortISOYearMonth(selectedYearMonthDate),
-
-    yearMonth: '2024-05',
+    yearMonth: shortISOYearMonth(selectedYearMonthDate),
   });
-
-  // const {
-  //   isPending: gameListByLeagueTeamIdIsPending,
-  //   data: gameListByLeagueTeamId,
-  //   error: gameListByLeagueTeamIdError,
-  // } = useGetGameListByTeamId({ leagueTeamId: 1 });
 
   if (!gameListService.hasGameList() && gameList) {
     gameListService.setGameList(gameList);
@@ -56,8 +48,8 @@ export default function LeagueGame() {
       {
         selectedTeamId === 20 ? (
           <>
-            {gameListIsPending ? <Loading /> : null}
-            {gameListError ? <div>Error</div> : null}
+            {isPendingGameListI ? <Loading /> : null}
+            {errorGameList ? <div>Error</div> : null}
             {gameListService.hasGameList() ? (
               <LeagueGameContentList monthlyGameList={gameListService.sortedMonthlyGameList} />
             ) : null}
