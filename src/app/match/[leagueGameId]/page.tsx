@@ -24,7 +24,7 @@ export default function MatchPage({ params }: MatchPageProps) {
   return (
     <Container>
       <Suspense fallback={<Loading />}>
-        <Match leagueGameId={params.leagueGameId} />
+        <Match leagueGameId={leagueGameId} />
       </Suspense>
     </Container>
   );

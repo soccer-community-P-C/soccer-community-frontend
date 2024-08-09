@@ -1,12 +1,13 @@
-// 월 단위 경기 일정 정보 리스트를 받아 관련 정보를 반환하는 Class
-
+import { shortISO, makeDayObject } from '@/utils/date-helper';
 import { TGameListWithDate } from '@/types/league-games';
-import { makeDayObject, shortISO, TDate } from '@/utils/date-helper';
 
-function compareDates(a: TGameListWithDate, b: TGameListWithDate) {
+type TDateComparable = {
+  date: string;
+};
+
+function compareDates(a: TDateComparable, b: TDateComparable) {
   const dateA = new Date(a.date);
   const dateB = new Date(b.date);
-
   return dateA.getTime() - dateB.getTime();
 }
 
@@ -26,20 +27,12 @@ export class GameListService {
 
   setGameList(gameList: TGameListWithDate[]) {
     this.gameList = gameList;
-
     this.sortGameList();
   }
 
   getGameListOfDay(targetDate: Date) {
-    // 특정 날짜의 경기 일정을 불러오는 함수
-    // targetDate : "2024-02-01" 형식의 문자열을 인수로 받는다.
-
-    for (const element of this.sortedGameList) {
-      if (element.date === shortISO(targetDate)) {
-        return element.games;
-      }
-    }
-    return [];
+    const targetDateString = shortISO(targetDate);
+    return this.sortedGameList.find((element) => element.date === targetDateString)?.games || [];
   }
 
   hasGameList() {
@@ -47,29 +40,17 @@ export class GameListService {
   }
 
   get dateList() {
-    const list: TDate[] = [];
-
-    for (const element of this.sortedGameList) {
-      list.push(makeDayObject(element.date));
-    }
-
-    return list;
+    return this.sortedGameList.map((element) => makeDayObject(element.date));
   }
 
   get firstDate() {
-    if (this.hasGameList()) {
-      return new Date(this.sortedGameList[0].date);
-    }
+    return this.hasGameList() ? new Date(this.sortedGameList[0].date) : undefined;
   }
 
   get lastDate() {
-    if (this.hasGameList()) {
-      return new Date(this.sortedGameList[-1].date);
-    }
-  }
-
-  get monthlyGameList() {
-    return this.gameList;
+    return this.hasGameList()
+      ? new Date(this.sortedGameList[this.sortedGameList.length - 1].date)
+      : undefined;
   }
 
   get sortedMonthlyGameList() {

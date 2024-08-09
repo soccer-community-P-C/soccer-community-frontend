@@ -1,11 +1,17 @@
 export type TGame = {
+  leagueGameId: number;
   date: string;
   homeTeamName: string;
   awayTeamName: string;
   homeScore: string;
   awayScore: string;
+  leagueGameStatus: string;
   homeLogo: string;
   awayLogo: string;
+  teamId: {
+    homeTeamId: number;
+    awayTeamId: number;
+  }[];
 };
 
 export type TGameDetails = {
@@ -115,3 +121,5 @@ export type TAllGameList = {
   totalElements: number;
   totalPages: number;
 };
+
+export type TGameListByLeagueTeamId = TAllGameList;

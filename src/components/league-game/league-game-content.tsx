@@ -24,24 +24,7 @@ export default function LeagueGameContent({ gameList, date, isHome }: LeagueGame
         className={twMerge('items-center divide-y divide-[#777784] text-lg', isHome && 'text-base')}
       >
         {gameList.length > 0 ? (
-          gameList.map(
-            (
-              { homeTeamName, homeLogo, homeScore, awayTeamName, awayLogo, awayScore, date },
-              index,
-            ) => (
-              <LeagueGameContentItem
-                awayLogo={awayLogo}
-                awayScore={awayScore}
-                awayTeamName={awayTeamName}
-                date={date}
-                homeLogo={homeLogo}
-                homeScore={homeScore}
-                homeTeamName={homeTeamName}
-                isHome={isHome}
-                key={index}
-              />
-            ),
-          )
+          gameList.map((game) => <LeagueGameContentItem {...game} key={game.leagueGameId} />)
         ) : (
           <div className="p-2">
             <span>오늘은 경기가 없습니다.</span>

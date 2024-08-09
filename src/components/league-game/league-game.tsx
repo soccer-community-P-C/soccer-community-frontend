@@ -16,13 +16,17 @@ export default function LeagueGame() {
   const [selectedTeamId, setSelectedTeamId] = useState(20);
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
 
-  const { isPending, data, error } = useGetGameListByLeagueGameIdYearMonth({
+  const {
+    isPending: isPendingGameList,
+    data: gameList,
+    error: errorGameList,
+  } = useGetGameListByLeagueGameIdYearMonth({
     leagueId: PREMIER_LEAGUE_ID,
     yearMonth: shortISOYearMonth(selectedYearMonthDate),
   });
 
-  if (!gameListService.hasGameList() && data) {
-    gameListService.setGameList(data);
+  if (!gameListService.hasGameList() && gameList) {
+    gameListService.setGameList(gameList);
   }
 
   function handleSelectYearMonth(date: Date) {
@@ -41,12 +45,25 @@ export default function LeagueGame() {
         selectedYearMonthDate={selectedYearMonthDate}
       />
       <TeamList onSelectedTeamId={handleSelectTeamId} selectedTeamId={selectedTeamId} />
-
-      {isPending ? <LoadingBox /> : null}
-      {error ? <div>Error</div> : null}
-      {gameListService.hasGameList() ? (
-        <LeagueGameContentList monthlyGameList={gameListService.sortedMonthlyGameList} />
-      ) : null}
+      {
+        selectedTeamId === 20 ? (
+          <>
+            {isPendingGameList ? <LoadingBox /> : null}
+            {errorGameList ? <div>Error</div> : null}
+            {gameListService.hasGameList() ? (
+              <LeagueGameContentList monthlyGameList={gameListService.sortedMonthlyGameList} />
+            ) : null}
+          </>
+        ) : null
+        // Todo: 팀 월별 경기 일정 조회 api 필요
+        // <>
+        //   {gameListByLeagueTeamIdIsPending ? <Loading /> : null}
+        //   {gameListByLeagueTeamIdError ? <div>Error</div>  : null}
+        //   {gameListByLeagueTeamId ? (
+        //     <LeagueGameContentList monthlyGameList={gameListByLeagueTeamId} />
+        //   ) : null}
+        // </>
+      }
     </>
   );
 }

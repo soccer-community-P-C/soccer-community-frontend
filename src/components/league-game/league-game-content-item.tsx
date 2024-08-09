@@ -17,19 +17,25 @@ export default function LeagueGameContentItem({
   homeTeamName,
   homeLogo,
   awayLogo,
+  leagueGameId,
+  leagueGameStatus,
+  teamId,
   isHome = false,
 }: LeagueGameOfGameItemProps) {
   const { setLeagueGameContent } = useLeagueGameContent();
 
   function handleClickLink() {
     setLeagueGameContent({
-      homeScore,
       awayScore,
-      homeTeamName,
       awayTeamName,
-      date: date,
-      awayLogo,
+      date,
+      homeScore,
+      homeTeamName,
       homeLogo,
+      awayLogo,
+      leagueGameId,
+      leagueGameStatus,
+      teamId,
     });
   }
 
@@ -40,8 +46,7 @@ export default function LeagueGameContentItem({
         isHome && 'h-10',
       )}
       href={{
-        // Todo: LeagueGameId 받아와 수정
-        pathname: `/match/${1}`,
+        pathname: `/match/${leagueGameId}`,
       }}
       onClick={handleClickLink}
     >
@@ -62,7 +67,7 @@ export default function LeagueGameContentItem({
       </div>
       <div className="flex w-[240px] flex-[0.5_0.5_25%] items-center justify-end text-xs">
         <div className="w-[60px] font-semibold">36R</div>
-        <div className="truncate">기록</div>
+        {leagueGameStatus === 'END' ? <div className="truncate">경기 종료</div> : undefined}
       </div>
     </Link>
   );

@@ -3,11 +3,11 @@ import { getGameByTeamId } from '@/api/league-game/league-games';
 
 const QUERY_KEY = 'leagueGameByTeamId';
 
-type TSortArray<T extends 'string' | 'number'> = T[];
+type TSortType = 'string' | 'number';
 
 export type GetGameListByTeamIdProps = {
   leagueTeamId: number;
-  sort: TSortArray<'string' | 'number'>;
+  sort?: TSortType[];
   page?: number;
   size?: number;
 };
@@ -18,14 +18,12 @@ function getQueryKey({ leagueTeamId, size, sort, page }: GetGameListByTeamIdProp
 
 export function useGetGameListByTeamId({
   leagueTeamId,
-  size,
-  sort,
-  page,
+  size = 10,
+  sort = ['string'],
+  page = 0,
 }: GetGameListByTeamIdProps) {
   return useQuery({
     queryKey: getQueryKey({ leagueTeamId, sort, page, size }),
-    // Todo: 임시 주석
-    // queryFn: () => getGameByTeamId({ leagueTeamId, sort, page, size }),
-    queryFn: () => getGameByTeamId(),
+    queryFn: () => getGameByTeamId({ leagueTeamId, sort, page, size }),
   });
 }
