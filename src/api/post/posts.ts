@@ -28,3 +28,9 @@ export async function deletePost(postId: string) {
 
   return data;
 }
+
+export async function editPost(post: TWritePost, postId: number) {
+  const { data } = await instance.put(`${ENDPOINT}/${postId}`, post);
+
+  return data;
+}

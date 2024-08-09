@@ -1,22 +1,24 @@
 'use client';
 
+import { useState } from 'react';
 import sanitizeHtml from 'sanitize-html';
 import { IconEye, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
 import Button from '@/components/common/button';
-import LoadingSpinner from '@/components/common/loading-spinner';
+import { LoadingSpinner } from '@/components/common/loading-spinner';
+import PostEditForm from '@/components/board/post-edit-form';
 import useInput from '@/hooks/useInput';
 import { useDeletePost, useGetPost } from '@/api/post';
 import { useWriteComment } from '@/api/comment';
 import { getTimeAgoString } from '@/utils/date-helper';
 import 'react-quill/dist/quill.snow.css';
-import { LoadingSpinner } from '@/components/common/loading-spinner';
 
 type PostPageProps = {
   params: { postId: string };
 };
 
 export default function PostPage({ params }: PostPageProps) {
+  const [isEditMode, setIsEditMode] = useState(false);
   const { data: post, isError: isErrorPost, isPending: isPendingPost } = useGetPost(params.postId);
   const { mutate: deletePost } = useDeletePost();
   const { mutateAsync: writeComment, isPending: isPendingWriteComment } = useWriteComment(
@@ -43,6 +45,10 @@ export default function PostPage({ params }: PostPageProps) {
     }
   }
 
+  function handleClickEdit() {
+    setIsEditMode(true);
+  }
+
   if (isPendingPost) {
     return (
       <Box>
@@ -53,6 +59,20 @@ export default function PostPage({ params }: PostPageProps) {
 
   if (isErrorPost && !isPendingPost) {
     return <Box>글을 불러오는데 실패했습니다.</Box>;
+  }
+
+  if (isEditMode && post) {
+    return (
+      <Box>
+        <PostEditForm
+          category={post.postCategory}
+          originalContent={post.content}
+          originalTitle={post.title}
+          postId={post.postId}
+          setIsEditMode={setIsEditMode}
+        />
+      </Box>
+    );
   }
 
   return (
@@ -98,7 +118,9 @@ export default function PostPage({ params }: PostPageProps) {
           <IconThumbUp className="h-7 w-7" /> {post?.likeCount}
         </button>
         <div className="flex gap-2">
-          <button type="button">수정</button>
+          <button onClick={handleClickEdit} type="button">
+            수정
+          </button>
           <button className="text-red-500" onClick={handleDeletePost} type="button">
             삭제
           </button>

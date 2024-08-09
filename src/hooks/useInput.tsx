@@ -1,6 +1,12 @@
 import { useCallback, useState } from 'react';
 
-export default function useInput(initialValue = '') {
+export type TUseInputReturn = {
+  value: string;
+  onChange: (input: string | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  clear: () => void;
+};
+
+export default function useInput(initialValue = ''): TUseInputReturn {
   const [value, setValue] = useState(initialValue);
 
   const handleChange = useCallback(
