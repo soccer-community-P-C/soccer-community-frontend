@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { getTodayDate, shortISOYearMonth } from '@/utils/date-helper';
-import Loading from '@/app/(league)/loading';
 import { useGetGameListByLeagueGameIdYearMonth } from '@/api/league-game';
 import { PREMIER_LEAGUE_ID } from '@/constants/league-game-id';
 import { GameListService } from '@/components/league-game/service/game-list';
 import { Calendar, LeagueGameContentList, TeamList } from '@/components/league-game';
+import { LoadingBox } from '@/components/common/loading-spinner';
 
 const todayDate = getTodayDate();
 
@@ -17,7 +17,7 @@ export default function LeagueGame() {
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
 
   const {
-    isPending: isPendingGameListI,
+    isPending: isPendingGameList,
     data: gameList,
     error: errorGameList,
   } = useGetGameListByLeagueGameIdYearMonth({
@@ -48,7 +48,7 @@ export default function LeagueGame() {
       {
         selectedTeamId === 20 ? (
           <>
-            {isPendingGameListI ? <Loading /> : null}
+            {isPendingGameList ? <LoadingBox /> : null}
             {errorGameList ? <div>Error</div> : null}
             {gameListService.hasGameList() ? (
               <LeagueGameContentList monthlyGameList={gameListService.sortedMonthlyGameList} />

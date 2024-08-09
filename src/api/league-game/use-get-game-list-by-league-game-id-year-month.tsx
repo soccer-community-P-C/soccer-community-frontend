@@ -8,11 +8,11 @@ export type GetGameListByLeagueGameIdYearMonthProps = {
   yearMonth: string;
 };
 
-export function getQueryKey({ leagueId, yearMonth }: GetGameListByLeagueGameIdYearMonthProps) {
+function getQueryKey({ leagueId, yearMonth }: GetGameListByLeagueGameIdYearMonthProps) {
   return [QUERY_KEY, leagueId, yearMonth];
 }
 
-export default function useGetGameListByLeagueGameIdYearMonth({
+export function useGetGameListByLeagueGameIdYearMonth({
   leagueId,
   yearMonth,
 }: GetGameListByLeagueGameIdYearMonthProps) {

@@ -21,7 +21,7 @@ type MatchRecordProps = TGameDetails;
 
 export default function MatchRecord({ home, away }: MatchRecordProps) {
   const searchParams = useSearchParams();
-  const tab = searchParams.get('tab');
+  const tab = searchParams.get('tab') || 'league-game';
 
   const [isHomeSelect, setIsHomeSelect] = useState(true);
 
@@ -30,7 +30,6 @@ export default function MatchRecord({ home, away }: MatchRecordProps) {
       <Box className="h-full px-0">
         <MatchRecordTab tab={tab} />
         <hr />
-
         {tab === 'mom' ? <MomVote /> : <MatchRecordCategory />}
       </Box>
       <Box>

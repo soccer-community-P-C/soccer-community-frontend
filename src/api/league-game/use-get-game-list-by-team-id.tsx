@@ -12,11 +12,11 @@ export type GetGameListByTeamIdProps = {
   size?: number;
 };
 
-export function getQueryKey({ leagueTeamId, size, sort, page }: GetGameListByTeamIdProps) {
+function getQueryKey({ leagueTeamId, size, sort, page }: GetGameListByTeamIdProps) {
   return [QUERY_KEY, leagueTeamId, { page, size, sort }];
 }
 
-export default function useGetGameListByTeamId({
+export function useGetGameListByTeamId({
   leagueTeamId,
   size = 10,
   sort = ['string'],
