@@ -16,8 +16,11 @@ const config: Config = {
         '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
       },
       height: {
-        // 'screen-box': 'calc(100vh-8rem-6rem-2rem)', // Box 컴포넌트 전체 화면
-        'screen-box': 'calc(100vh - 8rem - 6rem - 2rem)', // Box 컴포넌트 전체 화면
+        // 'screen-box': 'calc(100vh - 8rem - 6rem - 2rem)', // Box 컴포넌트 전체 화면
+        'screen-box': 'calc(var(--main-layout-height) - 2rem)', // Box 컴포넌트 전체 화면
+      },
+      minHeight: {
+        'screen-main': 'var(--main-layout-height)',
       },
     },
   },
