@@ -1,17 +1,17 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import Box from '@/components/common/box';
-import Editor from '@/components/write/editor';
+import PostForm from '@/components/write/post-form';
 import useInput from '@/hooks/useInput';
 import useLeagueName from '@/hooks/useLeagueName';
-import Input from '@/components/common/input';
-import Button from '@/components/common/button';
 import { useWritePost } from '@/api/post';
 import { TWritePost } from '@/types/posts';
 import { isEmptyContent } from '@/utils/check-content';
 
 export default function WritePage() {
   const { mutate: writePost } = useWritePost();
+  const router = useRouter();
   const leagueName = useLeagueName();
   const title = useInput('');
   const content = useInput('');
@@ -31,17 +31,13 @@ export default function WritePage() {
     writePost({ post: newPost });
   }
 
+  function handleCancel() {
+    router.back();
+  }
+
   return (
     <Box>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <Input className="text-2xl" placeholder="제목을 입력하세요." type="text" {...title} />
-        <Editor {...content} />
-        <div className="text-right">
-          <Button className="text-md h-10 w-32" type="submit">
-            게시하기
-          </Button>
-        </div>
-      </form>
+      <PostForm content={content} onCancel={handleCancel} onSubmit={handleSubmit} title={title} />
     </Box>
   );
 }
