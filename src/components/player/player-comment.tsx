@@ -9,7 +9,6 @@ export default function PlayerComment() {
   const { data: commentList, error, isPending } = useGetPlayerCommentList({ playerId: 1 });
   const { value, onChange, clear } = useInput('');
   const { mutateAsync: writeComment } = useWritePlayerComment({ playerId: 1 });
-  let reversedCommentList: typeof commentList = [];
 
   if (isPending) {
     return <LoadingSpinner />;
@@ -17,10 +16,6 @@ export default function PlayerComment() {
 
   if (error) {
     return <div>코멘트를 불러오는데 실패했습니다.</div>;
-  }
-
-  if (commentList) {
-    reversedCommentList = [...commentList].reverse();
   }
 
   async function handleSubmit(event: FormEvent) {
@@ -37,8 +32,6 @@ export default function PlayerComment() {
       alert('댓글 작성에 실패했습니다.');
     }
   }
-
-  // Todo: key로 설정할 값이 없어 임시로 index로 키설정
 
   return (
     <>
@@ -58,8 +51,13 @@ export default function PlayerComment() {
         </Button>
       </form>
       <ul className="flex flex-col gap-2 divide-y border-t">
-        {reversedCommentList?.map(({ comment, nickName }, index) => (
-          <PlayerCommentItem comment={comment} key={index} nickName={nickName} />
+        {commentList?.map(({ comment, nickName, createdAt }) => (
+          <PlayerCommentItem
+            comment={comment}
+            createdAt={createdAt}
+            key={createdAt}
+            nickName={nickName}
+          />
         ))}
       </ul>
     </>
