@@ -14,7 +14,7 @@ type LeagueTitleProps = {
 export default function LeagueTitle({ title, logoSrc, width = 136, alt }: LeagueTitleProps) {
   return (
     <div className="flex items-center gap-6">
-      <Image alt={alt} height={136} src={logoSrc} width={width} />
+      <Image alt={alt} className="h-[58px] w-[136px]" height={58} src={logoSrc} width={width} />
       <BoxHeading hTagType="h1">{title}</BoxHeading>
     </div>
   );
