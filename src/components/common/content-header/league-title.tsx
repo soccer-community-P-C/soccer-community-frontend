@@ -3,19 +3,15 @@
  */
 import Image from 'next/image';
 import BoxHeading from '@/components/common/box-heading';
+import useLeagueTitle from '@/hooks/use-league-title';
 
-type LeagueTitleProps = {
-  title: string;
-  logoSrc: string;
-  alt: string;
-  width?: number;
-};
+export default function LeagueTitle() {
+  const { alt, leagueName, logoSrc } = useLeagueTitle();
 
-export default function LeagueTitle({ title, logoSrc, width = 136, alt }: LeagueTitleProps) {
   return (
     <div className="flex items-center gap-6">
-      <Image alt={alt} className="h-[58px] w-[136px]" height={58} src={logoSrc} width={width} />
-      <BoxHeading hTagType="h1">{title}</BoxHeading>
+      <Image alt={alt} className="h-[58px] w-[136px]" height={58} src={logoSrc} width={136} />
+      <BoxHeading hTagType="h1">{leagueName}</BoxHeading>
     </div>
   );
 }

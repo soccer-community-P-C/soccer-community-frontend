@@ -1,16 +1,16 @@
 import { twMerge } from 'tailwind-merge';
 import BoxHeading from '@/components/common/box-heading';
 import { getDateTitle } from '@/utils/date-helper';
-import { TGame } from '@/types/league-games';
-import LeagueGameContentItem from '@/components/league-game/league-game-content-item';
+import { TGame } from '@/types/schedules';
+import ScheduleContentItem from '@/components/schedule/schedule-content-item';
 
-type LeagueGameContentProps = {
+type ScheduleContentProps = {
   gameList: TGame[];
   date: string;
   isHome: boolean;
 };
 
-export default function LeagueGameContent({ gameList, date, isHome }: LeagueGameContentProps) {
+export default function ScheduleContent({ gameList, date, isHome }: ScheduleContentProps) {
   return (
     <div className="divide-y divide-[#777784] overflow-hidden rounded-md border border-[#777784]">
       <BoxHeading
@@ -24,7 +24,7 @@ export default function LeagueGameContent({ gameList, date, isHome }: LeagueGame
         className={twMerge('items-center divide-y divide-[#777784] text-lg', isHome && 'text-base')}
       >
         {gameList.length > 0 ? (
-          gameList.map((game) => <LeagueGameContentItem {...game} key={game.leagueGameId} />)
+          gameList.map((game) => <ScheduleContentItem {...game} key={game.leagueGameId} />)
         ) : (
           <div className="p-2">
             <span>오늘은 경기가 없습니다.</span>

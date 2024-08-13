@@ -4,7 +4,7 @@ import {
   TGameListByDate,
   TGameListByLeagueIdYearMonth,
   TGameListByLeagueTeamId,
-} from '@/types/league-games';
+} from '@/types/schedules';
 import { GetGameByLeagueGameIdProps } from '@/api/league-game/use-get-game-by-league-game-id';
 import { GetGameListByLeagueGameIdYearMonthProps } from '@/api/league-game/use-get-game-list-by-league-game-id-year-month';
 import { GetGameListByDateProps } from '@/api/league-game/use-get-game-list-by-date';

@@ -4,15 +4,17 @@ import { useState } from 'react';
 import { getTodayDate, shortISOYearMonth } from '@/utils/date-helper';
 import { useGetGameListByLeagueGameIdYearMonth } from '@/api/league-game';
 import { PREMIER_LEAGUE_ID } from '@/constants/league-game-id';
-import { GameListService } from '@/components/league-game/service/game-list';
-import { Calendar, LeagueGameContentList, TeamList } from '@/components/league-game';
+import { GameListService } from '@/components/schedule/service/game-list';
 import { LoadingBox } from '@/components/common/loading-spinner';
+import Calendar from '@/components/schedule/calendar';
+import TeamList from '@/components/schedule/team-list';
+import ScheduleContentList from '@/components/schedule/schedule-content-list';
 
 const todayDate = getTodayDate();
 
 const gameListService = new GameListService();
 
-export default function LeagueGame() {
+export default function Schedule() {
   const [selectedTeamId, setSelectedTeamId] = useState(20);
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
 
@@ -51,7 +53,7 @@ export default function LeagueGame() {
             {isPendingGameList ? <LoadingBox /> : null}
             {errorGameList ? <div>Error</div> : null}
             {gameListService.hasGameList() ? (
-              <LeagueGameContentList monthlyGameList={gameListService.sortedMonthlyGameList} />
+              <ScheduleContentList monthlyGameList={gameListService.sortedMonthlyGameList} />
             ) : null}
           </>
         ) : null
@@ -60,7 +62,7 @@ export default function LeagueGame() {
         //   {gameListByLeagueTeamIdIsPending ? <Loading /> : null}
         //   {gameListByLeagueTeamIdError ? <div>Error</div>  : null}
         //   {gameListByLeagueTeamId ? (
-        //     <LeagueGameContentList monthlyGameList={gameListByLeagueTeamId} />
+        //     <ScheduleContentList monthlyGameList={gameListByLeagueTeamId} />
         //   ) : null}
         // </>
       }

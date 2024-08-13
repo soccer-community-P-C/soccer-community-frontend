@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import Image from 'next/image';
-import { TGame } from '@/types/league-games';
-import useLeagueGameContent from '@/hooks/use-league-game-content';
+import { TGame } from '@/types/schedules';
 import { shortISOTimeHourMinute } from '@/utils/date-helper';
+import useLeagueUrl from '@/hooks/use-league-url';
 
-type LeagueGameOfGameItemProps = TGame & {
+type ScheduleContentItemProps = TGame & {
   isHome?: boolean;
 };
 
-export default function LeagueGameContentItem({
+export default function ScheduleContentItem({
   awayScore,
   awayTeamName,
   date,
@@ -19,25 +19,9 @@ export default function LeagueGameContentItem({
   awayLogo,
   leagueGameId,
   leagueGameStatus,
-  teamId,
   isHome = false,
-}: LeagueGameOfGameItemProps) {
-  const { setLeagueGameContent } = useLeagueGameContent();
-
-  function handleClickLink() {
-    setLeagueGameContent({
-      awayScore,
-      awayTeamName,
-      date,
-      homeScore,
-      homeTeamName,
-      homeLogo,
-      awayLogo,
-      leagueGameId,
-      leagueGameStatus,
-      teamId,
-    });
-  }
+}: ScheduleContentItemProps) {
+  const { URL_MATCH } = useLeagueUrl();
 
   return (
     <Link
@@ -46,9 +30,8 @@ export default function LeagueGameContentItem({
         isHome && 'h-10',
       )}
       href={{
-        pathname: `/match/${leagueGameId}`,
+        pathname: `${URL_MATCH}/${leagueGameId}`,
       }}
-      onClick={handleClickLink}
     >
       <div className="i flex w-[240px] flex-[0.5_0.5_25%] items-center justify-start text-xs">
         <div className="w-[60px] font-semibold">{shortISOTimeHourMinute(date)}</div>
@@ -56,13 +39,13 @@ export default function LeagueGameContentItem({
       </div>
       <div className="flex-all-center flex-[0.5_0.5_50%] gap-4 truncate">
         <p className="flex-[0.5_0.5_25%] truncate text-right font-bold">{homeTeamName}</p>
-        <Image alt="홈로고" height={24} src={homeLogo} width={24} />
+        <Image alt="홈로고" className="h-[24px] w-[24px]" height={24} src={homeLogo} width={24} />
         {/*<IconShirtSport stroke={2} />*/}
         <div className="mx-2 flex min-w-16 flex-col text-center text-lg font-extrabold xl:mx-8">
           {`${homeScore} - ${awayScore}`}
         </div>
         {/*<IconShirtSport stroke={2} />*/}
-        <Image alt="원정로고" height={24} src={awayLogo} width={24} />
+        <Image alt="원정로고" className="h-[24px] w-[24px]" height={24} src={awayLogo} width={24} />
         <p className="flex-[0.5_0.5_25%] truncate text-left font-bold">{awayTeamName}</p>
       </div>
       <div className="flex w-[240px] flex-[0.5_0.5_25%] items-center justify-end text-xs">

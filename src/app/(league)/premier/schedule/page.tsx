@@ -1,12 +1,12 @@
 import BoxHeading from '@/components/common/box-heading';
 import Box from '@/components/common/box';
-import { LeagueGame } from '@/components/league-game';
+import Schedule from '@/components/schedule/schedule';
 
-export default function PremierLeagueGamePage() {
+export default function PremierSchedulePage() {
   return (
     <Box>
       <BoxHeading hTagType="h2">프리미어리그 일정 및 결과</BoxHeading>
-      <LeagueGame />
+      <Schedule />
     </Box>
   );
 }

@@ -3,8 +3,8 @@ import BoxHeading from '@/components/common/box-heading';
 import ViewAllLinkItem from '@/components/common/view-all-link-item';
 import RankTable from '@/components/rank/rank-table';
 import HomeRank from '@/components/home/home-rank';
-import LaligaLeagueGame from '@/components/home/laliga-league-game';
-import PremierLeagueGame from '@/components/home/premier-league-game';
+import LaligaSchedule from '@/components/home/laliga-schedule';
+import PremierSchedule from '@/components/home/premier-schedule';
 
 const tabList = [
   { title: '프리미어리그 순위', content: <RankTable /> },
@@ -33,8 +33,8 @@ export default async function HomePage() {
       </Box>
       <Box>
         {/*Todo: 경기 시간 표시*/}
-        <PremierLeagueGame />
-        <LaligaLeagueGame />
+        <PremierSchedule />
+        <LaligaSchedule />
         {/*Todo: 순위 - 리그 탭으로 변환 */}
         <HomeRank tabList={tabList} />
       </Box>

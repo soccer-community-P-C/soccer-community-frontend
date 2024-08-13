@@ -1,11 +1,11 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { usePathname } from 'next/navigation';
 import ScrollButton from '@/components/common/scroll-button';
-import { TeamLogo } from '@/components/league-game';
 import { useGetTeamList } from '@/api/league';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
+import TeamLogo from '@/components/schedule/team-logo';
+import useLeagueName from '@/hooks/useLeagueName';
 
 type TeamListProps = {
   onSelectedTeamId: (teamId: number) => void;
@@ -16,17 +16,16 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
-  const pathname = usePathname();
+  const leagueName = useLeagueName();
 
   let leagueId = 1;
 
-  if (pathname.includes('laliga')) {
+  if (leagueName === 'laliga') {
     leagueId = 2;
   }
 
   const { isPending, data: teamList, error } = useGetTeamList({ years: '2023', leagueId });
 
-  console.log(teamList);
   const checkScroll = useCallback(() => {
     const container = containerRef.current;
 
@@ -77,7 +76,11 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
         className="flex divide-x divide-[#777784] overflow-x-hidden scroll-smooth"
         ref={containerRef}
       >
-        {isPending ? <LoadingSpinner /> : null}
+        {isPending ? (
+          <div className="mx-auto my-2">
+            <LoadingSpinner />
+          </div>
+        ) : null}
         {error ? <div>팀 리스트 가져오기 실패</div> : null}
         {teamList
           ? teamList.map((team) => (

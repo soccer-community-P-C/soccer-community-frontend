@@ -2,7 +2,6 @@ import localFont from 'next/font/local';
 import MainHeader from '@/components/main-header/main-header';
 import MainFooter from '@/components/main-footer/main-footer';
 import ReactQueryProviders from '@/components/react-query-providers';
-import { LeagueGameContextProvider } from '@/context/league-game-content-context';
 import type { Metadata } from 'next';
 
 import './globals.css';
@@ -29,9 +28,7 @@ export default function RootLayout({
       <body className={`${pretendard.className} h-full bg-gray-200`}>
         <ReactQueryProviders>
           <MainHeader />
-          <LeagueGameContextProvider>
-            <main className="min-h-screen-main py-8">{children}</main>
-          </LeagueGameContextProvider>
+          <main className="min-h-screen-main py-8">{children}</main>
           <MainFooter />
         </ReactQueryProviders>
       </body>

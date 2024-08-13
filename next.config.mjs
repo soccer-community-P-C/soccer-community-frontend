@@ -6,8 +6,13 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/match',
-        destination: '/premier/league-game',
+        source: '/premier/schedule/match',
+        destination: '/premier/schedule',
+        permanent: true, // or false if it's a temporary redirect
+      },
+      {
+        source: '/laliga/schedule/match',
+        destination: '/laliga/schedule',
         permanent: true, // or false if it's a temporary redirect
       },
     ];

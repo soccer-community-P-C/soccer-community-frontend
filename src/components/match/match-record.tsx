@@ -9,7 +9,7 @@ import PlayerRank from '@/components/player-rank/player-rank';
 import Chelsea from '@/assets/Chelsea.png';
 import MatchSelectTeamButton from '@/components/match/match-select-team-button';
 import TableContainer from '@/components/common/table/table-container';
-import { TGameDetails } from '@/types/league-games';
+import { TGameDetails } from '@/types/schedules';
 
 export type TVoteInfo = {
   id: string;
@@ -21,7 +21,7 @@ type MatchRecordProps = TGameDetails;
 
 export default function MatchRecord({ home, away }: MatchRecordProps) {
   const searchParams = useSearchParams();
-  const tab = searchParams.get('tab') || 'league-game';
+  const tab = searchParams.get('tab') || 'schedule';
 
   const [isHomeSelect, setIsHomeSelect] = useState(true);
 
