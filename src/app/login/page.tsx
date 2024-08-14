@@ -5,11 +5,7 @@ import { useForm } from 'react-hook-form';
 import Input from '@/components/common/input';
 import ErrorMessage from '@/components/auth-form/error-message';
 import Label from '@/components/auth-form/label';
-
-type TLoginInputs = {
-  email: string;
-  password: string;
-};
+import { TLoginInputs } from '@/types/auth';
 
 export default function LogInPage() {
   const {
