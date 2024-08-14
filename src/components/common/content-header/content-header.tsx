@@ -3,10 +3,10 @@
 import LeagueTitle from '@/components/common/content-header/league-title';
 import LinkItem from '@/components/common/link-item';
 import Box from '@/components/common/box';
-import useLeagueUrl from '@/hooks/use-league-url';
+import useAllUrls from '@/hooks/use-all-urls';
 
 export default function ContentHeader() {
-  const { URL_PLAYER_RANK, URL_RANK, URL_SCHEDULE, URL_POST } = useLeagueUrl();
+  const { URL_PLAYER_RANK, URL_RANK, URL_SCHEDULE, URL_POST } = useAllUrls();
 
   return (
     <header>

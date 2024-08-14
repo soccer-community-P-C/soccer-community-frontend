@@ -6,14 +6,14 @@ import Button from '@/components/common/button';
 import MatchHeader from '@/components/match/match-header';
 import MatchSection from '@/components/match/match-section';
 import { LoadingBox } from '@/components/common/loading-spinner';
-import useLeagueUrl from '@/hooks/use-league-url';
+import useAllUrls from '@/hooks/use-all-urls';
 
 export type MatchProps = {
   leagueGameId: string;
 };
 
 export default function Match({ leagueGameId }: MatchProps) {
-  const { URL_SCHEDULE } = useLeagueUrl();
+  const { URL_SCHEDULE } = useAllUrls();
   const router = useRouter();
   const { isPending, data, error } = useGetGameByLeagueGameId({ leagueGameId });
   // Todo: 필요 정보 - 로고, 기록, 투표 정보, 뛴 선수 정보(선수 id, 프로필, 시즌 기록, 경력사항)

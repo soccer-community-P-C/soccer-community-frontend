@@ -1,6 +1,6 @@
 import useLeagueName from '@/hooks/useLeagueName';
 
-export default function useLeagueUrl() {
+export default function useAllUrls() {
   const leagueName = useLeagueName();
 
   const URL_PLAYER_RANK = `/${leagueName}/player-rank`;
