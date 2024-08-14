@@ -6,8 +6,8 @@ export default function LogInPage() {
     <form className="mx-auto flex max-w-sm flex-col gap-5 pt-16">
       <span className="text-center text-3xl font-bold">로그인</span>
       <div className="flex flex-col gap-2">
-        <label htmlFor="id">아이디</label>
-        <Input id="id" required type="text" />
+        <label htmlFor="email">이메일</label>
+        <Input id="email" required type="email" />
 
         <label htmlFor="password">비밀번호</label>
         <Input id="password" required type="password" />
