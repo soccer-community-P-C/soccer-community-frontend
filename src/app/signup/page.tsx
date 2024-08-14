@@ -45,6 +45,7 @@ export default function SignUpPage() {
           })}
         />
         {errors.email ? <ErrorMessage>{errors.email.message}</ErrorMessage> : null}
+
         <Label error={errors.password} htmlFor="password">
           비밀번호
         </Label>
@@ -57,6 +58,7 @@ export default function SignUpPage() {
           })}
         />
         {errors.password ? <ErrorMessage>{errors.password.message}</ErrorMessage> : null}
+
         <Label error={errors.confirmPassword} htmlFor="confirm_password">
           비밀번호 확인
         </Label>
@@ -73,6 +75,7 @@ export default function SignUpPage() {
         {errors.confirmPassword ? (
           <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
         ) : null}
+
         <Label error={errors.nickname} htmlFor="nickname">
           닉네임
         </Label>
