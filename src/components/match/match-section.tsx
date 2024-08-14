@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { IconBrandHipchat, IconChevronDown, IconChevronUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
 import MatchRecord from '@/components/match/match-record';
-import { TGameDetails } from '@/types/league-games';
+import { TGameDetails } from '@/types/schedules';
 
 type MatchSectionProps = TGameDetails;
 
