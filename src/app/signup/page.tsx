@@ -29,6 +29,7 @@ export default function SignUpPage() {
     <form className="mx-auto flex max-w-sm flex-col gap-5 pt-16" onSubmit={handleSubmit(onSubmit)}>
       <span className="text-center text-3xl font-bold">회원가입</span>
       <div className="flex flex-col gap-2">
+        {/* TODO: Label, Input ErrorMessage를 한 컴포넌트로 분리 */}
         <Label error={errors.email} htmlFor="email">
           이메일
         </Label>
@@ -44,7 +45,6 @@ export default function SignUpPage() {
           })}
         />
         {errors.email ? <ErrorMessage>{errors.email.message}</ErrorMessage> : null}
-
         <Label error={errors.password} htmlFor="password">
           비밀번호
         </Label>
@@ -57,7 +57,6 @@ export default function SignUpPage() {
           })}
         />
         {errors.password ? <ErrorMessage>{errors.password.message}</ErrorMessage> : null}
-
         <Label error={errors.confirmPassword} htmlFor="confirm_password">
           비밀번호 확인
         </Label>
@@ -74,7 +73,6 @@ export default function SignUpPage() {
         {errors.confirmPassword ? (
           <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
         ) : null}
-
         <Label error={errors.nickname} htmlFor="nickname">
           닉네임
         </Label>
