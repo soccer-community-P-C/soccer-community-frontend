@@ -1,6 +1,6 @@
 import useLeagueName from '@/hooks/useLeagueName';
-import premierLogo from '@/assets/img/logo/logo_premier.png';
-import laligaLogo from '@/assets/img/logo/logo_laliga.png';
+import premierLogo from '@/assets/img/logo/pl_logo.png';
+import laligaLogo from '@/assets/img/logo/laliga_logo.png';
 
 const leagueMapper = {
   premier: {

@@ -6,10 +6,31 @@ import { useGetTeamList } from '@/api/league';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import TeamLogo from '@/components/schedule/team-logo';
 import useLeagueName from '@/hooks/useLeagueName';
+import { TTeamInfo } from '@/types/leagues';
+import PlLogo from '@/assets/img/logo/pl_logo_small.png';
+import LaligaLogo from '@/assets/img/logo/laliga_logo_small.png';
 
 type TeamListProps = {
   onSelectedTeamId: (teamId: number) => void;
   selectedTeamId: number;
+};
+
+export const THE_ENTIRE_TEAM_ID = 0;
+
+const plTheEntire: TTeamInfo = {
+  leagueTeamId: THE_ENTIRE_TEAM_ID,
+  leagueTeamName: '전체',
+  teamType: 'LEAGUE',
+  leagueName: 'PL',
+  logo: PlLogo.src,
+};
+
+const laligaTheEntire: TTeamInfo = {
+  leagueTeamId: THE_ENTIRE_TEAM_ID,
+  leagueTeamName: '전체',
+  teamType: 'LEAGUE',
+  leagueName: 'LALIGA',
+  logo: LaligaLogo.src,
 };
 
 export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListProps) {
@@ -17,10 +38,11 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
   const leagueName = useLeagueName();
-
+  let theEntire = plTheEntire;
   let leagueId = 1;
 
   if (leagueName === 'laliga') {
+    theEntire = laligaTheEntire;
     leagueId = 2;
   }
 
@@ -83,7 +105,7 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
         ) : null}
         {error ? <div>팀 리스트 가져오기 실패</div> : null}
         {teamList
-          ? teamList.map((team) => (
+          ? [theEntire, ...teamList].map((team) => (
               <div className="w-1/10 flex-shrink-0" key={team.leagueTeamId}>
                 <TeamLogo
                   logo={team.logo}

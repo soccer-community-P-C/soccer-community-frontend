@@ -1,4 +1,3 @@
-import { shortISO, makeDayObject } from '@/utils/date-helper';
 import { TGameListWithDate } from '@/types/schedules';
 
 type TDateComparable = {
@@ -30,28 +29,28 @@ export class GameListService {
     this.sortGameList();
   }
 
-  getGameListOfDay(targetDate: Date) {
-    const targetDateString = shortISO(targetDate);
-    return this.sortedGameList.find((element) => element.date === targetDateString)?.games || [];
-  }
+  // getGameListOfDay(targetDate: Date) {
+  //   const targetDateString = shortISO(targetDate);
+  //   return this.sortedGameList.find((element) => element.date === targetDateString)?.games || [];
+  // }
 
   hasGameList() {
     return this.gameList.length > 0;
   }
 
-  get dateList() {
-    return this.sortedGameList.map((element) => makeDayObject(element.date));
-  }
-
-  get firstDate() {
-    return this.hasGameList() ? new Date(this.sortedGameList[0].date) : undefined;
-  }
-
-  get lastDate() {
-    return this.hasGameList()
-      ? new Date(this.sortedGameList[this.sortedGameList.length - 1].date)
-      : undefined;
-  }
+  // get dateList() {
+  //   return this.sortedGameList.map((element) => makeDayObject(element.date));
+  // }
+  //
+  // get firstDate() {
+  //   return this.hasGameList() ? new Date(this.sortedGameList[0].date) : undefined;
+  // }
+  //
+  // get lastDate() {
+  //   return this.hasGameList()
+  //     ? new Date(this.sortedGameList[this.sortedGameList.length - 1].date)
+  //     : undefined;
+  // }
 
   get sortedMonthlyGameList() {
     return this.sortedGameList;
