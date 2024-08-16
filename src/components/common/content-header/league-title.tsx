@@ -11,7 +11,9 @@ export default function LeagueTitle() {
   return (
     <div className="flex items-center gap-6">
       <Image alt={alt} className="h-[58px] w-[136px]" height={58} src={logoSrc} width={136} />
-      <BoxHeading hTagType="h1">{leagueName}</BoxHeading>
+      <BoxHeading className="sm-block" hTagType="h1">
+        {leagueName}
+      </BoxHeading>
     </div>
   );
 }

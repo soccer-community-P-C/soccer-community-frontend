@@ -37,7 +37,7 @@ export default function ScheduleContentItem({
         <div className="w-[40px] font-semibold sm:w-[60px]">{shortISOTimeHourMinute(date)}</div>
         <div className="md-block truncate">스타디움</div>
       </div>
-      <div className="flex-all-center flex-[0.5_0.5_70%] truncate sm:flex-[0.5_0.5_50%] md:gap-4">
+      <div className="flex-all-center flex-[0.5_0.5_50%] truncate sm:flex-[0.5_0.5_50%] md:gap-4">
         <p className="sm-block flex-[0.5_0.5_25%] truncate text-right font-bold">{homeTeamName}</p>
         <Image alt="홈로고" className="h-[24px] w-[24px]" height={24} src={homeLogo} width={24} />
         <div className="flex min-w-16 flex-col text-center font-extrabold sm:mx-2 md:text-lg xl:mx-8">
