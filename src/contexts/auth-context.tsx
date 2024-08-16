@@ -5,6 +5,7 @@ import useAuthValidation from '@/hooks/use-auth-validation';
 
 type TAuthContext = {
   isAuthenticated: boolean;
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const AuthContext = createContext<TAuthContext | undefined>(undefined);
@@ -14,9 +15,13 @@ type AuthProviderProps = {
 };
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const isAuthenticated = useAuthValidation();
+  const { isAuthenticated, setIsAuthenticated } = useAuthValidation();
 
-  return <AuthContext.Provider value={{ isAuthenticated }}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export function useAuth() {
