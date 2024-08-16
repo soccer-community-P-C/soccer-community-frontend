@@ -18,7 +18,7 @@ export default function MobileNav() {
   }
 
   return (
-    <div className="relative flex h-full min-w-[300px] items-center justify-start px-2 text-white md:hidden">
+    <div className="relative flex h-full min-w-[300px] items-center justify-start px-4 text-white md:hidden">
       {modalOpen ? <ModalNav onCloseModal={closeModal} /> : null}
 
       <button onClick={openModal} type="button">
@@ -31,8 +31,7 @@ export default function MobileNav() {
 
       <div className="ml-auto hover:text-amber-200">
         <Link className="flex gap-2" href="/login">
-          <IconUser stroke={2} />
-          <span>로그인</span>
+          <IconUser height={32} stroke={2} width={32} />
         </Link>
       </div>
     </div>
