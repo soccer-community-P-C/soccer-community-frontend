@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { instance } from '@/api/intance';
-import { TLoginInputs, TSignupInputs, TSignupRequest } from '@/types/auth';
+import { TLoginInputs, TLoginResponse, TSignupInputs, TSignupRequest } from '@/types/auth';
 import { USER_ROLE } from '@/constants/roles';
 
 export function signup(signupInputs: TSignupInputs) {
@@ -11,10 +11,10 @@ export function signup(signupInputs: TSignupInputs) {
 }
 
 export async function login(loginInputs: TLoginInputs) {
-  const res = await instance.post<
-    { accessToken: string },
-    AxiosResponse<{ accessToken: string }, TLoginInputs>
-  >('/auth/authentication', loginInputs);
+  const res = await instance.post<TLoginResponse, AxiosResponse<TLoginResponse, TLoginInputs>>(
+    '/auth/authentication',
+    loginInputs,
+  );
 
   return res.data;
 }
