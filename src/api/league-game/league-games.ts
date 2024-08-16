@@ -1,15 +1,13 @@
 import { instance } from '@/api/intance';
 import {
-  TAllGameList,
   TGameByLeagueGameId,
   TGameListByDate,
   TGameListByLeagueIdYearMonth,
   TGameListByLeagueTeamId,
-} from '@/types/league-games';
+} from '@/types/schedules';
 import { GetGameByLeagueGameIdProps } from '@/api/league-game/use-get-game-by-league-game-id';
 import { GetGameListByLeagueGameIdYearMonthProps } from '@/api/league-game/use-get-game-list-by-league-game-id-year-month';
 import { GetGameListByDateProps } from '@/api/league-game/use-get-game-list-by-date';
-import { GetAllGameList } from '@/api/league-game/use-get-all-game-list';
 import { GetGameListByTeamIdProps } from '@/api/league-game/use-get-game-list-by-team-id';
 
 const ENDPOINT = '/league-game/search';
@@ -60,15 +58,4 @@ export async function getGameListByDate({ targetDate }: GetGameListByDateProps) 
   const { data } = await instance.get<TGameListByDate>(`${ENDPOINT}/date/${targetDate}`);
 
   return data.responses;
-}
-
-// 전체 일정 조회 하기
-export async function getAllGameList({ startDate, endDate, leagueId, page, size }: GetAllGameList) {
-  const { data } = await instance.get<TAllGameList>(`${ENDPOINT}`, {
-    params: { startDate, endDate, leagueId, page, size },
-  });
-
-  const { findLeagueGames, totalElements, totalPages } = data;
-
-  return { findLeagueGames, totalElements, totalPages };
 }

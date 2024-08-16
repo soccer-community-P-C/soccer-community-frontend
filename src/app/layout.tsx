@@ -1,10 +1,10 @@
 import localFont from 'next/font/local';
+import type { Metadata } from 'next';
 import MainHeader from '@/components/main-header/main-header';
 import MainFooter from '@/components/main-footer/main-footer';
 import ReactQueryProviders from '@/components/react-query-providers';
 import { LeagueGameContextProvider } from '@/contexts/league-game-content-context';
 import { AuthProvider } from '@/contexts/auth-context';
-import type { Metadata } from 'next';
 
 import './globals.css';
 

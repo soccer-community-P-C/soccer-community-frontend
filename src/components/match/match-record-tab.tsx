@@ -10,10 +10,10 @@ export default function MatchRecordTab({ tab }: MatchRecordTabProps) {
       <ul className="flex flex-row items-center justify-center gap-8">
         <li>
           <LinkItem
-            className={tab === 'league-game' ? 'underline' : undefined}
+            className={tab === 'schedule' ? 'underline' : undefined}
             href={{
               query: {
-                tab: 'league-game',
+                tab: 'schedule',
               },
             }}
           >

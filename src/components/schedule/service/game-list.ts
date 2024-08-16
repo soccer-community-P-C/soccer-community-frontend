@@ -1,5 +1,5 @@
 import { shortISO, makeDayObject } from '@/utils/date-helper';
-import { TGameListWithDate } from '@/types/league-games';
+import { TGameListWithDate } from '@/types/schedules';
 
 type TDateComparable = {
   date: string;

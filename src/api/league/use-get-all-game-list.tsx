@@ -1,17 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { getAllGameList } from '@/api/league-game/league-games';
+import { getAllGameList, GetAllGameListProps } from '@/api/league/leagues';
 
 const QUERY_KEY = 'leagueGameAll';
 
-export type GetAllGameList = {
-  startDate: string;
-  endDate: string;
-  leagueId: number;
-  page?: number;
-  size?: number;
-};
-
-function getQueryKey({ startDate, endDate, leagueId, page, size }: GetAllGameList) {
+function getQueryKey({ startDate, endDate, leagueId, page, size }: GetAllGameListProps) {
   return [QUERY_KEY, startDate, endDate, leagueId, { page: page, size: size }];
 }
 
