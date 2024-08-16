@@ -6,7 +6,11 @@ import NavLinkList from '@/components/main-header/nav-link-list';
 import { useAuth } from '@/contexts/auth-context';
 
 export default function MainHeader() {
-  const isAuthenticated = useAuth();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
+
+  function handleLogout() {
+    setIsAuthenticated(false);
+  }
 
   return (
     <header className="sticky top-0 z-40 h-[4rem] w-full bg-gray-600 duration-500">
@@ -24,7 +28,7 @@ export default function MainHeader() {
 
         <div className="ml-auto hover:text-amber-200">
           {isAuthenticated ? (
-            <button className="py-2" type="button">
+            <button className="py-2" onClick={handleLogout} type="button">
               로그아웃
             </button>
           ) : (

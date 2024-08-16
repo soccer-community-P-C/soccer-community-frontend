@@ -4,7 +4,7 @@ import { TOKEN_KEY } from '@/constants/auth';
 import { setAuthHeader, validateToken } from '@/api/auth/auths';
 
 export default function useAuthValidation() {
-  const [token] = useLocalStorage<string>(TOKEN_KEY, '');
+  const [token, setToken] = useLocalStorage<string>(TOKEN_KEY, '');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -22,5 +22,12 @@ export default function useAuthValidation() {
     })();
   }, [token]);
 
-  return isAuthenticated;
+  useEffect(() => {
+    if (!isAuthenticated) {
+      setAuthHeader('');
+      setToken('');
+    }
+  }, [isAuthenticated]);
+
+  return { isAuthenticated, setIsAuthenticated };
 }
