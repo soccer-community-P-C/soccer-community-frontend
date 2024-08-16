@@ -18,3 +18,18 @@ export async function login(loginInputs: TLoginInputs) {
 
   return res.data;
 }
+
+export async function validateToken(token: string) {
+  try {
+    await instance.post('/auth/validate', null, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return { validated: true };
+  } catch (error) {
+    return { validated: false };
+  }
+}
+
+export function setAuthHeader(token: string) {
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+}
