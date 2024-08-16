@@ -21,7 +21,10 @@ export default function ScheduleContent({ gameList, date, isHome }: ScheduleCont
       </BoxHeading>
 
       <div
-        className={twMerge('items-center divide-y divide-[#777784] text-lg', isHome && 'text-base')}
+        className={twMerge(
+          'items-center divide-y divide-[#777784] text-base md:text-lg',
+          isHome && 'text-base',
+        )}
       >
         {gameList.length > 0 ? (
           gameList.map((game) => <ScheduleContentItem {...game} key={game.leagueGameId} />)

@@ -12,7 +12,7 @@ export default function ViewAllLinkItem({ href }: FullViewLinkItemProps) {
       className="inline-flex cursor-pointer text-black/80 transition-colors hover:text-black/50 hover:underline"
       href={href}
     >
-      <span>전체보기</span>
+      <span className="md-block">전체보기</span>
       <IconChevronRight />
     </Link>
   );

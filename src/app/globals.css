@@ -20,6 +20,14 @@
 }
 
 @layer components {
+  .sm-block {
+    @apply hidden sm:block;
+  }
+
+  .md-block {
+    @apply hidden md:block;
+  }
+
   .button-vote-item {
     @apply h-full cursor-pointer transition duration-150 ease-in-out;
   }

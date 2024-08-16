@@ -13,7 +13,7 @@ const tabList = [
 
 export default async function HomePage() {
   return (
-    <section className="container relative mx-auto flex flex-col gap-4">
+    <section className="container relative mx-auto flex flex-col gap-4 ">
       <Box>
         <BoxHeading hTagType="h3">게시글</BoxHeading>
         <div className="flex flex-col gap-4 lg:flex-row">
@@ -32,10 +32,8 @@ export default async function HomePage() {
         </div>
       </Box>
       <Box>
-        {/*Todo: 경기 시간 표시*/}
         <PremierSchedule />
         <LaligaSchedule />
-        {/*Todo: 순위 - 리그 탭으로 변환 */}
         <HomeRank tabList={tabList} />
       </Box>
     </section>

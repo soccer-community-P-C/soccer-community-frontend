@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className={`${pretendard.className} h-full bg-gray-200`}>
         <ReactQueryProviders>
           <MainHeader />
-          <main className="min-h-screen-main py-8">{children}</main>
+          <main className="min-h-screen-main px-2 py-4 md:px-0 md:py-8">{children}</main>
           <MainFooter />
         </ReactQueryProviders>
       </body>
