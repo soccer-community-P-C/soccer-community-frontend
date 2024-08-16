@@ -5,6 +5,9 @@ import { useForm } from 'react-hook-form';
 import Input from '@/components/common/input';
 import ErrorMessage from '@/components/auth-form/error-message';
 import Label from '@/components/auth-form/label';
+import Button from '@/components/common/button';
+import { LoadingSpinner } from '@/components/common/loading-spinner';
+import { useLogin } from '@/api/auth/use-login';
 import { TLoginInputs } from '@/types/auth';
 
 export default function LogInPage() {
@@ -16,9 +19,10 @@ export default function LogInPage() {
     mode: 'onSubmit',
     defaultValues: { email: '', password: '' },
   });
+  const { mutate, isPending, isSuccess, isError } = useLogin();
 
   function onLogin(data: TLoginInputs) {
-    console.log(data);
+    mutate(data);
   }
 
   return (
@@ -54,9 +58,14 @@ export default function LogInPage() {
         />
         {errors.password ? <ErrorMessage>{errors.password.message}</ErrorMessage> : null}
       </div>
-      <button className="rounded-md bg-zinc-600 py-3 text-white" type="submit">
-        로그인
-      </button>
+      {isError ? (
+        <p className="text-red-600">
+          등록되지 않은 이메일이거나 이메일 또는 비밀번호를 잘못 입력했습니다.
+        </p>
+      ) : null}
+      <Button disabled={isPending || isSuccess} type="submit">
+        {isPending || isSuccess ? <LoadingSpinner /> : '로그인'}
+      </Button>
       <div className="flex justify-end gap-2">
         아직 계정이 없으신가요?
         <Link className="text-right font-bold text-blue-700 underline" href="/signup">
