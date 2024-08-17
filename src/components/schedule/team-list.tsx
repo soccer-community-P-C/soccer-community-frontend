@@ -15,18 +15,18 @@ type TeamListProps = {
   selectedTeamId: number;
 };
 
-export const THE_ENTIRE_TEAM_ID = 0;
+export const ENTIRE_TEAM_ID = 0;
 
-const plTheEntire: TTeamInfo = {
-  leagueTeamId: THE_ENTIRE_TEAM_ID,
+const entirePLTeams: TTeamInfo = {
+  leagueTeamId: ENTIRE_TEAM_ID,
   leagueTeamName: '전체',
   teamType: 'LEAGUE',
   leagueName: 'PL',
   logo: PlLogo.src,
 };
 
-const laligaTheEntire: TTeamInfo = {
-  leagueTeamId: THE_ENTIRE_TEAM_ID,
+const entireLaligaTeams: TTeamInfo = {
+  leagueTeamId: ENTIRE_TEAM_ID,
   leagueTeamName: '전체',
   teamType: 'LEAGUE',
   leagueName: 'LALIGA',
@@ -38,11 +38,11 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
   const leagueName = useLeagueName();
-  let theEntire = plTheEntire;
+  let theEntire = entirePLTeams;
   let leagueId = 1;
 
   if (leagueName === 'laliga') {
-    theEntire = laligaTheEntire;
+    theEntire = entireLaligaTeams;
     leagueId = 2;
   }
 
