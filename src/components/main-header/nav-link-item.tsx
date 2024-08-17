@@ -10,8 +10,12 @@ export default function NavLinkItem({ link }: NavLinkItemProps) {
     <div className="group flex h-full items-center text-slate-300 hover:text-white">
       <Link className="flex cursor-pointer" href={link.href}>
         <div className="font-bold">{link.name}</div>
-        <IconCaretDownFilled className="group-hover:hidden" />
-        <IconCaretUpFilled className="hidden group-hover:block" />
+        {link.subLinkList.length > 0 ? (
+          <>
+            <IconCaretDownFilled className="group-hover:hidden" />
+            <IconCaretUpFilled className="hidden group-hover:block" />
+          </>
+        ) : null}
       </Link>
       {link.subLinkList.length > 0 ? <NavSubLinkList link={link} /> : null}
     </div>

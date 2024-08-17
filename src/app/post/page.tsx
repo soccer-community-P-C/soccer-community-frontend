@@ -1,12 +1,12 @@
 'use client';
 
+import { IconEye, IconLoader2, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { IconMessage, IconEye, IconThumbUp, IconLoader2 } from '@tabler/icons-react';
+import Input from '@/components/common/input';
 import Box from '@/components/common/box';
 import Pagination from '@/components/post/pagination';
 import Button from '@/components/common/button';
-import Input from '@/components/common/input';
 import useAllUrls from '@/hooks/use-all-urls';
 import { useGetPostList } from '@/api/post/use-get-post-list';
 

@@ -8,6 +8,11 @@ export type TLink = {
 
 const linkList: TLink[] = [
   {
+    name: '게시판',
+    href: '/post',
+    subLinkList: [],
+  },
+  {
     name: '프리미어리그',
     href: '/premier/schedule',
     subLinkList: [
