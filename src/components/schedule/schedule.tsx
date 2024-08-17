@@ -7,15 +7,28 @@ import { PREMIER_LEAGUE_ID } from '@/constants/league-game-id';
 import { GameListService } from '@/components/schedule/service/game-list';
 import { LoadingBox } from '@/components/common/loading-spinner';
 import Calendar from '@/components/schedule/calendar';
-import TeamList from '@/components/schedule/team-list';
+import TeamList, { ENTIRE_TEAM_ID } from '@/components/schedule/team-list';
 import ScheduleContentList from '@/components/schedule/schedule-content-list';
+import { useGetGameListByTeamIdYearMonth } from '@/api/league-game/use-get-game-list-by-team-year-month';
 
 const todayDate = getTodayDate();
 
 const gameListService = new GameListService();
+const gameListByTeamIdService = new GameListService();
+
+function resetGameList() {
+  gameListService.resetGameList();
+  gameListByTeamIdService.resetGameList();
+}
+
+function isEntireTeamId(teamId: number) {
+  // 팀 리스트에서 전체 선택 했는지 여부 확인
+
+  return teamId === ENTIRE_TEAM_ID;
+}
 
 export default function Schedule() {
-  const [selectedTeamId, setSelectedTeamId] = useState(20);
+  const [selectedTeamId, setSelectedTeamId] = useState(ENTIRE_TEAM_ID);
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
 
   const {
@@ -27,17 +40,31 @@ export default function Schedule() {
     yearMonth: shortISOYearMonth(selectedYearMonthDate),
   });
 
+  const {
+    isPending: isPendingGameListByTeamId,
+    data: gameListByTeamId,
+    error: errorGameListByTeamId,
+  } = useGetGameListByTeamIdYearMonth({
+    leagueTeamId: selectedTeamId,
+    yearMonth: shortISOYearMonth(selectedYearMonthDate),
+  });
+
+  if (!gameListByTeamIdService.hasGameList() && gameListByTeamId) {
+    gameListByTeamIdService.setGameList(gameListByTeamId);
+  }
+
   if (!gameListService.hasGameList() && gameList) {
     gameListService.setGameList(gameList);
   }
 
   function handleSelectYearMonth(date: Date) {
     setSelectedYearMonthDate(date);
-    gameListService.resetGameList();
+    resetGameList();
   }
 
   function handleSelectTeamId(teamId: number) {
     setSelectedTeamId(teamId);
+    resetGameList();
   }
 
   return (
@@ -47,25 +74,23 @@ export default function Schedule() {
         selectedYearMonthDate={selectedYearMonthDate}
       />
       <TeamList onSelectedTeamId={handleSelectTeamId} selectedTeamId={selectedTeamId} />
-      {
-        selectedTeamId === 20 ? (
-          <>
-            {isPendingGameList ? <LoadingBox /> : null}
-            {errorGameList ? <div>Error</div> : null}
-            {gameListService.hasGameList() ? (
-              <ScheduleContentList monthlyGameList={gameListService.sortedMonthlyGameList} />
-            ) : null}
-          </>
-        ) : null
-        // Todo: 팀 월별 경기 일정 조회 api 필요
-        // <>
-        //   {gameListByLeagueTeamIdIsPending ? <Loading /> : null}
-        //   {gameListByLeagueTeamIdError ? <div>Error</div>  : null}
-        //   {gameListByLeagueTeamId ? (
-        //     <ScheduleContentList monthlyGameList={gameListByLeagueTeamId} />
-        //   ) : null}
-        // </>
-      }
+      {isEntireTeamId(selectedTeamId) ? (
+        <>
+          {isPendingGameList ? <LoadingBox /> : null}
+          {errorGameList ? <div>Error</div> : null}
+          {gameListService.hasGameList() ? (
+            <ScheduleContentList monthlyGameList={gameListService.sortedMonthlyGameList} />
+          ) : null}
+        </>
+      ) : (
+        <>
+          {isPendingGameListByTeamId ? <LoadingBox /> : null}
+          {errorGameListByTeamId ? <div>Error</div> : null}
+          {gameListByTeamIdService.hasGameList() ? (
+            <ScheduleContentList monthlyGameList={gameListByTeamIdService.sortedMonthlyGameList} />
+          ) : null}
+        </>
+      )}
     </>
   );
 }

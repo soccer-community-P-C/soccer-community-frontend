@@ -66,7 +66,7 @@ export type TAllGameList = {
   totalPages: number;
 };
 
-type TTeamInfo = {
+export type TTeamInfo = {
   leagueTeamId: number;
   leagueTeamName: string;
   teamType: string;

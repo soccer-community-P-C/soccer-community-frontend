@@ -5,10 +5,13 @@ import {
   TGameListByLeagueIdYearMonth,
   TGameListByLeagueTeamId,
 } from '@/types/schedules';
-import { GetGameByLeagueGameIdProps } from '@/api/league-game/use-get-game-by-league-game-id';
-import { GetGameListByLeagueGameIdYearMonthProps } from '@/api/league-game/use-get-game-list-by-league-game-id-year-month';
-import { GetGameListByDateProps } from '@/api/league-game/use-get-game-list-by-date';
-import { GetGameListByTeamIdProps } from '@/api/league-game/use-get-game-list-by-team-id';
+import {
+  GetGameByLeagueGameIdProps,
+  GetGameListByDateProps,
+  GetGameListByLeagueGameIdYearMonthProps,
+  GetGameListByTeamIdProps,
+  GetGameListByTeamIdYearMonthProps,
+} from '@/api/league-game/league-games-types';
 
 const ENDPOINT = '/league-game/search';
 
@@ -56,6 +59,18 @@ export async function getGameListByLeagueIdYearMonth({
 // 특정 날짜 경기 조회하기
 export async function getGameListByDate({ targetDate }: GetGameListByDateProps) {
   const { data } = await instance.get<TGameListByDate>(`${ENDPOINT}/date/${targetDate}`);
+
+  return data.responses;
+}
+
+// 팀별 월별 경기 일정 조회
+export async function getGameListByTeamYearMonth({
+  leagueTeamId,
+  yearMonth,
+}: GetGameListByTeamIdYearMonthProps) {
+  const { data } = await instance.get<TGameListByLeagueIdYearMonth>(
+    `${ENDPOINT}/team/${leagueTeamId}/${yearMonth}`,
+  );
 
   return data.responses;
 }

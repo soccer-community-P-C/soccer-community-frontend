@@ -1,16 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { getGameByTeamId } from '@/api/league-game/league-games';
+import { GetGameListByTeamIdProps } from '@/api/league-game/league-games-types';
 
 const QUERY_KEY = 'leagueGameByTeamId';
-
-type TSortType = 'string' | 'number';
-
-export type GetGameListByTeamIdProps = {
-  leagueTeamId: number;
-  sort?: TSortType[];
-  page?: number;
-  size?: number;
-};
 
 function getQueryKey({ leagueTeamId, size, sort, page }: GetGameListByTeamIdProps) {
   return [QUERY_KEY, leagueTeamId, { page, size, sort }];
