@@ -9,7 +9,7 @@ import Button from '@/components/common/button';
 import Input from '@/components/common/input';
 import { useGetPostList } from '@/api/post/use-get-post-list';
 
-export default function PremierBoardPage() {
+export default function PostListPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pageParam = searchParams.get('page') ?? '1';
