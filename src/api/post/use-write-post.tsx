@@ -1,19 +1,19 @@
 import { useRouter } from 'next/navigation';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { TWritePost } from '@/types/posts';
-import useLeagueName from '@/hooks/useLeagueName';
+import useAllUrls from '@/hooks/use-all-urls';
 import { writePost } from '@/api/post/posts';
+import { TWritePost } from '@/types/posts';
 
 export function useWritePost() {
   const queryClient = useQueryClient();
   const router = useRouter();
-  const leagueName = useLeagueName();
+  const { URL_POST } = useAllUrls();
 
   return useMutation({
     mutationFn: ({ post }: { post: TWritePost }) => writePost(post),
     onSuccess: (postId) => {
-      queryClient.invalidateQueries({ queryKey: ['posts', leagueName] });
-      router.push(`/${leagueName}/board/${postId}`);
+      queryClient.invalidateQueries({ queryKey: ['posts'] });
+      router.push(`${URL_POST}/${postId}`);
     },
   });
 }

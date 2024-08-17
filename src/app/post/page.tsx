@@ -4,15 +4,17 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { IconMessage, IconEye, IconThumbUp, IconLoader2 } from '@tabler/icons-react';
 import Box from '@/components/common/box';
-import Pagination from '@/components/board/pagination';
+import Pagination from '@/components/post/pagination';
 import Button from '@/components/common/button';
 import Input from '@/components/common/input';
+import useAllUrls from '@/hooks/use-all-urls';
 import { useGetPostList } from '@/api/post/use-get-post-list';
 
 export default function PostListPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pageParam = searchParams.get('page') ?? '1';
+  const { URL_POST } = useAllUrls();
 
   const currentPage = Number(pageParam) - 1;
 
@@ -34,7 +36,7 @@ export default function PostListPage() {
                 <IconThumbUp className="flex-shrink-0" /> 12K
               </div>
               <div className="flex w-4/5 flex-col gap-2 pr-3">
-                <Link href={`/premier/board/${post.postId}`}>{post.title}</Link>
+                <Link href={`${URL_POST}/${post.postId}`}>{post.title}</Link>
                 <div className="flex items-center gap-1 text-sm">
                   <div className="h-5 w-5 rounded-full bg-gray-400" />
                   <div>{post.memberName}</div>•<div className="text-gray-500">1분 전</div>
