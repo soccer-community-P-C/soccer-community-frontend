@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import Box from '@/components/common/box';
 import PostForm from '@/components/write/post-form';
 import useInput from '@/hooks/useInput';
-import useLeagueName from '@/hooks/useLeagueName';
 import { useWritePost } from '@/api/post';
 import { TWritePost } from '@/types/posts';
 import { isEmptyContent } from '@/utils/check-content';
@@ -12,14 +11,13 @@ import { isEmptyContent } from '@/utils/check-content';
 export default function WritePage() {
   const { mutate: writePost } = useWritePost();
   const router = useRouter();
-  const leagueName = useLeagueName();
   const title = useInput('');
   const content = useInput('');
 
   const newPost: TWritePost = {
     title: title.value.trim(),
     content: content.value,
-    category: leagueName,
+    category: '',
   };
 
   function handleSubmit(e: React.FormEvent) {

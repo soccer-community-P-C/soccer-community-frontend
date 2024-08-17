@@ -7,18 +7,16 @@ import Box from '@/components/common/box';
 import Pagination from '@/components/board/pagination';
 import Button from '@/components/common/button';
 import Input from '@/components/common/input';
-import useLeagueName from '@/hooks/useLeagueName';
 import { useGetPostList } from '@/api/post/use-get-post-list';
 
 export default function PremierBoardPage() {
-  const leagueName = useLeagueName();
   const router = useRouter();
   const searchParams = useSearchParams();
   const pageParam = searchParams.get('page') ?? '1';
 
   const currentPage = Number(pageParam) - 1;
 
-  const { data, isPending } = useGetPostList(leagueName, currentPage);
+  const { data, isPending } = useGetPostList('', currentPage);
 
   const hasPosts = isPending || (data?.totalElements && data?.totalElements > 0);
 
@@ -56,7 +54,7 @@ export default function PremierBoardPage() {
         <div className="flex items-center justify-between px-6 pt-4">
           <div />
           {hasPosts ? <Pagination totalPages={data?.totalPages ?? 0} /> : null}
-          <Button className="w-28" onClick={() => router.push(`/${leagueName}/write`)} role="link">
+          <Button className="w-28" onClick={() => router.push('/write')} role="link">
             글쓰기
           </Button>
         </div>
