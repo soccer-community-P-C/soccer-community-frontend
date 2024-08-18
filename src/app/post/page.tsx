@@ -75,6 +75,7 @@ export default function PostListPage() {
               <Pagination totalPages={data?.totalPages ?? 0} />
             </div>
           ) : null}
+          {/*버튼의 위치가 약간 어색해 보여 수정 논의 내용*/}
           <Button className="w-28" onClick={() => router.push('/write')} role="link">
             글쓰기
           </Button>
