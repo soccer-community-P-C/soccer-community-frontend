@@ -20,6 +20,5 @@ export function useLogin() {
       setIsAuthenticated(true);
       router.push('/');
     },
-    onError: () => {},
   });
 }
