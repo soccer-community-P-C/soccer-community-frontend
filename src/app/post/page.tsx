@@ -1,24 +1,24 @@
 'use client';
 
+import { IconEye, IconLoader2, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { IconMessage, IconEye, IconThumbUp, IconLoader2 } from '@tabler/icons-react';
-import Box from '@/components/common/box';
-import Pagination from '@/components/board/pagination';
-import Button from '@/components/common/button';
 import Input from '@/components/common/input';
-import useLeagueName from '@/hooks/useLeagueName';
+import Box from '@/components/common/box';
+import Pagination from '@/components/post/pagination';
+import Button from '@/components/common/button';
+import useAllUrls from '@/hooks/use-all-urls';
 import { useGetPostList } from '@/api/post/use-get-post-list';
 
-export default function PremierBoardPage() {
-  const leagueName = useLeagueName();
+export default function PostListPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pageParam = searchParams.get('page') ?? '1';
+  const { URL_POST } = useAllUrls();
 
   const currentPage = Number(pageParam) - 1;
 
-  const { data, isPending } = useGetPostList(leagueName, currentPage);
+  const { data, isPending } = useGetPostList('', currentPage);
 
   const hasPosts = isPending || (data?.totalElements && data?.totalElements > 0);
   // Todo 윈도우 사이즈 훅으로 변경해야할듯
@@ -61,7 +61,7 @@ export default function PremierBoardPage() {
         <div className="flex items-center justify-between px-6 pt-4">
           <div />
           {hasPosts ? <Pagination totalPages={data?.totalPages ?? 0} /> : null}
-          <Button className="w-28" onClick={() => router.push(`/${leagueName}/write`)} role="link">
+          <Button className="w-28" onClick={() => router.push('/write')} role="link">
             글쓰기
           </Button>
         </div>

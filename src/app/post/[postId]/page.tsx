@@ -6,7 +6,7 @@ import { IconEye, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
 import Button from '@/components/common/button';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
-import PostEditForm from '@/components/board/post-edit-form';
+import PostEditForm from '@/components/post/post-edit-form';
 import useInput from '@/hooks/useInput';
 import { useDeletePost, useGetPost } from '@/api/post';
 import { useWriteComment } from '@/api/comment';
