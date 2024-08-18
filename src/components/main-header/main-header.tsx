@@ -1,12 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { IconUser } from '@tabler/icons-react';
-
-import { IconBallFootball } from '@tabler/icons-react';
+import { IconUser, IconBallFootball } from '@tabler/icons-react';
 import NavLinkList from '@/components/main-header/nav-link-list';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function MainHeader() {
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
+
+  function handleLogout() {
+    setIsAuthenticated(false);
+  }
+
   return (
     <header className="sticky top-0 z-40 h-[4rem] w-full bg-gray-600 duration-500">
       <div className="mx-auto flex h-full w-4/5 items-center justify-start px-4 text-white ">
@@ -22,10 +27,16 @@ export default function MainHeader() {
         </nav>
 
         <div className="ml-auto hover:text-amber-200">
-          <Link className="flex gap-2" href="/login">
-            <IconUser stroke={2} />
-            <span>로그인</span>
-          </Link>
+          {isAuthenticated ? (
+            <button className="py-2" onClick={handleLogout} type="button">
+              로그아웃
+            </button>
+          ) : (
+            <Link className="flex gap-2" href="/login">
+              <IconUser stroke={2} />
+              <span>로그인</span>
+            </Link>
+          )}
         </div>
       </div>
     </header>
