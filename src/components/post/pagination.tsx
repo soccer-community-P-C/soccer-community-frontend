@@ -1,13 +1,19 @@
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import useWindowSize from '@/hooks/use-window-size';
+import { isMoblieSize } from '@/utils/window-size';
 
-const PAGE_LIMIT = 3;
+const WEB_PAGE_LIMIT = 5;
+const MOBILE_PAGE_LIMIT = 3;
 
 type PaginationProps = {
   totalPages: number;
 };
 
 export default function Pagination({ totalPages }: PaginationProps) {
+  const { width } = useWindowSize();
+  const [pageSize, setPageSize] = useState(WEB_PAGE_LIMIT);
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const pageParam = searchParams.get('page') ?? '1';
@@ -15,7 +21,11 @@ export default function Pagination({ totalPages }: PaginationProps) {
   let currentPage = Math.min(Number(pageParam), totalPages);
   currentPage = Math.max(1, currentPage);
 
-  const currentPageGroup = Math.floor((currentPage - 1) / PAGE_LIMIT);
+  useEffect(() => {
+    return setPageSize(isMoblieSize(width) ? MOBILE_PAGE_LIMIT : WEB_PAGE_LIMIT);
+  }, [width]);
+
+  const currentPageGroup = Math.floor((currentPage - 1) / pageSize);
 
   const totalPagesArray = Array(totalPages)
     .fill(null)
@@ -23,8 +33,8 @@ export default function Pagination({ totalPages }: PaginationProps) {
 
   const pageGroups = [];
 
-  for (let i = 0; i < totalPagesArray.length; i += PAGE_LIMIT) {
-    const group = totalPagesArray.slice(i, i + PAGE_LIMIT);
+  for (let i = 0; i < totalPagesArray.length; i += pageSize) {
+    const group = totalPagesArray.slice(i, i + pageSize);
     pageGroups.push(group);
   }
 
