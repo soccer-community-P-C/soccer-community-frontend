@@ -22,7 +22,6 @@ export default function PostListPage() {
   const { data, isPending } = useGetPostList('', currentPage);
 
   const hasPosts = isPending || (data?.totalElements && data?.totalElements > 0);
-  // Todo 윈도우 사이즈 훅으로 변경해야할듯
 
   return (
     <>
@@ -45,7 +44,9 @@ export default function PostListPage() {
                 <IconThumbUp className="flex-shrink-0" /> 12K
               </div>
               <div className="flex flex-col gap-2 sm:w-4/5 sm:pr-3">
-                <Link href={`${URL_POST}/${post.postId}`}>{post.title}</Link>
+                <Link className="line-clamp-2" href={`${URL_POST}/${post.postId}`}>
+                  {post.title}
+                </Link>
                 <div className="flex items-center gap-1 text-sm">
                   <div className="h-5 w-5 rounded-full bg-gray-400" />
                   <div>{post.memberName}</div>•<div className="text-gray-500">1분 전</div>
@@ -70,13 +71,23 @@ export default function PostListPage() {
         <div className="flex items-center justify-between px-4 pt-2">
           <div />
           {/*{hasPosts ? <Pagination totalPages={data?.totalPages ?? 0} /> : null}*/}
+          {/*{hasPosts ? (*/}
+          {/*  <div className="flex-all-center mb-4 h-full w-full">*/}
+          {/*    <Pagination totalPages={data?.totalPages ?? 0} />*/}
+          {/*  </div>*/}
+          {/*) : null}*/}
+
           {hasPosts ? (
             <div className="flex-all-center mb-4 h-full w-full">
-              <Pagination totalPages={data?.totalPages ?? 0} />
+              <Pagination totalPages={5} />
             </div>
           ) : null}
           {/*버튼의 위치가 약간 어색해 보여 수정 논의 내용*/}
-          <Button className="w-28" onClick={() => router.push('/write')} role="link">
+          <Button
+            className={twMerge('sm:w-28', 'sm-in:w-12 sm-in:p-2 sm-in:text-xs')}
+            onClick={() => router.push('/write')}
+            role="link"
+          >
             글쓰기
           </Button>
         </div>
