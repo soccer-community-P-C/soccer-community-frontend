@@ -6,7 +6,7 @@ export type TLink = {
 
 export const commonLinkList: Omit<TLink, 'subLinkList'>[] = [
   { name: '홈', href: '/' },
-  { name: '게시판', href: '/laliga/board' },
+  { name: '게시판', href: '/post' },
   { name: '로그인', href: '/login' },
 ];
 

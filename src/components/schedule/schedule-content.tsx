@@ -22,7 +22,7 @@ export default function ScheduleContent({ gameList, date, isHome }: ScheduleCont
 
       <div
         className={twMerge(
-          'items-center divide-y divide-[#777784] text-base md:text-lg',
+          'items-center divide-y divide-[#777784] text-base sm:text-lg',
           isHome && 'text-base',
         )}
       >

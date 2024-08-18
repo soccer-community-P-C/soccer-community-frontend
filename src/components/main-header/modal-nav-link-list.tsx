@@ -29,6 +29,10 @@ export default function ModalNavLinkList({ onCloseModal }: NavModalProps) {
           );
         })}
         {linkList.map((link) => {
+          if (link.subLinkList.length <= 0) {
+            return null;
+          }
+
           return (
             <li key={link.href}>
               <h5 className="mb-6 mt-8 font-semibold text-slate-900 dark:text-slate-200">

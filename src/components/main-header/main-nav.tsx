@@ -4,7 +4,7 @@ import NavLinkList from '@/components/main-header/nav-link-list';
 
 export default function MainNav() {
   return (
-    <div className="md-block">
+    <div className="sm-block">
       <div className="container mx-auto flex h-full items-center justify-start text-white">
         <Link className="mr-8 flex items-center gap-2" href="/">
           <IconBallFootball size={36} />

@@ -18,7 +18,7 @@ export default function MobileNav() {
   }
 
   return (
-    <div className="relative flex h-full min-w-[300px] items-center justify-start px-4 text-white md:hidden">
+    <div className="relative flex h-full min-w-[300px] items-center justify-start px-4 text-white sm:hidden">
       {modalOpen ? <ModalNav onCloseModal={closeModal} /> : null}
 
       <button onClick={openModal} type="button">
