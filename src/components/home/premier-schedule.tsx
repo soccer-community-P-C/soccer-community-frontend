@@ -13,7 +13,7 @@ export default function PremierSchedule() {
   const { isPending, data: gameList, error } = useGetGameListByDate({ targetDate: todayDate });
 
   return (
-    <div className="flex w-full flex-col rounded-lg bg-white">
+    <div className="flex w-full flex-col bg-white">
       <div className="flex-all-center mb-6 flex justify-between">
         <BoxHeading hTagType="h3">프리미어리그 경기 일정</BoxHeading>
         <ViewAllLinkItem href="/premier/schedule" />

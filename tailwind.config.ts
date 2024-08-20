@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       screens: {
         'sm-in': { max: '639px' },
+        'md-in': { max: '767px' },
       },
       minWidth: {
         mobile: '320px',
