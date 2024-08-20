@@ -4,6 +4,7 @@ import RankTable from '@/components/rank/rank-table';
 import HomeRank from '@/components/home/home-rank';
 import LaligaSchedule from '@/components/home/laliga-schedule';
 import PremierSchedule from '@/components/home/premier-schedule';
+import Container from '@/components/common/container';
 
 const tabList = [
   { title: '프리미어리그 순위', content: <RankTable /> },
@@ -12,7 +13,7 @@ const tabList = [
 
 export default async function HomePage() {
   return (
-    <section className="container relative mx-auto flex flex-col gap-4 ">
+    <Container>
       <Box>
         <BoxHeading hTagType="h3">게시글</BoxHeading>
         <div className="flex flex-col gap-4 lg:flex-row">
@@ -35,6 +36,6 @@ export default async function HomePage() {
         <LaligaSchedule />
         <HomeRank tabList={tabList} />
       </Box>
-    </section>
+    </Container>
   );
 }

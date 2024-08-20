@@ -39,7 +39,7 @@ export default function Pagination({ totalPages }: PaginationProps) {
   }
 
   return (
-    <nav aria-label="페이지 네비게이션" className="mx-auto mt-4">
+    <nav aria-label="페이지 네비게이션">
       <ul className="flex h-10 items-center -space-x-px text-base">
         <li>
           <Link

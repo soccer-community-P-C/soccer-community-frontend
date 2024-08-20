@@ -70,19 +70,8 @@ export default function PostListPage() {
         </ul>
         <div className="flex items-center justify-between px-4 pt-2">
           <div />
-          {/*{hasPosts ? <Pagination totalPages={data?.totalPages ?? 0} /> : null}*/}
-          {/*{hasPosts ? (*/}
-          {/*  <div className="flex-all-center mb-4 h-full w-full">*/}
-          {/*    <Pagination totalPages={data?.totalPages ?? 0} />*/}
-          {/*  </div>*/}
-          {/*) : null}*/}
+          {hasPosts ? <Pagination totalPages={data?.totalPages ?? 0} /> : null}
 
-          {hasPosts ? (
-            <div className="flex-all-center mb-4 h-full w-full">
-              <Pagination totalPages={5} />
-            </div>
-          ) : null}
-          {/*버튼의 위치가 약간 어색해 보여 수정 논의 내용*/}
           <Button
             className={twMerge('sm:w-28', 'sm-in:w-12 sm-in:p-2 sm-in:text-xs')}
             onClick={() => router.push('/write')}
