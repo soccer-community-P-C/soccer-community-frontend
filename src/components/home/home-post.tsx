@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { IconEye, IconLoader2, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import { twMerge } from 'tailwind-merge';
 import Link from 'next/link';
@@ -24,7 +24,7 @@ export default function HomePost() {
   return (
     <div className="flex w-full flex-col bg-white">
       <div className="flex-all-center mb-6 flex justify-between">
-        <BoxHeading hTagType="h3">게시글</BoxHeading>
+        <BoxHeading hTagType="h3">게시판</BoxHeading>
         <ViewAllLinkItem href="/post" />
       </div>
       {hasPosts ? null : <span className="mx-auto">글이 없습니다.</span>}
