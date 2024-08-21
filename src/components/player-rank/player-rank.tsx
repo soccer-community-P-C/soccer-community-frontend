@@ -1,46 +1,24 @@
-import PlayerRankItem from '@/components/player-rank/player-rank-item';
-import PlayerRankThead from '@/components/player-rank/player-rank-thead';
+'use client';
+
+import BoxHeading from '@/components/common/box-heading';
+import TableContainer from '@/components/common/table/table-container';
+import PlayerRankTable from '@/components/player-rank/player-rank-table';
+import { leagueNameMapper } from '@/utils/leagueNameMapper';
+import useLeagueName from '@/hooks/useLeagueName';
+import useLeagueSeason from '@/hooks/use-league-season';
 
 export default function PlayerRank() {
+  const leagueName = leagueNameMapper[useLeagueName() as keyof typeof leagueNameMapper];
+  const { season } = useLeagueSeason();
+
   return (
-    <table className="w-full table-fixed caption-bottom overflow-hidden">
-      <colgroup>
-        <col width={50} />
-        <col width={200} />
-        <col width={150} />
-        <col width={70} />
-        <col width={70} />
-        <col width={70} />
-        <col width={70} />
-        <col width={70} />
-        <col width={70} />
-        <col width={70} />
-        <col width={70} />
-        <col width={70} />
-      </colgroup>
-      <PlayerRankThead />
-      <tbody className="[&_tr:last-child]:border-0">
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-        <PlayerRankItem />
-      </tbody>
-    </table>
+    <>
+      <BoxHeading hTagType="h2">
+        {season}/{season + 1} {leagueName} 선수 순위
+      </BoxHeading>
+      <TableContainer>
+        <PlayerRankTable />
+      </TableContainer>
+    </>
   );
 }

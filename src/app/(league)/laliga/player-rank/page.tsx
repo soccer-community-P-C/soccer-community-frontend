@@ -1,6 +1,6 @@
 import Box from '@/components/common/box';
 import BoxHeading from '@/components/common/box-heading';
-import PlayerRank from '@/components/player-rank/player-rank';
+import PlayerRankTable from '@/components/player-rank/player-rank-table';
 import TableContainer from '@/components/common/table/table-container';
 
 export default function PlayerRankPage() {
@@ -8,7 +8,7 @@ export default function PlayerRankPage() {
     <Box>
       <BoxHeading hTagType="h2">23/24 라리가 선수 순위</BoxHeading>
       <TableContainer>
-        <PlayerRank />
+        <PlayerRankTable />
       </TableContainer>
     </Box>
   );
