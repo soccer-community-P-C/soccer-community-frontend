@@ -1,7 +1,7 @@
 export default function PlayerRankThead() {
   return (
     <thead>
-      <tr className="bg-gray-200 *:pl-2 *:text-[13px] [&>*>span]:leading-[40px]">
+      <tr className="h-8 bg-gray-200 *:pl-2 *:text-[13px]">
         <th>
           <span>순위</span>
         </th>
