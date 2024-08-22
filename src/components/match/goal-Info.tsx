@@ -13,7 +13,7 @@ export default function GoalInfo({ away = false, player, goalTimeList }: GoalInf
       <span>
         {player} {goalTimeList.map((time) => `${time}' `)}
       </span>
-      <IconBallFootball size={18} />
+      <IconBallFootball className="sm-block" size={18} />
     </div>
   );
 }

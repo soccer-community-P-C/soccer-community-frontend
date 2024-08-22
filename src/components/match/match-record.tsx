@@ -1,5 +1,5 @@
-import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import Box from '@/components/common/box';
 import MatchRecordTab from '@/components/match/match-record-tab';
 import MatchRecordCategory from '@/components/match/match-record-category';
@@ -10,6 +10,8 @@ import Chelsea from '@/assets/Chelsea.png';
 import MatchSelectTeamButton from '@/components/match/match-select-team-button';
 import TableContainer from '@/components/common/table/table-container';
 import { TGameDetails } from '@/types/schedules';
+import OpenTalk from '@/components/match/open-talk';
+import useWindowSize from '@/hooks/use-window-size';
 
 export type TVoteInfo = {
   id: string;
@@ -19,18 +21,43 @@ export type TVoteInfo = {
 
 type MatchRecordProps = TGameDetails;
 
+const tabMapper = {
+  mom: <MomVote />,
+  schedule: <MatchRecordCategory />,
+  talk: (
+    <div className="">
+      <OpenTalk />
+    </div>
+  ),
+};
+
 export default function MatchRecord({ home, away }: MatchRecordProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { width } = useWindowSize();
   const tab = searchParams.get('tab') || 'schedule';
 
   const [isHomeSelect, setIsHomeSelect] = useState(true);
 
+  useEffect(() => {
+    // xl 사이즈 넘어가면 aside에 오픈톡컴포넌트가 생기도록 구현(트릭)
+    // 오픈톡 컴포넌트가 두개 생기는 상황이라 렌더링에 악영향이 있을 듯.
+    // Todo: xl 사이즈 미만에서는 openTalk을 없애거나 팝업으로 구현하는걸 고려 (네이버는 아에 없앰)
+
+    if (width && width > 1024) {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set('tab', 'schedule');
+      router.push(pathname + '?' + params.toString());
+    }
+  }, [width, pathname, router, searchParams]);
+
   return (
-    <div className="flex flex-col gap-2">
-      <Box className="h-full px-0">
+    <>
+      <Box className="h-full px-0 sm:gap-4">
         <MatchRecordTab tab={tab} />
         <hr />
-        {tab === 'mom' ? <MomVote /> : <MatchRecordCategory />}
+        {tabMapper[tab as keyof typeof tabMapper]}
       </Box>
       <Box>
         <ul className="relative flex overflow-hidden rounded-lg border bg-[#f7f8f9]">
@@ -52,9 +79,9 @@ export default function MatchRecord({ home, away }: MatchRecordProps) {
           </li>
         </ul>
         <TableContainer isMatch={true}>
-          <PlayerRankTable />
+          <PlayerRankTable isMatch={true} />
         </TableContainer>
       </Box>
-    </div>
+    </>
   );
 }

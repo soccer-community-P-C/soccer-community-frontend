@@ -32,6 +32,18 @@ export default function MatchRecordTab({ tab }: MatchRecordTabProps) {
             MOM 투표
           </LinkItem>
         </li>
+        <li className="md:hidden">
+          <LinkItem
+            className={`text-sky-500 ${tab === 'talk' ? 'underline' : undefined}`}
+            href={{
+              query: {
+                tab: 'talk',
+              },
+            }}
+          >
+            오픈톡
+          </LinkItem>
+        </li>
       </ul>
     </div>
   );
