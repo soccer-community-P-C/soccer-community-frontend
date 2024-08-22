@@ -13,10 +13,10 @@ export default function MatchPage({ params }: MatchPageProps) {
   const { leagueGameId } = params;
 
   return (
-    <Container>
+    <section className="relative mx-auto flex w-full flex-col gap-4">
       <Suspense fallback={<Loading />}>
         <Match leagueGameId={leagueGameId} />
       </Suspense>
-    </Container>
+    </section>
   );
 }
