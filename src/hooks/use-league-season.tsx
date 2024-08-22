@@ -4,26 +4,22 @@
 // 초기값은 오늘 날짜 기준 시즌
 
 import { useState } from 'react';
-import { getTodayDate, shortISOYear } from '@/utils/date-helper';
+import { getTodayDate } from '@/utils/date-helper';
 
 function getSeason() {
   // 8월을 기준으로 잡음(명확한 기준은 아님)
   const todayDate = getTodayDate();
-  const standardDate = new Date(`${shortISOYear(todayDate)}-'08`);
+  const standardDate = new Date(`${todayDate.getFullYear()}-'08`);
 
   if (todayDate < standardDate) {
-    const cloneDate = todayDate;
-
-    cloneDate.setDate(cloneDate.getFullYear() - 1);
-
-    return shortISOYear(cloneDate);
+    return todayDate.getFullYear() - 1;
   }
 
-  return shortISOYear(todayDate);
+  return todayDate.getFullYear();
 }
 
 export default function useLeagueSeason() {
-  const [season, setSeason] = useState(() => Number(getSeason().slice(2)));
+  const [season, setSeason] = useState(() => +getSeason().toString().slice(2));
 
   return { season, setSeason };
 }

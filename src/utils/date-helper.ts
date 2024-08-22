@@ -30,14 +30,6 @@ export function shortISOTimeHourMinute(date: Date | string) {
   return time.split(':').slice(0, 2).join(':');
 }
 
-export function shortISOYear(date: Date) {
-  // "2024" 형식의 년을 반환하는 함수.
-
-  const splitDate = shortISO(date).split('-');
-
-  return splitDate[0];
-}
-
 export function shortISOYearMonth(date: Date) {
   // "2024-04" 형식의 년월을 반환하는 함수
 

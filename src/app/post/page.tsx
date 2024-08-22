@@ -25,7 +25,6 @@ export default function PostListPage() {
 
   return (
     <>
-      {/*<Box className="mx-auto gap-0 px-0 pb-4 pt-2">*/}
       <Box className="mx-auto gap-0 px-0 pb-2 pt-2">
         {hasPosts ? null : <span className="mx-auto">글이 없습니다.</span>}
         {isPending ? (
