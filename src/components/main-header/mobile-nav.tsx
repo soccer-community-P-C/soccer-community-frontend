@@ -5,8 +5,10 @@ import { IconAlignLeft, IconBallFootball, IconUser } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import ModalNav from '@/components/main-header/modal-nav';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function MobileNav() {
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
 
   function openModal() {
@@ -15,6 +17,10 @@ export default function MobileNav() {
 
   function closeModal() {
     setModalOpen(false);
+  }
+
+  function handleLogout() {
+    setIsAuthenticated(false);
   }
 
   return (
@@ -30,9 +36,15 @@ export default function MobileNav() {
       </Link>
 
       <div className="ml-auto hover:text-amber-200">
-        <Link className="flex gap-2" href="/login">
-          <IconUser height={32} stroke={2} width={32} />
-        </Link>
+        {isAuthenticated ? (
+          <button className="py-2" onClick={handleLogout} type="button">
+            로그아웃
+          </button>
+        ) : (
+          <Link className="flex gap-2" href="/login">
+            <IconUser height={32} stroke={2} width={32} />
+          </Link>
+        )}
       </div>
     </div>
   );

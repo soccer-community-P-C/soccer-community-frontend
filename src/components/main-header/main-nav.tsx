@@ -1,8 +1,17 @@
+'use client';
+
 import { IconBallFootball, IconUser } from '@tabler/icons-react';
 import Link from 'next/link';
 import NavLinkList from '@/components/main-header/nav-link-list';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function MainNav() {
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
+
+  function handleLogout() {
+    setIsAuthenticated(false);
+  }
+
   return (
     <div className="sm-block">
       <div className="container mx-auto flex h-full items-center justify-start px-4 text-white">
@@ -18,10 +27,16 @@ export default function MainNav() {
         </nav>
 
         <div className="ml-auto hover:text-amber-200">
-          <Link className="flex gap-2" href="/login">
-            <IconUser stroke={2} />
-            <span>로그인</span>
-          </Link>
+          {isAuthenticated ? (
+            <button className="py-2" onClick={handleLogout} type="button">
+              로그아웃
+            </button>
+          ) : (
+            <Link className="flex gap-2" href="/login">
+              <IconUser stroke={2} />
+              <span>로그인</span>
+            </Link>
+          )}
         </div>
       </div>
     </div>

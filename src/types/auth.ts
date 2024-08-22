@@ -10,3 +10,12 @@ export type TSignupInputs = {
 export type TSignupRequest = TSignupInputs & {
   role: TUserRole;
 };
+
+export type TLoginInputs = {
+  email: string;
+  password: string;
+};
+
+export type TLoginResponse = {
+  accessToken: string;
+};

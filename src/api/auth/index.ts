@@ -1,3 +1,3 @@
-import { signup } from '@/api/auth/auths';
+import { login, signup } from '@/api/auth/auths';
 
-export { signup };
+export { signup, login };
