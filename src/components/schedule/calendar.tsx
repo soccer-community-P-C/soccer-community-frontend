@@ -25,21 +25,21 @@ export default function Calendar({
   }
 
   return (
-    <div className="flex-all-center flex w-full">
-      <div className="relative flex items-center gap-1">
+    <div className="flex-all-center relative w-full flex-col sm:flex-row">
+      <div className="flex items-center gap-1">
         <button onClick={() => handleMoveMonth(-1)} type="button">
           <IconChevronLeft />
         </button>
-        <time className="text-3xl font-bold leading-[38px]">
+        <time className="text-xl font-bold leading-[38px] sm:text-3xl">
           {shortISOYearMonth(selectedYearMonthDate)}
         </time>
-        <Button className="absolute right-[200px]" onClick={handleMoveToday}>
-          오늘
-        </Button>
         <button onClick={() => handleMoveMonth(1)} type="button">
           <IconChevronRight />
         </button>
       </div>
+      <Button className="right-0 sm:absolute" onClick={handleMoveToday}>
+        오늘
+      </Button>
     </div>
   );
 }

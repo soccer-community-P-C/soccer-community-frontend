@@ -13,8 +13,8 @@ export default function LaligaSchedule() {
   const { isPending, data: gameList, error } = useGetGameListByDate({ targetDate: todayDate });
 
   return (
-    <div className="flex w-full flex-col gap-2 rounded-lg bg-white">
-      <div className="flex-all-center flex justify-between">
+    <div className="flex w-full flex-col bg-white">
+      <div className="flex-all-center mb-6 flex justify-between">
         <BoxHeading hTagType="h4">라리가 경기 일정</BoxHeading>
         <ViewAllLinkItem href="/laliga/schedule" />
       </div>

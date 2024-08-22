@@ -7,8 +7,8 @@ export default function PlayerCareer() {
       <BoxHeading hTagType="h3">경력 사항</BoxHeading>
       <table className="relative table-fixed overflow-hidden">
         <tbody>
-          <tr>
-            <th className="w-[200px] text-left text-[16px]">2024.01~</th>
+          <tr className="sm-in:flex sm-in:flex-col">
+            <th className="w-[200px] text-left text-[16px]">2024.01 ~ 2024.01</th>
             <td className="text-left text-[16px]">맨체스터 시티</td>
           </tr>
         </tbody>

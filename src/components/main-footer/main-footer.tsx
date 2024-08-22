@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function MainFooter() {
   return (
-    <footer className="flex h-32 w-full items-center justify-center bg-gray-600 p-4 text-center text-xs text-white duration-500">
+    <footer className="flex h-32 w-full min-w-mobile items-center justify-center bg-gray-600 p-4 text-center text-xs text-white duration-500">
       <div>
         <ul className="flex flex-row justify-center gap-8 ">
           <li>

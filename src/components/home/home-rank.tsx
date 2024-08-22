@@ -4,16 +4,19 @@ import { ReactNode, useState } from 'react';
 import BoxHeading from '@/components/common/box-heading';
 import ViewAllLinkItem from '@/components/common/view-all-link-item';
 import RankTabList from '@/components/home/rank-tab-list';
+import RankTable from '@/components/rank/rank-table';
+
+const tabList = [
+  { title: '프리미어리그', content: <RankTable /> },
+  { title: '라리가', content: <RankTable /> },
+];
 
 export type TTabList = {
   title: string;
   content: ReactNode;
 };
 
-type HomeRankProps = {
-  tabList: TTabList[];
-};
-export default function HomeRank({ tabList }: HomeRankProps) {
+export default function HomeRank() {
   const [activeTab, setActiveTab] = useState(0);
   function handleTabChange(index: number) {
     setActiveTab(index);
@@ -24,8 +27,6 @@ export default function HomeRank({ tabList }: HomeRankProps) {
       <div className="flex-all-center flex justify-between">
         <div className="flex-all-center flex">
           <BoxHeading hTagType="h4">경기 순위</BoxHeading>
-
-          {/*<Dropdown />*/}
         </div>
         <ViewAllLinkItem href="/premier/rank" />
       </div>

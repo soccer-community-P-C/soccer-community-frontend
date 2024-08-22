@@ -6,17 +6,17 @@ export default function RankTable() {
     <TableContainer>
       <table className="w-full table-fixed caption-bottom overflow-hidden">
         <colgroup>
-          <col width={50} />
-          <col width={300} />
-          <col width={70} />
-          <col width={70} />
-          <col width={70} />
-          <col width={70} />
-          <col width={70} />
-          <col width={70} />
-          <col width={70} />
-          <col width={70} />
-          <col width={300} />
+          <col className="w-[50px]" />
+          <col className="w-[100px] sm:w-[300px]" />
+          <col className="w-[50px] sm:w-[70px]" />
+          <col className="w-[50px] sm:w-[70px]" />
+          <col className="w-[50px] sm:w-[70px]" />
+          <col className="w-[50px] sm:w-[70px]" />
+          <col className="w-[50px] sm:w-[70px]" />
+          <col className="w-[50px] sm:w-[70px]" />
+          <col className="w-[50px] sm:w-[70px]" />
+          <col className="w-[50px] sm:w-[70px]" />
+          <col className="w-[200px] sm:w-[300px]" />
         </colgroup>
         <thead>
           <tr className="h-8 bg-gray-200 *:pl-2 *:text-[13px]">
