@@ -5,28 +5,21 @@ export type TWritePost = {
 };
 
 export type TGetPostList = {
-  findPosts: {
-    title: string;
-    content: string;
-    memberId: number;
-    memberName: string;
-    postCategory: string;
-    postId: number;
-    postRegisterDate: Date;
-  }[];
+  findPosts: TPostListItem[];
   totalPages: number;
   totalElements: number;
 };
 
-export type TPost = {
-  postId: number;
+type TPostListItem = TPostDetail & { commentCount: number };
+
+export type TPostDetail = {
   title: string;
   content: string;
-  postRegisterDate: string;
-  postCategory: string;
   memberId: number;
   memberName: string;
+  postId: number;
+  postRegisterDate: string;
+  postCategory: string;
   viewCount: number;
   likeCount: number;
-  commentSize: number;
 };
