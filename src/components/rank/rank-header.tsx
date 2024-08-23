@@ -1,11 +1,13 @@
 import BoxHeading from '@/components/common/box-heading';
 import useLeagueName from '@/hooks/useLeagueName';
-import useLeagueSeason from '@/hooks/use-league-season';
-import { leagueNameMapper } from '@/utils/leagueNameMapper';
+import { leagueNameMapper } from '@/utils/leagueMapper';
 
-export default function RankHeader() {
+type RankHeaderProps = {
+  season: number;
+};
+
+export default function RankHeader({ season }: RankHeaderProps) {
   const leagueName = leagueNameMapper[useLeagueName() as keyof typeof leagueNameMapper];
-  const { season } = useLeagueSeason();
 
   return (
     <BoxHeading hTagType="h2">

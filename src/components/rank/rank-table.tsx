@@ -1,7 +1,14 @@
 import RankItem from '@/components/rank/rank-item';
 import TableContainer from '@/components/common/table/table-container';
+import { TTeamRankList } from '@/types/leagues';
 
-export default function RankTable() {
+type RankTableProps = {
+  ranks: TTeamRankList;
+};
+
+export default function RankTable({ ranks }: RankTableProps) {
+  // Todo: 최신 전적
+
   return (
     <TableContainer>
       <table className="w-full table-fixed caption-bottom overflow-hidden">
@@ -16,7 +23,7 @@ export default function RankTable() {
           <col className="w-[50px] sm:w-[70px]" />
           <col className="w-[50px] sm:w-[70px]" />
           <col className="w-[50px] sm:w-[70px]" />
-          <col className="w-[200px] sm:w-[300px]" />
+          {/*<col className="w-[200px] sm:w-[300px]" />*/}
         </colgroup>
         <thead>
           <tr className="h-8 bg-gray-200 *:pl-2 *:text-[13px]">
@@ -27,7 +34,10 @@ export default function RankTable() {
               <span>팀</span>
             </th>
             <th>
-              <span>경기</span>
+              <span>경기수</span>
+            </th>
+            <th>
+              <span>승점</span>
             </th>
             <th>
               <span>승</span>
@@ -47,35 +57,15 @@ export default function RankTable() {
             <th>
               <span>득실차</span>
             </th>
-            <th>
-              승점<span>순위</span>
-            </th>
-            <th className="text-left">
-              <span className="pl-4">최근 전적</span>
-            </th>
+            {/*<th className="text-left">*/}
+            {/*  <span className="pl-4">최근 전적</span>*/}
+            {/*</th>*/}
           </tr>
         </thead>
         <tbody className="[&_tr:last-child]:border-0">
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
-          <RankItem />
+          {ranks.ranks.map((rank) => (
+            <RankItem key={`${rank.teamId}-key`} rankData={rank} />
+          ))}
         </tbody>
       </table>
     </TableContainer>
