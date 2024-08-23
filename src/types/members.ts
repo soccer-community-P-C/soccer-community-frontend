@@ -3,3 +3,5 @@ export type TMember = {
   email: string;
   nickName: string;
 };
+
+export type TUpdateMember = Omit<TMember, 'email' | 'memberId'>;

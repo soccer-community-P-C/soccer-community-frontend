@@ -1,5 +1,6 @@
+import { AxiosResponse } from 'axios';
 import { instance } from '@/api/intance';
-import { TMember } from '@/types/members';
+import { TMember, TUpdateMember } from '@/types/members';
 
 const ENDPOINT = '/member';
 
@@ -7,4 +8,8 @@ export async function getMember() {
   const { data } = await instance.get<TMember>(`${ENDPOINT}/info`);
 
   return data;
+}
+
+export function updateMember(memberUpdates: TUpdateMember) {
+  return instance.put<void, AxiosResponse<void>, TUpdateMember>(`${ENDPOINT}/info`, memberUpdates);
 }
