@@ -1,6 +1,5 @@
 'use client';
 
-import { IconLoader2 } from '@tabler/icons-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 import Input from '@/components/common/input';
@@ -9,6 +8,7 @@ import Pagination from '@/components/post/pagination';
 import Button from '@/components/common/button';
 import PostItem from '@/components/post/post-item';
 import { useGetPostList } from '@/api/post/use-get-post-list';
+import { LoadingSpinner } from '@/components/common/loading-spinner';
 
 export default function PostListPage() {
   const router = useRouter();
@@ -25,9 +25,7 @@ export default function PostListPage() {
     <>
       <Box className="mx-auto gap-0 px-0 pb-2 pt-2">
         {hasPosts ? null : <span className="mx-auto">글이 없습니다.</span>}
-        {isPending ? (
-          <IconLoader2 aria-label="로딩중" className="mx-auto animate-spin" role="status" />
-        ) : null}
+        {isPending ? <LoadingSpinner /> : null}
         <ul>{data?.findPosts?.map((post) => <PostItem key={post.postId} post={post} />)}</ul>
         <div className="flex items-center justify-between px-4 pt-2">
           <div />
