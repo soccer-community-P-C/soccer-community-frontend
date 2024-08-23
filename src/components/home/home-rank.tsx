@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import BoxHeading from '@/components/common/box-heading';
 import ViewAllLinkItem from '@/components/common/view-all-link-item';
 import RankTabList from '@/components/home/rank-tab-list';
