@@ -1,6 +1,6 @@
 import BoxHeading from '@/components/common/box-heading';
 import useLeagueName from '@/hooks/useLeagueName';
-import { leagueNameMapper } from '@/utils/leagueMapper';
+import { leagueNameMapper } from '@/utils/league-mapper';
 
 type RankHeaderProps = {
   season: number;

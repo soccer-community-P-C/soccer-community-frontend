@@ -1,4 +1,4 @@
-import { TAllGameList, TTeamList, TTeamRank, TTeamRankList } from '@/types/leagues';
+import { TAllGameList, TTeamList, TTeamRankList } from '@/types/leagues';
 import { instance } from '@/api/intance';
 
 const ENDPOINT = '/league';
