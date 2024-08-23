@@ -33,11 +33,11 @@ export default function Player() {
     <>
       <Box>
         <BoxHeading hTagType="h3">선수 시즌 기록</BoxHeading>
-        <div className="flex">
+        <div className="flex flex-col items-start gap-2 sm:flex-row sm:gap-0">
           <span className="relative mr-[40px] h-[180px] w-[180px] rounded-full">
             <Image
               alt="썸네일"
-              className="block h-full overflow-hidden rounded-full"
+              className="block h-[180px] w-[180px] overflow-hidden rounded-full"
               fill={true}
               src={player_img}
             />

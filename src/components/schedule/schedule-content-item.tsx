@@ -26,29 +26,29 @@ export default function ScheduleContentItem({
   return (
     <Link
       className={twMerge(
-        'flex h-14 w-full cursor-pointer items-center gap-6 px-8 transition-colors hover:bg-gray-200',
+        'flex h-10 w-full cursor-pointer items-center px-2 transition-colors hover:bg-gray-200 sm:gap-2 md:h-14 md:gap-6 md:px-8',
         isHome && 'h-10',
       )}
       href={{
         pathname: `${URL_MATCH}/${leagueGameId}`,
       }}
     >
-      <div className="i flex w-[240px] flex-[0.5_0.5_25%] items-center justify-start text-xs">
-        <div className="w-[60px] font-semibold">{shortISOTimeHourMinute(date)}</div>
-        <div className="truncate">스타디움</div>
+      <div className="flex w-[240px] flex-[0.5_0.5_15%] items-center justify-start text-xs sm:flex-[0.5_0.5_25%]">
+        <div className="w-[40px] font-semibold sm:w-[60px]">{shortISOTimeHourMinute(date)}</div>
+        <div className="md-block truncate">스타디움</div>
       </div>
-      <div className="flex-all-center flex-[0.5_0.5_50%] gap-4 truncate">
-        <p className="flex-[0.5_0.5_25%] truncate text-right font-bold">{homeTeamName}</p>
+      <div className="flex-all-center flex-[0.5_0.5_50%] truncate sm:flex-[0.5_0.5_50%] md:gap-4">
+        <p className="sm-block flex-[0.5_0.5_25%] truncate text-right font-bold">{homeTeamName}</p>
         <Image alt="홈로고" className="h-[24px] w-[24px]" height={24} src={homeLogo} width={24} />
-        <div className="mx-2 flex min-w-16 flex-col text-center text-lg font-extrabold xl:mx-8">
+        <div className="flex min-w-16 flex-col text-center font-extrabold sm:mx-2 md:text-lg xl:mx-8">
           {`${homeScore} - ${awayScore}`}
         </div>
 
         <Image alt="원정로고" className="h-[24px] w-[24px]" height={24} src={awayLogo} width={24} />
-        <p className="flex-[0.5_0.5_25%] truncate text-left font-bold">{awayTeamName}</p>
+        <p className="sm-block flex-[0.5_0.5_25%] truncate text-left font-bold">{awayTeamName}</p>
       </div>
-      <div className="flex w-[240px] flex-[0.5_0.5_25%] items-center justify-end text-xs">
-        <div className="w-[60px] font-semibold">36R</div>
+      <div className="flex w-[240px] flex-[0.5_0.5_15%] items-center justify-end text-xs sm:flex-[0.5_0.5_25%]">
+        <div className="md-block w-[60px] font-semibold">36R</div>
         {leagueGameStatus === 'END' ? <div className="truncate">경기 종료</div> : undefined}
       </div>
     </Link>

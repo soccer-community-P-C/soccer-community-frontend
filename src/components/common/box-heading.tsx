@@ -26,6 +26,7 @@ export default function BoxHeading({ hTagType = 'h1', children, className = '' }
     <Component
       className={twMerge(
         'font-semibold leading-none text-gray-600',
+        'sm-in:text-xl', // 같이 쓰면 ESLint Role에 위배, prettier가 자동으로 정렬해줘서 따로 빼는 방법 선택
         textSizes[hTagType],
         className,
       )}

@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
 
 export default function PremierPage() {
-  redirect('/premier/board');
+  redirect('/premier/schedule');
 }

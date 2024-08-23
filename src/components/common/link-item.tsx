@@ -1,6 +1,7 @@
 import Link, { LinkProps } from 'next/link';
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { usePathname } from 'next/navigation';
 
 type BaseProps = {
   children: ReactNode;
@@ -16,11 +17,18 @@ function isRouterLink(props: LinkItemProps | ButtonProps): props is LinkItemProp
 }
 
 export default function LinkItem({ ...props }: LinkItemProps | ButtonProps) {
+  const pathname = usePathname();
+
   if (isRouterLink(props)) {
-    const { children, className, ...otherProps } = props;
+    const { children, className, href, ...otherProps } = props;
     return (
       <Link
-        className={twMerge('text-xl transition hover:text-slate-500 hover:underline', className)}
+        className={twMerge(
+          'transition hover:text-slate-500 hover:underline sm:text-xl',
+          className,
+          pathname === href && 'text-slate-500 underline',
+        )}
+        href={href}
         {...otherProps}
       >
         {children}

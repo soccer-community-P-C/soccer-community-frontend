@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import Container from '@/components/common/container';
-import Loading from '@/app/(league)/loading';
 import Match from '@/components/match/match';
+import Loading from '@/app/loading';
 
 type MatchPageProps = {
   params: {

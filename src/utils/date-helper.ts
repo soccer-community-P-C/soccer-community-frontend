@@ -31,6 +31,8 @@ export function shortISOTimeHourMinute(date: Date | string) {
 }
 
 export function shortISOYearMonth(date: Date) {
+  // "2024-04" 형식의 년월을 반환하는 함수
+
   const splitDate = shortISO(date).split('-');
 
   return `${splitDate[0]}-${splitDate[1]}`;
