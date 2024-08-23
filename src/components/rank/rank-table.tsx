@@ -9,6 +9,10 @@ type RankTableProps = {
 export default function RankTable({ ranks }: RankTableProps) {
   // Todo: 최신 전적
 
+  if (ranks.ranks.length < 1) {
+    return <div>데이터가 없습니다.</div>;
+  }
+
   return (
     <TableContainer>
       <table className="w-full table-fixed caption-bottom overflow-hidden">
@@ -62,6 +66,7 @@ export default function RankTable({ ranks }: RankTableProps) {
             {/*</th>*/}
           </tr>
         </thead>
+
         <tbody className="[&_tr:last-child]:border-0">
           {ranks.ranks.map((rank) => (
             <RankItem key={`${rank.teamId}-key`} rankData={rank} />
