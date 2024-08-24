@@ -14,6 +14,7 @@ export type TTabList = {
 };
 
 export default function HomeRank() {
+  // Todo: 프리미어리그, 라리가 시즌과 아이디 최신 반영
   const {
     isPending: isPendingPL,
     data: dataPL,
