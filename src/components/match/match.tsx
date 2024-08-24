@@ -30,6 +30,7 @@ export default function Match({ leagueGameId }: MatchProps) {
       </div>
     );
   }
+  console.log(data);
 
   const { gameDate, away, home, homeScore, awayScore } = data;
   return (
