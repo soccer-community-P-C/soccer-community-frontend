@@ -96,7 +96,7 @@ export default function PostPage({ params }: PostPageProps) {
           </div>
           <div className="h-3 w-[1px] bg-gray-400" />
           <div className="flex items-center gap-1">
-            <IconMessage /> {post?.commentSize}
+            <IconMessage />
           </div>
         </div>
       </div>
@@ -128,7 +128,7 @@ export default function PostPage({ params }: PostPageProps) {
       </div>
       <hr />
       <form className="flex flex-col gap-2" onSubmit={handleWriteComment}>
-        <div>{post?.commentSize}개의 댓글</div>
+        <div>개의 댓글</div>
         <textarea
           className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           id="message"

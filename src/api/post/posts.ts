@@ -1,5 +1,5 @@
 import { instance } from '@/api/intance';
-import { TGetPostList, TPost, TWritePost } from '@/types/posts';
+import { TGetPostList, TPostDetail, TWritePost } from '@/types/posts';
 
 const ENDPOINT = '/post';
 
@@ -12,7 +12,7 @@ export async function getPostList(category: string, page: number) {
 }
 
 export async function getPost(postId: string) {
-  const { data } = await instance.get<TPost>(`${ENDPOINT}/search/${postId}`);
+  const { data } = await instance.get<TPostDetail>(`${ENDPOINT}/search/${postId}`);
 
   return data;
 }
