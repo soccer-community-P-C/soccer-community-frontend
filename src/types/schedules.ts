@@ -17,13 +17,14 @@ export type TGame = {
 };
 
 export type TGameDetails = {
-  gameDate: string;
-  count: number;
+  awayScore: string;
   away: string;
   home: string;
   homeScore: string;
-  awayScore: string;
+  count: number;
+  gameDate: string;
   leagueGameStatus: string;
+  venue: string;
   homePlayers:
     | {
         name: string;

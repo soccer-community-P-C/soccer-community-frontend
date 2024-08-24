@@ -4,17 +4,15 @@ import { IconShirtSport } from '@tabler/icons-react';
 import { getDateTitle, shortISOTimeHourMinute } from '@/utils/date-helper';
 import Box from '@/components/common/box';
 import GoalInfo from '@/components/match/goal-Info';
+import { TGameDetails } from '@/types/schedules';
 
-type MatchHeaderProps = {
-  home: string;
-  away: string;
-  date: string;
-  awayScore: string;
-  homeScore: string;
-};
+type MatchHeaderProps = TGameDetails;
 
-export default function MatchHeader({ home, away, date, awayScore, homeScore }: MatchHeaderProps) {
+export default function MatchHeader({ ...data }: MatchHeaderProps) {
   // Todo: 추가 필요 데이터 - 로고, 골 기록
+
+  const { venue, gameDate, home, homeScore, awayScore, away } = data;
+
   return (
     <header>
       <Box className="overflow-hidden bg-gray-600 px-0 pb-0 pt-0 text-white">
@@ -23,9 +21,10 @@ export default function MatchHeader({ home, away, date, awayScore, homeScore }: 
             <strong>프리미어리그 26R</strong>
             <div className="flex gap-4">
               <dl>
-                {date ? getDateTitle(new Date(date)) : null} {shortISOTimeHourMinute(date)}
+                {gameDate ? getDateTitle(new Date(gameDate)) : null}{' '}
+                {shortISOTimeHourMinute(gameDate)}
               </dl>
-              |<dl>스탬포트 브릿지</dl>
+              |<dl>{venue}</dl>
             </div>
           </div>
         </header>
