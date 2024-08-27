@@ -75,3 +75,20 @@ export type TTeamInfo = {
 };
 
 export type TTeamList = TTeamInfo[];
+
+export type TTeamRank = {
+  teamId: number;
+  teamName: string;
+  season: string;
+  rank: number;
+  won: number;
+  lost: number;
+  draw: number;
+  points: number;
+  goalsFor: number;
+  goalsAgainst: number;
+};
+
+export type TTeamRankList = {
+  ranks: TTeamRank[];
+};

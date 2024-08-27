@@ -28,7 +28,7 @@ export default function LogInPage() {
   }
 
   return (
-    <Box className="mx-auto mt-14 max-w-md">
+    <Box className="mx-auto mt-6 min-w-mobile max-w-md sm:mt-14">
       <form className="mx-auto flex w-full flex-col gap-5" onSubmit={handleSubmit(onLogin)}>
         <BoxHeading className="text-center font-bold text-black" hTagType="h2">
           로그인

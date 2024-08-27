@@ -21,8 +21,12 @@ export const linkList: TLink[] = [
         href: '/premier/schedule',
       },
       {
-        subName: '순위',
+        subName: '팀 순위',
         href: '/premier/rank',
+      },
+      {
+        subName: '선수 순위',
+        href: '/premier/player-rank',
       },
     ],
   },
@@ -35,8 +39,12 @@ export const linkList: TLink[] = [
         href: '/laliga/schedule',
       },
       {
-        subName: '순위',
+        subName: '팀 순위',
         href: '/laliga/rank',
+      },
+      {
+        subName: '선수 순위',
+        href: '/laliga/player-rank',
       },
     ],
   },

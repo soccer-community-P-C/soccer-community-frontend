@@ -1,9 +1,16 @@
+import { twMerge } from 'tailwind-merge';
 import PlayerRankItem from '@/components/player-rank/player-rank-item';
 import PlayerRankThead from '@/components/player-rank/player-rank-thead';
 
-export default function PlayerRankTable() {
+type PlayerRankTableProps = {
+  isMatch?: boolean;
+};
+
+export default function PlayerRankTable({ isMatch }: PlayerRankTableProps) {
   return (
-    <table className="w-full table-fixed caption-bottom overflow-hidden">
+    <table
+      className={twMerge('w-full table-fixed caption-bottom overflow-hidden', isMatch && 'w-auto')}
+    >
       <colgroup>
         <col className="w-[50px]" />
         <col className="w-[100px] sm:w-[200px]" />

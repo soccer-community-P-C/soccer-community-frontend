@@ -3,9 +3,9 @@
 import BoxHeading from '@/components/common/box-heading';
 import TableContainer from '@/components/common/table/table-container';
 import PlayerRankTable from '@/components/player-rank/player-rank-table';
-import { leagueNameMapper } from '@/utils/leagueNameMapper';
 import useLeagueName from '@/hooks/useLeagueName';
 import useLeagueSeason from '@/hooks/use-league-season';
+import { leagueNameMapper } from '@/utils/league-mapper';
 
 export default function PlayerRank() {
   const leagueName = leagueNameMapper[useLeagueName() as keyof typeof leagueNameMapper];
