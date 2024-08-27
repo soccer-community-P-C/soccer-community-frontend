@@ -4,29 +4,32 @@ import { IconShirtSport } from '@tabler/icons-react';
 import { getDateTitle, shortISOTimeHourMinute } from '@/utils/date-helper';
 import Box from '@/components/common/box';
 import GoalInfo from '@/components/match/goal-Info';
+import { TGameDetails } from '@/types/schedules';
+import useLeagueTitle from '@/hooks/use-league-title';
 
-type MatchHeaderProps = {
-  home: string;
-  away: string;
-  date: string;
-  awayScore: string;
-  homeScore: string;
-};
+type MatchHeaderProps = TGameDetails;
 
-export default function MatchHeader({ home, away, date, awayScore, homeScore }: MatchHeaderProps) {
+export default function MatchHeader({ ...data }: MatchHeaderProps) {
+  const { leagueName } = useLeagueTitle();
   // Todo: 추가 필요 데이터 - 로고, 골 기록
+
+  const { venue, gameDate, home, homeScore, awayScore, away, matchDay } = data;
+
   return (
     <header>
-      <Box className="gap-2 overflow-hidden bg-gray-600 px-0 pb-0 pt-0 text-white sm:gap-6">
+      <Box className="overflow-hidden bg-gray-600 px-0 pb-0 pt-0 text-white">
         <header className="bg-gray-800 p-2 sm:px-6">
           <div className="flex flex-col justify-between text-xs text-gray-200 sm:flex-row sm:text-base">
-            <strong>프리미어리그 26R</strong>
+            <strong>
+              {leagueName} {matchDay}R
+            </strong>
             <div className="flex gap-4">
               <dl>
-                {date ? getDateTitle(new Date(date)) : null} {shortISOTimeHourMinute(date)}
+                {gameDate ? getDateTitle(new Date(gameDate)) : null}{' '}
+                {shortISOTimeHourMinute(gameDate)}
               </dl>
               <span className="sm-block">|</span>
-              <dl className="ml-auto">스탬포트 브릿지</dl>
+              <dl className="ml-auto">{venue}</dl>
             </div>
           </div>
         </header>
