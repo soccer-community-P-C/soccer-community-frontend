@@ -5,7 +5,7 @@ import BoxHeading from '@/components/common/box-heading';
 import ViewAllLinkItem from '@/components/common/view-all-link-item';
 import RankTabList from '@/components/home/rank-tab-list';
 import RankTable from '@/components/rank/rank-table';
-import { useGetTeamRank } from '@/api/league';
+import { useGetTeamRankList } from '@/api/league';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 
 export type TTabList = {
@@ -19,13 +19,13 @@ export default function HomeRank() {
     isPending: isPendingPL,
     data: dataPL,
     error: errorPL,
-  } = useGetTeamRank({ season: '2023', leagueId: 1 });
+  } = useGetTeamRankList({ season: '2023', leagueId: 1 });
 
   const {
     isPending: isPendingLaliga,
     data: dataLaliga,
     error: errorLaliga,
-  } = useGetTeamRank({ season: '2023', leagueId: 2 });
+  } = useGetTeamRankList({ season: '2023', leagueId: 2 });
   const [activeTab, setActiveTab] = useState(0);
   function handleTabChange(index: number) {
     setActiveTab(index);

@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import { getTeamRank, GetTeamRankProps } from '@/api/league/leagues';
+import { getTeamRankList, GetTeamRankListProps } from '@/api/league/leagues';
 
-const QUERY_KEY = 'useGetTeamRank';
+const QUERY_KEY = 'useGetTeamRankList';
 
-function getQueryKey({ season, matchDay, leagueId }: GetTeamRankProps) {
+function getQueryKey({ season, matchDay, leagueId }: GetTeamRankListProps) {
   return [QUERY_KEY, leagueId, season, matchDay];
 }
 
-export function useGetTeamRank({ season, matchDay, leagueId }: GetTeamRankProps) {
+export function useGetTeamRankList({ season, matchDay, leagueId }: GetTeamRankListProps) {
   return useQuery({
     queryKey: getQueryKey({ season, matchDay, leagueId }),
-    queryFn: () => getTeamRank({ season, matchDay, leagueId }),
+    queryFn: () => getTeamRankList({ season, matchDay, leagueId }),
   });
 }
