@@ -23,6 +23,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const { isAuthenticated, setIsAuthenticated } = useAuthValidation();
 
   function logout() {
+    setIsAuthenticated(false);
     setAuthHeader('');
     setToken('');
   }
