@@ -14,7 +14,7 @@ export default function MatchRecordCategoryItem({
   return (
     <li className="flex w-full justify-center">
       <div className="flex items-center justify-center text-right">
-        <span className="relative h-[7px] w-[300px]">
+        <span className="relative hidden h-[7px] min-w-[240px] md:block">
           <em
             className="absolute right-0 h-full w-[50%] bg-amber-900"
             style={{ width: isShare ? `${homeCount}%` : `${homeCount * 5}%` }}
@@ -31,7 +31,7 @@ export default function MatchRecordCategoryItem({
           {awayCount}
           {isShare ? '%' : null}
         </strong>
-        <span className="relative h-[7px] w-[300px] text-left">
+        <span className="relative hidden h-[7px] min-w-[240px] text-left md:block">
           <em
             className="absolute left-0 h-full bg-amber-900"
             style={{ width: isShare ? `${awayCount}%` : `${awayCount * 5}%` }}
