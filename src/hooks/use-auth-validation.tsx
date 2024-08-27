@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import useLocalStorage from '@/hooks/use-local-storage';
-import { TOKEN_KEY } from '@/constants/auth';
 import { setAuthHeader, validateToken } from '@/api/auth/auths';
+import { TOKEN_KEY } from '@/constants/auth';
 
 export default function useAuthValidation() {
-  const [token, setToken] = useLocalStorage<string>(TOKEN_KEY, '');
+  const [token] = useLocalStorage<string>(TOKEN_KEY, '');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -21,13 +21,6 @@ export default function useAuthValidation() {
       }
     })();
   }, [token]);
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      setAuthHeader('');
-      setToken('');
-    }
-  }, [isAuthenticated]);
 
   return { isAuthenticated, setIsAuthenticated };
 }

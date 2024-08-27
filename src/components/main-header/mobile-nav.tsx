@@ -8,7 +8,7 @@ import ModalNav from '@/components/main-header/modal-nav';
 import { useAuth } from '@/contexts/auth-context';
 
 export default function MobileNav() {
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
 
   function openModal() {
@@ -20,7 +20,7 @@ export default function MobileNav() {
   }
 
   function handleLogout() {
-    setIsAuthenticated(false);
+    logout();
   }
 
   return (
