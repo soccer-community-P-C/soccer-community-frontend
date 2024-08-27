@@ -19,6 +19,8 @@ export default function ScheduleContentItem({
   awayLogo,
   leagueGameId,
   leagueGameStatus,
+  venue,
+  matchDay,
   isHome = false,
 }: ScheduleContentItemProps) {
   const { URL_MATCH } = useAllUrls();
@@ -35,7 +37,7 @@ export default function ScheduleContentItem({
     >
       <div className="flex w-[240px] flex-[0.5_0.5_15%] items-center justify-start text-xs sm:flex-[0.5_0.5_25%]">
         <div className="w-[40px] font-semibold sm:w-[60px]">{shortISOTimeHourMinute(date)}</div>
-        <div className="md-block truncate">스타디움</div>
+        <div className="md-block truncate">{venue}</div>
       </div>
       <div className="flex-all-center flex-[0.5_0.5_50%] truncate sm:flex-[0.5_0.5_50%] md:gap-4">
         <p className="sm-block flex-[0.5_0.5_25%] truncate text-right font-bold">{homeTeamName}</p>
@@ -48,7 +50,7 @@ export default function ScheduleContentItem({
         <p className="sm-block flex-[0.5_0.5_25%] truncate text-left font-bold">{awayTeamName}</p>
       </div>
       <div className="flex w-[240px] flex-[0.5_0.5_15%] items-center justify-end text-xs sm:flex-[0.5_0.5_25%]">
-        <div className="md-block w-[60px] font-semibold">36R</div>
+        <div className="md-block w-[60px] font-semibold">{matchDay}R</div>
         {leagueGameStatus === 'END' ? <div className="truncate">경기 종료</div> : undefined}
       </div>
     </Link>

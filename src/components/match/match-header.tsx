@@ -5,20 +5,24 @@ import { getDateTitle, shortISOTimeHourMinute } from '@/utils/date-helper';
 import Box from '@/components/common/box';
 import GoalInfo from '@/components/match/goal-Info';
 import { TGameDetails } from '@/types/schedules';
+import useLeagueTitle from '@/hooks/use-league-title';
 
 type MatchHeaderProps = TGameDetails;
 
 export default function MatchHeader({ ...data }: MatchHeaderProps) {
+  const { leagueName } = useLeagueTitle();
   // Todo: 추가 필요 데이터 - 로고, 골 기록
 
-  const { venue, gameDate, home, homeScore, awayScore, away } = data;
+  const { venue, gameDate, home, homeScore, awayScore, away, matchDay } = data;
 
   return (
     <header>
       <Box className="overflow-hidden bg-gray-600 px-0 pb-0 pt-0 text-white">
         <header className="bg-gray-800 p-2 px-6">
           <div className="flex justify-between text-gray-200">
-            <strong>프리미어리그 26R</strong>
+            <strong>
+              {leagueName} {matchDay}R
+            </strong>
             <div className="flex gap-4">
               <dl>
                 {gameDate ? getDateTitle(new Date(gameDate)) : null}{' '}

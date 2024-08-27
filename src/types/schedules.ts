@@ -14,6 +14,8 @@ export type TGame = {
     homeTeamId: number;
     awayTeamId: number;
   }[];
+  venue: string;
+  matchDay: number;
 };
 
 export type TGameDetails = {
@@ -23,6 +25,8 @@ export type TGameDetails = {
   homeScore: string;
   count: number;
   gameDate: string;
+  matchDay: number;
+
   leagueGameStatus: string;
   venue: string;
   homePlayers:
