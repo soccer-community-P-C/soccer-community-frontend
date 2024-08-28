@@ -15,7 +15,8 @@ export default function ModalNavLinkList({ onCloseModal }: NavModalProps) {
             <li key={commonLink.href}>
               <Link
                 className={twMerge(
-                  'group mb-4 flex items-center font-semibold text-slate-700 transition-colors hover:text-slate-900 lg:text-sm lg:leading-6 dark:text-sky-400',
+                  `group mb-4 flex items-center font-semibold text-slate-700 transition-colors
+                  hover:text-slate-900 dark:text-sky-400 lg:text-sm lg:leading-6`,
                   pathname === commonLink.href
                     ? 'border-slate-400 text-sky-400 hover:text-sky-400'
                     : null,
