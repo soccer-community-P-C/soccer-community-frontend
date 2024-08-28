@@ -2,10 +2,14 @@
 
 import React, { createContext, ReactNode } from 'react';
 import useAuthValidation from '@/hooks/use-auth-validation';
+import useLocalStorage from '@/hooks/use-local-storage';
+import { setAuthHeader } from '@/api/auth/auths';
+import { TOKEN_KEY } from '@/constants/auth';
 
 type TAuthContext = {
   isAuthenticated: boolean;
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+  logout: () => void;
 };
 
 const AuthContext = createContext<TAuthContext | undefined>(undefined);
@@ -15,10 +19,17 @@ type AuthProviderProps = {
 };
 
 export function AuthProvider({ children }: AuthProviderProps) {
+  const [, setToken] = useLocalStorage<string>(TOKEN_KEY, '');
   const { isAuthenticated, setIsAuthenticated } = useAuthValidation();
 
+  function logout() {
+    setIsAuthenticated(false);
+    setAuthHeader('');
+    setToken('');
+  }
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, logout }}>
       {children}
     </AuthContext.Provider>
   );

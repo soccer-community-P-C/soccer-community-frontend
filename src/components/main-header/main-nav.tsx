@@ -6,10 +6,10 @@ import NavLinkList from '@/components/main-header/nav-link-list';
 import { useAuth } from '@/contexts/auth-context';
 
 export default function MainNav() {
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
 
   function handleLogout() {
-    setIsAuthenticated(false);
+    logout();
   }
 
   return (
