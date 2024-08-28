@@ -29,7 +29,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <Box className="mx-auto mt-6 min-w-mobile max-w-md sm:mt-14">
+    <Box className="m-auto my-6 min-w-mobile max-w-md">
       <form className="mx-auto flex w-full flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
         <BoxHeading className="text-center font-bold text-black" hTagType="h2">
           회원가입
