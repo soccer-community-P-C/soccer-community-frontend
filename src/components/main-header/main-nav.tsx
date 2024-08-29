@@ -3,14 +3,11 @@
 import { IconBallFootball, IconUser } from '@tabler/icons-react';
 import Link from 'next/link';
 import NavLinkList from '@/components/main-header/nav-link-list';
+import ProfileDropdown from '@/components/main-header/profile-dropdown';
 import { useAuth } from '@/contexts/auth-context';
 
 export default function MainNav() {
   const { isAuthenticated, logout } = useAuth();
-
-  function handleLogout() {
-    logout();
-  }
 
   return (
     <div className="sm-block h-full">
@@ -28,14 +25,12 @@ export default function MainNav() {
           </nav>
         </div>
 
-        <div className="ml-auto hover:text-amber-200">
+        <div>
           {isAuthenticated ? (
-            <button className="py-2" onClick={handleLogout} type="button">
-              로그아웃
-            </button>
+            <ProfileDropdown logout={logout} />
           ) : (
             <Link className="flex gap-2" href="/login">
-              <IconUser stroke={2} />
+              <IconUser />
               <span>로그인</span>
             </Link>
           )}
