@@ -7,11 +7,11 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-type ProfileDropdown = {
+type ProfileDropdownProps = {
   logout: () => void;
 };
 
-export default function ProfileDropdown({ logout }: ProfileDropdown) {
+export default function ProfileDropdown({ logout }: ProfileDropdownProps) {
   function handleLogout() {
     logout();
   }
