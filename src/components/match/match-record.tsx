@@ -45,7 +45,7 @@ export default function MatchRecord({ home, away }: MatchRecordProps) {
     // 오픈톡 컴포넌트가 두개 생기는 상황이라 렌더링에 악영향이 있을 듯.
     // Todo: xl 사이즈 미만에서는 openTalk을 없애거나 팝업으로 구현하는걸 고려 (네이버는 아에 없앰)
 
-    if (width && width > 1024) {
+    if (width && width > 1024 && tab !== 'mom') {
       const params = new URLSearchParams(searchParams.toString());
       params.set('tab', 'schedule');
       router.push(pathname + '?' + params.toString());
