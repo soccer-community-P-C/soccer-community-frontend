@@ -15,10 +15,10 @@ export default function ModalNavLinkList({ onCloseModal }: NavModalProps) {
             <li key={commonLink.href}>
               <Link
                 className={twMerge(
-                  `group mb-4 flex items-center font-semibold text-slate-700 transition-colors
-                  hover:text-slate-900 dark:text-sky-400 lg:text-sm lg:leading-6`,
+                  `group mb-4 flex items-center font-semibold text-slate-600 transition-colors hover:text-slate-900 lg:text-sm lg:leading-6`,
+                  'dark:text-slate-200',
                   pathname === commonLink.href
-                    ? 'border-slate-400 text-sky-400 hover:text-sky-400'
+                    ? 'border-slate-400 text-slate-900 hover:text-slate-900'
                     : null,
                 )}
                 href={commonLink.href}
@@ -44,9 +44,9 @@ export default function ModalNavLinkList({ onCloseModal }: NavModalProps) {
                   <li key={subLink.href}>
                     <Link
                       className={twMerge(
-                        '-ml-px block border-l border-transparent pl-4 text-slate-700 transition-colors hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:border-slate-500 dark:hover:text-slate-300',
+                        '-ml-px block border-l border-transparent pl-4 text-slate-600 transition-colors hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:border-slate-500 dark:hover:text-slate-300',
                         pathname === subLink.href
-                          ? 'border-slate-400 text-sky-400 hover:text-sky-400'
+                          ? 'border-slate-400 text-slate-900 hover:text-slate-900'
                           : null,
                       )}
                       href={subLink.href}
