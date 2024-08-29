@@ -10,7 +10,7 @@ export default function Container({ children, className }: SectionContainerProps
   return (
     <section
       className={twMerge(
-        'container relative mx-auto flex min-w-mobile flex-col gap-4 px-4',
+        'container relative mx-auto flex min-w-mobile flex-col gap-2 sm:gap-4 sm:px-4',
         className,
       )}
     >
