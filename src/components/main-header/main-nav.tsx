@@ -13,18 +13,20 @@ export default function MainNav() {
   }
 
   return (
-    <div className="sm-block">
-      <div className="container mx-auto flex h-full items-center justify-start px-4 text-white">
-        <Link className="mr-8 flex items-center gap-2" href="/">
-          <IconBallFootball size={36} />
-          <span className="text-xl font-extrabold">커뮤니티</span>
-        </Link>
+    <div className="sm-block h-full">
+      <div className="container mx-auto flex h-full items-center justify-between px-4 text-white">
+        <div className="flex h-full items-center gap-8">
+          <Link className="flex items-center gap-2" href="/">
+            <IconBallFootball size={36} />
+            <span className="text-xl font-extrabold">커뮤니티</span>
+          </Link>
 
-        <nav className="block h-[74px]">
-          <ul className="flex h-full items-center space-x-8">
-            <NavLinkList />
-          </ul>
-        </nav>
+          <nav className="block h-[74px]">
+            <ul className="flex h-full items-center space-x-8">
+              <NavLinkList />
+            </ul>
+          </nav>
+        </div>
 
         <div className="ml-auto hover:text-amber-200">
           {isAuthenticated ? (
