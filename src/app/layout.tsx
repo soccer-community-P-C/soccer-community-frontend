@@ -30,7 +30,7 @@ export default function RootLayout({
         <ReactQueryProviders>
           <AuthProvider>
             <MainHeader />
-            <main className="min-h-screen-main py-4 md:py-8">{children}</main>
+            <main className="min-h-screen-main py-2 md:py-8">{children}</main>
             <MainFooter />
           </AuthProvider>
         </ReactQueryProviders>
