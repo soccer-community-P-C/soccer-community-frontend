@@ -14,7 +14,7 @@ export default function PremierSchedule() {
 
   return (
     <div className="flex w-full flex-col bg-white">
-      <div className="flex-all-center mb-6 flex justify-between">
+      <div className="mb-6 flex items-center justify-between">
         <BoxHeading hTagType="h3">프리미어리그 경기 일정</BoxHeading>
         <ViewAllLinkItem href="/premier/schedule" />
       </div>

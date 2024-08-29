@@ -14,7 +14,7 @@ export default function LaligaSchedule() {
 
   return (
     <div className="flex w-full flex-col bg-white">
-      <div className="flex-all-center mb-6 flex justify-between">
+      <div className="mb-6 flex items-center justify-between">
         <BoxHeading hTagType="h4">라리가 경기 일정</BoxHeading>
         <ViewAllLinkItem href="/laliga/schedule" />
       </div>

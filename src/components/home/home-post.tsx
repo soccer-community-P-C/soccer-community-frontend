@@ -23,7 +23,7 @@ export default function HomePost() {
 
   return (
     <div className="flex w-full flex-col bg-white">
-      <div className="flex-all-center mb-6 flex justify-between">
+      <div className="mb-6 flex items-center justify-between">
         <BoxHeading hTagType="h3">게시판</BoxHeading>
         <ViewAllLinkItem href="/post" />
       </div>
