@@ -1,13 +1,13 @@
 import { IconX } from '@tabler/icons-react';
-import ModalNavLinkList from '@/components/main-header/modal-nav-link-list';
+import MobileModalNavLinkList from '@/components/main-header/mobile-modal-nav-link-list';
 
-export type NavModalProps = {
+export type MobileModalNavProps = {
   onCloseModal: () => void;
 };
 
-export default function ModalNav({ onCloseModal }: NavModalProps) {
+export default function MobileModalNav({ onCloseModal }: MobileModalNavProps) {
   return (
-    <div className="fixed inset-0 z-50">
+    <div className="fixed inset-0 z-50 min-w-80">
       <div
         className="fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80"
         onClick={onCloseModal}
@@ -20,7 +20,7 @@ export default function ModalNav({ onCloseModal }: NavModalProps) {
         >
           <IconX />
         </button>
-        <ModalNavLinkList onCloseModal={onCloseModal} />
+        <MobileModalNavLinkList onCloseModal={onCloseModal} />
       </div>
     </div>
   );

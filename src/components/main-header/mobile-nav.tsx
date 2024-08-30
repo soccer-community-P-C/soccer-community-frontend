@@ -4,7 +4,7 @@ import { IconAlignLeft, IconBallFootball, IconUser } from '@tabler/icons-react';
 
 import Link from 'next/link';
 import { useState } from 'react';
-import ModalNav from '@/components/main-header/modal-nav';
+import MobileModalNav from '@/components/main-header/mobile-modal-nav';
 import { useAuth } from '@/contexts/auth-context';
 
 export default function MobileNav() {
@@ -25,7 +25,7 @@ export default function MobileNav() {
 
   return (
     <div className="relative flex h-full items-center justify-start px-4 text-white sm:hidden">
-      {modalOpen ? <ModalNav onCloseModal={closeModal} /> : null}
+      {modalOpen ? <MobileModalNav onCloseModal={closeModal} /> : null}
 
       <button onClick={openModal} type="button">
         <IconAlignLeft className="mr-2" height={32} width={32} />

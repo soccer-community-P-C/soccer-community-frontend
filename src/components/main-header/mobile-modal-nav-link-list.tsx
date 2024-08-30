@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 import { commonLinkList, linkList } from '@/components/main-header/link-list-util';
-import { NavModalProps } from '@/components/main-header/modal-nav';
+import { MobileModalNavProps } from '@/components/main-header/mobile-modal-nav';
 
-export default function ModalNavLinkList({ onCloseModal }: NavModalProps) {
+export default function MobileModalNavLinkList({ onCloseModal }: MobileModalNavProps) {
   const pathname = usePathname();
 
   return (

@@ -2,6 +2,7 @@
 
 import { IconBallFootball, IconUser } from '@tabler/icons-react';
 import Link from 'next/link';
+import { useState } from 'react';
 import NavLinkList from '@/components/main-header/nav-link-list';
 import ProfileDropdown from '@/components/main-header/profile-dropdown';
 import { useAuth } from '@/contexts/auth-context';
