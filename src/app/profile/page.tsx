@@ -65,7 +65,7 @@ export default function ProfilePage() {
     if (member) {
       nickname.onChange(member.nickName);
     }
-  }, [member]);
+  }, [member, nickname]);
 
   return (
     <Box className="mx-auto max-w-[38rem]">
