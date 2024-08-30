@@ -1,6 +1,6 @@
 'use client';
 
-import { IconAlignLeft, IconBallFootball, IconUser } from '@tabler/icons-react';
+import { IconAlignLeft, IconBallFootball } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import NavLinkList from '@/components/main-header/nav-link-list';
@@ -8,7 +8,7 @@ import ProfileDropdown from '@/components/main-header/profile-dropdown';
 import { useAuth } from '@/contexts/auth-context';
 import MobileModalNav from '@/components/main-header/mobile-modal-nav';
 
-export default function MainNav2() {
+export default function MainHeaderNav() {
   const { isAuthenticated, logout } = useAuth();
   const [mobileModalOpen, setMobileModalOpen] = useState(false);
 
