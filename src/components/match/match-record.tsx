@@ -50,7 +50,7 @@ export default function MatchRecord({ home, away }: MatchRecordProps) {
       params.set('tab', 'schedule');
       router.push(pathname + '?' + params.toString());
     }
-  }, [width, pathname, router, searchParams]);
+  }, [width, pathname, router, searchParams, tab]);
 
   return (
     <>
