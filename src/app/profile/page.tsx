@@ -41,7 +41,7 @@ export default function ProfilePage() {
     onError: () => alert('현재 비밀번호를 확인해주세요.'),
   });
 
-  const hasNicknameChanged = nickname.value !== member?.nickName;
+  const hasNicknameChanged = nickname.value !== member?.nickname;
 
   function handleClickEditNickname() {
     setIsEditingNickname(true);
@@ -49,12 +49,12 @@ export default function ProfilePage() {
 
   function handleClickCancel() {
     setIsEditingNickname(false);
-    nickname.onChange(member?.nickName || '');
+    nickname.onChange(member?.nickname || '');
   }
 
   function handleClickSave() {
     if (!hasNicknameChanged) return;
-    updateMember({ nickName: nickname.value });
+    updateMember({ nickname: nickname.value });
   }
 
   function onSubmitUpdatePassword(data: TUpdatePassword) {
@@ -63,7 +63,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (member) {
-      nickname.onChange(member.nickName);
+      nickname.onChange(member.nickname);
     }
   }, [member]);
 
