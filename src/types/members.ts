@@ -1,7 +1,7 @@
 export type TMember = {
   memberId: number;
   email: string;
-  nickName: string;
+  nickname: string;
 };
 
 export type TUpdateMember = Omit<TMember, 'email' | 'memberId'>;
