@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import Input from '@/components/common/input';
+import { Input } from '@/components/ui/input';
 import ErrorMessage from '@/components/auth-form/error-message';
 import Label from '@/components/auth-form/label';
 import { LoadingSpinner } from '@/components/common/loading-spinner';

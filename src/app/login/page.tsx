@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
-import Input from '@/components/common/input';
+import { Input } from '@/components/ui/input';
 import ErrorMessage from '@/components/auth-form/error-message';
 import Label from '@/components/auth-form/label';
 import { Button } from '@/components/ui/button';

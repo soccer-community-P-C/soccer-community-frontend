@@ -1,5 +1,5 @@
 import { FormEventHandler } from 'react';
-import Input from '@/components/common/input';
+import { Input } from '@/components/ui/input';
 import Editor from '@/components/write/editor';
 import { Button } from '@/components/ui/button';
 import { TUseInputReturn } from '@/hooks/useInput';

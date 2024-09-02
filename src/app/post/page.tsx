@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import Input from '@/components/common/input';
+import { Input } from '@/components/ui/input';
 import Box from '@/components/common/box';
 import Pagination from '@/components/post/pagination';
 import { Button } from '@/components/ui/button';
