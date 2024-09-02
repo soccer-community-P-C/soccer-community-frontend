@@ -128,7 +128,7 @@ export default function PostPage({ params }: PostPageProps) {
           </button>
         </div>
       </div>
-      <hr />
+      <hr className="dark:border-white" />
       <form className="flex flex-col gap-2" onSubmit={handleWriteComment}>
         <div>{commentList?.length}개의 댓글</div>
         <textarea
@@ -139,15 +139,11 @@ export default function PostPage({ params }: PostPageProps) {
           rows={4}
           value={comment.value}
         />
-        <Button
-          className="w-28 self-end"
-          disabled={isPendingWriteComment ? true : false}
-          type="submit"
-        >
+        <Button className="w-28 self-end" disabled={isPendingWriteComment} type="submit">
           {isPendingWriteComment ? <LoadingSpinner /> : '댓글 작성'}
         </Button>
       </form>
-      {commentList ? <CommentList commentList={commentList} /> : null}
+      {commentList && commentList?.length > 0 ? <CommentList commentList={commentList} /> : null}
     </Box>
   );
 }
