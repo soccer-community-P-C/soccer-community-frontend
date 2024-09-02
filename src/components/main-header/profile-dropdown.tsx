@@ -18,7 +18,7 @@ export default function ProfileDropdown({ logout }: ProfileDropdownProps) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild={true}>
         <button className="py-2" type="button">
           <IconUser />
         </button>

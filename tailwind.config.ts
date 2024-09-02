@@ -71,6 +71,11 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        box: {
+          DEFAULT: 'hsl(var(--box))',
+          foreground: 'hsl(var(--box-foreground))',
+        },
+        'border-and-divide': 'hsl(var(--border-and-divide))',
       },
       borderRadius: {
         lg: 'var(--radius)',

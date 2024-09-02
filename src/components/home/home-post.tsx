@@ -22,7 +22,7 @@ export default function HomePost() {
   const hasPosts = isPending || (data?.totalElements && data?.totalElements > 0);
 
   return (
-    <div className="flex w-full flex-col bg-white">
+    <div className="flex w-full flex-col">
       <div className="mb-6 flex items-center justify-between">
         <BoxHeading hTagType="h3">게시판</BoxHeading>
         <ViewAllLinkItem href="/post" />
@@ -31,13 +31,14 @@ export default function HomePost() {
       {isPending ? (
         <IconLoader2 aria-label="로딩중" className="mx-auto animate-spin" role="status" />
       ) : null}
-      <Box className="gap-0 divide-y divide-gray-400 overflow-hidden border-gray-400 p-0">
+      <Box className="gap-0 divide-y divide-border-and-divide overflow-hidden rounded-md border-border-and-divide p-0 shadow-sm">
         {data?.findPosts?.map((post) => (
-          <li
+          <Link
             className={twMerge(
-              'relative flex flex-col py-2 transition-colors hover:bg-gray-100 sm:flex-row',
+              'relative flex flex-col py-2 transition-colors sm:flex-row',
               'sm-in:gap-1 sm-in:p-2',
             )}
+            href={`${URL_POST}/${post.postId}`}
             key={post.postId}
           >
             <div className="flex gap-1 sm:w-[10%] sm:items-center sm:justify-center sm:border-b-0">
@@ -45,9 +46,7 @@ export default function HomePost() {
               <span className="text-xs md:text-base">12K</span>
             </div>
             <div className="flex items-center sm:w-[85%] sm:pr-3">
-              <Link className="line-clamp-1" href={`${URL_POST}/${post.postId}`}>
-                {post.title}
-              </Link>
+              <p className="line-clamp-1">{post.title}</p>
             </div>
             <div
               className={twMerge(
@@ -64,7 +63,7 @@ export default function HomePost() {
                 <span className="text-xs md:text-base">24K</span>
               </div>
             </div>
-          </li>
+          </Link>
         ))}
       </Box>
     </div>

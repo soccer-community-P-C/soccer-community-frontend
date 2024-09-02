@@ -6,7 +6,7 @@
   :root {
     --max-content-width: 1352px;
     --main-layout-height: calc(100vh - 8rem - 4rem);
-    --background: 0 0% 100%;
+    --background: 220 13% 91%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -31,6 +31,11 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+
+    --box: 0 0% 100%;
+    --box-foreground: 215 14% 34%;
+
+    --border-and-divide: 240 5% 49%;
   }
 
   .dark {
@@ -58,6 +63,9 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    --box: 217.2 32.6% 17.5%;
+    --box-foreground: 210 40% 98%;
   }
 }
 
