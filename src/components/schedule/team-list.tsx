@@ -93,9 +93,9 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
   }
 
   return (
-    <div className="relative overflow-hidden rounded-md border border-[#777784] bg-[#f7f7f9]">
+    <div className="relative divide-border-and-divide overflow-hidden rounded-md border border-border-and-divide">
       <div
-        className="flex divide-x divide-[#777784] overflow-x-hidden scroll-smooth"
+        className="flex divide-x divide-border-and-divide overflow-x-hidden scroll-smooth"
         ref={containerRef}
       >
         {isPending ? (
@@ -120,12 +120,12 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
       </div>
 
       {showLeftArrow ? (
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 transform">
+        <div className="absolute left-1 top-1/2 -translate-y-1/2 transform">
           <ScrollButton direction="left" onClick={() => handleMoveScroll('left')} />
         </div>
       ) : null}
       {showRightArrow ? (
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 transform">
+        <div className="absolute right-1 top-1/2 -translate-y-1/2 transform">
           <ScrollButton direction="right" onClick={() => handleMoveScroll('right')} />
         </div>
       ) : null}

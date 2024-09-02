@@ -37,6 +37,8 @@
 
     --background-gray: 220 13% 91%;
     --border-and-divide: 240 5% 49%;
+
+    --hover: 220 13% 91%;
   }
 
   .dark {
@@ -69,6 +71,8 @@
 
     --box: 217.2 32.6% 17.5%;
     --box-foreground: 210 40% 98%;
+
+    --hover: 217 39% 11%;
   }
 }
 

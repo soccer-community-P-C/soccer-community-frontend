@@ -77,6 +77,7 @@ const config = {
           foreground: 'hsl(var(--box-foreground))',
         },
         'border-and-divide': 'hsl(var(--border-and-divide))',
+        hover: 'hsl(var(--hover))',
       },
       borderRadius: {
         lg: 'var(--radius)',
