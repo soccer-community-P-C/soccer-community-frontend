@@ -6,6 +6,7 @@ import { AuthProvider } from '@/contexts/auth-context';
 import type { Metadata } from 'next';
 
 import './globals.css';
+import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
   title: '해외축구 커뮤니티',
@@ -29,9 +30,11 @@ export default function RootLayout({
       <body className={`${pretendard.className} h-full bg-gray-200`}>
         <ReactQueryProviders>
           <AuthProvider>
-            <MainHeader />
-            <main className="min-h-screen-main py-2 md:py-8">{children}</main>
-            <MainFooter />
+            <ThemeProvider>
+              <MainHeader />
+              <main className="min-h-screen-main py-2 md:py-8">{children}</main>
+              <MainFooter />
+            </ThemeProvider>
           </AuthProvider>
         </ReactQueryProviders>
       </body>
