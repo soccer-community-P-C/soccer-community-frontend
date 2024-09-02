@@ -68,7 +68,7 @@ export default function ProfilePage() {
   }, [member, nickname]);
 
   return (
-    <Box className="mx-auto max-w-[38rem]">
+    <Box className="mx-auto min-w-mobile max-w-[38rem]">
       <div className="mx-auto max-w-72">
         <BoxHeading className="mb-12 text-3xl" hTagType="h2">
           프로필
