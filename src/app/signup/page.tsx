@@ -31,7 +31,7 @@ export default function SignUpPage() {
   return (
     <Box className="m-auto my-6 min-w-mobile max-w-md">
       <form className="mx-auto flex w-full flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
-        <BoxHeading className="text-center font-bold text-black" hTagType="h2">
+        <BoxHeading className="text-center font-bold" hTagType="h2">
           회원가입
         </BoxHeading>
         <div className="flex flex-col gap-2">
