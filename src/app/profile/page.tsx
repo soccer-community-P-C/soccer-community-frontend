@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Box from '@/components/common/box';
 import BoxHeading from '@/components/common/box-heading';
-import Button from '@/components/common/button';
+import { Button } from '@/components/ui/button';
 import Input from '@/components/common/input';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import ErrorMessage from '@/components/auth-form/error-message';

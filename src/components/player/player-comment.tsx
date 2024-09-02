@@ -1,5 +1,5 @@
 import { FormEvent } from 'react';
-import Button from '@/components/common/button';
+import { Button } from '@/components/ui/button';
 import { useGetPlayerCommentList, useWritePlayerComment } from '@/api/player';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import useInput from '@/hooks/useInput';

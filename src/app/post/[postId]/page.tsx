@@ -4,7 +4,7 @@ import { useState } from 'react';
 import sanitizeHtml from 'sanitize-html';
 import { IconEye, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
-import Button from '@/components/common/button';
+import { Button } from '@/components/ui/button';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import PostEditForm from '@/components/post/post-edit-form';
 import CommentList from '@/components/post/comment-list';

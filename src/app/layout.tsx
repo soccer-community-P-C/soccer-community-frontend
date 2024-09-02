@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${pretendard.className} h-full bg-background`}>
+      <body className={`${pretendard.className} h-full bg-background-gray`}>
         <ReactQueryProviders>
           <AuthProvider>
             <ThemeProvider
@@ -37,7 +37,7 @@ export default function RootLayout({
               enableSystem
             >
               <MainHeader />
-              <main className="min-h-screen-main bg-background py-2 md:py-8">{children}</main>
+              <main className="min-h-screen-main bg-background-gray py-2 md:py-8">{children}</main>
               <MainFooter />
             </ThemeProvider>
           </AuthProvider>

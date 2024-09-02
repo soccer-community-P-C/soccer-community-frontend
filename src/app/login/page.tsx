@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import Input from '@/components/common/input';
 import ErrorMessage from '@/components/auth-form/error-message';
 import Label from '@/components/auth-form/label';
-import Button from '@/components/common/button';
+import { Button } from '@/components/ui/button';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import Box from '@/components/common/box';
 import BoxHeading from '@/components/common/box-heading';
