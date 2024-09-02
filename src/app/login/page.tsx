@@ -11,8 +11,9 @@ import Box from '@/components/common/box';
 import BoxHeading from '@/components/common/box-heading';
 import { useLogin } from '@/api/auth/use-login';
 import { TLoginInputs } from '@/types/auth';
+import withoutAuth from '@/hocs/withoutAuth';
 
-export default function LogInPage() {
+function LogInPage() {
   const {
     register,
     handleSubmit,
@@ -81,3 +82,5 @@ export default function LogInPage() {
     </Box>
   );
 }
+
+export default withoutAuth(LogInPage);
