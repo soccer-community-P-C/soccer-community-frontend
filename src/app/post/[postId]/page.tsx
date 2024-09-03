@@ -80,7 +80,7 @@ export default function PostPage({ params }: PostPageProps) {
   return (
     <Box>
       <div className="text-2xl">{post?.title}</div>
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between gap-3 sm:flex-row">
         <div className="flex items-center gap-2">
           <div className="h-9 w-9 rounded-full bg-gray-400" />
           <div>{post?.memberName}</div>
