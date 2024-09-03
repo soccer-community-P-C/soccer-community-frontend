@@ -51,14 +51,16 @@ export default function PlayerComment() {
         </Button>
       </form>
       <ul className="flex flex-col gap-2 divide-y border-t">
-        {commentList?.map(({ comment, nickName, createdAt }) => (
-          <PlayerCommentItem
-            comment={comment}
-            createdAt={createdAt}
-            key={createdAt}
-            nickName={nickName}
-          />
-        ))}
+        {commentList && commentList.length > 0
+          ? commentList?.map(({ comment, nickName, createdAt }) => (
+              <PlayerCommentItem
+                comment={comment}
+                createdAt={createdAt}
+                key={createdAt}
+                nickName={nickName}
+              />
+            ))
+          : null}
       </ul>
     </>
   );
