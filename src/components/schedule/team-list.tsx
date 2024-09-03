@@ -127,8 +127,10 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
         <SelectTrigger className="w-full sm:hidden">
           <SelectValue placeholder="전체" />
         </SelectTrigger>
-        {/*Todo Select Item 을 클릭할 때 창 뒤에있는 버튼이 같이 클릭되는 현상 수정, "전체" item이 홈 버튼과 같은 선상에 있을때 홈으로 이동됨*/}
-        <SelectContent className="z-50 h-72">
+        <SelectContent
+          className="z-50 h-72"
+          ref={(ref) => ref?.addEventListener('touchend', (e) => e.preventDefault())}
+        >
           {teamList
             ? [theEntire, ...teamList].map((team) => (
                 <SelectItem key={team.leagueTeamId} value={String(team.leagueTeamId)}>
