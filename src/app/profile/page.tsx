@@ -12,8 +12,9 @@ import Label from '@/components/auth-form/label';
 import useInput from '@/hooks/useInput';
 import { useGetMember, useUpdateMember, useUpdatePassword } from '@/api/member';
 import { TUpdatePassword } from '@/types/members';
+import withAuth from '@/hocs/withAuth';
 
-export default function ProfilePage() {
+function ProfilePage() {
   const [isEditingNickname, setIsEditingNickname] = useState(false);
   const nickname = useInput('');
   const { data: member } = useGetMember();
@@ -139,3 +140,5 @@ export default function ProfilePage() {
     </Box>
   );
 }
+
+export default withAuth(ProfilePage);

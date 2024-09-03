@@ -11,8 +11,9 @@ import { useSignup } from '@/api/auth/use-signup';
 import { TSignupInputs } from '@/types/auth';
 import Box from '@/components/common/box';
 import BoxHeading from '@/components/common/box-heading';
+import withoutAuth from '@/hocs/withoutAuth';
 
-export default function SignUpPage() {
+function SignUpPage() {
   const {
     register,
     handleSubmit,
@@ -100,3 +101,5 @@ export default function SignUpPage() {
     </Box>
   );
 }
+
+export default withoutAuth(SignUpPage);
