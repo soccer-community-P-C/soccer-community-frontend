@@ -78,6 +78,7 @@ const config = {
         },
         'border-and-divide': 'hsl(var(--border-and-divide))',
         hover: 'hsl(var(--hover))',
+        'table-header': 'hsl(var(--table-header))',
       },
       borderRadius: {
         lg: 'var(--radius)',

@@ -9,12 +9,12 @@ export default function TableContainer({
 }) {
   return (
     <div
-      className="scrollbar-hidden overflow-hidden overflow-y-auto rounded-md border border-[#777784]"
+      className="scrollbar-hidden overflow-hidden overflow-y-auto rounded-md border border-border-and-divide"
       // style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
     >
       <div className={`${isMatch ? 'container' : 'w-full'} text-center`}>
-        <div className="relative bg-[#f7f7f9]">
-          <div className="overflow-auto border-b border-t bg-white">{children}</div>
+        <div className="relative">
+          <div className="overflow-auto border-b border-t">{children}</div>
         </div>
       </div>
     </div>

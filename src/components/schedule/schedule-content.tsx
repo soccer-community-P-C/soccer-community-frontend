@@ -14,10 +14,7 @@ export default function ScheduleContent({ gameList, date, isHome }: ScheduleCont
   return (
     <div className="divide-y divide-border-and-divide overflow-hidden rounded-md border border-border-and-divide">
       <BoxHeading
-        className={twMerge(
-          'flex h-[50px] items-center bg-[#f7f7f9] pl-4 dark:bg-[#f7f7f9]/10',
-          isHome && 'h-[40px]',
-        )}
+        className={twMerge('flex h-[50px] items-center bg-table-header pl-4', isHome && 'h-[40px]')}
         hTagType={isHome ? 'h4' : 'h3'}
       >
         {getDateTitle(new Date(date))}

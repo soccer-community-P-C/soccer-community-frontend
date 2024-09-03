@@ -39,6 +39,8 @@
     --border-and-divide: 240 5% 49%;
 
     --hover: 220 13% 91%;
+
+    --table-header: 240 14% 97%;
   }
 
   .dark {
@@ -73,6 +75,8 @@
     --box-foreground: 210 40% 98%;
 
     --hover: 217 39% 11%;
+
+    --table-header: 215 19% 35%;
   }
 }
 
@@ -100,6 +104,10 @@
 }
 
 @layer components {
+  .bg-table-even {
+    @apply even:bg-gray-100 even:dark:bg-gray-100/10;
+  }
+
   .button-vote-item {
     @apply h-full cursor-pointer transition duration-150 ease-in-out;
   }
