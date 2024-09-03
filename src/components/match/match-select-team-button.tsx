@@ -18,7 +18,7 @@ export default function MatchSelectTeamButton({
     <button
       className={twMerge(
         'block w-full truncate rounded-lg px-[10px] py-0 text-lg leading-[43px]',
-        isSelected ? 'border bg-white font-semibold text-black' : '',
+        isSelected ? 'border bg-background font-semibold' : '',
       )}
       onClick={onClick}
       type="button"

@@ -21,23 +21,23 @@ export default function MatchSection({ ...data }: MatchSectionProps) {
       <aside className="flex w-full shrink-0 flex-col gap-2 sm:flex-row xl:w-[450px] xl:flex-col">
         <Box className="gap-2">
           <strong>승부예측</strong>
-          <div className="relative flex h-[100px] w-full select-none items-center overflow-hidden rounded-lg bg-gray-200 text-center text-xs xl:h-[60px]">
+          <div className="flex h-[100px] w-full select-none items-center gap-2 overflow-hidden text-center text-xs xl:h-[60px]">
             <button
-              className="button-vote-item flex-all-center flex-1 flex-col border-r border-white hover:bg-gray-300 active:scale-110"
+              className="button-vote-item flex-all-center w-full flex-1 flex-col rounded-lg bg-hover shadow active:scale-110"
               type="button"
             >
               <span className="font-semibold">{home}</span>
               <span className="text-xs">20%</span>
             </button>
             <button
-              className="button-vote-item flex-all-center flex-1 flex-col hover:bg-gray-300 active:scale-110"
+              className="button-vote-item flex-all-center w-full flex-1 flex-col rounded-lg bg-hover shadow active:scale-110"
               type="button"
             >
               <span className="font-semibold">무승부</span>
               <span className="text-xs">60%</span>
             </button>
             <button
-              className="button-vote-item flex-all-center flex-1 flex-col border-l border-white hover:bg-gray-300 active:scale-110"
+              className="button-vote-item flex-all-center w-full flex-1 flex-col rounded-lg bg-hover shadow active:scale-110"
               type="button"
             >
               <span className="font-semibold">{away}</span>
@@ -47,9 +47,9 @@ export default function MatchSection({ ...data }: MatchSectionProps) {
         </Box>
         <Box className="gap-2">
           <strong>팀응원</strong>
-          <div className="flex h-[100px] w-full cursor-pointer select-none items-center overflow-hidden text-[#f9cb7d]">
+          <div className="flex h-[100px] w-full cursor-pointer select-none items-center gap-2 overflow-hidden text-foreground">
             <button
-              className="button-vote-item flex-all-center w-full flex-col rounded-lg border bg-[#0b1c7c] p-2 hover:opacity-85 active:scale-95"
+              className="button-vote-item flex-all-center w-full flex-col rounded-lg bg-hover p-2 shadow hover:opacity-85 active:scale-95"
               onClick={() => setHomeCheeringCount((prevState) => prevState + 1)}
               style={{
                 width: `${(homeCheeringCount / (homeCheeringCount + awayCheeringCount)) * 100}%`,
@@ -58,10 +58,10 @@ export default function MatchSection({ ...data }: MatchSectionProps) {
               type="button"
             >
               <span className="text-[14px] md:text-base">{home}</span>
-              <span className="text-xs">{homeCheeringCount}</span>
+              <span className="font-semibold">{homeCheeringCount}</span>
             </button>
             <button
-              className="button-vote-item flex-all-center w-full flex-col rounded-lg border bg-[#0b1c7c] p-2 hover:opacity-85 active:scale-95"
+              className="button-vote-item flex-all-center w-full flex-col rounded-lg bg-hover p-2 shadow hover:opacity-85 active:scale-95"
               onClick={() => setAwayCheeringCount((prevState) => prevState + 1)}
               style={{
                 width: `${(awayCheeringCount / (homeCheeringCount + awayCheeringCount)) * 100}%`,
@@ -70,7 +70,7 @@ export default function MatchSection({ ...data }: MatchSectionProps) {
               type="button"
             >
               <span className="text-[14px] md:text-base">{away}</span>
-              <span className="text-xs">{awayCheeringCount}</span>
+              <span className="font-semibold">{awayCheeringCount}</span>
             </button>
           </div>
         </Box>

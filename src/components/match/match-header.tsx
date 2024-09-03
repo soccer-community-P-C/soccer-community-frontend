@@ -46,7 +46,7 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
             </div>
           </div>
         </section>
-        <section className="grid grid-cols-2 border-t border-[#777784] p-2 text-xs sm:py-4 lg:text-base">
+        <section className="grid grid-cols-2 border-t border-border-and-divide p-2 text-xs sm:py-4 lg:text-base">
           <div className="flex flex-col flex-wrap items-center justify-start gap-y-1 lg:flex-row lg:justify-end lg:gap-x-8 lg:gap-y-4 lg:pr-16">
             <GoalInfo goalTimeList={[31, 70, 70, 70, 70]} player="라임 스털링" />
             <GoalInfo goalTimeList={[31, 70]} player="라임 스털링" />
