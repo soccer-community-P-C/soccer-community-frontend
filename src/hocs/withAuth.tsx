@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { useAuth } from '@/contexts/auth-context';
 
-export default function withAuth<Props extends React.JSX.IntrinsicAttributes>(
+export default function withAuth<Props extends object>(
   WrappedComponent: React.ComponentType<Props>,
 ) {
   function AuthenticatedComponent(props: Props) {
