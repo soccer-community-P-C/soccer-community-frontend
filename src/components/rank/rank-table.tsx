@@ -30,7 +30,7 @@ export default function RankTable({ ranks }: RankTableProps) {
           {/*<col className="w-[200px] sm:w-[300px]" />*/}
         </colgroup>
         <thead>
-          <tr className="h-8 bg-gray-200 *:pl-2 *:text-[13px]">
+          <tr className="h-8 bg-table-header *:pl-2 *:text-[13px]">
             <th>
               <span>순위</span>
             </th>

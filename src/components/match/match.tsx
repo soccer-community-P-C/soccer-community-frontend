@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useGetGameByLeagueGameId } from '@/api/league-game';
-import Button from '@/components/common/button';
+import { Button } from '@/components/ui/button';
 import MatchHeader from '@/components/match/match-header';
 import MatchSection from '@/components/match/match-section';
 import { LoadingBox } from '@/components/common/loading-spinner';

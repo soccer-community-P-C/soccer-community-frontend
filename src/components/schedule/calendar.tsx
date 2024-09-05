@@ -1,5 +1,5 @@
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
-import Button from '@/components/common/button';
+import { Button } from '@/components/ui/button';
 import { getTodayDate, shortISOYearMonth } from '@/utils/date-helper';
 
 type CalendarProps = {

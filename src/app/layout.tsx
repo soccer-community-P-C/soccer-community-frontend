@@ -3,6 +3,7 @@ import MainHeader from '@/components/main-header/main-header';
 import MainFooter from '@/components/main-footer/main-footer';
 import ReactQueryProviders from '@/components/react-query-providers';
 import { AuthProvider } from '@/contexts/auth-context';
+import { ThemeProvider } from '@/components/theme-provider';
 import type { Metadata } from 'next';
 
 import './globals.css';
@@ -25,13 +26,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="h-full" lang="en">
-      <body className={`${pretendard.className} h-full bg-gray-200`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${pretendard.className} h-full bg-background-gray`}>
         <ReactQueryProviders>
           <AuthProvider>
-            <MainHeader />
-            <main className="min-h-screen-main py-2 md:py-8">{children}</main>
-            <MainFooter />
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              disableTransitionOnChange
+              enableSystem
+            >
+              <MainHeader />
+              <main className="min-h-screen-main bg-background-gray py-2 text-foreground md:py-8">
+                {children}
+              </main>
+              <MainFooter />
+            </ThemeProvider>
           </AuthProvider>
         </ReactQueryProviders>
       </body>

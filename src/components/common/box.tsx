@@ -15,7 +15,7 @@ export default function Box({ children, isSub = false, className = '' }: BoxProp
   return (
     <div
       className={twMerge(
-        `flex w-full flex-col rounded-lg border border-gray-200 bg-white shadow ${isSub ? 'gap-4 p-4' : 'gap-6 p-6'}`,
+        `flex w-full flex-col rounded-lg border bg-box text-box-foreground shadow ${isSub ? 'gap-4 p-4' : 'gap-6 p-6'}`,
         className,
       )}
     >

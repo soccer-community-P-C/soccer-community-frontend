@@ -12,9 +12,9 @@ type ScheduleContentProps = {
 
 export default function ScheduleContent({ gameList, date, isHome }: ScheduleContentProps) {
   return (
-    <div className="divide-y divide-[#777784] overflow-hidden rounded-md border border-[#777784]">
+    <div className="divide-y divide-border-and-divide overflow-hidden rounded-md border border-border-and-divide">
       <BoxHeading
-        className={twMerge('flex h-[50px] items-center bg-[#f7f7f9] pl-4', isHome && 'h-[40px]')}
+        className={twMerge('flex h-[50px] items-center bg-table-header pl-4', isHome && 'h-[40px]')}
         hTagType={isHome ? 'h4' : 'h3'}
       >
         {getDateTitle(new Date(date))}
@@ -22,7 +22,7 @@ export default function ScheduleContent({ gameList, date, isHome }: ScheduleCont
 
       <div
         className={twMerge(
-          'items-center divide-y divide-[#777784] text-base sm:text-lg',
+          'items-center divide-y divide-border-and-divide text-base sm:text-lg',
           isHome && 'text-base',
         )}
       >

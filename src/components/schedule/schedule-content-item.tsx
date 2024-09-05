@@ -28,7 +28,7 @@ export default function ScheduleContentItem({
   return (
     <Link
       className={twMerge(
-        'flex h-10 w-full cursor-pointer items-center px-2 transition-colors hover:bg-gray-200 sm:gap-2 md:h-14 md:gap-6 md:px-8',
+        'flex h-10 w-full cursor-pointer items-center px-2 transition-colors hover:bg-hover sm:gap-2 md:h-14 md:gap-6 md:px-8',
         isHome && 'h-10',
       )}
       href={{

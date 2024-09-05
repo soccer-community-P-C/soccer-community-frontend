@@ -20,8 +20,8 @@ export default function TeamLogo({
     <div className="flex h-20 w-24 flex-col items-center">
       <button
         className={twMerge(
-          'relative my-auto h-full w-full overflow-hidden rounded-md transition-colors hover:bg-white/60',
-          selectedTeamId === teamId ? 'bg-white text-blue-700' : '',
+          'relative my-auto h-full w-full overflow-hidden transition-colors hover:bg-hover',
+          selectedTeamId === teamId ? 'bg-hover text-blue-700' : '',
         )}
         onClick={() => onSelectedTeamId(teamId)}
         type="button"

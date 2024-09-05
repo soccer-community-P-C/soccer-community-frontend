@@ -1,5 +1,5 @@
 import { FormEvent } from 'react';
-import Button from '@/components/common/button';
+import { Button } from '@/components/ui/button';
 import { useGetPlayerCommentList, useWritePlayerComment } from '@/api/player';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import useInput from '@/hooks/useInput';
@@ -51,14 +51,16 @@ export default function PlayerComment() {
         </Button>
       </form>
       <ul className="flex flex-col gap-2 divide-y border-t">
-        {commentList?.map(({ comment, nickName, createdAt }) => (
-          <PlayerCommentItem
-            comment={comment}
-            createdAt={createdAt}
-            key={createdAt}
-            nickName={nickName}
-          />
-        ))}
+        {commentList && commentList.length > 0
+          ? commentList?.map(({ comment, nickName, createdAt }) => (
+              <PlayerCommentItem
+                comment={comment}
+                createdAt={createdAt}
+                key={createdAt}
+                nickName={nickName}
+              />
+            ))
+          : null}
       </ul>
     </>
   );

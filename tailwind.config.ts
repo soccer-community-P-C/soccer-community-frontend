@@ -42,6 +42,7 @@ const config = {
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
+        'background-gray': 'hsl(var(--background-gray))',
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
@@ -71,6 +72,13 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        box: {
+          DEFAULT: 'hsl(var(--box))',
+          foreground: 'hsl(var(--box-foreground))',
+        },
+        'border-and-divide': 'hsl(var(--border-and-divide))',
+        hover: 'hsl(var(--hover))',
+        'table-header': 'hsl(var(--table-header))',
       },
       borderRadius: {
         lg: 'var(--radius)',

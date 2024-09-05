@@ -60,7 +60,7 @@ export default function MatchRecord({ home, away }: MatchRecordProps) {
         {tabMapper[tab as keyof typeof tabMapper]}
       </Box>
       <Box>
-        <ul className="relative flex overflow-hidden rounded-lg border bg-[#f7f8f9]">
+        <ul className="relative flex overflow-hidden rounded-lg border bg-hover">
           <li className="relative z-10 min-w-0 flex-1 text-center">
             <MatchSelectTeamButton
               isSelected={isHomeSelect}

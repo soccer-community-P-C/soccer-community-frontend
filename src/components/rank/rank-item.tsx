@@ -16,7 +16,7 @@ export default function RankItem({ rankData }: RankItemProps) {
   const goalDifference = goalsFor - goalsAgainst;
 
   return (
-    <tr className="h-8 border-b *:pl-2 even:bg-gray-100">
+    <tr className="bg-table-even h-8 border-b *:pl-2">
       <td>{rank}</td>
       <td className="truncate text-left font-semibold">{teamName}</td>
       <td>{totalGameCount}</td>
