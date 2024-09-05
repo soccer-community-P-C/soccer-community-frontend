@@ -147,7 +147,6 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
                 </SelectItem>
               ))
             : null}
-          {/*<SelectItem value="light">Light</SelectItem>*/}
         </SelectContent>
       </Select>
     </>
