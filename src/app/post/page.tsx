@@ -1,11 +1,10 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { twMerge } from 'tailwind-merge';
-import Input from '@/components/common/input';
+import { Input } from '@/components/ui/input';
 import Box from '@/components/common/box';
 import Pagination from '@/components/post/pagination';
-import Button from '@/components/common/button';
+import { Button } from '@/components/ui/button';
 import PostItem from '@/components/post/post-item';
 import { useGetPostList } from '@/api/post/use-get-post-list';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
@@ -31,16 +30,12 @@ export default function PostListPage() {
           <div />
           {hasPosts ? <Pagination totalPages={data?.totalPages ?? 0} /> : null}
 
-          <Button
-            className={twMerge('sm:w-28', 'sm-in:w-12 sm-in:p-2 sm-in:text-xs')}
-            onClick={() => router.push('/write')}
-            role="link"
-          >
+          <Button onClick={() => router.push('/write')} role="link">
             글쓰기
           </Button>
         </div>
       </Box>
-      <div className="mx-auto mt-4 flex max-w-sm">
+      <div className="mx-auto mt-4 flex max-w-sm items-center space-x-2">
         <Input />
         <Button className="h-10">검색</Button>
       </div>

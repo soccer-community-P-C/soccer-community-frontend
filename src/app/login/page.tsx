@@ -2,17 +2,18 @@
 
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
-import Input from '@/components/common/input';
+import { Input } from '@/components/ui/input';
 import ErrorMessage from '@/components/auth-form/error-message';
 import Label from '@/components/auth-form/label';
-import Button from '@/components/common/button';
+import { Button } from '@/components/ui/button';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import Box from '@/components/common/box';
 import BoxHeading from '@/components/common/box-heading';
 import { useLogin } from '@/api/auth/use-login';
 import { TLoginInputs } from '@/types/auth';
+import withoutAuth from '@/hocs/withoutAuth';
 
-export default function LogInPage() {
+function LogInPage() {
   const {
     register,
     handleSubmit,
@@ -30,7 +31,7 @@ export default function LogInPage() {
   return (
     <Box className="m-auto my-6 min-w-mobile max-w-md">
       <form className="mx-auto flex w-full flex-col gap-5" onSubmit={handleSubmit(onLogin)}>
-        <BoxHeading className="text-center font-bold text-black" hTagType="h2">
+        <BoxHeading className="text-center font-bold" hTagType="h2">
           로그인
         </BoxHeading>
         <div className="flex flex-col gap-2">
@@ -81,3 +82,5 @@ export default function LogInPage() {
     </Box>
   );
 }
+
+export default withoutAuth(LogInPage);

@@ -15,7 +15,6 @@ const leagueNameMapper = {
 
 export default function useLeagueTitle() {
   const name = useLeagueName() as keyof typeof leagueNameMapper;
-
   const { leagueName, logoSrc } = leagueNameMapper[name];
 
   return { alt: name, leagueName, logoSrc };

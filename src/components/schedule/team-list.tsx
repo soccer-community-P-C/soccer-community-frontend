@@ -82,9 +82,9 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
 
   return (
     <>
-      <div className="sm-block relative overflow-hidden rounded-md border border-[#777784] bg-[#f7f7f9]">
+      <div className="sm-block relative divide-border-and-divide overflow-hidden rounded-md border border-border-and-divide">
         <div
-          className="flex divide-x divide-[#777784] overflow-x-hidden scroll-smooth"
+          className="flex divide-x divide-border-and-divide overflow-x-hidden scroll-smooth"
           ref={containerRef}
         >
           {isPending ? (
@@ -119,7 +119,7 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
           </div>
         ) : null}
       </div>
-
+      
       <Select
         onValueChange={(value) => onSelectedTeamId(Number(value))}
         value={String(selectedTeamId)}

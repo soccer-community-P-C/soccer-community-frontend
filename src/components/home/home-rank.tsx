@@ -55,7 +55,7 @@ export default function HomeRank() {
   ];
 
   return (
-    <div className="flex h-80 w-full flex-col gap-2 rounded-lg bg-white">
+    <div className="flex h-80 w-full flex-col gap-2 rounded-lg">
       <div className="flex items-center justify-between">
         <BoxHeading hTagType="h4">경기 순위</BoxHeading>
         <ViewAllLinkItem href="/premier/rank" />

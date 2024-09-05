@@ -4,16 +4,17 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Box from '@/components/common/box';
 import BoxHeading from '@/components/common/box-heading';
-import Button from '@/components/common/button';
-import Input from '@/components/common/input';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import ErrorMessage from '@/components/auth-form/error-message';
 import Label from '@/components/auth-form/label';
 import useInput from '@/hooks/useInput';
 import { useGetMember, useUpdateMember, useUpdatePassword } from '@/api/member';
 import { TUpdatePassword } from '@/types/members';
+import withAuth from '@/hocs/withAuth';
 
-export default function ProfilePage() {
+function ProfilePage() {
   const [isEditingNickname, setIsEditingNickname] = useState(false);
   const nickname = useInput('');
   const { data: member } = useGetMember();
@@ -68,7 +69,7 @@ export default function ProfilePage() {
   }, [member, nickname]);
 
   return (
-    <Box className="mx-auto max-w-[38rem]">
+    <Box className="mx-auto min-w-mobile max-w-[38rem]">
       <div className="mx-auto max-w-72">
         <BoxHeading className="mb-12 text-3xl" hTagType="h2">
           프로필
@@ -139,3 +140,5 @@ export default function ProfilePage() {
     </Box>
   );
 }
+
+export default withAuth(ProfilePage);

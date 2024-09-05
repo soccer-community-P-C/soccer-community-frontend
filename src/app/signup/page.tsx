@@ -2,8 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
-import Button from '@/components/common/button';
-import Input from '@/components/common/input';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import ErrorMessage from '@/components/auth-form/error-message';
 import Label from '@/components/auth-form/label';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
@@ -11,8 +11,9 @@ import { useSignup } from '@/api/auth/use-signup';
 import { TSignupInputs } from '@/types/auth';
 import Box from '@/components/common/box';
 import BoxHeading from '@/components/common/box-heading';
+import withoutAuth from '@/hocs/withoutAuth';
 
-export default function SignUpPage() {
+function SignUpPage() {
   const {
     register,
     handleSubmit,
@@ -31,7 +32,7 @@ export default function SignUpPage() {
   return (
     <Box className="m-auto my-6 min-w-mobile max-w-md">
       <form className="mx-auto flex w-full flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
-        <BoxHeading className="text-center font-bold text-black" hTagType="h2">
+        <BoxHeading className="text-center font-bold" hTagType="h2">
           회원가입
         </BoxHeading>
         <div className="flex flex-col gap-2">
@@ -100,3 +101,5 @@ export default function SignUpPage() {
     </Box>
   );
 }
+
+export default withoutAuth(SignUpPage);

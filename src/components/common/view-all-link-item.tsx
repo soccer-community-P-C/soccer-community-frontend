@@ -9,7 +9,7 @@ type FullViewLinkItemProps = {
 export default function ViewAllLinkItem({ href }: FullViewLinkItemProps) {
   return (
     <Link
-      className="inline-flex cursor-pointer text-black/80 transition-colors hover:text-black/50 hover:underline"
+      className="inline-flex cursor-pointer text-card-foreground transition-colors hover:text-black/50 hover:underline dark:hover:text-white/50"
       href={href}
     >
       <span className="md-block">전체보기</span>

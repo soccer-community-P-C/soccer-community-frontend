@@ -4,7 +4,7 @@ import { useState } from 'react';
 import sanitizeHtml from 'sanitize-html';
 import { IconEye, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
-import Button from '@/components/common/button';
+import { Button } from '@/components/ui/button';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import PostEditForm from '@/components/post/post-edit-form';
 import CommentList from '@/components/post/comment-list';
@@ -80,7 +80,7 @@ export default function PostPage({ params }: PostPageProps) {
   return (
     <Box>
       <div className="text-2xl">{post?.title}</div>
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between gap-3 sm:flex-row">
         <div className="flex items-center gap-2">
           <div className="h-9 w-9 rounded-full bg-gray-400" />
           <div>{post?.memberName}</div>
@@ -128,7 +128,7 @@ export default function PostPage({ params }: PostPageProps) {
           </button>
         </div>
       </div>
-      <hr />
+      <hr className="dark:border-white" />
       <form className="flex flex-col gap-2" onSubmit={handleWriteComment}>
         <div>{commentList?.length}개의 댓글</div>
         <textarea
@@ -139,15 +139,11 @@ export default function PostPage({ params }: PostPageProps) {
           rows={4}
           value={comment.value}
         />
-        <Button
-          className="w-28 self-end"
-          disabled={isPendingWriteComment ? true : false}
-          type="submit"
-        >
+        <Button className="w-28 self-end" disabled={isPendingWriteComment} type="submit">
           {isPendingWriteComment ? <LoadingSpinner /> : '댓글 작성'}
         </Button>
       </form>
-      {commentList ? <CommentList commentList={commentList} /> : null}
+      {commentList && commentList?.length > 0 ? <CommentList commentList={commentList} /> : null}
     </Box>
   );
 }
