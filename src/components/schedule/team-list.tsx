@@ -7,7 +7,7 @@ import { useGetTeamList } from '@/api/league';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import TeamLogo from '@/components/schedule/team-logo';
 import useLeagueName from '@/hooks/useLeagueName';
-import { entireLaligaTeams, entirePLTeams } from '@/components/schedule/team-list.const';
+import { entireLaligaTeams, entirePLTeams } from '@/constants/team-list';
 import {
   Select,
   SelectContent,
