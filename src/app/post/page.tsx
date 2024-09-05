@@ -35,7 +35,7 @@ export default function PostListPage() {
           </Button>
         </div>
       </Box>
-      <div className="mx-auto mt-4 flex max-w-sm">
+      <div className="mx-auto mt-4 flex max-w-sm items-center space-x-2">
         <Input />
         <Button className="h-10">검색</Button>
       </div>
