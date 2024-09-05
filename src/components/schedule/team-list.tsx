@@ -119,7 +119,6 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
           </div>
         ) : null}
       </div>
-      
       <Select
         onValueChange={(value) => onSelectedTeamId(Number(value))}
         value={String(selectedTeamId)}
