@@ -6,3 +6,12 @@ export default function useLeagueName() {
 
   return leagueName;
 }
+
+const leagueIdMapper = {
+  premier: 1,
+  laliga: 2,
+};
+
+export function useLeagueId() {
+  return leagueIdMapper[useLeagueName() as keyof typeof leagueIdMapper];
+}

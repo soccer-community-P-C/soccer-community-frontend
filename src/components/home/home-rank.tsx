@@ -7,6 +7,7 @@ import RankTabList from '@/components/home/rank-tab-list';
 import RankTable from '@/components/rank/rank-table';
 import { useGetTeamRankList } from '@/api/league';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
+import { LALIGA_LEAGUE_ID, PREMIER_LEAGUE_ID } from '@/constants/league-game-id';
 
 export type TTabList = {
   title: string;
@@ -15,17 +16,18 @@ export type TTabList = {
 
 export default function HomeRank() {
   // Todo: 프리미어리그, 라리가 시즌과 아이디 최신 반영
+  // Todo: 팀 순위 API 현재 오류 - 09/10
   const {
     isPending: isPendingPL,
     data: dataPL,
     error: errorPL,
-  } = useGetTeamRankList({ season: '2023', leagueId: 1 });
+  } = useGetTeamRankList({ season: '2024', leagueId: PREMIER_LEAGUE_ID });
 
   const {
     isPending: isPendingLaliga,
     data: dataLaliga,
     error: errorLaliga,
-  } = useGetTeamRankList({ season: '2023', leagueId: 2 });
+  } = useGetTeamRankList({ season: '2024', leagueId: LALIGA_LEAGUE_ID });
   const [activeTab, setActiveTab] = useState(0);
   function handleTabChange(index: number) {
     setActiveTab(index);

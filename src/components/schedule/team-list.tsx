@@ -6,7 +6,7 @@ import ScrollButton from '@/components/common/scroll-button';
 import { useGetTeamList } from '@/api/league';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import TeamLogo from '@/components/schedule/team-logo';
-import useLeagueName from '@/hooks/useLeagueName';
+import { useLeagueId } from '@/hooks/useLeagueName';
 import { entireLaligaTeams, entirePLTeams } from '@/constants/team-list';
 import {
   Select,
@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { LALIGA_LEAGUE_ID } from '@/constants/league-game-id';
 
 export type TeamListProps = {
   onSelectedTeamId: (teamId: number) => void;
@@ -25,16 +26,14 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
-  const leagueName = useLeagueName();
   let theEntire = entirePLTeams;
-  let leagueId = 1;
+  const leagueId = useLeagueId();
 
-  if (leagueName === 'laliga') {
+  if (leagueId === LALIGA_LEAGUE_ID) {
     theEntire = entireLaligaTeams;
-    leagueId = 2;
   }
 
-  const { isPending, data: teamList, error } = useGetTeamList({ years: '2023', leagueId });
+  const { isPending, data: teamList, error } = useGetTeamList({ years: '2024', leagueId });
 
   const checkScroll = useCallback(() => {
     const container = containerRef.current;
