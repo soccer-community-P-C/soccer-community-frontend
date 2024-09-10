@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getTodayDate, shortISOYearMonth } from '@/utils/date-helper';
 import { useGetGameListByLeagueGameIdYearMonth } from '@/api/league-game';
 import { GameListService } from '@/components/schedule/service/game-list';
@@ -32,6 +32,10 @@ export default function Schedule() {
   const [selectedTeamId, setSelectedTeamId] = useState(ENTIRE_TEAM_ID);
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
   const leagueId = useLeagueId();
+
+  useEffect(() => {
+    resetGameList();
+  }, [leagueId]);
 
   const {
     isPending: isPendingGameList,
