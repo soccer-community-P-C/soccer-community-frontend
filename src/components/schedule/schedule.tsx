@@ -10,7 +10,7 @@ import TeamList from '@/components/schedule/team-list';
 import ScheduleContentList from '@/components/schedule/schedule-content-list';
 import { useGetGameListByTeamIdYearMonth } from '@/api/league-game/use-get-game-list-by-team-year-month';
 import { ENTIRE_TEAM_ID } from '@/constants/team-list';
-import { useLeagueId } from '@/hooks/useLeagueName';
+import { useLeagueInfo } from '@/hooks/useLeagueName';
 
 const todayDate = getTodayDate();
 
@@ -31,9 +31,10 @@ function isEntireTeamId(teamId: number) {
 export default function Schedule() {
   const [selectedTeamId, setSelectedTeamId] = useState(ENTIRE_TEAM_ID);
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
-  const leagueId = useLeagueId();
+  const { leagueId } = useLeagueInfo({ season: '2024' });
 
   useEffect(() => {
+    // 리그 변경시마다 경기일정 초기화
     resetGameList();
   }, [leagueId]);
 

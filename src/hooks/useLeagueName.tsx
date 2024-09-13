@@ -1,17 +1,45 @@
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useGetLeague } from '@/api/league/use-get-league';
 
 export default function useLeagueName() {
   const pathname = usePathname();
-  const leagueName = pathname.split('/')[1];
-
-  return leagueName;
+  return pathname.split('/')[1];
 }
 
-const leagueIdMapper = {
-  premier: 1,
-  laliga: 2,
-};
+export const leagueIdNameMapper = {
+  premier: 'PL',
+  laliga: 'LALIGA',
+  league1: 'LEAGUE1',
+  bundesliga: 'BUNDESLIGA',
+} as const;
 
-export function useLeagueId() {
-  return leagueIdMapper[useLeagueName() as keyof typeof leagueIdMapper];
+export function useLeagueInfo({
+  season,
+  competition,
+}: {
+  season: string;
+  competition?: 'PL' | 'LALIGA' | 'LEAGUE1' | 'BUNDESLIGA';
+}) {
+  let competitionName = leagueIdNameMapper[useLeagueName() as keyof typeof leagueIdNameMapper];
+  if (competition) {
+    competitionName = competition;
+  }
+
+  const { data } = useGetLeague({ season, competition: competitionName });
+  const [leagueId, setLeagueId] = useState(99);
+  const [leagueName, setLeagueName] = useState('PL');
+
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+
+    const { leagueId, leagueName } = data[0];
+    setLeagueId(leagueId);
+    setLeagueName(leagueName);
+    return;
+  }, [data]);
+
+  return { leagueId, leagueName };
 }

@@ -1,4 +1,4 @@
-import { TAllGameList, TTeamList, TTeamRankList } from '@/types/leagues';
+import { TAllGameList, TAllLeague, TLeagueInfo, TTeamList, TTeamRankList } from '@/types/leagues';
 import { instance } from '@/api/intance';
 
 const ENDPOINT = '/league';
@@ -50,6 +50,27 @@ export type GetTeamRankListProps = {
 export async function getTeamRankList({ leagueId, season, matchDay }: GetTeamRankListProps) {
   const { data } = await instance.get<TTeamRankList>(`${ENDPOINT}/rank/${leagueId}`, {
     params: { season, matchDay },
+  });
+
+  return data;
+}
+
+// 리그 조회
+export async function getAllLeague() {
+  const { data } = await instance.get<TAllLeague[]>(`${ENDPOINT}/all`);
+
+  return data;
+}
+
+export type GetLeagueProps = {
+  season: string; // 2024
+  competition: 'PL' | 'LALIGA' | 'LEAGUE1' | 'BUNDESLIGA';
+};
+
+// 리그 조회 상세
+export async function getLeague({ season, competition }: GetLeagueProps) {
+  const { data } = await instance.get<TLeagueInfo[]>(`${ENDPOINT}`, {
+    params: { season, competition },
   });
 
   return data;

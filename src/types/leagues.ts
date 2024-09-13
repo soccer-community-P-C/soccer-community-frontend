@@ -92,3 +92,14 @@ export type TTeamRank = {
 export type TTeamRankList = {
   ranks: TTeamRank[];
 };
+
+export type TAllLeague = {
+  leagueId: number;
+  leagueName: string;
+};
+
+export type TLeagueInfo = {
+  leagueId: number;
+  leagueName: string;
+  season: string;
+};

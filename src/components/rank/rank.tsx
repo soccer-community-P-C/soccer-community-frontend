@@ -4,8 +4,7 @@ import RankHeader from '@/components/rank/rank-header';
 import RankTable from '@/components/rank/rank-table';
 import { useGetTeamRankList } from '@/api/league';
 import { LoadingBox } from '@/components/common/loading-spinner';
-import useLeagueName from '@/hooks/useLeagueName';
-import { leagueIdMapper } from '@/utils/league-mapper';
+import { useLeagueInfo } from '@/hooks/useLeagueName';
 import useLeagueSeason from '@/hooks/use-league-season';
 
 export default function Rank() {
@@ -13,7 +12,8 @@ export default function Rank() {
   const { season, setSeason } = useLeagueSeason();
   const fullSeason = '20' + season;
   // const fullSeason = 2023;
-  const leagueId = leagueIdMapper[useLeagueName() as keyof typeof leagueIdMapper];
+
+  const { leagueId } = useLeagueInfo({ season: '2024' });
   const { isPending, data, error } = useGetTeamRankList({
     season: fullSeason.toString(),
     leagueId,

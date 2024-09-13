@@ -6,7 +6,7 @@ import ScrollButton from '@/components/common/scroll-button';
 import { useGetTeamList } from '@/api/league';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import TeamLogo from '@/components/schedule/team-logo';
-import { useLeagueId } from '@/hooks/useLeagueName';
+import { useLeagueInfo } from '@/hooks/useLeagueName';
 import { entireLaligaTeams, entirePLTeams } from '@/constants/team-list';
 import {
   Select,
@@ -15,7 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { LALIGA_LEAGUE_ID } from '@/constants/league-game-id';
 
 export type TeamListProps = {
   onSelectedTeamId: (teamId: number) => void;
@@ -26,12 +25,15 @@ export default function TeamList({ onSelectedTeamId, selectedTeamId }: TeamListP
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
-  let theEntire = entirePLTeams;
-  const leagueId = useLeagueId();
+  const [theEntire, setTheEntire] = useState(entirePLTeams);
+  const { leagueName, leagueId } = useLeagueInfo({ season: '2024' });
 
-  if (leagueId === LALIGA_LEAGUE_ID) {
-    theEntire = entireLaligaTeams;
-  }
+  useEffect(() => {
+    if (leagueName === 'PD') {
+      // Todo: 응답 leagueName 변경시 조건문 수정 필요
+      setTheEntire(entireLaligaTeams);
+    }
+  }, [leagueName]);
 
   const { isPending, data: teamList, error } = useGetTeamList({ years: '2024', leagueId });
 
