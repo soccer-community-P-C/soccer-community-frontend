@@ -7,7 +7,7 @@ type RankTableProps = {
 };
 
 export default function RankTable({ ranks }: RankTableProps) {
-  if (ranks.length < 1) {
+  if (!ranks || (ranks && ranks.length < 1)) {
     return <div>데이터가 없습니다.</div>;
   }
 
