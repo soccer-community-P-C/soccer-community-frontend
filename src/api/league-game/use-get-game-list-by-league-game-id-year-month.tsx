@@ -15,5 +15,7 @@ export function useGetGameListByLeagueGameIdYearMonth({
   return useQuery({
     queryKey: getQueryKey({ leagueId, yearMonth }),
     queryFn: () => getGameListByLeagueIdYearMonth({ leagueId, yearMonth }),
+    staleTime: 600 * 1000,
+    gcTime: 900 * 1000,
   });
 }

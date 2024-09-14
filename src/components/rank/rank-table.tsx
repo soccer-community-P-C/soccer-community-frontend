@@ -1,15 +1,14 @@
 import RankItem from '@/components/rank/rank-item';
 import TableContainer from '@/components/common/table/table-container';
-import { TTeamRankList } from '@/types/leagues';
+import { TTeamRank } from '@/types/leagues';
 
 type RankTableProps = {
-  ranks: TTeamRankList;
+  ranks: TTeamRank[];
 };
 
 export default function RankTable({ ranks }: RankTableProps) {
   if (!ranks || (ranks && ranks.length < 1)) {
-
-  // Todo: 최신 전적
+    // Todo: 최신 전적
 
     return <div>데이터가 없습니다.</div>;
   }
@@ -69,7 +68,7 @@ export default function RankTable({ ranks }: RankTableProps) {
         </thead>
 
         <tbody className="[&_tr:last-child]:border-0">
-          {ranks.ranks.map((rank) => (
+          {ranks.map((rank) => (
             <RankItem key={`${rank.teamId}-key`} rankData={rank} />
           ))}
         </tbody>
