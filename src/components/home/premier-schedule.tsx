@@ -10,7 +10,7 @@ import ScheduleContent from '@/components/schedule/schedule-content';
 const todayDate = shortISO(getTodayDate());
 
 export default function PremierSchedule() {
-  // Todo: api 에러
+  console.log(todayDate);
   const { isPending, data: gameList, error } = useGetGameListByDate({ targetDate: todayDate });
 
   return (

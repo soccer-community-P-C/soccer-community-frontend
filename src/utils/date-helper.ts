@@ -13,7 +13,11 @@ export function getTodayDate() {
 export function shortISO(date: Date) {
   // "2024-02-20" 형식의 문자열을 반환하는 함수
 
-  return date.toISOString().split('T')[0];
+  date = new Date(date);
+  const offset = date.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
+  const dateOffset = new Date(date.getTime() - offset);
+
+  return dateOffset.toISOString().split('T')[0];
 }
 
 export function shortISOTimeHourMinute(date: Date | string) {
