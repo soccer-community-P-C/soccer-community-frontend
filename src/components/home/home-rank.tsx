@@ -38,7 +38,9 @@ export default function HomeRank() {
         <>
           {isPendingPL ? <LoadingSpinner /> : null}
           {errorPL ? <div>데이터 가져오기 실패</div> : null}
-          {dataPL ? <RankTable ranks={dataPL} /> : null}
+          {dataPL && dataPL.rankInfo.length > 0 ? (
+            <RankTable ranks={dataPL.rankInfo[dataPL.rankInfo.length - 1].ranks} />
+          ) : null}
         </>
       ),
     },
@@ -48,7 +50,9 @@ export default function HomeRank() {
         <>
           {isPendingLaliga ? <LoadingSpinner /> : null}
           {errorLaliga ? <div>데이터 가져오기 실패</div> : null}
-          {dataLaliga ? <RankTable ranks={dataLaliga} /> : null}
+          {dataLaliga && dataLaliga.rankInfo.length > 0 ? (
+            <RankTable ranks={dataLaliga.rankInfo[dataLaliga.rankInfo.length - 1].ranks} />
+          ) : null}
         </>
       ),
     },

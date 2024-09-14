@@ -26,10 +26,11 @@ export default function Rank() {
   return (
     <>
       <RankHeader onSelectSeason={handleSelectSeason} season={season} />
-      {/*<RankHeader season={23} />*/}
       {isPending ? <LoadingBox /> : null}
       {error ? <div>데이터가져오기 실패</div> : null}
-      {data ? <RankTable ranks={data} /> : null}
+      {data && data.rankInfo.length > 0 && data.rankInfo[data.rankInfo.length - 1].ranks ? (
+        <RankTable ranks={data.rankInfo[data.rankInfo.length - 1].ranks} />
+      ) : null}
     </>
   );
 }
