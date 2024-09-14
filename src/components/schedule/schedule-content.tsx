@@ -11,8 +11,6 @@ type ScheduleContentProps = {
 };
 
 export default function ScheduleContent({ gameList, date, isHome }: ScheduleContentProps) {
-  // Todo: 경기전이고 score가 null이면 점수 표시를 "경기전"으로 표시. 추 후 실시간 점수표시가 되면 수정해야함.
-
   return (
     <div className="divide-y divide-border-and-divide overflow-hidden rounded-md border border-border-and-divide">
       <BoxHeading
@@ -29,9 +27,7 @@ export default function ScheduleContent({ gameList, date, isHome }: ScheduleCont
         )}
       >
         {gameList.length > 0 ? (
-          gameList.map((game) => (
-            <ScheduleContentItem {...game} key={`key-${game.homeTeamName}-${game.awayTeamName}`} />
-          ))
+          gameList.map((game) => <ScheduleContentItem {...game} key={game.leagueGameId} />)
         ) : (
           <div className="p-2">
             <span>오늘은 경기가 없습니다.</span>

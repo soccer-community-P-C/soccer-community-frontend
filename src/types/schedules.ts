@@ -45,12 +45,6 @@ export type TGameDetails = {
         position: string;
       }[]
     | null;
-  goals: {
-    plyerId: 0;
-    playerName: 'string';
-    time: 0;
-    type: 'string';
-  }[];
 };
 
 export type TGameByLeagueGameId = {
