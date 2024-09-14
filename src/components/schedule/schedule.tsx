@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getTodayDate, shortISOYearMonth } from '@/utils/date-helper';
 import { useGetGameListByLeagueGameIdYearMonth } from '@/api/league-game';
+import { PREMIER_LEAGUE_ID } from '@/constants/league-game-id';
 import { GameListService } from '@/components/schedule/service/game-list';
 import { LoadingBox } from '@/components/common/loading-spinner';
 import Calendar from '@/components/schedule/calendar';
@@ -10,7 +11,6 @@ import TeamList from '@/components/schedule/team-list';
 import ScheduleContentList from '@/components/schedule/schedule-content-list';
 import { useGetGameListByTeamIdYearMonth } from '@/api/league-game/use-get-game-list-by-team-year-month';
 import { ENTIRE_TEAM_ID } from '@/constants/team-list';
-import { useLeagueInfo } from '@/hooks/useLeagueName';
 
 const todayDate = getTodayDate();
 
@@ -31,19 +31,13 @@ function isEntireTeamId(teamId: number) {
 export default function Schedule() {
   const [selectedTeamId, setSelectedTeamId] = useState(ENTIRE_TEAM_ID);
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
-  const { leagueId } = useLeagueInfo({ season: '2024' });
-
-  useEffect(() => {
-    // 리그 변경시마다 경기일정 초기화
-    resetGameList();
-  }, [leagueId]);
 
   const {
     isPending: isPendingGameList,
     data: gameList,
     error: errorGameList,
   } = useGetGameListByLeagueGameIdYearMonth({
-    leagueId: leagueId,
+    leagueId: PREMIER_LEAGUE_ID,
     yearMonth: shortISOYearMonth(selectedYearMonthDate),
   });
 

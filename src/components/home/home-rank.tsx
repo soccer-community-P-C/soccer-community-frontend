@@ -7,7 +7,6 @@ import RankTabList from '@/components/home/rank-tab-list';
 import RankTable from '@/components/rank/rank-table';
 import { useGetTeamRankList } from '@/api/league';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
-import { useLeagueInfo } from '@/hooks/useLeagueName';
 
 export type TTabList = {
   title: string;
@@ -16,21 +15,17 @@ export type TTabList = {
 
 export default function HomeRank() {
   // Todo: 프리미어리그, 라리가 시즌과 아이디 최신 반영
-  // Todo: 팀 순위 API 현재 오류 - 09/10
-  const { leagueId: plLeagueId } = useLeagueInfo({ season: '2024', competition: 'PL' });
-  const { leagueId: laligaLeagueId } = useLeagueInfo({ season: '2024', competition: 'LALIGA' });
-
   const {
     isPending: isPendingPL,
     data: dataPL,
     error: errorPL,
-  } = useGetTeamRankList({ season: '2024', leagueId: plLeagueId });
+  } = useGetTeamRankList({ season: '2023', leagueId: 1 });
 
   const {
     isPending: isPendingLaliga,
     data: dataLaliga,
     error: errorLaliga,
-  } = useGetTeamRankList({ season: '2024', leagueId: laligaLeagueId });
+  } = useGetTeamRankList({ season: '2023', leagueId: 2 });
   const [activeTab, setActiveTab] = useState(0);
   function handleTabChange(index: number) {
     setActiveTab(index);
@@ -43,9 +38,7 @@ export default function HomeRank() {
         <>
           {isPendingPL ? <LoadingSpinner /> : null}
           {errorPL ? <div>데이터 가져오기 실패</div> : null}
-          {dataPL && dataPL.rankInfo.length > 0 ? (
-            <RankTable ranks={dataPL.rankInfo[dataPL.rankInfo.length - 1].ranks} />
-          ) : null}
+          {dataPL ? <RankTable ranks={dataPL} /> : null}
         </>
       ),
     },
@@ -55,9 +48,7 @@ export default function HomeRank() {
         <>
           {isPendingLaliga ? <LoadingSpinner /> : null}
           {errorLaliga ? <div>데이터 가져오기 실패</div> : null}
-          {dataLaliga && dataLaliga.rankInfo.length > 0 ? (
-            <RankTable ranks={dataLaliga.rankInfo[dataLaliga.rankInfo.length - 1].ranks} />
-          ) : null}
+          {dataLaliga ? <RankTable ranks={dataLaliga} /> : null}
         </>
       ),
     },
