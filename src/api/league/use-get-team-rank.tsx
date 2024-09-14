@@ -3,13 +3,13 @@ import { getTeamRankList, GetTeamRankListProps } from '@/api/league/leagues';
 
 const QUERY_KEY = 'useGetTeamRankList';
 
-function getQueryKey({ season, matchDay, leagueId }: GetTeamRankListProps) {
-  return [QUERY_KEY, leagueId, season, matchDay];
+function getQueryKey({ season, leagueId }: GetTeamRankListProps) {
+  return [QUERY_KEY, leagueId, season];
 }
 
-export function useGetTeamRankList({ season, matchDay, leagueId }: GetTeamRankListProps) {
+export function useGetTeamRankList({ season, leagueId }: GetTeamRankListProps) {
   return useQuery({
-    queryKey: getQueryKey({ season, matchDay, leagueId }),
-    queryFn: () => getTeamRankList({ season, matchDay, leagueId }),
+    queryKey: getQueryKey({ season, leagueId }),
+    queryFn: () => getTeamRankList({ season, leagueId }),
   });
 }

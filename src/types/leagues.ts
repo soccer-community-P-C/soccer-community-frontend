@@ -89,8 +89,11 @@ export type TTeamRank = {
   goalsAgainst: number;
 };
 
-export type TTeamRankList = {
-  ranks: TTeamRank[];
+export type TTeamRankInfo = {
+  rankInfo: {
+    matchDay: number;
+    ranks: TTeamRank[];
+  }[];
 };
 
 export type TAllLeague = {

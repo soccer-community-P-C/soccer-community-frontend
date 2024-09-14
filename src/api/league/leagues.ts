@@ -1,4 +1,4 @@
-import { TAllGameList, TAllLeague, TLeagueInfo, TTeamList, TTeamRankList } from '@/types/leagues';
+import { TAllGameList, TAllLeague, TLeagueInfo, TTeamList, TTeamRankInfo } from '@/types/leagues';
 import { instance } from '@/api/intance';
 
 const ENDPOINT = '/league';
@@ -42,14 +42,13 @@ export async function getTeamList({ years, leagueId }: GetTeamListProps) {
 
 export type GetTeamRankListProps = {
   season: string; // 2023
-  matchDay?: number;
   leagueId: number;
 };
 
 // 팀 랭크 조회
-export async function getTeamRankList({ leagueId, season, matchDay }: GetTeamRankListProps) {
-  const { data } = await instance.get<TTeamRankList>(`${ENDPOINT}/rank/${leagueId}`, {
-    params: { season, matchDay },
+export async function getTeamRankList({ leagueId, season }: GetTeamRankListProps) {
+  const { data } = await instance.get<TTeamRankInfo>(`${ENDPOINT}/rank/${leagueId}`, {
+    params: { season },
   });
 
   return data;

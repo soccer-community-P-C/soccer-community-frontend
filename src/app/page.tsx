@@ -1,5 +1,4 @@
 import Box from '@/components/common/box';
-import HomeRank from '@/components/home/home-rank';
 import LaligaSchedule from '@/components/home/laliga-schedule';
 import PremierSchedule from '@/components/home/premier-schedule';
 import Container from '@/components/common/container';
@@ -15,9 +14,9 @@ export default async function HomePage() {
         <PremierSchedule />
         <LaligaSchedule />
       </Box>
-      <Box>
-        <HomeRank />
-      </Box>
+      {/*<Box>*/}
+      {/*  <HomeRank />*/}
+      {/*</Box>*/}
     </Container>
   );
 }
