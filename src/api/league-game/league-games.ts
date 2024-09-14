@@ -58,7 +58,9 @@ export async function getGameListByLeagueIdYearMonth({
 
 // 특정 날짜 경기 조회하기
 export async function getGameListByDate({ targetDate }: GetGameListByDateProps) {
-  const { data } = await instance.get<TGameListByDate>(`${ENDPOINT}/date/${targetDate}`);
+  const { data } = await instance.get<TGameListByDate>(`${ENDPOINT}/date`, {
+    params: { targetDate },
+  });
 
   return data.responses;
 }
