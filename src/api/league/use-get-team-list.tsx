@@ -11,5 +11,7 @@ export function useGetTeamList({ years, leagueId }: GetTeamListProps) {
   return useQuery({
     queryKey: getQueryKey({ years, leagueId }),
     queryFn: () => getTeamList({ years, leagueId }),
+    // 팀 리스트는 시즌이 끝나지 않는한 거의 바뀌지 않으니 staleTime을 길게
+    staleTime: Infinity,
   });
 }

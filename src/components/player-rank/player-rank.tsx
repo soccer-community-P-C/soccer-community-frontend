@@ -12,6 +12,7 @@ export default function PlayerRank() {
   const leagueName = leagueNameMapper[useLeagueName() as keyof typeof leagueNameMapper];
   const { season, setSeason } = useLeagueSeason();
   const { season: currentSeason } = useLeagueSeason();
+
   function handleSelectSeason(year: number) {
     setSeason((prevState) => prevState + year);
   }
