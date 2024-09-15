@@ -1,4 +1,4 @@
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Box from '@/components/common/box';
 import MatchRecordTab from '@/components/match/match-record-tab';
@@ -32,9 +32,7 @@ const tabMapper = {
 };
 
 export default function MatchRecord({ home, away }: MatchRecordProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const pathname = usePathname();
   const { width } = useWindowSize();
   const tab = searchParams.get('tab') || 'schedule';
 
@@ -46,11 +44,11 @@ export default function MatchRecord({ home, away }: MatchRecordProps) {
     // Todo: xl 사이즈 미만에서는 openTalk을 없애거나 팝업으로 구현하는걸 고려 (네이버는 아에 없앰)
 
     if (width && width > 1024 && tab !== 'mom') {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set('tab', 'schedule');
-      router.push(pathname + '?' + params.toString());
+      // 상세 페이지 이동시 웹 환경이면 자동으로 url 파라미터값이 schedule로 설정되는 문제
+      // 파라미터를 없애는 방법으로 수정
+      history.replaceState({}, '', location.pathname);
     }
-  }, [width, pathname, router, searchParams, tab]);
+  }, [tab, width]);
 
   return (
     <>

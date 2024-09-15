@@ -11,9 +11,9 @@ type MatchHeaderProps = TGameDetails;
 
 export default function MatchHeader({ ...data }: MatchHeaderProps) {
   const { leagueName } = useLeagueTitle();
-  // Todo: 추가 필요 데이터 - 로고, 골 기록
+  // Todo: 추가 필요 데이터 - 로고
 
-  const { venue, gameDate, home, homeScore, awayScore, away, matchDay } = data;
+  const { venue, gameDate, home, homeScore, awayScore, away, matchDay, goals } = data;
 
   return (
     <header>
@@ -48,19 +48,28 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
         </section>
         <section className="grid grid-cols-2 border-t border-border-and-divide p-2 text-xs sm:py-4 lg:text-base">
           <div className="flex flex-col flex-wrap items-center justify-start gap-y-1 lg:flex-row lg:justify-end lg:gap-x-8 lg:gap-y-4 lg:pr-16">
-            <GoalInfo goalTimeList={[31, 70, 70, 70, 70]} player="라임 스털링" />
-            <GoalInfo goalTimeList={[31, 70]} player="라임 스털링" />
-            <GoalInfo goalTimeList={[31, 70]} player="라임 스털링" />
-            <GoalInfo goalTimeList={[31, 70]} player="라임 스털링" />
+            {goals.map(({ playerName, teamName, time }) => {
+              if (home === teamName) {
+                return (
+                  <GoalInfo key={`key-${playerName}-${time}}`} player={playerName} time={time} />
+                );
+              }
+            })}
           </div>
 
           <div className="flex flex-col flex-wrap items-center gap-y-1 lg:flex-row lg:gap-x-8 lg:gap-y-4 lg:pl-16">
-            <GoalInfo away={true} goalTimeList={[31, 70]} player="라임 스털링" />
-            <GoalInfo away={true} goalTimeList={[31, 70]} player="라임 스털링" />
-            <GoalInfo away={true} goalTimeList={[31, 70]} player="라임 스털링" />
-            <GoalInfo away={true} goalTimeList={[31, 70]} player="라임 스털링" />
-            <GoalInfo away={true} goalTimeList={[31, 70]} player="라임 스털링" />
-            <GoalInfo away={true} goalTimeList={[31, 70]} player="라임 스털링" />
+            {goals.map(({ playerName, teamName, time }) => {
+              if (away === teamName) {
+                return (
+                  <GoalInfo
+                    away={true}
+                    key={`key-${playerName}-${time}}`}
+                    player={playerName}
+                    time={time}
+                  />
+                );
+              }
+            })}
           </div>
         </section>
       </Box>

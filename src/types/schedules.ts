@@ -18,6 +18,15 @@ export type TGame = {
   matchDay: number;
 };
 
+export type TGoalInfo = {
+  plyerId: number;
+  playerName: string;
+  time: number;
+  type: string;
+  teamId: number;
+  teamName: string;
+};
+
 export type TGameDetails = {
   awayScore: string;
   away: string;
@@ -45,12 +54,7 @@ export type TGameDetails = {
         position: string;
       }[]
     | null;
-  goals: {
-    plyerId: 0;
-    playerName: 'string';
-    time: 0;
-    type: 'string';
-  }[];
+  goals: TGoalInfo[];
 };
 
 export type TGameByLeagueGameId = {
