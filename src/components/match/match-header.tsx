@@ -4,32 +4,16 @@ import { IconShirtSport } from '@tabler/icons-react';
 import { getDateTitle, shortISOTimeHourMinute } from '@/utils/date-helper';
 import Box from '@/components/common/box';
 import GoalInfo from '@/components/match/goal-Info';
-import { TGameDetails, TGoalInfo } from '@/types/schedules';
+import { TGameDetails } from '@/types/schedules';
 import useLeagueTitle from '@/hooks/use-league-title';
 
 type MatchHeaderProps = TGameDetails;
-
-const homeGoalPlayerList: TGoalInfo[] = [];
-const awayGoalPlayerList: TGoalInfo[] = [];
 
 export default function MatchHeader({ ...data }: MatchHeaderProps) {
   const { leagueName } = useLeagueTitle();
   // Todo: 추가 필요 데이터 - 로고
 
   const { venue, gameDate, home, homeScore, awayScore, away, matchDay, goals } = data;
-
-  console.log(goals);
-  // console.log('goals =', goals);
-  // console.log(awayGoalPlayerList);
-  // console.log(homeGoalPlayerList);
-  //
-  // for (const goal of goals) {
-  //   if (home === goal.teamName) {
-  //     homeGoalPlayerList.push(goal);
-  //   } else if (away === goal.teamName) {
-  //     awayGoalPlayerList.push(goal);
-  //   }
-  // }
 
   return (
     <header>
