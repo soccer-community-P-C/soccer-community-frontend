@@ -37,7 +37,7 @@ export default function ScheduleContentItem({
     >
       <div className="flex w-[240px] flex-[0.5_0.5_15%] items-center justify-start text-xs sm:flex-[0.5_0.5_25%]">
         <div className="w-[40px] font-semibold sm:w-[60px]">{shortISOTimeHourMinute(date)}</div>
-        <div className="md-block truncate">{venue}</div>
+        <div className="md-block w-[100px] truncate">{venue}</div>
       </div>
       <div className="flex-all-center flex-[0.5_0.5_50%] truncate sm:flex-[0.5_0.5_50%] md:gap-4">
         <p className="sm-block flex-[0.5_0.5_25%] truncate text-right font-bold">{homeTeamName}</p>
