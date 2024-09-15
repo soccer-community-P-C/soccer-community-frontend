@@ -1,4 +1,4 @@
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Box from '@/components/common/box';
 import MatchRecordTab from '@/components/match/match-record-tab';
