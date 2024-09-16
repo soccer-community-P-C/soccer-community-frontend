@@ -15,6 +15,7 @@ export type TTabList = {
 };
 
 export default function HomeRank() {
+  console.log('zz');
   // Todo: 프리미어리그, 라리가 시즌과 아이디 최신 반영
   const { leagueId: plLeagueId } = useLeagueInfo({ season: '2024', competition: 'PL' });
   const { leagueId: laligaLeagueId } = useLeagueInfo({ season: '2024', competition: 'LALIGA' });
@@ -44,7 +45,9 @@ export default function HomeRank() {
           {errorPL ? <div>데이터 가져오기 실패</div> : null}
           {dataPL && dataPL.rankInfo.length > 0 ? (
             <RankTable ranks={dataPL.rankInfo[dataPL.rankInfo.length - 1].ranks} />
-          ) : null}
+          ) : (
+            <div>데이터가 없습니다</div>
+          )}
         </>
       ),
     },
@@ -56,7 +59,9 @@ export default function HomeRank() {
           {errorLaliga ? <div>데이터 가져오기 실패</div> : null}
           {dataLaliga && dataLaliga.rankInfo.length > 0 ? (
             <RankTable ranks={dataLaliga.rankInfo[dataLaliga.rankInfo.length - 1].ranks} />
-          ) : null}
+          ) : (
+            <div>데이터가 없습니다</div>
+          )}
         </>
       ),
     },
