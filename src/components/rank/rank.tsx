@@ -6,6 +6,8 @@ import { useGetTeamRankList } from '@/api/league';
 import { LoadingBox } from '@/components/common/loading-spinner';
 import useLeagueSeason from '@/hooks/use-league-season';
 import { useLeagueInfo } from '@/hooks/useLeagueName';
+import RankGraph from '@/components/rank/rank-graph';
+import { rankInfo } from '@/components/rank/mock-data';
 
 export default function Rank() {
   const { season, setSeason } = useLeagueSeason();
@@ -27,8 +29,13 @@ export default function Rank() {
       {isPending ? <LoadingBox /> : null}
       {error ? <div>데이터가져오기 실패</div> : null}
       {data && data.rankInfo.length > 0 && data.rankInfo[data.rankInfo.length - 1].ranks ? (
-        <RankTable ranks={data.rankInfo[data.rankInfo.length - 1].ranks} />
+        <>
+          <RankTable ranks={data.rankInfo[data.rankInfo.length - 1].ranks} />
+
+          <RankGraph teamRankData={data} />
+        </>
       ) : null}
+      {/*<RankGraph teamRankData={rankInfo} />*/}
     </>
   );
 }
