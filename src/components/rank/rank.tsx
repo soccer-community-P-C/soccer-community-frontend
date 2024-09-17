@@ -7,7 +7,6 @@ import { LoadingBox } from '@/components/common/loading-spinner';
 import useLeagueSeason from '@/hooks/use-league-season';
 import { useLeagueInfo } from '@/hooks/useLeagueName';
 import RankGraph from '@/components/rank/rank-graph';
-import { rankInfo } from '@/components/rank/mock-data';
 
 export default function Rank() {
   const { season, setSeason } = useLeagueSeason();

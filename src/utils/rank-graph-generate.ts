@@ -3,7 +3,7 @@ import { TTeamRankInfo } from '@/types/leagues';
 
 class RankGraphGenerator {
   private teamRankData: TTeamRankInfo;
-  private matchDayList: number[];
+  private readonly matchDayList: number[];
   private rankingData: Record<string, number[]>;
 
   constructor(teamRankData: TTeamRankInfo) {
@@ -50,6 +50,10 @@ class RankGraphGenerator {
     }));
   }
 
+  private get addedWeekMatchDayList() {
+    return this.matchDayList.map((matchDay) => `${matchDay}주차`);
+  }
+
   public generateOption(): EChartsOption {
     return {
       title: { text: '팀 순위 그래프' },
@@ -71,7 +75,7 @@ class RankGraphGenerator {
           fontSize: 16,
         },
         boundaryGap: false,
-        data: this.matchDayList,
+        data: this.addedWeekMatchDayList,
       },
       yAxis: {
         type: 'value',

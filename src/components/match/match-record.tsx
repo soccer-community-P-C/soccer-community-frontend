@@ -31,7 +31,7 @@ const tabMapper = {
   ),
 };
 
-export default function MatchRecord({ home, away }: MatchRecordProps) {
+export default function MatchRecord({ home, away, homeLogo, awayLogo }: MatchRecordProps) {
   const searchParams = useSearchParams();
   const { width } = useWindowSize();
   const tab = searchParams.get('tab') || 'schedule';
@@ -62,7 +62,7 @@ export default function MatchRecord({ home, away }: MatchRecordProps) {
           <li className="relative z-10 min-w-0 flex-1 text-center">
             <MatchSelectTeamButton
               isSelected={isHomeSelect}
-              logoSrc={Chelsea}
+              logoSrc={homeLogo}
               onClick={() => setIsHomeSelect(true)}
               team={home}
             />
@@ -70,7 +70,7 @@ export default function MatchRecord({ home, away }: MatchRecordProps) {
           <li className="relative z-10 min-w-0 flex-1 text-center">
             <MatchSelectTeamButton
               isSelected={!isHomeSelect}
-              logoSrc={Chelsea}
+              logoSrc={awayLogo}
               onClick={() => setIsHomeSelect(false)}
               team={away}
             />

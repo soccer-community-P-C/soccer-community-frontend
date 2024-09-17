@@ -17,14 +17,20 @@ export default function MatchSelectTeamButton({
   return (
     <button
       className={twMerge(
-        'block w-full truncate rounded-lg px-[10px] py-0 text-lg leading-[43px]',
+        'flex-all-center w-full gap-1 truncate rounded-lg px-[10px] py-0 text-lg leading-[43px]',
         isSelected ? 'border bg-background font-semibold' : '',
       )}
       onClick={onClick}
       type="button"
     >
-      <Image alt="logo" className="inline-block h-[24px] w-[24px]" src={logoSrc} />
-      {team}
+      <Image
+        alt="logo"
+        className="inline-block h-[24px] w-[24px]"
+        height={24}
+        src={logoSrc}
+        width={24}
+      />
+      <span>{team}</span>
     </button>
   );
 }

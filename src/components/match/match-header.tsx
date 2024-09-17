@@ -1,6 +1,7 @@
 'use client';
 
 import { IconShirtSport } from '@tabler/icons-react';
+import Image from 'next/image';
 import { getDateTitle, shortISOTimeHourMinute } from '@/utils/date-helper';
 import Box from '@/components/common/box';
 import GoalInfo from '@/components/match/goal-Info';
@@ -13,7 +14,10 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
   const { leagueName } = useLeagueTitle();
   // Todo: 추가 필요 데이터 - 로고
 
-  const { venue, gameDate, home, homeScore, awayScore, away, matchDay, goals } = data;
+  console.log(data);
+
+  const { venue, gameDate, home, homeScore, awayScore, away, matchDay, goals, homeLogo, awayLogo } =
+    data;
 
   return (
     <header>
@@ -38,9 +42,26 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
             <div className="sm-block flex-[0.5_0.5_25%] text-right font-semibold hover:text-gray-200">
               {home}
             </div>
-            <IconShirtSport size={60} stroke={2} />
-            <div className="mx-0 min-w-16 text-center">{`${homeScore} - ${awayScore}`}</div>
-            <IconShirtSport size={60} stroke={2} />
+            <Image
+              alt="홈로고"
+              className="h-[60px] w-[60px]"
+              height={60}
+              src={homeLogo}
+              width={60}
+            />
+
+            <div className="mx-0 min-w-16 text-center">
+              {!homeScore || !awayScore ? '경기전' : `${homeScore} - ${awayScore}`}
+            </div>
+            {/*<IconShirtSport size={60} stroke={2} />*/}
+            <Image
+              alt="원정로고"
+              className="h-[60px] w-[60px]"
+              height={60}
+              src={awayLogo}
+              width={60}
+            />
+
             <div className="sm-block flex-[0.5_0.5_25%] font-semibold hover:text-gray-200">
               {away}
             </div>
