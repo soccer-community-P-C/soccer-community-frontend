@@ -15,7 +15,6 @@ export type TTabList = {
 };
 
 export default function HomeRank() {
-  console.log('zz');
   // Todo: 프리미어리그, 라리가 시즌과 아이디 최신 반영
   const { leagueId: plLeagueId } = useLeagueInfo({ season: '2024', competition: 'PL' });
   const { leagueId: laligaLeagueId } = useLeagueInfo({ season: '2024', competition: 'LALIGA' });
