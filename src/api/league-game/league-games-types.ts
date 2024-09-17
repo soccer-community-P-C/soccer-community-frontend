@@ -11,7 +11,7 @@ export type GetGameListByTeamIdProps = {
   size?: number;
 };
 
-export type GetGameListByDateProps = { targetDate: string };
+export type GetGameListByDateProps = { targetDate: string; leagueId: number };
 
 export type GetGameListByLeagueGameIdYearMonthProps = {
   leagueId: number;

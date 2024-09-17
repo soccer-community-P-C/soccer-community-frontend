@@ -8,7 +8,6 @@ import useLeagueSeason from '@/hooks/use-league-season';
 import { useLeagueInfo } from '@/hooks/useLeagueName';
 
 export default function Rank() {
-  // Todo: 현재 2023 팀랭크만 구현되어 2023으로 임시 설정
   const { season, setSeason } = useLeagueSeason();
   const fullSeason = '20' + season;
   // const fullSeason = 2023;

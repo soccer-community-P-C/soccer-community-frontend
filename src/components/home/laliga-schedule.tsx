@@ -6,11 +6,17 @@ import { useGetGameListByDate } from '@/api/league-game';
 import { getTodayDate, shortISO } from '@/utils/date-helper';
 import { LoadingBox } from '@/components/common/loading-spinner';
 import ScheduleContent from '@/components/schedule/schedule-content';
+import { useLeagueInfo } from '@/hooks/useLeagueName';
 
 const todayDate = shortISO(getTodayDate());
 
 export default function LaligaSchedule() {
-  const { isPending, data: gameList, error } = useGetGameListByDate({ targetDate: todayDate });
+  const { leagueId } = useLeagueInfo({ season: '2024', competition: 'LALIGA' });
+  const {
+    isPending,
+    data: gameList,
+    error,
+  } = useGetGameListByDate({ targetDate: todayDate, leagueId });
 
   return (
     <div className="flex w-full flex-col">
