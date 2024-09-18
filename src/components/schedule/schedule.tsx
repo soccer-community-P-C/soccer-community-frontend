@@ -34,11 +34,9 @@ export default function Schedule() {
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
   const { leagueId } = useLeagueInfo({ season: '2024' });
   const scheduleListRef = useRef<TGameListDateRef[]>([]);
-
-  useEffect(() => {
-    // 리그 변경시마다 경기일정 초기화
-    resetGameList();
-  }, [leagueId]);
+  const [upButtonActive, setUpButtonActive] = useState(false);
+  const upButtonRef = useRef<HTMLDivElement>(null);
+  const [pagePosTop, setPagePosTop] = useState(200);
 
   const {
     isPending: isPendingGameList,
@@ -65,6 +63,31 @@ export default function Schedule() {
   if (!gameListService.hasGameList() && gameList) {
     gameListService.setGameList(gameList);
   }
+
+  useEffect(() => {
+    function onScroll() {
+      if (upButtonRef && upButtonRef.current) {
+        const scrollTop = window.scrollY + 100; //현재 위치
+        //현재 페이지 상단
+        const pagePosTop = upButtonRef.current.getBoundingClientRect().top + window.scrollY;
+        if (pagePosTop < scrollTop) {
+          setUpButtonActive(true);
+        } else {
+          setUpButtonActive(false);
+        }
+      }
+    }
+    window.addEventListener('scroll', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, [upButtonActive]);
+
+  useEffect(() => {
+    // 리그 변경시마다 경기일정 초기화
+    resetGameList();
+  }, [leagueId]);
 
   useEffect(() => {
     // 서버에서 가져온 데이터를 통해 만들어진 경기일정 컴포넌트의 ref를 이용.
@@ -114,13 +137,19 @@ export default function Schedule() {
     resetGameList();
   }
 
+  function handleScrollToTop() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }
+
   return (
     <>
       <Calendar
         onSelectedYearMonthDate={handleSelectYearMonth}
         selectedYearMonthDate={selectedYearMonthDate}
       />
-      <TeamList onSelectedTeamId={handleSelectTeamId} selectedTeamId={selectedTeamId} />
+      <div ref={upButtonRef}>
+        <TeamList onSelectedTeamId={handleSelectTeamId} selectedTeamId={selectedTeamId} />
+      </div>
       {isEntireTeamId(selectedTeamId) ? (
         <>
           {isPendingGameList ? <LoadingBox /> : null}
@@ -160,6 +189,15 @@ export default function Schedule() {
             : null}
         </>
       )}
+      {upButtonActive ? (
+        <button
+          className="fixed bottom-[35px] left-auto right-[35px] z-50 h-[52px] w-[52px] border bg-[#fff] shadow-lg"
+          onClick={handleScrollToTop}
+          type="button"
+        >
+          Up
+        </button>
+      ) : null}
     </>
   );
 }
