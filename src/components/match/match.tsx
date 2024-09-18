@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { useGetGameByLeagueGameId } from '@/api/league-game';
 import { Button } from '@/components/ui/button';
 import MatchHeader from '@/components/match/match-header';
@@ -16,7 +17,11 @@ export default function Match({ leagueGameId }: MatchProps) {
   const { URL_SCHEDULE } = useAllUrls();
   const router = useRouter();
   const { isPending, data, error } = useGetGameByLeagueGameId({ leagueGameId });
-  // Todo: 필요 정보 - 로고, 기록, 투표 정보, 뛴 선수 정보(선수 id, 프로필, 시즌 기록, 경력사항)
+  // Todo: 필요 정보 - 기록, 투표 정보, 뛴 선수 정보(선수 id, 프로필, 시즌 기록, 경력사항)
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (isPending) {
     return <LoadingBox />;

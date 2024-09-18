@@ -1,6 +1,5 @@
 'use client';
 
-import { IconShirtSport } from '@tabler/icons-react';
 import Image from 'next/image';
 import { getDateTitle, shortISOTimeHourMinute } from '@/utils/date-helper';
 import Box from '@/components/common/box';
