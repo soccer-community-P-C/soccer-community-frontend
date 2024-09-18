@@ -6,7 +6,6 @@ import MatchRecordCategory from '@/components/match/match-record-category';
 import MomVote from '@/components/match/mom-vote';
 import PlayerRankTable from '@/components/player-rank/player-rank-table';
 
-import Chelsea from '@/assets/Chelsea.png';
 import MatchSelectTeamButton from '@/components/match/match-select-team-button';
 import TableContainer from '@/components/common/table/table-container';
 import { TGameDetails } from '@/types/schedules';
