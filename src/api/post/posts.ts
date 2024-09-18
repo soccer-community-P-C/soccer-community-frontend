@@ -34,3 +34,7 @@ export async function editPost(post: TWritePost, postId: number) {
 
   return data;
 }
+
+export function likePost(postId: string) {
+  return instance.post(`${ENDPOINT}/like/${postId}`);
+}
