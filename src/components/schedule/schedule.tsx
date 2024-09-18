@@ -10,7 +10,7 @@ import TeamList from '@/components/schedule/team-list';
 import { useGetGameListByTeamIdYearMonth } from '@/api/league-game/use-get-game-list-by-team-year-month';
 import { ENTIRE_TEAM_ID } from '@/constants/team-list';
 import { useLeagueInfo } from '@/hooks/useLeagueName';
-import { TGameListWithDate } from '@/types/schedules';
+import { TGameListDateRef } from '@/types/schedules';
 import ScheduleContent from '@/components/schedule/schedule-content';
 
 const todayDate = getTodayDate();
@@ -29,18 +29,11 @@ function isEntireTeamId(teamId: number) {
   return teamId === ENTIRE_TEAM_ID;
 }
 
-type DivRef = {
-  ref: HTMLDivElement | null;
-};
-type TGameListWithDateResponseDate = Pick<TGameListWithDate, 'date'>;
-
-type TargetObject = TGameListWithDateResponseDate & DivRef;
-
 export default function Schedule() {
   const [selectedTeamId, setSelectedTeamId] = useState(ENTIRE_TEAM_ID);
   const [selectedYearMonthDate, setSelectedYearMonthDate] = useState(todayDate);
   const { leagueId } = useLeagueInfo({ season: '2024' });
-  const scheduleListRef = useRef<TargetObject[]>([]);
+  const scheduleListRef = useRef<TGameListDateRef[]>([]);
 
   useEffect(() => {
     // 리그 변경시마다 경기일정 초기화
@@ -86,7 +79,7 @@ export default function Schedule() {
     }
 
     if (scheduleListRef && scheduleListRef.current.length > 0) {
-      let targetRef: TargetObject = scheduleListRef.current[0];
+      let targetRef: TGameListDateRef = scheduleListRef.current[0];
       let dateDifference = Number.MAX_SAFE_INTEGER;
 
       for (let i = 0; i < scheduleListRef.current.length; i++) {
