@@ -74,3 +74,10 @@ export type TGameListByDate = {
 };
 
 export type TGameListByLeagueTeamId = TAllGameList;
+
+type DivRef = {
+  ref: HTMLDivElement | null;
+};
+type TGameListWithDateResponseDate = Pick<TGameListWithDate, 'date'>;
+
+export type TGameListDateRef = TGameListWithDateResponseDate & DivRef;
