@@ -36,7 +36,6 @@ export default function Schedule() {
   const scheduleListRef = useRef<TGameListDateRef[]>([]);
   const [upButtonActive, setUpButtonActive] = useState(false);
   const upButtonRef = useRef<HTMLDivElement>(null);
-  const [pagePosTop, setPagePosTop] = useState(200);
 
   const {
     isPending: isPendingGameList,
@@ -65,6 +64,7 @@ export default function Schedule() {
   }
 
   useEffect(() => {
+    // 스크롤 이동시 Up 버튼 상태를 관리하는 effect
     function onScroll() {
       if (upButtonRef && upButtonRef.current) {
         const scrollTop = window.scrollY + 100; //현재 위치
@@ -93,8 +93,6 @@ export default function Schedule() {
     // 서버에서 가져온 데이터를 통해 만들어진 경기일정 컴포넌트의 ref를 이용.
     // 오늘 날짜와 경기일정들의 date들을 비교 하여. 가장가까운 ref찾는다.
     // 찾은 ref를 통해 스크롤을 이동시킨다.
-
-    const todayDate = getTodayDate();
 
     if (selectedYearMonthDate.getMonth() !== todayDate.getMonth()) {
       // 다른 날짜는 굳이 스크롤 할 필요 없어서 바로 리턴.
