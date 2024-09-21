@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import { instance, oauthInstance } from '@/api/intance';
 import { TLoginInputs, TLoginResponse, TSignupInputs, TSignupRequest } from '@/types/auth';
 import { USER_ROLE } from '@/constants/roles';
