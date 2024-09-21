@@ -5,6 +5,7 @@
 // import { Input } from '@/components/ui/input';
 // import ErrorMessage from '@/components/auth-form/error-message';
 // import Label from '@/components/auth-form/label';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 // import { LoadingSpinner } from '@/components/common/loading-spinner';
 import Box from '@/components/common/box';
@@ -12,18 +13,11 @@ import Box from '@/components/common/box';
 // import { useLogin } from '@/api/auth/use-login';
 // import { TLoginInputs } from '@/types/auth';
 import withoutAuth from '@/hocs/withoutAuth';
-import useLocalStorage from '@/hooks/use-local-storage';
-import { TOKEN_KEY } from '@/constants/auth';
-import { useAuth } from '@/contexts/auth-context';
-import { useGoogleLogin } from '@/api/auth/use-google-login';
-import { setAuthHeader } from '@/api/auth/auths';
 
 function LogInPage() {
-  const [, setToken] = useLocalStorage<string>(TOKEN_KEY, '');
-  const { setIsAuthenticated } = useAuth();
-  const { data, refetch } = useGoogleLogin();
-  console.log('data = ', data);
-  console.log('data.accessToken = ', data?.accessToken);
+  // const { data, refetch } = useGoogleLogin();
+  // console.log('data = ', data);
+  // console.log('data.accessToken = ', data?.accessToken);
 
   // const {
   //   register,
@@ -39,19 +33,17 @@ function LogInPage() {
   //   mutate(data);
   // }
 
-  if (data && data.accessToken) {
-    setToken(data.accessToken);
-    setAuthHeader(data.accessToken);
-    setIsAuthenticated(true);
-  }
-
-  async function handleGoogleLogin() {
-    await refetch();
-  }
+  // if (data && data.accessToken) {
+  //   setToken(data.accessToken);
+  //   setAuthHeader(data.accessToken);
+  //   setIsAuthenticated(true);
+  // }
 
   return (
     <Box className="m-auto my-6 min-w-mobile max-w-md">
-      <Button onClick={handleGoogleLogin}>구글 로그인</Button>
+      <Button asChild={true}>
+        <Link href="oauth2">카카오 로그인</Link>
+      </Button>
       {/*<form className="mx-auto flex w-full flex-col gap-5" onSubmit={handleSubmit(onLogin)}>*/}
       {/*  <BoxHeading className="text-center font-bold" hTagType="h2">*/}
       {/*    로그인*/}
