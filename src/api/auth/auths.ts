@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { instance } from '@/api/intance';
+import { instance, oauthInstance } from '@/api/intance';
 import { TLoginInputs, TLoginResponse, TSignupInputs, TSignupRequest } from '@/types/auth';
 import { USER_ROLE } from '@/constants/roles';
 
@@ -35,7 +35,8 @@ export function setAuthHeader(token: string) {
 }
 
 export async function googleAuth() {
-  const { data } = await instance.get<TLoginResponse>('/oauth2/authorization/google');
+  const { data } = await oauthInstance.get<TLoginResponse>('');
+  // const { data } = await oauthInstance.get<TLoginResponse>('/authorization/google');
 
   return data;
 }
