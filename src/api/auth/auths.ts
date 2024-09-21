@@ -33,3 +33,9 @@ export async function validateToken(token: string) {
 export function setAuthHeader(token: string) {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
+
+export async function googleAuth() {
+  const { data } = await instance.get<TLoginResponse>('/oauth2/authorization/google');
+
+  return data;
+}
