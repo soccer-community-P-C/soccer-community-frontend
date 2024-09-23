@@ -5,7 +5,8 @@
 // import { Input } from '@/components/ui/input';
 // import ErrorMessage from '@/components/auth-form/error-message';
 // import Label from '@/components/auth-form/label';
-import Link from 'next/link';
+// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 // import { LoadingSpinner } from '@/components/common/loading-spinner';
 import Box from '@/components/common/box';
@@ -15,6 +16,8 @@ import Box from '@/components/common/box';
 import withoutAuth from '@/hocs/withoutAuth';
 
 function LogInPage() {
+  const router = useRouter();
+  // Todo: 구글 로그인 반영 필요
   // const { data, refetch } = useGoogleLogin();
   // console.log('data = ', data);
   // console.log('data.accessToken = ', data?.accessToken);
@@ -39,11 +42,13 @@ function LogInPage() {
   //   setIsAuthenticated(true);
   // }
 
+  function handleGoogleLogin() {
+    router.push('oauth2');
+  }
+
   return (
     <Box className="m-auto my-6 min-w-mobile max-w-md">
-      <Button asChild={true}>
-        <Link href="oauth2">카카오 로그인</Link>
-      </Button>
+      <Button onClick={handleGoogleLogin}>구글 로그인</Button>
       {/*<form className="mx-auto flex w-full flex-col gap-5" onSubmit={handleSubmit(onLogin)}>*/}
       {/*  <BoxHeading className="text-center font-bold" hTagType="h2">*/}
       {/*    로그인*/}
