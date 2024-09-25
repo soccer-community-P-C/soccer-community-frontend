@@ -1,16 +1,11 @@
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import Box from '@/components/common/box';
-import MatchRecordTab from '@/components/match/match-record-tab';
+import { useEffect } from 'react';
 import MatchRecordCategory from '@/components/match/match-record-category';
 import MomVote from '@/components/match/mom-vote';
-import PlayerRankTable from '@/components/player-rank/player-rank-table';
-
-import MatchSelectTeamButton from '@/components/match/match-select-team-button';
-import TableContainer from '@/components/common/table/table-container';
 import { TGameDetails } from '@/types/schedules';
 import OpenTalk from '@/components/match/open-talk';
 import useWindowSize from '@/hooks/use-window-size';
+import Box from '@/components/common/box';
 
 export type TVoteInfo = {
   id: string;
@@ -20,22 +15,22 @@ export type TVoteInfo = {
 
 type MatchRecordProps = TGameDetails;
 
-const tabMapper = {
-  mom: <MomVote />,
-  schedule: <MatchRecordCategory />,
-  talk: (
-    <div className="">
-      <OpenTalk />
-    </div>
-  ),
-};
+// const tabMapper = {
+//   mom: <MomVote />,
+//   schedule: <MatchRecordCategory />,
+//   talk: (
+//     <div className="">
+//       <OpenTalk />
+//     </div>
+//   ),
+// };
 
 export default function MatchRecord({ home, away, homeLogo, awayLogo }: MatchRecordProps) {
   const searchParams = useSearchParams();
   const { width } = useWindowSize();
   const tab = searchParams.get('tab') || 'schedule';
 
-  const [isHomeSelect, setIsHomeSelect] = useState(true);
+  // const [isHomeSelect, setIsHomeSelect] = useState(true);
 
   useEffect(() => {
     // xl 사이즈 넘어가면 aside에 오픈톡컴포넌트가 생기도록 구현(트릭)
@@ -51,34 +46,37 @@ export default function MatchRecord({ home, away, homeLogo, awayLogo }: MatchRec
 
   return (
     <>
-      <Box className="h-full px-0 sm:gap-4">
-        <MatchRecordTab tab={tab} />
-        <hr />
-        {tabMapper[tab as keyof typeof tabMapper]}
-      </Box>
       <Box>
-        <ul className="relative flex overflow-hidden rounded-lg border bg-hover">
-          <li className="relative z-10 min-w-0 flex-1 text-center">
-            <MatchSelectTeamButton
-              isSelected={isHomeSelect}
-              logoSrc={homeLogo}
-              onClick={() => setIsHomeSelect(true)}
-              team={home}
-            />
-          </li>
-          <li className="relative z-10 min-w-0 flex-1 text-center">
-            <MatchSelectTeamButton
-              isSelected={!isHomeSelect}
-              logoSrc={awayLogo}
-              onClick={() => setIsHomeSelect(false)}
-              team={away}
-            />
-          </li>
-        </ul>
-        <TableContainer isMatch={true}>
-          <PlayerRankTable isMatch={true} />
-        </TableContainer>
+        <div />
       </Box>
+      {/*<Box className="h-full px-0 sm:gap-4">*/}
+      {/*  <MatchRecordTab tab={tab} />*/}
+      {/*  <hr />*/}
+      {/*  {tabMapper[tab as keyof typeof tabMapper]}*/}
+      {/*</Box>*/}
+      {/*<Box>*/}
+      {/*  <ul className="relative flex overflow-hidden rounded-lg border bg-hover">*/}
+      {/*    <li className="relative z-10 min-w-0 flex-1 text-center">*/}
+      {/*      <MatchSelectTeamButton*/}
+      {/*        isSelected={isHomeSelect}*/}
+      {/*        logoSrc={homeLogo}*/}
+      {/*        onClick={() => setIsHomeSelect(true)}*/}
+      {/*        team={home}*/}
+      {/*      />*/}
+      {/*    </li>*/}
+      {/*    <li className="relative z-10 min-w-0 flex-1 text-center">*/}
+      {/*      <MatchSelectTeamButton*/}
+      {/*        isSelected={!isHomeSelect}*/}
+      {/*        logoSrc={awayLogo}*/}
+      {/*        onClick={() => setIsHomeSelect(false)}*/}
+      {/*        team={away}*/}
+      {/*      />*/}
+      {/*    </li>*/}
+      {/*  </ul>*/}
+      {/*  <TableContainer isMatch={true}>*/}
+      {/*    <PlayerRankTable isMatch={true} />*/}
+      {/*  </TableContainer>*/}
+      {/*</Box>*/}
     </>
   );
 }

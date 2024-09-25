@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { TGame } from '@/types/schedules';
 import { shortISOTimeHourMinute } from '@/utils/date-helper';
 import useAllUrls from '@/hooks/use-all-urls';
-import { BEFORE, END } from '@/constants/league-game';
+import { BEFORE, GAMING, leagueGameMapper } from '@/constants/league-game';
 
 type ScheduleContentItemProps = TGame & {
   isHome?: boolean;
@@ -34,7 +34,7 @@ export default function ScheduleContentItem({
       className={twMerge(
         'flex h-10 w-full cursor-pointer items-center px-2 transition-colors hover:bg-hover sm:gap-2 md:h-14 md:gap-6 md:px-8',
         isHome && 'h-10',
-        // leagueGameStatus === PROGRESS && 'bg-gray-100 dark:bg-gray-700 dark:hover:bg-hover',
+        leagueGameStatus === GAMING && 'bg-gray-100 dark:bg-gray-700 dark:hover:bg-hover',
       )}
       href={{
         pathname: `${URL_MATCH}/${leagueGameId}`,
@@ -48,9 +48,7 @@ export default function ScheduleContentItem({
         <p className="sm-block flex-[0.5_0.5_25%] truncate text-right font-bold">{homeTeamName}</p>
         <Image alt="홈로고" className="h-[24px] w-[24px]" height={24} src={homeLogo} width={24} />
         <div className="flex min-w-16 flex-col text-center font-extrabold sm:mx-2 md:text-lg xl:mx-8">
-          {!homeScore || !awayScore || leagueGameStatus === BEFORE
-            ? '경기 전'
-            : `${homeScore} - ${awayScore}`}
+          {leagueGameStatus === BEFORE ? '경기 전' : `${homeScore} : ${awayScore}`}
         </div>
 
         <Image alt="원정로고" className="h-[24px] w-[24px]" height={24} src={awayLogo} width={24} />
@@ -59,11 +57,7 @@ export default function ScheduleContentItem({
       <div className="flex w-[240px] flex-[0.5_0.5_15%] items-center justify-end text-xs sm:flex-[0.5_0.5_25%]">
         <div className="md-block w-[60px] font-semibold">{matchDay}R</div>
         <p className="truncate">
-          {leagueGameStatus === BEFORE
-            ? '경기 전'
-            : leagueGameStatus === END
-              ? '경기 종료'
-              : '경기 중'}
+          {leagueGameMapper[leagueGameStatus as keyof typeof leagueGameMapper]}
         </p>
       </div>
     </Link>

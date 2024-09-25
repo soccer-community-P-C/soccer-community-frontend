@@ -15,9 +15,9 @@ export default function MatchSection({ ...data }: MatchSectionProps) {
 
   return (
     <section className="flex w-full flex-col-reverse gap-2 xl:flex-row">
-      <div className="flex w-full flex-col gap-2">
+      <article className="flex w-full flex-col gap-2">
         <MatchRecord {...data} />
-      </div>
+      </article>
       <aside className="flex w-full shrink-0 flex-col gap-2 sm:flex-row xl:w-[450px] xl:flex-col">
         <Box className="gap-2">
           <strong>승부예측</strong>
