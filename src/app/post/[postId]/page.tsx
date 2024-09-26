@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import sanitizeHtml from 'sanitize-html';
 import { IconEye, IconMessage, IconThumbUp } from '@tabler/icons-react';
 import Box from '@/components/common/box';
@@ -8,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { LoadingSpinner } from '@/components/common/loading-spinner';
 import PostEditForm from '@/components/post/post-edit-form';
 import CommentList from '@/components/post/comment-list';
+import { MIN_PAGE } from '@/components/post/pagination';
 import useInput from '@/hooks/useInput';
 import { useDeletePost, useGetPost } from '@/api/post';
 import { useGetCommentList, useWriteComment } from '@/api/comment';
@@ -19,6 +21,10 @@ type PostPageProps = {
 };
 
 export default function PostPage({ params }: PostPageProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pageParam = searchParams.get('page') ?? MIN_PAGE;
+
   const [isEditMode, setIsEditMode] = useState(false);
   const { data: post, isError: isErrorPost, isPending: isPendingPost } = useGetPost(params.postId);
   const { mutate: deletePost } = useDeletePost();
@@ -49,6 +55,10 @@ export default function PostPage({ params }: PostPageProps) {
 
   function handleClickEdit() {
     setIsEditMode(true);
+  }
+
+  function handleGoToList() {
+    router.push(`/post?page=${pageParam}`);
   }
 
   if (isPendingPost) {
@@ -126,6 +136,9 @@ export default function PostPage({ params }: PostPageProps) {
           <button className="text-red-500" onClick={handleDeletePost} type="button">
             삭제
           </button>
+          <Button className="text-base" onClick={handleGoToList} variant="secondary">
+            목록으로
+          </Button>
         </div>
       </div>
       <hr className="dark:border-white" />
