@@ -10,6 +10,7 @@ import PostEditForm from '@/components/post/post-edit-form';
 import CommentList from '@/components/post/comment-list';
 import useInput from '@/hooks/useInput';
 import { useDeletePost, useGetPost } from '@/api/post';
+import { useLikePost } from '@/api/post/use-like-post';
 import { useGetCommentList, useWriteComment } from '@/api/comment';
 import { getTimeAgoString } from '@/utils/date-helper';
 import 'react-quill/dist/quill.snow.css';
@@ -26,6 +27,7 @@ export default function PostPage({ params }: PostPageProps) {
   const { mutateAsync: writeComment, isPending: isPendingWriteComment } = useWriteComment(
     params.postId,
   );
+  const { mutate: likePost } = useLikePost();
 
   const comment = useInput();
 
@@ -49,6 +51,10 @@ export default function PostPage({ params }: PostPageProps) {
 
   function handleClickEdit() {
     setIsEditMode(true);
+  }
+
+  function handleLikePost() {
+    likePost(params.postId);
   }
 
   if (isPendingPost) {
@@ -116,7 +122,11 @@ export default function PostPage({ params }: PostPageProps) {
         ) : null}
       </div>
       <div className="flex justify-between">
-        <button className="flex w-14 cursor-pointer items-center gap-1" type="button">
+        <button
+          className="flex w-14 cursor-pointer items-center gap-1 hover:text-black dark:hover:text-gray-300"
+          onClick={handleLikePost}
+          type="button"
+        >
           <IconThumbUp className="h-7 w-7" /> {post?.likeCount}
         </button>
         <div className="flex gap-2">
