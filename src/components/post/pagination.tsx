@@ -47,7 +47,7 @@ export default function Pagination({ totalPages }: PaginationProps) {
             border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100
             hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400
             dark:hover:bg-gray-700 dark:hover:text-white sm:px-4"
-            href={`${pathname}?page=${Math.max(1, currentPage - 1)}`}
+            href={`${pathname}?page=${Math.max(1, currentPage - pageSize)}`}
           >
             <span className="sr-only">Previous</span>
             <svg
@@ -100,7 +100,7 @@ export default function Pagination({ totalPages }: PaginationProps) {
               bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700
               dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700
               dark:hover:text-white sm:px-4"
-            href={`${pathname}?page=${Math.min(currentPage + 1, totalPages)}`}
+            href={`${pathname}?page=${Math.min(currentPage + pageSize, totalPages)}`}
           >
             <span className="sr-only">Next</span>
             <svg
