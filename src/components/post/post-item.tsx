@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 import { IconEye, IconMessage, IconThumbUp } from '@tabler/icons-react';
+import { MIN_PAGE } from '@/components/post/pagination';
 import useAllUrls from '@/hooks/use-all-urls';
 import { TGetPostList } from '@/types/posts';
 import { getTimeAgoString } from '@/utils/date-helper';
@@ -10,6 +12,8 @@ type PostItemProps = {
 };
 
 export default function PostItem({ post }: PostItemProps) {
+  const searchParams = useSearchParams();
+  const pageParam = searchParams.get('page') ?? MIN_PAGE;
   const { URL_POST } = useAllUrls();
 
   return (
@@ -24,7 +28,7 @@ export default function PostItem({ post }: PostItemProps) {
         <span className="text-xs md:text-base">{post.likeCount}</span>
       </div>
       <div className="flex flex-col gap-2 sm:w-4/5 sm:pr-3">
-        <Link className="line-clamp-2" href={`${URL_POST}/${post.postId}`}>
+        <Link className="line-clamp-2" href={`${URL_POST}/${post.postId}?page=${pageParam}`}>
           {post.title}
         </Link>
         <div className="flex items-center gap-1 text-sm">

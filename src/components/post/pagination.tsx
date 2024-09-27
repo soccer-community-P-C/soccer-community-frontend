@@ -7,6 +7,8 @@ import { isMoblieSize } from '@/utils/window-size';
 const WEB_PAGE_LIMIT = 5;
 const MOBILE_PAGE_LIMIT = 3;
 
+export const MIN_PAGE = '1';
+
 type PaginationProps = {
   totalPages: number;
 };
