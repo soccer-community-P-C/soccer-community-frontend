@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import Box from '@/components/common/box';
-import Pagination from '@/components/post/pagination';
+import Pagination, { MIN_PAGE } from '@/components/post/pagination';
 import { Button } from '@/components/ui/button';
 import PostItem from '@/components/post/post-item';
 import { useGetPostList } from '@/api/post/use-get-post-list';
@@ -12,7 +12,7 @@ import { LoadingSpinner } from '@/components/common/loading-spinner';
 export default function PostListPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const pageParam = searchParams.get('page') ?? '1';
+  const pageParam = searchParams.get('page') ?? MIN_PAGE;
 
   const currentPage = Number(pageParam) - 1;
 
