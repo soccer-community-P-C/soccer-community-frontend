@@ -48,7 +48,9 @@ export default function ScheduleContentItem({
         <p className="sm-block flex-[0.5_0.5_25%] truncate text-right font-bold">{homeTeamName}</p>
         <Image alt="홈로고" className="h-[24px] w-[24px]" height={24} src={homeLogo} width={24} />
         <div className="flex min-w-16 flex-col text-center font-extrabold sm:mx-2 md:text-lg xl:mx-8">
-          {leagueGameStatus === BEFORE ? '경기 전' : `${homeScore} : ${awayScore}`}
+          {!homeScore || !awayScore || leagueGameStatus === BEFORE
+            ? '경기 전'
+            : `${homeScore} : ${awayScore}`}
         </div>
 
         <Image alt="원정로고" className="h-[24px] w-[24px]" height={24} src={awayLogo} width={24} />

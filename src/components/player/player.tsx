@@ -17,7 +17,7 @@ export default function Player() {
   const searchParams = useSearchParams();
   const tab = searchParams.get('tab') || 'career';
 
-  const { isPending, error, data: playerData } = useGetPlayer({ playerId: 1 });
+  const { isPending, error, data: playerData } = useGetPlayer({ playerId: 12195 });
 
   if (isPending) {
     return <LoadingBox />;

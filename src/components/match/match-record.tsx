@@ -1,11 +1,12 @@
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
-import MatchRecordCategory from '@/components/match/match-record-category';
-import MomVote from '@/components/match/mom-vote';
+// import MatchRecordCategory from '@/components/match/match-record-category';
+// import MomVote from '@/components/match/mom-vote';
 import { TGameDetails } from '@/types/schedules';
-import OpenTalk from '@/components/match/open-talk';
+// import OpenTalk from '@/components/match/open-talk';
 import useWindowSize from '@/hooks/use-window-size';
 import Box from '@/components/common/box';
+import Formation from '@/components/match/formation';
 
 export type TVoteInfo = {
   id: string;
@@ -47,7 +48,7 @@ export default function MatchRecord({ home, away, homeLogo, awayLogo }: MatchRec
   return (
     <>
       <Box>
-        <div />
+        <Formation leftFormation={[4, 3, 3]} rightFormation={[5, 3, 2]} />
       </Box>
       {/*<Box className="h-full px-0 sm:gap-4">*/}
       {/*  <MatchRecordTab tab={tab} />*/}
