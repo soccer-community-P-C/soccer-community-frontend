@@ -13,20 +13,8 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
   const { leagueName } = useLeagueTitle();
   // Todo: 추가 필요 데이터 - 로고
 
-  const {
-    venue,
-    gameDate,
-    home,
-    homeScore,
-    awayScore,
-    away,
-    matchDay,
-    goals,
-    homeLogo,
-    awayLogo,
-    awayPlayers,
-    homePlayers,
-  } = data;
+  const { venue, gameDate, home, homeScore, awayScore, away, matchDay, goals, homeLogo, awayLogo } =
+    data;
 
   return (
     <header>

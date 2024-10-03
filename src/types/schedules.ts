@@ -27,6 +27,14 @@ export type TGoalInfo = {
   teamId: number;
 };
 
+export type TGamePlayer = {
+  playerId: number;
+  position: string;
+  shirtNumber: string;
+  playerKrName: string;
+  playerEnName: string;
+};
+
 export type TGameDetails = {
   awayScore: string;
   away: string;
@@ -40,24 +48,8 @@ export type TGameDetails = {
 
   leagueGameStatus: string;
   venue: string;
-  homePlayers:
-    | {
-        playerId: number;
-        position: string;
-        shirtNumber: string;
-        playerKrName: string;
-        playerEnName: string;
-      }[]
-    | null;
-  awayPlayers:
-    | {
-        playerId: number;
-        position: string;
-        shirtNumber: string;
-        playerKrName: string;
-        playerEnName: string;
-      }[]
-    | null;
+  homePlayers: TGamePlayer[] | null;
+  awayPlayers: TGamePlayer[] | null;
   goals: TGoalInfo[];
 };
 
