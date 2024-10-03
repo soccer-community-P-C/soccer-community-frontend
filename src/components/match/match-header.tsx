@@ -13,8 +13,20 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
   const { leagueName } = useLeagueTitle();
   // Todo: 추가 필요 데이터 - 로고
 
-  const { venue, gameDate, home, homeScore, awayScore, away, matchDay, goals, homeLogo, awayLogo } =
-    data;
+  const {
+    venue,
+    gameDate,
+    home,
+    homeScore,
+    awayScore,
+    away,
+    matchDay,
+    goals,
+    homeLogo,
+    awayLogo,
+    minute,
+    injuryTime,
+  } = data;
 
   return (
     <header>
@@ -35,7 +47,7 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
           </div>
         </header>
         <section className="flex flex-col items-center justify-center gap-2 ">
-          <div className="flex h-14 w-full items-center justify-center gap-2 text-base font-semibold sm:gap-6 sm:text-xl md:text-2xl lg:text-4xl">
+          <div className="flex h-14 w-full items-center justify-center gap-2 text-xl font-semibold sm:gap-6 md:text-2xl lg:text-4xl">
             <div className="sm-block flex-[0.5_0.5_25%] cursor-pointer text-right font-semibold hover:text-gray-300">
               {home}
             </div>
@@ -47,8 +59,11 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
               width={60}
             />
 
-            <div className="mx-0 min-w-16 text-center">
-              {!homeScore || !awayScore ? '경기전' : `${homeScore} - ${awayScore}`}
+            <div className="relative mx-0 flex min-w-16 flex-col text-center">
+              <span>{!homeScore || !awayScore ? '경기전' : `${homeScore} - ${awayScore}`}</span>
+              <span className="absolute bottom-[-24px] left-1/2 translate-x-[-50%] text-[13px] font-normal lg:text-base">
+                {minute}+{injuryTime}
+              </span>
             </div>
             <Image
               alt="원정로고"

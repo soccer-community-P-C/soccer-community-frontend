@@ -1,12 +1,9 @@
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
-// import MatchRecordCategory from '@/components/match/match-record-category';
-// import MomVote from '@/components/match/mom-vote';
-import { TGameDetails } from '@/types/schedules';
-// import OpenTalk from '@/components/match/open-talk';
 import useWindowSize from '@/hooks/use-window-size';
 import Box from '@/components/common/box';
 import Formation from '@/components/match/formation';
+import { TGameDetails } from '@/types/schedules';
 
 export type TVoteInfo = {
   id: string;

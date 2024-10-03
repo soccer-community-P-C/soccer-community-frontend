@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import { TGamePlayer } from '@/types/schedules';
-import { cn } from '@/utils/cn';
+import FormationItem from '@/components/match/formation-item';
 
 interface FormationProps {
   leftFormation: number[];
@@ -14,67 +15,43 @@ export default function Formation({
   leftFormation,
   rightFormation,
 }: FormationProps) {
-  function testRender(formation: number[], isLeft: boolean) {
-    const reversedFormation = isLeft ? formation : [...formation].reverse();
-    return (
-      <div
-        className={cn(
-          `relative flex h-[300px] w-full flex-row bg-[#247847] md:h-full md:w-1/2`,
-          isLeft ? 'sm:rounded-l-lg sm:pr-8' : 'sm:rounded-r-lg sm:pl-8',
-        )}
-      >
-        <span
-          className={`absolute top-1/2 z-10 h-[220px] w-[80px] translate-y-[-50%] border-2 ${isLeft ? 'left-0 border-l-0' : 'right-0 border-r-0'} border-[#338657] bg-[#247847]`}
-        >
-          <span
-            className={`absolute top-1/2 h-[120px] w-[30px] translate-y-[-50%] border-2 border-[#338657] ${isLeft ? 'left-0 border-l-0' : 'right-0 border-r-0'}`}
-          />
-        </span>
-        <span
-          className={`absolute top-1/2 z-[5] h-[110px] w-[110px] translate-y-[-50%] rounded-full border-2 border-[#338657] ${isLeft ? 'left-0' : 'right-0'}`}
-        />
-
-        {reversedFormation.map((playerCount, playerCountIndex) => (
-          <div
-            className="z-50 h-full w-full"
-            key={playerCountIndex}
-            style={{
-              left: isLeft ? `${(playerCountIndex * 50) / reversedFormation.length}%` : 'auto',
-            }}
-          >
-            {Array(playerCount)
-              .fill(0)
-              .map((_, index) => (
-                <div
-                  className="flex-all-center"
-                  key={index}
-                  style={{ height: `${100 / playerCount - 1}%` }}
-                >
-                  <span
-                    className={`${isLeft ? 'bg-blue-500' : 'bg-red-500'} h-6 w-6 rounded-full border border-white`}
-                  />
-                </div>
-              ))}
-          </div>
-        ))}
-      </div>
-    );
-  }
-
+  // Todo: 라인업 UI 수정
   return (
-    <div className="w-full md:h-[400px]">
-      <div className="relative flex h-full w-full flex-col sm:flex-row">
-        {testRender(leftFormation, true)}
-        {testRender(rightFormation, false)}
-        <span className="sm-block absolute left-1/2 top-0 h-full w-[2px] bg-[#338657]" />
-        <span className="absolute left-0 top-1/2 h-[2px] w-full bg-[#338657] sm:hidden" />
-        <span className="sm-block absolute left-1/2 top-1/2 h-[100px] w-[100px] translate-x-[-50%] translate-y-[-50%] rounded-full border-2 border-[#338657]" />{' '}
+    <>
+      <div className="w-full md:h-[400px]">
+        <div className="relative flex h-full w-full flex-col sm:flex-row">
+          <FormationItem formation={leftFormation} isLeft={true} />
+          <FormationItem formation={rightFormation} isLeft={false} />
+          <span className="sm-block absolute left-1/2 top-0 h-full w-[2px] bg-[#338657]" />
+          <span className="absolute left-0 top-1/2 h-[2px] w-full bg-[#338657] sm:hidden" />
+          <span className="sm-block absolute left-1/2 top-1/2 h-[100px] w-[100px] translate-x-[-50%] translate-y-[-50%] rounded-full border-2 border-[#338657]" />{' '}
+        </div>
       </div>
-      {/*<div className="relative aspect-[2/1] bg-[#247847]">*/}
-      {/*  {renderPlayers(leftFormation, true)}*/}
-      {/*  /!*{renderPlayers(rightFormation.slice().reverse(), false)}*!/*/}
-      {/*  <div className="absolute left-1/2 top-0 h-full w-px bg-white" /> /!* 중앙선 *!/*/}
-      {/*</div>*/}
-    </div>
+      <div className="flex justify-between">
+        <span>UI 수정 예정</span>
+        <div>
+          {homePlayers?.map((player) => (
+            <Link
+              className="hover:text-gray-300"
+              href={`/player/${player.playerId}`}
+              key={player.playerId}
+            >
+              <p>{player.playerKrName}</p>
+            </Link>
+          ))}
+        </div>
+        <div>
+          {awayPlayers?.map((player) => (
+            <Link
+              className="hover:text-gray-400 dark:hover:text-gray-300"
+              href={`/player/${player.playerId}`}
+              key={player.playerId}
+            >
+              <p>{player.playerKrName}</p>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

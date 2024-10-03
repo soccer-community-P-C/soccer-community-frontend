@@ -16,7 +16,7 @@ export default function GoalInfo({ away = false, player, time, playerId }: GoalI
         'flex items-center gap-0 hover:text-gray-300 sm:gap-1',
         away ? 'flex-row-reverse' : '',
       )}
-      href={`player/${playerId}`}
+      href={`/player/${playerId}`}
     >
       <span>
         {player} {`${time}'`}

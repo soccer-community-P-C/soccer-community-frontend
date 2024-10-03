@@ -51,6 +51,8 @@ export type TGameDetails = {
   homePlayers: TGamePlayer[] | null;
   awayPlayers: TGamePlayer[] | null;
   goals: TGoalInfo[];
+  minute: number;
+  injuryTime: number;
 };
 
 export type TGameByLeagueGameId = {
