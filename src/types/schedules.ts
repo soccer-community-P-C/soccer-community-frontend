@@ -23,8 +23,8 @@ export type TGoalInfo = {
   playerName: string;
   time: number;
   type: string;
-  teamId: number;
   teamName: string;
+  teamId: number;
 };
 
 export type TGameDetails = {
@@ -42,18 +42,20 @@ export type TGameDetails = {
   venue: string;
   homePlayers:
     | {
-        name: string;
-        playedTime: number;
-        subTime: number;
+        playerId: number;
         position: string;
+        shirtNumber: string;
+        playerKrName: string;
+        playerEnName: string;
       }[]
     | null;
   awayPlayers:
     | {
-        name: string;
-        playedTime: number;
-        subTime: number;
+        playerId: number;
         position: string;
+        shirtNumber: string;
+        playerKrName: string;
+        playerEnName: string;
       }[]
     | null;
   goals: TGoalInfo[];

@@ -13,11 +13,15 @@ import PlayerInfoTab from '@/components/player/player-info-tab';
 import PlayerCareer from '@/components/player/player-career';
 import PlayerComment from '@/components/player/player-comment';
 
-export default function Player() {
+type PlayerProps = {
+  playerId: string;
+};
+
+export default function Player({ playerId }: PlayerProps) {
   const searchParams = useSearchParams();
   const tab = searchParams.get('tab') || 'career';
 
-  const { isPending, error, data: playerData } = useGetPlayer({ playerId: 12195 });
+  const { isPending, error, data: playerData } = useGetPlayer({ playerId: Number(playerId) });
 
   if (isPending) {
     return <LoadingBox />;
