@@ -23,8 +23,16 @@ export type TGoalInfo = {
   playerName: string;
   time: number;
   type: string;
-  teamId: number;
   teamName: string;
+  teamId: number;
+};
+
+export type TGamePlayer = {
+  playerId: number;
+  position: string;
+  shirtNumber: string;
+  playerKrName: string;
+  playerEnName: string;
 };
 
 export type TGameDetails = {
@@ -40,23 +48,11 @@ export type TGameDetails = {
 
   leagueGameStatus: string;
   venue: string;
-  homePlayers:
-    | {
-        name: string;
-        playedTime: number;
-        subTime: number;
-        position: string;
-      }[]
-    | null;
-  awayPlayers:
-    | {
-        name: string;
-        playedTime: number;
-        subTime: number;
-        position: string;
-      }[]
-    | null;
+  homePlayers: TGamePlayer[] | null;
+  awayPlayers: TGamePlayer[] | null;
   goals: TGoalInfo[];
+  minute: number;
+  injuryTime: number;
 };
 
 export type TGameByLeagueGameId = {

@@ -1,5 +1,22 @@
 import { EChartsOption, SeriesOption } from 'echarts';
-import { TTeamRankInfo } from '@/types/leagues';
+import { TTeamList, TTeamRankInfo } from '@/types/leagues';
+
+function makeTooltipHTMLWithLogo(
+  seriesName: string, // 팀이름
+  name: string, // 주차
+  value: string | number, // 순위
+  teamList: TTeamList,
+): string {
+  const teamLogo = teamList.find((team) => team.leagueTeamName === seriesName)?.logo;
+  return `
+          <div style="display: flex">
+          ${teamLogo ? `<img style="width:24px; height:24px; margin-right: 4px" src=${teamLogo} alt=${teamLogo}/>` : null} <span>${seriesName}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span>${name}</span>
+            <span style="font-weight: bold">${value}위</span>
+          </div>`;
+}
 
 class RankGraphGenerator {
   private teamRankData: TTeamRankInfo;
@@ -36,7 +53,7 @@ class RankGraphGenerator {
   private generateSeriesList(): SeriesOption[] {
     return Object.entries(this.rankingData).map(([name, data]) => ({
       name,
-      symbolSize: 20,
+      symbolSize: 15,
       type: 'line',
       smooth: true,
       emphasis: { focus: 'series' },
@@ -54,18 +71,32 @@ class RankGraphGenerator {
     return this.matchDayList.map((matchDay) => `${matchDay}주차`);
   }
 
-  public generateOption(): EChartsOption {
+  public generateOption(teamList: TTeamList): EChartsOption {
     return {
       title: { text: '팀 순위 그래프' },
-      tooltip: { trigger: 'item' },
+      tooltip: {
+        trigger: 'item',
+        formatter: function (params) {
+          if (Array.isArray(params)) return ``;
+
+          return makeTooltipHTMLWithLogo(
+            params.seriesName as string,
+            params.name,
+            params.value as string | number,
+            teamList,
+          );
+        },
+      },
       grid: {
         left: 30,
-        right: 110,
+        right: 200,
         bottom: 30,
         containLabel: true,
       },
       toolbox: {
-        feature: { saveAsImage: {} },
+        feature: {
+          saveAsImage: {},
+        },
       },
       xAxis: {
         type: 'category',
@@ -82,19 +113,19 @@ class RankGraphGenerator {
         axisLabel: {
           margin: 30,
           fontSize: 16,
-          formatter: '#{value}',
+          formatter: '{value}위',
         },
         inverse: true,
         interval: 1,
         min: 1,
-        max: 7,
+        max: Object.keys(this.rankingData).length,
       },
       series: this.generateSeriesList(),
     };
   }
 }
 
-export function generateRankGraph(teamRankData: TTeamRankInfo): EChartsOption {
+export function generateRankGraph(teamRankData: TTeamRankInfo, teamList: TTeamList): EChartsOption {
   const generator = new RankGraphGenerator(teamRankData);
-  return generator.generateOption();
+  return generator.generateOption(teamList);
 }
