@@ -16,7 +16,7 @@ export default function RankGraph({ teamRankData }: RankGraphProps) {
 
   const chartCss: React.CSSProperties = {
     width: '100%',
-    height: '100vh',
+    height: '50vh',
   };
 
   if (isPending) {
