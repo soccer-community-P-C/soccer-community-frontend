@@ -31,7 +31,10 @@ class RankGraphGenerator {
 
   private generateMatchDayList(): number[] {
     const allMatchDays = this.teamRankData.rankInfo.map((info) => info.matchDay);
-    const start = Math.max(1, allMatchDays[allMatchDays.length - 1] - 9);
+    const week = 5; // 보여줄 x갯수 = 5개 주
+
+    // 최근 5주차 순위 그래프
+    const start = Math.max(1, allMatchDays[allMatchDays.length - 1] + 1 - week);
     return allMatchDays.slice(start - 1);
   }
 
