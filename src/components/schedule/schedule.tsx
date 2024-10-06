@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { getTodayDate, shortISO, shortISOYearMonth } from '@/utils/date-helper';
-import { useGetGameListByLeagueGameIdYearMonth } from '@/api/league-game';
 import { GameListService } from '@/components/schedule/service/game-list';
 import { LoadingBox } from '@/components/common/loading-spinner';
 import Calendar from '@/components/schedule/calendar';
@@ -12,6 +11,7 @@ import { ENTIRE_TEAM_ID } from '@/constants/team-list';
 import { useLeagueInfo } from '@/hooks/useLeagueName';
 import { TGameListDateRef } from '@/types/schedules';
 import ScheduleContent from '@/components/schedule/schedule-content';
+import { useGetScheduleList } from '@/api/league-game/use-get-schedule-list';
 
 const todayDate = getTodayDate();
 
@@ -37,14 +37,33 @@ export default function Schedule() {
   const [upButtonActive, setUpButtonActive] = useState(false);
   const upButtonRef = useRef<HTMLDivElement>(null);
 
+  // const {
+  //   isPending: isPendingGameList,
+  //   data: gameList,
+  //   error: errorGameList,
+  // } = useGetGameListByLeagueGameIdYearMonth({
+  //   leagueId: leagueId,
+  //   yearMonth: shortISOYearMonth(selectedYearMonthDate),
+  // });
+  //
   const {
     isPending: isPendingGameList,
     data: gameList,
     error: errorGameList,
-  } = useGetGameListByLeagueGameIdYearMonth({
+  } = useGetScheduleList({
     leagueId: leagueId,
     yearMonth: shortISOYearMonth(selectedYearMonthDate),
   });
+
+  // const {
+  //   isPending: isPendingGameListByTeamId,
+  //   data: gameListByTeamId,
+  //   error: errorGameListByTeamId,
+  // } = useGetScheduleList({
+  //   leagueId: leagueId,
+  //   leagueTeamId: selectedTeamId,
+  //   yearMonth: shortISOYearMonth(selectedYearMonthDate),
+  // });
 
   const {
     isPending: isPendingGameListByTeamId,

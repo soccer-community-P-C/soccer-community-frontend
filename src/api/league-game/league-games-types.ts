@@ -19,3 +19,9 @@ export type GetGameListByLeagueGameIdYearMonthProps = {
 };
 
 export type GetGameListByTeamIdYearMonthProps = { leagueTeamId: number; yearMonth: string };
+
+export type GetScheduleListProps = {
+  leagueId: number;
+  leagueTeamId?: number;
+  yearMonth?: string;
+};

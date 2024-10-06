@@ -4,6 +4,7 @@ import {
   TGameListByDate,
   TGameListByLeagueIdYearMonth,
   TGameListByLeagueTeamId,
+  TScheduleList,
 } from '@/types/schedules';
 import {
   GetGameByLeagueGameIdProps,
@@ -11,6 +12,7 @@ import {
   GetGameListByLeagueGameIdYearMonthProps,
   GetGameListByTeamIdProps,
   GetGameListByTeamIdYearMonthProps,
+  GetScheduleListProps,
 } from '@/api/league-game/league-games-types';
 
 const ENDPOINT = '/league-game/search';
@@ -73,6 +75,14 @@ export async function getGameListByTeamYearMonth({
   const { data } = await instance.get<TGameListByLeagueIdYearMonth>(
     `${ENDPOINT}/team/${leagueTeamId}/${yearMonth}`,
   );
+
+  return data.responses;
+}
+
+export async function getScheduleList({ leagueId, leagueTeamId, yearMonth }: GetScheduleListProps) {
+  const { data } = await instance.get<TScheduleList>(`${ENDPOINT}/games`, {
+    params: { leagueId, leagueTeamId, yearMonth },
+  });
 
   return data.responses;
 }

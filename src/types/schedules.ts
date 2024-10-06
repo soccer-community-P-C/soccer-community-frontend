@@ -77,3 +77,7 @@ type DivRef = {
 type TGameListWithDateResponseDate = Pick<TGameListWithDate, 'date'>;
 
 export type TGameListDateRef = TGameListWithDateResponseDate & DivRef;
+
+export type TScheduleList = {
+  responses: TGameListWithDate[];
+};
