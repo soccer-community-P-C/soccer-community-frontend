@@ -1,6 +1,9 @@
 import { EChartsOption, SeriesOption } from 'echarts';
 import { TTeamList, TTeamRankInfo } from '@/types/leagues';
 
+/* eslint-disable-next-line */
+const reg = /[`~!@#$%^&*()_|+\-=?;:'",.<>{}\[\]\\\/ ]/gim;
+
 function makeTooltipHTMLWithLogo(
   seriesName: string, // 팀이름
   name: string, // 주차
@@ -31,7 +34,10 @@ class RankGraphGenerator {
 
   private generateMatchDayList(): number[] {
     const allMatchDays = this.teamRankData.rankInfo.map((info) => info.matchDay);
-    const start = Math.max(1, allMatchDays[allMatchDays.length - 1] - 9);
+    const week = 5; // 보여줄 x갯수 = 5개 주
+
+    // 최근 5주차 순위 그래프
+    const start = Math.max(1, allMatchDays[allMatchDays.length - 1] + 1 - week);
     return allMatchDays.slice(start - 1);
   }
 
@@ -50,7 +56,31 @@ class RankGraphGenerator {
     return rankingData;
   }
 
-  private generateSeriesList(): SeriesOption[] {
+  private makeRich(teamList: TTeamList) {
+    const rich: {
+      [key: number | string]: {
+        backgroundColor: {
+          image: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | string;
+        };
+        height: number;
+      };
+    } = {};
+    Object.entries(this.rankingData).forEach(([name]) => {
+      const teamName = name.replace(reg, '');
+      const teamLogo = teamList.find((team) => team.leagueTeamName === name)?.logo;
+      rich[teamName] = {
+        backgroundColor: {
+          image: teamLogo || '',
+        },
+        height: 20,
+      };
+    });
+
+    return rich;
+  }
+
+  private generateSeriesList(teamList: TTeamList): SeriesOption[] {
+    const rich = this.makeRich(teamList);
     return Object.entries(this.rankingData).map(([name, data]) => ({
       name,
       symbolSize: 15,
@@ -59,8 +89,12 @@ class RankGraphGenerator {
       emphasis: { focus: 'series' },
       endLabel: {
         show: true,
-        formatter: '{a}',
+        formatter: (params) => {
+          const teamName = params.seriesName?.replace(reg, '');
+          return `{${teamName}|} ${params.seriesName}`;
+        },
         distance: 20,
+        rich,
       },
       lineStyle: { width: 4 },
       data,
@@ -73,8 +107,9 @@ class RankGraphGenerator {
 
   public generateOption(teamList: TTeamList): EChartsOption {
     return {
-      title: { text: '팀 순위 그래프' },
+      title: { text: '팀 순위 그래프' }, // 그래프 타이틀
       tooltip: {
+        // 호버시 띄울 tooltip
         trigger: 'item',
         formatter: function (params) {
           if (Array.isArray(params)) return ``;
@@ -99,6 +134,7 @@ class RankGraphGenerator {
         },
       },
       xAxis: {
+        // x축 데이터 생성
         type: 'category',
         splitLine: { show: true },
         axisLabel: {
@@ -118,9 +154,10 @@ class RankGraphGenerator {
         inverse: true,
         interval: 1,
         min: 1,
-        max: Object.keys(this.rankingData).length,
+        // max: Object.keys(this.rankingData).length,
+        max: 10,
       },
-      series: this.generateSeriesList(),
+      series: this.generateSeriesList(teamList),
     };
   }
 }
