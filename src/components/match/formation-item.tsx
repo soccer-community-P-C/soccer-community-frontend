@@ -8,8 +8,9 @@ export default function FormationItem({ formation, isLeft }: FormationItemProps)
 
   return (
     <div
-      className={`relative flex h-[300px] w-full flex-row bg-[#247847] md:h-full md:w-1/2 ${isLeft ? 'sm:rounded-l-lg sm:pr-8' : 'sm:rounded-r-lg sm:pl-8'}`}
+      className={`relative flex h-[300px] w-full flex-row rounded-lg bg-[#247847] sm:rounded-none md:h-full md:w-1/2 ${isLeft ? 'sm:rounded-l-lg sm:pr-8' : 'sm:rounded-r-lg sm:pl-8'}`}
     >
+      {/*골대 ui*/}
       <span
         className={`absolute top-1/2 z-10 h-[220px] w-[80px] translate-y-[-50%] border-2 ${isLeft ? 'left-0 border-l-0' : 'right-0 border-r-0'} border-[#338657] bg-[#247847]`}
       >

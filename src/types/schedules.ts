@@ -35,24 +35,39 @@ export type TGamePlayer = {
   playerEnName: string;
 };
 
+export type TGameBookings = {
+  minute: number;
+  leagueTeamId: number;
+  playerId: number;
+  type: string;
+  playerKrName: string;
+  playerEnName: string;
+  cardType: string;
+};
+
 export type TGameDetails = {
-  awayScore: string;
+  gameDate: string;
+  matchDay: 0;
   away: string;
   home: string;
   homeScore: string;
-  count: number;
-  gameDate: string;
-  matchDay: number;
+  awayScore: string;
+  homeFormation: string | null;
+  awayFormation: string | null;
   homeLogo: string;
   awayLogo: string;
-
   leagueGameStatus: string;
   venue: string;
+
   homePlayers: TGamePlayer[] | null;
   awayPlayers: TGamePlayer[] | null;
+
   goals: TGoalInfo[];
+
   minute: number;
   injuryTime: number;
+
+  bookings: TGameBookings[];
 };
 
 export type TGameByLeagueGameId = {

@@ -23,7 +23,14 @@ type MatchRecordProps = TGameDetails;
 //   ),
 // };
 
-export default function MatchRecord({ homePlayers, awayPlayers }: MatchRecordProps) {
+export default function MatchRecord({
+  homePlayers,
+  awayPlayers,
+  homeFormation,
+  awayFormation,
+  homeLogo,
+  awayLogo,
+}: MatchRecordProps) {
   // Todo: 경기 상세 정보 패스수, 골 수 등등 데이터가 없어서 추후에 적용 필요
   const searchParams = useSearchParams();
   const { width } = useWindowSize();
@@ -47,10 +54,12 @@ export default function MatchRecord({ homePlayers, awayPlayers }: MatchRecordPro
     <>
       <Box>
         <Formation
+          awayFormation={awayFormation}
+          awayLogo={awayLogo}
           awayPlayers={awayPlayers}
+          homeFormation={homeFormation}
+          homeLogo={homeLogo}
           homePlayers={homePlayers}
-          leftFormation={[1, 4, 3, 3]}
-          rightFormation={[1, 5, 3, 2]}
         />
       </Box>
       {/*<Box className="h-full px-0 sm:gap-4">*/}
