@@ -7,7 +7,7 @@ import NavLinkList from '@/components/main-header/nav-link-list';
 import ProfileDropdown from '@/components/main-header/profile-dropdown';
 import { useAuth } from '@/contexts/auth-context';
 import MobileModalNav from '@/components/main-header/mobile-modal-nav';
-import ThemeModeToggle from '@/components/common/theme-mode-toggle';
+import ThemeButton from '@/components/common/theme-button';
 
 export default function MainHeaderNav() {
   const { isAuthenticated, logout } = useAuth();
@@ -42,7 +42,8 @@ export default function MainHeaderNav() {
       </div>
 
       <div className="ml-auto mr-1">
-        <ThemeModeToggle />
+        {/*<ThemeModeToggle />*/}
+        <ThemeButton />
       </div>
       <div className="text-gray-200 hover:text-white">
         {isAuthenticated ? (
