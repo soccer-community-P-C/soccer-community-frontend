@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Moon, Sun } from 'lucide-react';
+import { MonitorCog, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import { Button } from '@/components/ui/button';
@@ -25,9 +25,18 @@ export default function ThemeModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>System</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('light')}>
+          <Sun className="mr-2 h-[1.2rem] w-[1.2rem]" />
+          <span>밝게</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('dark')}>
+          <Moon className="mr-2 h-[1.2rem] w-[1.2rem]" />
+          <span>어둡게</span>
+        </DropdownMenuItem>
+        {/*<DropdownMenuItem onClick={() => setTheme('system')}>*/}
+        {/*  <MonitorCog className="mr-2 h-[1.2rem] w-[1.2rem]" />*/}
+        {/*  <span>시스템 설정</span>*/}
+        {/*</DropdownMenuItem>*/}
       </DropdownMenuContent>
     </DropdownMenu>
   );
