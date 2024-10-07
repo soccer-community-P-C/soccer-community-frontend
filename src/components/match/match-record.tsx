@@ -2,7 +2,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import useWindowSize from '@/hooks/use-window-size';
 import Box from '@/components/common/box';
-import Formation from '@/components/match/formation';
+import Lineup from '@/components/match/lineup';
 import { TGameDetails } from '@/types/schedules';
 
 export type TVoteInfo = {
@@ -53,7 +53,7 @@ export default function MatchRecord({
   return (
     <>
       <Box>
-        <Formation
+        <Lineup
           awayFormation={awayFormation}
           awayLogo={awayLogo}
           awayPlayers={awayPlayers}
