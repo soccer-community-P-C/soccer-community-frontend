@@ -2,8 +2,10 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import useWindowSize from '@/hooks/use-window-size';
 import Box from '@/components/common/box';
-import Formation from '@/components/match/formation';
 import { TGameDetails } from '@/types/schedules';
+import Formation from '@/components/match/formation/formation';
+import BoxHeading from '@/components/common/box-heading';
+import LineupTable from '@/components/match/lineup/lineup-table';
 
 export type TVoteInfo = {
   id: string;
@@ -23,7 +25,15 @@ type MatchRecordProps = TGameDetails;
 //   ),
 // };
 
-export default function MatchRecord({ homePlayers, awayPlayers }: MatchRecordProps) {
+export default function MatchRecord({
+  homePlayers,
+  awayPlayers,
+  homeFormation,
+  awayFormation,
+  homeLogo,
+  awayLogo,
+  bookings,
+}: MatchRecordProps) {
   // Todo: 경기 상세 정보 패스수, 골 수 등등 데이터가 없어서 추후에 적용 필요
   const searchParams = useSearchParams();
   const { width } = useWindowSize();
@@ -43,15 +53,37 @@ export default function MatchRecord({ homePlayers, awayPlayers }: MatchRecordPro
     }
   }, [tab, width]);
 
+  if (!homeFormation || !awayFormation || !awayPlayers || !homePlayers) {
+    return <div className="text-lg">경기 시작 30분전에 라인업과 포메이션 정보가 나옵니다.</div>;
+  }
+
   return (
     <>
       <Box>
+        <BoxHeading hTagType="h3">포메이션</BoxHeading>
         <Formation
-          awayPlayers={awayPlayers}
-          homePlayers={homePlayers}
-          leftFormation={[1, 4, 3, 3]}
-          rightFormation={[1, 5, 3, 2]}
+          awayFormation={awayFormation}
+          awayLogo={awayLogo}
+          homeFormation={homeFormation}
+          homeLogo={homeLogo}
         />
+      </Box>
+
+      <Box>
+        <BoxHeading hTagType="h3">라인업</BoxHeading>
+        <LineupTable
+          awayLogo={awayLogo}
+          awayPlayers={awayPlayers}
+          bookings={bookings}
+          homeLogo={homeLogo}
+          homePlayers={homePlayers}
+        />
+        {/*<Lineup*/}
+        {/*  awayLogo={awayLogo}*/}
+        {/*  awayPlayers={awayPlayers}*/}
+        {/*  homeLogo={homeLogo}*/}
+        {/*  homePlayers={homePlayers}*/}
+        {/*/>*/}
       </Box>
       {/*<Box className="h-full px-0 sm:gap-4">*/}
       {/*  <MatchRecordTab tab={tab} />*/}

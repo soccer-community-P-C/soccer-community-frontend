@@ -79,7 +79,7 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
           </div>
         </section>
         <section className="grid grid-cols-2 border-t border-border-and-divide p-2 text-xs sm:py-4 lg:text-base">
-          <div className="flex flex-col flex-wrap items-center justify-start gap-y-1 lg:flex-row lg:justify-end lg:gap-x-8 lg:gap-y-4 lg:pr-16">
+          <div className="flex flex-col flex-wrap items-center justify-start">
             {goals.map(({ playerName, teamName, time, plyerId }) => {
               if (home === teamName) {
                 return (
@@ -94,7 +94,7 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
             })}
           </div>
 
-          <div className="flex flex-col flex-wrap items-center gap-y-1 lg:flex-row lg:gap-x-8 lg:gap-y-4 lg:pl-16">
+          <div className="flex flex-col flex-wrap items-center">
             {goals.map(({ playerName, teamName, time, plyerId }) => {
               if (away === teamName) {
                 return (
