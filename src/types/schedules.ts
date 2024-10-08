@@ -35,14 +35,14 @@ export type TGamePlayer = {
   playerEnName: string;
 };
 
-export type TGameBookings = {
+export type TGameBooking = {
   minute: number;
   leagueTeamId: number;
   playerId: number;
   type: string;
   playerKrName: string;
   playerEnName: string;
-  cardType: string;
+  cardType: string | null | undefined;
 };
 
 export type TGameDetails = {
@@ -67,7 +67,7 @@ export type TGameDetails = {
   minute: number;
   injuryTime: number;
 
-  bookings: TGameBookings[];
+  bookings: TGameBooking[];
 };
 
 export type TGameByLeagueGameId = {

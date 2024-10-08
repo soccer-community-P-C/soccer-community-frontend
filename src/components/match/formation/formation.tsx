@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import FormationItem from '@/components/match/formation-item';
+import FormationItem from '@/components/match/formation/formation-item';
 
 type FormationProps = {
   homeFormation: string;
@@ -15,8 +15,8 @@ export default function Formation({
   homeLogo,
 }: FormationProps) {
   return (
-    <div className="w-full md:h-[400px]">
-      <div className="flex h-[30px] w-full">
+    <div className="mb-10 w-full sm:h-[400px]">
+      <div className="mb-2 flex h-[30px] w-full">
         <div className="flex-all-center w-full sm:w-1/2">
           <p className="flex text-lg">
             <Image alt="홈 로고" className="mr-2 h-6 w-6" height={16} src={homeLogo} width={16} />
