@@ -13,7 +13,7 @@ export default async function HomePage() {
       </Box>
       <Box>
         <PremierSchedule />
-        <LaligaSchedule />
+        {/*<LaligaSchedule />*/}
       </Box>
       <Box>
         <HomeRank />

@@ -7,7 +7,6 @@ export type TLink = {
 export const commonLinkList: Omit<TLink, 'subLinkList'>[] = [
   { name: '홈', href: '/' },
   { name: '게시판', href: '/post' },
-  { name: '로그인', href: '/login' },
 ];
 
 export const linkList: TLink[] = [
@@ -30,22 +29,22 @@ export const linkList: TLink[] = [
       },
     ],
   },
-  {
-    name: '라리가',
-    href: '/laliga/schedule',
-    subLinkList: [
-      {
-        subName: '일정 및 결과',
-        href: '/laliga/schedule',
-      },
-      {
-        subName: '팀 순위',
-        href: '/laliga/rank',
-      },
-      {
-        subName: '선수 순위',
-        href: '/laliga/player-rank',
-      },
-    ],
-  },
+  // {
+  //   name: '라리가',
+  //   href: '/laliga/schedule',
+  //   subLinkList: [
+  //     {
+  //       subName: '일정 및 결과',
+  //       href: '/laliga/schedule',
+  //     },
+  //     {
+  //       subName: '팀 순위',
+  //       href: '/laliga/rank',
+  //     },
+  //     {
+  //       subName: '선수 순위',
+  //       href: '/laliga/player-rank',
+  //     },
+  //   ],
+  // },
 ];
