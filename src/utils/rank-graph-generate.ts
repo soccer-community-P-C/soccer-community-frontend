@@ -154,8 +154,8 @@ class RankGraphGenerator {
         inverse: true,
         interval: 1,
         min: 1,
-        // max: Object.keys(this.rankingData).length,
-        max: 10,
+        max: Object.keys(this.rankingData).length,
+        // max: 10,
       },
       series: this.generateSeriesList(teamList),
     };
