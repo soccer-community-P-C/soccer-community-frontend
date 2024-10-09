@@ -10,7 +10,6 @@ type GoalInfoProps = {
 };
 
 export default function GoalInfo({ away = false, player, time, playerId }: GoalInfoProps) {
-  console.log(playerId);
   return (
     <Link
       className={twMerge(

@@ -28,8 +28,6 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
     injuryTime,
   } = data;
 
-  console.log(goals);
-
   return (
     <header>
       <Box className="overflow-hidden bg-gray-600 px-0 pb-0 pt-0 text-white">
