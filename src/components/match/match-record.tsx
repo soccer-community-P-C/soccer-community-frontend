@@ -78,12 +78,6 @@ export default function MatchRecord({
           homeLogo={homeLogo}
           homePlayers={homePlayers}
         />
-        {/*<Lineup*/}
-        {/*  awayLogo={awayLogo}*/}
-        {/*  awayPlayers={awayPlayers}*/}
-        {/*  homeLogo={homeLogo}*/}
-        {/*  homePlayers={homePlayers}*/}
-        {/*/>*/}
       </Box>
       {/*<Box className="h-full px-0 sm:gap-4">*/}
       {/*  <MatchRecordTab tab={tab} />*/}

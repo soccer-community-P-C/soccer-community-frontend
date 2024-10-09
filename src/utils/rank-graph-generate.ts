@@ -25,11 +25,13 @@ class RankGraphGenerator {
   private teamRankData: TTeamRankInfo;
   private readonly matchDayList: number[];
   private rankingData: Record<string, number[]>;
+  private width: number;
 
-  constructor(teamRankData: TTeamRankInfo) {
+  constructor(teamRankData: TTeamRankInfo, width: number) {
     this.teamRankData = teamRankData;
     this.matchDayList = this.generateMatchDayList();
     this.rankingData = this.generateRankingData();
+    this.width = width;
   }
 
   private generateMatchDayList(): number[] {
@@ -91,7 +93,8 @@ class RankGraphGenerator {
         show: true,
         formatter: (params) => {
           const teamName = params.seriesName?.replace(reg, '');
-          return `{${teamName}|} ${params.seriesName}`;
+          return `{${teamName}|} ${this.width > 600 ? params.seriesName : ''}`;
+          // return `{${teamName}|}`;
         },
         distance: 20,
         rich,
@@ -124,7 +127,8 @@ class RankGraphGenerator {
       },
       grid: {
         left: 30,
-        right: 200,
+        // right: 110,
+        right: this.width > 600 ? 200 : 110,
         bottom: 30,
         containLabel: true,
       },
@@ -154,15 +158,19 @@ class RankGraphGenerator {
         inverse: true,
         interval: 1,
         min: 1,
-        // max: Object.keys(this.rankingData).length,
-        max: 10,
+        max: Object.keys(this.rankingData).length,
+        // max: 10,
       },
       series: this.generateSeriesList(teamList),
     };
   }
 }
 
-export function generateRankGraph(teamRankData: TTeamRankInfo, teamList: TTeamList): EChartsOption {
-  const generator = new RankGraphGenerator(teamRankData);
+export function generateRankGraph(
+  teamRankData: TTeamRankInfo,
+  teamList: TTeamList,
+  width: number,
+): EChartsOption {
+  const generator = new RankGraphGenerator(teamRankData, width);
   return generator.generateOption(teamList);
 }

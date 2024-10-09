@@ -24,7 +24,7 @@ export default function FormationItem({ formation, isLeft }: FormationItemProps)
 
       {reversedFormation.map((playerCount, playerCountIndex) => (
         <div
-          className="z-50 h-full w-full"
+          className="z-20 h-full w-full"
           key={playerCountIndex}
           style={{
             left: isLeft ? `${(playerCountIndex * 50) / reversedFormation.length}%` : 'auto',

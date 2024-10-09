@@ -15,9 +15,9 @@ export default function LineupTableTbody({ homeLineup, awayLineup }: LineupTable
           const homePlayer = homeLineup[index];
           const awayPlayer = awayLineup[index];
           return (
-            <tr className="border-b" key={index}>
+            <tr className="border-b dark:border-gray-700" key={index}>
               <td>
-                <div className="border-r pl-1 pt-1 sm:pb-1 sm:pl-16 sm:pt-4">
+                <div className="border-r pl-1 pt-1 dark:border-gray-700 sm:pb-1 sm:pl-16 sm:pt-4">
                   <LineupPlayer
                     cardType={homePlayer.cardType}
                     name={homePlayer.playerKrName}
@@ -38,28 +38,6 @@ export default function LineupTableTbody({ homeLineup, awayLineup }: LineupTable
                   />
                 </div>
               </td>
-              {/*<td>*/}
-              {/*  <div className="border-r pl-1 pt-1 sm:pb-1 sm:pl-16 sm:pt-4">*/}
-              {/*    <LineupPlayer*/}
-              {/*      cardType={homePlayer.cardType}*/}
-              {/*      name={homePlayer.playerKrName}*/}
-              {/*      playerId={homePlayer.playerId}*/}
-              {/*      position={homePlayer.position}*/}
-              {/*      shirtNumber={homePlayer.shirtNumber}*/}
-              {/*    />*/}
-              {/*  </div>*/}
-              {/*</td>*/}
-              {/*<td>*/}
-              {/*  <div className="pl-1 pt-1 sm:pb-1 sm:pl-16 sm:pt-4">*/}
-              {/*    <LineupPlayer*/}
-              {/*      cardType={awayPlayer.cardType}*/}
-              {/*      name={awayPlayer.playerKrName}*/}
-              {/*      playerId={awayPlayer.playerId}*/}
-              {/*      position={awayPlayer.position}*/}
-              {/*      shirtNumber={awayPlayer.shirtNumber}*/}
-              {/*    />*/}
-              {/*  </div>*/}
-              {/*</td>*/}
             </tr>
           );
         })}

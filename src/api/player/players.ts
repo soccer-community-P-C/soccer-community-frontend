@@ -20,7 +20,6 @@ async function getAllPlayerList() {
 async function getPlayer({ playerId }: TPlayerId) {
   const { data } = await instance.get<TGetPlayer>(`${ENDPOINT}/search/${playerId}`);
 
-  console.log(data);
   return { ...data };
 }
 
