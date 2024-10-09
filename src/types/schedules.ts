@@ -19,7 +19,7 @@ export type TGame = {
 };
 
 export type TGoalInfo = {
-  plyerId: number;
+  playerId: number;
   playerName: string;
   time: number;
   type: string;

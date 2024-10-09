@@ -9,7 +9,7 @@ export default function PlayerCareer() {
         <tbody>
           <tr className="sm-in:flex sm-in:flex-col">
             <th className="w-[200px] text-left text-[16px]">2024.01 ~ 2024.01</th>
-            <td className="text-left text-[16px]">맨체스터 시티</td>
+            <td className="text-left text-[16px]">-</td>
           </tr>
         </tbody>
       </table>

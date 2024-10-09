@@ -28,6 +28,8 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
     injuryTime,
   } = data;
 
+  console.log(goals);
+
   return (
     <header>
       <Box className="overflow-hidden bg-gray-600 px-0 pb-0 pt-0 text-white">
@@ -80,13 +82,13 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
         </section>
         <section className="grid grid-cols-2 border-t border-border-and-divide p-2 text-xs sm:py-4 lg:text-base">
           <div className="flex flex-col flex-wrap items-center justify-start">
-            {goals.map(({ playerName, teamName, time, plyerId }) => {
+            {goals.map(({ playerName, teamName, time, playerId }) => {
               if (home === teamName) {
                 return (
                   <GoalInfo
                     key={`key-${playerName}-${time}}`}
                     player={playerName}
-                    playerId={plyerId}
+                    playerId={playerId}
                     time={time}
                   />
                 );
@@ -95,14 +97,14 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
           </div>
 
           <div className="flex flex-col flex-wrap items-center">
-            {goals.map(({ playerName, teamName, time, plyerId }) => {
+            {goals.map(({ playerName, teamName, time, playerId }) => {
               if (away === teamName) {
                 return (
                   <GoalInfo
                     away={true}
                     key={`key-${playerName}-${time}}`}
                     player={playerName}
-                    playerId={plyerId}
+                    playerId={playerId}
                     time={time}
                   />
                 );
