@@ -1,27 +1,19 @@
 import Link from 'next/link';
 import Card from '@/components/match/card/card';
-import { splitName } from '@/components/match/match.utils';
-
-type LineupPlayerProps = {
-  name: string;
-  cardType: string | null | undefined;
-  shirtNumber: string;
-  position: string;
-  playerId: number;
-};
+import { splitName, TLineup } from '@/components/match/match.utils';
 
 function hasName(name: string) {
   return name && name.length > 0;
 }
 
 export default function LineupPlayer({
-  name,
-  cardType,
-  shirtNumber,
-  position,
   playerId,
-}: LineupPlayerProps) {
-  const [firstName, lastName] = splitName(name);
+  position,
+  shirtNumber,
+  cardType,
+  playerKrName,
+}: TLineup) {
+  const [firstName, lastName] = splitName(playerKrName);
 
   return (
     <div className="flex flex-col">
@@ -50,6 +42,37 @@ export default function LineupPlayer({
         <span className="sm-block">|</span>
         <p className="w-[140px] truncate">{position}</p>
       </div>
+
+      {/*{hasSub && sub ? (*/}
+      {/*  <div>*/}
+      {/*    <ChangeIcon />*/}
+      {/*    <div className="mt-1 flex gap-1">*/}
+      {/*      <Link*/}
+      {/*        className="flex w-auto flex-col hover:text-gray-400 dark:hover:text-gray-300"*/}
+      {/*        href={`/player/${sub.playerInId}`}*/}
+      {/*      >*/}
+      {/*        {hasName(splitName(sub.playerInName)[0]) &&*/}
+      {/*        hasName(splitName(sub.playerInName)[1]) ? (*/}
+      {/*          <>*/}
+      {/*            <span className="text-[13px]">{splitName(sub.playerInName)[0]}</span>*/}
+      {/*            <span className="font-semibold">{splitName(sub.playerInName)[1]}</span>*/}
+      {/*          </>*/}
+      {/*        ) : (*/}
+      {/*          <>*/}
+      {/*            <span className="whitespace-pre-wrap text-[13px]"> </span>*/}
+      {/*            <span className="font-semibold">*/}
+      {/*              {splitName(sub.playerInName)[0].length > 0*/}
+      {/*                ? splitName(sub.playerInName)[0]*/}
+      {/*                : splitName(sub.playerInName)[1]}*/}
+      {/*            </span>*/}
+      {/*          </>*/}
+      {/*        )}*/}
+      {/*      </Link>*/}
+
+      {/*      <Card cardType={sub.cardType} className="mt-6" />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*) : null}*/}
     </div>
   );
 }

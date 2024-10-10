@@ -2,10 +2,11 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import useWindowSize from '@/hooks/use-window-size';
 import Box from '@/components/common/box';
-import { TGameDetails } from '@/types/schedules';
+import { TGameDetails, TGameSubstitution } from '@/types/schedules';
 import Formation from '@/components/match/formation/formation';
 import BoxHeading from '@/components/common/box-heading';
 import LineupTable from '@/components/match/lineup/lineup-table';
+import { TLineup } from '@/components/match/match.utils';
 
 export type TVoteInfo = {
   id: string;
@@ -33,6 +34,7 @@ export default function MatchRecord({
   homeLogo,
   awayLogo,
   bookings,
+  substitutions,
 }: MatchRecordProps) {
   // Todo: 경기 상세 정보 패스수, 골 수 등등 데이터가 없어서 추후에 적용 필요
   const searchParams = useSearchParams();
@@ -77,6 +79,7 @@ export default function MatchRecord({
           bookings={bookings}
           homeLogo={homeLogo}
           homePlayers={homePlayers}
+          substitutions={substitutions}
         />
       </Box>
       {/*<Box className="h-full px-0 sm:gap-4">*/}

@@ -15,7 +15,7 @@ export default function RankGraph({ teamRankData }: RankGraphProps) {
   const { leagueId } = useLeagueInfo({ season: '2024' });
   const { isPending, data: teamList, error } = useGetTeamList({ years: '2024', leagueId });
   const { width } = useWindowSize();
-
+  console.log(width);
   const chartCss: React.CSSProperties = {
     position: 'relative',
     width: '100%',
