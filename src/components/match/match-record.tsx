@@ -2,11 +2,17 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import useWindowSize from '@/hooks/use-window-size';
 import Box from '@/components/common/box';
-import { TGameDetails, TGameSubstitution } from '@/types/schedules';
+import { TGameDetails } from '@/types/schedules';
 import Formation from '@/components/match/formation/formation';
 import BoxHeading from '@/components/common/box-heading';
 import LineupTable from '@/components/match/lineup/lineup-table';
-import { TLineup } from '@/components/match/match.utils';
+import MatchRecordCategory from '@/components/match/match-record-category';
+// import MomVote from '@/components/match/mom-vote';
+// import OpenTalk from '@/components/match/open-talk';
+import MatchRecordTab from '@/components/match/match-record-tab';
+// import MatchSelectTeamButton from '@/components/match/match-select-team-button';
+// import TableContainer from '@/components/common/table/table-container';
+// import PlayerRankTable from '@/components/player-rank/player-rank-table';
 
 export type TVoteInfo = {
   id: string;
@@ -15,16 +21,6 @@ export type TVoteInfo = {
 };
 
 type MatchRecordProps = TGameDetails;
-
-// const tabMapper = {
-//   mom: <MomVote />,
-//   schedule: <MatchRecordCategory />,
-//   talk: (
-//     <div className="">
-//       <OpenTalk />
-//     </div>
-//   ),
-// };
 
 export default function MatchRecord({
   homePlayers,
@@ -35,8 +31,25 @@ export default function MatchRecord({
   awayLogo,
   bookings,
   substitutions,
+  homeStatistics,
+  awayStatistics,
+
+  // home,
+  // away,
 }: MatchRecordProps) {
   // Todo: 경기 상세 정보 패스수, 골 수 등등 데이터가 없어서 추후에 적용 필요
+  const tabMapper = {
+    // mom: <MomVote />,
+    schedule: (
+      <MatchRecordCategory awayStatistics={awayStatistics} homeStatistics={homeStatistics} />
+    ),
+    // talk: (
+    //   <div className="">
+    //     <OpenTalk />
+    //   </div>
+    // ),
+  };
+
   const searchParams = useSearchParams();
   const { width } = useWindowSize();
   const tab = searchParams.get('tab') || 'schedule';
@@ -61,6 +74,11 @@ export default function MatchRecord({
 
   return (
     <>
+      <Box className="h-full px-0 sm:gap-4">
+        <MatchRecordTab tab={tab} />
+        <hr />
+        {tabMapper[tab as keyof typeof tabMapper]}
+      </Box>
       <Box>
         <BoxHeading hTagType="h3">포메이션</BoxHeading>
         <Formation
@@ -82,11 +100,7 @@ export default function MatchRecord({
           substitutions={substitutions}
         />
       </Box>
-      {/*<Box className="h-full px-0 sm:gap-4">*/}
-      {/*  <MatchRecordTab tab={tab} />*/}
-      {/*  <hr />*/}
-      {/*  {tabMapper[tab as keyof typeof tabMapper]}*/}
-      {/*</Box>*/}
+
       {/*<Box>*/}
       {/*  <ul className="relative flex overflow-hidden rounded-lg border bg-hover">*/}
       {/*    <li className="relative z-10 min-w-0 flex-1 text-center">*/}
