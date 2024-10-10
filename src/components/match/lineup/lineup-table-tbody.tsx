@@ -1,12 +1,12 @@
-import { TGameBooking, TGamePlayer } from '@/types/schedules';
 import LineupPlayer from '@/components/match/lineup/lineup-player';
+import { TLineup } from '@/components/match/match.utils';
 
-type LineupTableTbodyProps = {
-  homeLineup: (TGamePlayer & Partial<TGameBooking>)[];
-  awayLineup: (TGamePlayer & Partial<TGameBooking>)[];
+type SubLineupTableTbodyProps = {
+  homeLineup: TLineup[];
+  awayLineup: TLineup[];
 };
 
-export default function LineupTableTbody({ homeLineup, awayLineup }: LineupTableTbodyProps) {
+export default function LineupTableTbody({ homeLineup, awayLineup }: SubLineupTableTbodyProps) {
   return (
     <tbody>
       {Array(11)
@@ -18,24 +18,12 @@ export default function LineupTableTbody({ homeLineup, awayLineup }: LineupTable
             <tr className="border-b dark:border-gray-700" key={index}>
               <td>
                 <div className="border-r pl-1 pt-1 dark:border-gray-700 sm:pb-1 sm:pl-16 sm:pt-4">
-                  <LineupPlayer
-                    cardType={homePlayer.cardType}
-                    name={homePlayer.playerKrName}
-                    playerId={homePlayer.playerId}
-                    position={homePlayer.position}
-                    shirtNumber={homePlayer.shirtNumber}
-                  />
+                  <LineupPlayer {...homePlayer} />
                 </div>
               </td>
               <td>
                 <div className="pl-1 pt-1 sm:pb-1 sm:pl-16 sm:pt-4">
-                  <LineupPlayer
-                    cardType={awayPlayer.cardType}
-                    name={awayPlayer.playerKrName}
-                    playerId={awayPlayer.playerId}
-                    position={awayPlayer.position}
-                    shirtNumber={awayPlayer.shirtNumber}
-                  />
+                  <LineupPlayer {...awayPlayer} />
                 </div>
               </td>
             </tr>

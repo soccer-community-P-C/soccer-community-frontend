@@ -1,6 +1,6 @@
 type MatchRecordCategoryItemProps = {
-  homeCount: number;
-  awayCount: number;
+  homeCount: string;
+  awayCount: string;
   isShare?: boolean;
   title: string;
 };
@@ -16,25 +16,25 @@ export default function MatchRecordCategoryItem({
       <div className="flex items-center justify-center text-right">
         <span className="relative hidden h-[7px] min-w-[240px] md:block">
           <em
-            className="absolute right-0 h-full w-[50%] bg-amber-900"
-            style={{ width: isShare ? `${homeCount}%` : `${homeCount * 5}%` }}
+            className="absolute right-0 h-full w-[50%] bg-blue-500 dark:border dark:border-gray-400"
+            style={{ width: isShare ? `${Number(homeCount)}%` : `${Number(homeCount) * 5}%` }}
           />
         </span>
-        <strong className="w-[50px] text-xs">
+        <strong className="w-[50px]">
           {homeCount}
           {isShare ? '%' : null}
         </strong>
       </div>
-      <div className="text- w-[120px] text-center font-[16px] opacity-60">{title}</div>
+      <div className="w-[120px] text-center font-[16px] opacity-60">{title}</div>
       <div className="flex items-center justify-center text-left">
-        <strong className="w-[50px] text-xs">
+        <strong className="w-[50px]">
           {awayCount}
           {isShare ? '%' : null}
         </strong>
         <span className="relative hidden h-[7px] min-w-[240px] text-left md:block">
           <em
-            className="absolute left-0 h-full bg-amber-900"
-            style={{ width: isShare ? `${awayCount}%` : `${awayCount * 5}%` }}
+            className="absolute left-0 h-full bg-red-500 dark:border dark:border-gray-400"
+            style={{ width: isShare ? `${Number(awayCount)}%` : `${Number(awayCount) * 5}%` }}
           />
         </span>
       </div>

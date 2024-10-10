@@ -45,6 +45,33 @@ export type TGameBooking = {
   cardType: string | null | undefined;
 };
 
+export type TGameSubstitution = {
+  minute: number;
+  playerOutId: number;
+  playerOutName: string;
+  playerInId: number;
+  playerInName: string;
+  substitutionTeam: 'away' | 'home';
+};
+
+// 팀 경기 기록(스탯)
+export type TGameStatistics = {
+  cornerKicks: string;
+  freeKicks: string;
+  goalKicks: string;
+  offsides: string;
+  fouls: string;
+  ballPossession: string;
+  saves: string;
+  throwIns: string;
+  shots: string;
+  shotsOnGoal: string;
+  shotsOffGoal: string;
+  yellowCards: string;
+  yellowRedCards: string;
+  redCards: string;
+};
+
 export type TGameDetails = {
   gameDate: string;
   matchDay: 0;
@@ -68,6 +95,10 @@ export type TGameDetails = {
   injuryTime: number;
 
   bookings: TGameBooking[];
+
+  substitutions: TGameSubstitution[];
+  homeStatistics: TGameStatistics;
+  awayStatistics: TGameStatistics;
 };
 
 export type TGameByLeagueGameId = {
