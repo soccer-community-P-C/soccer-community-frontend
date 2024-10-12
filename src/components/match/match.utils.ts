@@ -108,7 +108,6 @@ export function generateSubLineupArray(
 export function splitName(name: string) {
   // 띄어쓰기로 구분된 성과 이름은 분리해서 출력
   // ex) 반 다이크 ==> 반, 다이크
-
   const firstName = name.split(' ')[0];
   const restName = name.split(' ').slice(1).join(' ');
 

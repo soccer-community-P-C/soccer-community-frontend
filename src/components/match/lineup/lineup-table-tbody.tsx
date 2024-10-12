@@ -7,9 +7,10 @@ type SubLineupTableTbodyProps = {
 };
 
 export default function LineupTableTbody({ homeLineup, awayLineup }: SubLineupTableTbodyProps) {
+  const lineupLength = Math.max(homeLineup.length, awayLineup.length);
   return (
     <tbody>
-      {Array(11)
+      {Array(lineupLength)
         .fill(0)
         .map((_, index) => {
           const homePlayer = homeLineup[index];
@@ -18,12 +19,12 @@ export default function LineupTableTbody({ homeLineup, awayLineup }: SubLineupTa
             <tr className="border-b dark:border-gray-700" key={index}>
               <td>
                 <div className="border-r pl-1 pt-1 dark:border-gray-700 sm:pb-1 sm:pl-16 sm:pt-2">
-                  <LineupPlayer {...homePlayer} />
+                  {homePlayer ? <LineupPlayer {...homePlayer} /> : <div />}
                 </div>
               </td>
               <td>
                 <div className="pl-1 pt-1 sm:pb-1 sm:pl-16 sm:pt-2">
-                  <LineupPlayer {...awayPlayer} />
+                  {awayPlayer ? <LineupPlayer {...awayPlayer} /> : <div />}
                 </div>
               </td>
             </tr>

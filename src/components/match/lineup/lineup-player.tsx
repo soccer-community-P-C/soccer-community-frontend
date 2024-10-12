@@ -14,7 +14,6 @@ export default function LineupPlayer({
   playerKrName,
 }: TLineup) {
   const [firstName, lastName] = splitName(playerKrName);
-
   return (
     <div className="flex flex-col">
       <div className="flex gap-1">

@@ -7,11 +7,11 @@ type SubLineupTableTbodyProps = {
 };
 
 export default function SubLineupTableTbody({ homeLineup, awayLineup }: SubLineupTableTbodyProps) {
-  const maxLength = homeLineup.length > awayLineup.length ? homeLineup.length : awayLineup.length;
+  const lineupLength = Math.max(homeLineup.length, awayLineup.length);
 
   return (
     <tbody>
-      {Array(maxLength)
+      {Array(lineupLength)
         .fill(0)
         .map((_, index) => {
           const homePlayer = homeLineup[index];
