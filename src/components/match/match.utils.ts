@@ -29,8 +29,11 @@ export function generateLineupArray(
   }
 
   for (const subPlayer of substitutions) {
-    lineupObj[subPlayer.substitutionTeam][subPlayer.playerOutId]['hasSub'] = true;
-    lineupObj[subPlayer.substitutionTeam][subPlayer.playerOutId]['sub'] = subPlayer;
+    // 교체 출전 선수가 또 교체될때 상황 고려 필요
+    if (subPlayer.playerOutId in lineupObj[subPlayer.substitutionTeam]) {
+      lineupObj[subPlayer.substitutionTeam][subPlayer.playerOutId]['hasSub'] = true;
+      lineupObj[subPlayer.substitutionTeam][subPlayer.playerOutId]['sub'] = subPlayer;
+    }
   }
 
   for (const player of bookings) {
@@ -97,6 +100,8 @@ export function generateSubLineupArray(
   const homeSubLineup = Object.values(subLineupObj.home);
   const awaySubLineup = Object.values(subLineupObj.away);
 
+  homeSubLineup.sort((a, b) => a.minute - b.minute);
+  awaySubLineup.sort((a, b) => a.minute - b.minute);
   return { homeSubLineup, awaySubLineup };
 }
 
