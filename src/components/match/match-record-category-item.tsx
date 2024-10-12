@@ -17,7 +17,9 @@ export default function MatchRecordCategoryItem({
         <span className="relative hidden h-[7px] min-w-[240px] md:block">
           <em
             className="absolute right-0 h-full w-[50%] bg-blue-500 dark:border dark:border-gray-400"
-            style={{ width: isShare ? `${Number(homeCount)}%` : `${Number(homeCount) * 5}%` }}
+            style={{
+              width: isShare ? `${Number(homeCount)}%` : `${Math.min(Number(homeCount) * 5, 100)}%`,
+            }}
           />
         </span>
         <strong className="w-[50px]">
@@ -34,7 +36,9 @@ export default function MatchRecordCategoryItem({
         <span className="relative hidden h-[7px] min-w-[240px] text-left md:block">
           <em
             className="absolute left-0 h-full bg-red-500 dark:border dark:border-gray-400"
-            style={{ width: isShare ? `${Number(awayCount)}%` : `${Number(awayCount) * 5}%` }}
+            style={{
+              width: isShare ? `${Number(awayCount)}%` : `${Math.min(Number(awayCount) * 5, 100)}%`,
+            }}
           />
         </span>
       </div>
