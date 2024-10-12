@@ -17,12 +17,12 @@ export default function LineupTableTbody({ homeLineup, awayLineup }: SubLineupTa
           return (
             <tr className="border-b dark:border-gray-700" key={index}>
               <td>
-                <div className="border-r pl-1 pt-1 dark:border-gray-700 sm:pb-1 sm:pl-16 sm:pt-4">
+                <div className="border-r pl-1 pt-1 dark:border-gray-700 sm:pb-1 sm:pl-16 sm:pt-2">
                   <LineupPlayer {...homePlayer} />
                 </div>
               </td>
               <td>
-                <div className="pl-1 pt-1 sm:pb-1 sm:pl-16 sm:pt-4">
+                <div className="pl-1 pt-1 sm:pb-1 sm:pl-16 sm:pt-2">
                   <LineupPlayer {...awayPlayer} />
                 </div>
               </td>
