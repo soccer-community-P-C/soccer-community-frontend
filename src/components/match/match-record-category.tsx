@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import MatchRecordCategoryItem from '@/components/match/match-record-category-item';
 import { TGameStatistics } from '@/types/schedules';
 

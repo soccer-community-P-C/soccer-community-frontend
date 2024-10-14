@@ -11,6 +11,10 @@ export default function MatchRecordCategoryItem({
   isShare = false, // 점유율 % 이면 true, 횟수면 false
   title,
 }: MatchRecordCategoryItemProps) {
+  if (!homeCount || !awayCount) {
+    return;
+  }
+
   return (
     <li className="flex w-full justify-center">
       <div className="flex items-center justify-center text-right">
