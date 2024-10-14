@@ -1,5 +1,6 @@
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
+import Image from 'next/image';
 import useWindowSize from '@/hooks/use-window-size';
 import Box from '@/components/common/box';
 import { TGameDetails } from '@/types/schedules';
@@ -77,6 +78,10 @@ export default function MatchRecord({
       <Box className="h-full px-0 sm:gap-4">
         <MatchRecordTab tab={tab} />
         <hr />
+        <div className="flex-all-center mb-2 h-[30px] w-full gap-[110px]">
+          <Image alt="홈 로고" className="h-6 w-6" height={16} src={homeLogo} width={16} />
+          <Image alt="원정 로고" className="h-6 w-6" height={16} src={awayLogo} width={16} />
+        </div>
         {tabMapper[tab as keyof typeof tabMapper]}
       </Box>
       <Box>

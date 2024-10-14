@@ -23,17 +23,18 @@ export default function SubLineupPlayer({
       <div>
         <div className="mt-1 flex gap-1">
           <Link
-            className="flex w-auto flex-col hover:text-gray-400 dark:hover:text-gray-300"
+            // className="flex w-auto flex-col hover:text-gray-400 dark:hover:text-gray-300"
+            className="flex-all-center w-auto gap-1 hover:text-gray-400 dark:hover:text-gray-300"
             href={`/player/${playerInId}`}
           >
             {hasName(splitName(playerInName)[0]) && hasName(splitName(playerInName)[1]) ? (
               <>
-                <span className="text-[13px]">{splitName(playerInName)[0]}</span>
+                <span className="text-[13px] sm-in:hidden">{splitName(playerInName)[0]}</span>
                 <span className="font-semibold">{splitName(playerInName)[1]}</span>
               </>
             ) : (
               <>
-                <span className="whitespace-pre-wrap text-[13px]"> </span>
+                {/*<span className="whitespace-pre-wrap text-[13px] sm-in:hidden"> </span>*/}
                 <span className="font-semibold">
                   {splitName(playerInName)[0].length > 0
                     ? splitName(playerInName)[0]
@@ -41,33 +42,31 @@ export default function SubLineupPlayer({
                 </span>
               </>
             )}
+            <Card cardType={cardType} />
           </Link>
-
-          <Card cardType={cardType} className="mt-6" />
         </div>
       </div>
-      <div className="flex gap-2">
+      <div className="mt-1 flex gap-1 text-[13px] text-gray-400">
         <ChangeIcon />
-        <span className="text-[13px]">{minute}&apos;</span>
-      </div>
-
-      <div className="flex gap-1">
-        <Link
-          className="flex w-auto flex-col text-[13px] text-gray-400 hover:text-gray-400 dark:hover:text-gray-300"
-          href={`/player/${playerOutId}`}
-        >
-          {hasName(firstName) && hasName(lastName) ? (
-            <>
-              <span className="text-[10px]">{firstName}</span>
-              <span className="font-semibold">{lastName}</span>
-            </>
-          ) : (
-            <>
-              <span className="whitespace-pre-wrap text-[10px]"> </span>
-              <span className="font-semibold">{firstName.length > 0 ? firstName : lastName}</span>
-            </>
-          )}
-        </Link>
+        <div className="flex gap-1">
+          <Link
+            className="flex-all-center w-auto hover:text-gray-400 dark:hover:text-gray-300"
+            href={`/player/${playerOutId}`}
+          >
+            {hasName(firstName) && hasName(lastName) ? (
+              <>
+                {/*<span className="text-[10px] sm-in:hidden">{firstName}</span>*/}
+                <span className="font-semibold">{lastName}</span>
+              </>
+            ) : (
+              <>
+                {/*<span className="whitespace-pre-wrap text-[10px]"> </span>*/}
+                <span className="font-semibold">{firstName.length > 0 ? firstName : lastName}</span>
+              </>
+            )}
+          </Link>
+        </div>
+        <span>{minute}&apos;</span>
       </div>
     </div>
   );
