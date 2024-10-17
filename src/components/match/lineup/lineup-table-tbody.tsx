@@ -1,12 +1,12 @@
 import LineupPlayer from '@/components/match/lineup/lineup-player';
 import { TLineup } from '@/components/match/match.utils';
 
-type SubLineupTableTbodyProps = {
+type LineupTableTbodyProps = {
   homeLineup: TLineup[];
   awayLineup: TLineup[];
 };
 
-export default function LineupTableTbody({ homeLineup, awayLineup }: SubLineupTableTbodyProps) {
+export default function LineupTableTbody({ homeLineup, awayLineup }: LineupTableTbodyProps) {
   const lineupLength = Math.max(homeLineup.length, awayLineup.length);
   return (
     <tbody>
@@ -15,6 +15,7 @@ export default function LineupTableTbody({ homeLineup, awayLineup }: SubLineupTa
         .map((_, index) => {
           const homePlayer = homeLineup[index];
           const awayPlayer = awayLineup[index];
+
           return (
             <tr className="border-b dark:border-gray-700" key={index}>
               <td>

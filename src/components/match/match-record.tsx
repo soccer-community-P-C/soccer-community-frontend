@@ -105,11 +105,11 @@ export default function MatchRecord({
       <Box>
         <BoxHeading hTagType="h3">라인업</BoxHeading>
         <LineupTable
-          awayBenchPlayers={homeBenchPlayers}
+          awayBenchPlayers={awayBenchPlayers}
           awayLogo={awayLogo}
           awayPlayers={awayPlayers}
           bookings={bookings}
-          homeBenchPlayers={awayBenchPlayers}
+          homeBenchPlayers={homeBenchPlayers}
           homeLogo={homeLogo}
           homePlayers={homePlayers}
           substitutions={substitutions}

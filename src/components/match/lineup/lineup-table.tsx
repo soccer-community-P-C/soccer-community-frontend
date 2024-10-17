@@ -2,7 +2,6 @@ import { TGameBooking, TGamePlayer, TGameSubstitution } from '@/types/schedules'
 import LineupTableThead from '@/components/match/lineup/lineup-table-thead';
 import { generateLineupArray, generateSubLineupArray } from '@/components/match/match.utils';
 import LineupTableTbody from '@/components/match/lineup/lineup-table-tbody';
-import SubLineupTableTbody from '@/components/match/lineup/sub-lineup-table-tbody';
 
 type LineupTableProps = {
   homePlayers: TGamePlayer[];
@@ -25,24 +24,14 @@ export default function LineupTable({
   homeBenchPlayers,
   awayBenchPlayers,
 }: LineupTableProps) {
-  const { homeLineup, awayLineup } = generateLineupArray(
-    homePlayers,
-    awayPlayers,
-    bookings,
-    substitutions,
-  );
+  const { homeLineup, awayLineup } = generateLineupArray(homePlayers, awayPlayers, bookings);
 
-  const { homeLineup: homeBenchLineup, awayLineup: awayBenchLineup } = generateLineupArray(
+  const { homeSubLineup, awaySubLineup } = generateSubLineupArray(
     homeBenchPlayers,
     awayBenchPlayers,
-    bookings,
     substitutions,
+    bookings,
   );
-
-  console.log(homeBenchLineup);
-  console.log(awayBenchLineup);
-
-  const { homeSubLineup, awaySubLineup } = generateSubLineupArray(substitutions, bookings);
 
   return (
     <div className="relative overflow-hidden pb-[4px]">
@@ -53,12 +42,12 @@ export default function LineupTable({
       </table>
       <div className="mb-4 mt-6 text-center font-semibold">교체 라인업</div>
       <table className="table w-full table-fixed">
-        <LineupTableTbody awayLineup={awayBenchLineup} homeLineup={homeBenchLineup} />
+        <LineupTableTbody awayLineup={awaySubLineup} homeLineup={homeSubLineup} />
       </table>
       <div className="mb-4 mt-6 text-center font-semibold">교체 출전</div>
-      <table className="table w-full table-fixed">
-        <SubLineupTableTbody awayLineup={awaySubLineup} homeLineup={homeSubLineup} />
-      </table>
+      {/*<table className="table w-full table-fixed">*/}
+      {/*  <SubLineupTableTbody awayLineup={awaySubLineup} homeLineup={homeSubLineup} />*/}
+      {/*</table>*/}
     </div>
   );
 }
