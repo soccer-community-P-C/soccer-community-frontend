@@ -7,9 +7,10 @@ type GoalInfoProps = {
   time: number;
   playerId: number;
   away?: boolean;
+  type: string;
 };
 
-export default function GoalInfo({ away = false, player, time, playerId }: GoalInfoProps) {
+export default function GoalInfo({ away = false, player, time, playerId, type }: GoalInfoProps) {
   return (
     <Link
       className={twMerge(
@@ -18,10 +19,8 @@ export default function GoalInfo({ away = false, player, time, playerId }: GoalI
       )}
       href={`/player/${playerId}`}
     >
-      <span>
-        {player} {`${time}'`}
-      </span>
-      <IconBallFootball className="sm-block" size={18} />
+      <span>{type === 'OWN' ? `${player} (자책골) ${time}'` : `${player} ${time}'`}</span>
+      <IconBallFootball className="sm-block" color={type === 'OWN' ? 'red' : 'white'} size={18} />
     </Link>
   );
 }

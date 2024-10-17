@@ -80,14 +80,19 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
         </section>
         <section className="grid grid-cols-2 border-t border-border-and-divide p-2 text-xs sm:py-4 lg:text-base">
           <div className="flex flex-col flex-wrap items-center justify-start">
-            {goals.map(({ playerName, teamName, time, playerId }) => {
-              if (home === teamName) {
+            {goals.map(({ playerName, teamName, time, playerId, type }) => {
+              if (home === teamName && type === 'OWN') {
+                return;
+              }
+
+              if (home === teamName || type === 'OWN') {
                 return (
                   <GoalInfo
                     key={`key-${playerName}-${time}}`}
                     player={playerName}
                     playerId={playerId}
                     time={time}
+                    type={type}
                   />
                 );
               }
@@ -95,8 +100,12 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
           </div>
 
           <div className="flex flex-col flex-wrap items-center">
-            {goals.map(({ playerName, teamName, time, playerId }) => {
-              if (away === teamName) {
+            {goals.map(({ playerName, teamName, time, playerId, type }) => {
+              if (away === teamName && type === 'OWN') {
+                return;
+              }
+
+              if (away === teamName || type === 'OWN') {
                 return (
                   <GoalInfo
                     away={true}
@@ -104,6 +113,7 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
                     player={playerName}
                     playerId={playerId}
                     time={time}
+                    type={type}
                   />
                 );
               }
