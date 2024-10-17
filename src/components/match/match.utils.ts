@@ -30,14 +30,6 @@ export function generateLineupArray(
     lineupObj['away'][player.playerId] = Object.assign(player, { hasSub: false });
   }
 
-  // for (const subPlayer of substitutions) {
-  //   // 교체 출전 선수가 또 교체될때 상황 고려 필요
-  //   if (subPlayer.playerOutId in lineupObj[subPlayer.substitutionTeam]) {
-  //     lineupObj[subPlayer.substitutionTeam][subPlayer.playerOutId]['hasSub'] = true;
-  //     lineupObj[subPlayer.substitutionTeam][subPlayer.playerOutId]['sub'] = subPlayer;
-  //   }
-  // }
-
   for (const player of bookings) {
     if (player.playerId in lineupObj['home']) {
       lineupObj['home'][player.playerId]['cardType'] = player.cardType;
@@ -50,27 +42,6 @@ export function generateLineupArray(
 
   const homeLineup = Object.values(lineupObj.home);
   const awayLineup = Object.values(lineupObj.away);
-
-  // // sub 선수들중 경고 카드 추가
-  // for (const player of homeLineup) {
-  //   if (player.hasSub) {
-  //     for (const bookingPlayer of bookings) {
-  //       if (bookingPlayer.playerId === player.sub?.playerInId) {
-  //         player.sub.cardType = bookingPlayer.cardType;
-  //       }
-  //     }
-  //   }
-  // }
-
-  // for (const player of awayLineup) {
-  //   if (player.hasSub) {
-  //     for (const bookingPlayer of bookings) {
-  //       if (bookingPlayer.playerId === player.sub?.playerInId) {
-  //         player.sub.cardType = bookingPlayer.cardType;
-  //       }
-  //     }
-  //   }
-  // }
 
   return { homeLineup, awayLineup, homeLineupObj: lineupObj.home, awayLineupObj: lineupObj.away };
 }
@@ -103,27 +74,6 @@ export function generateSubLineupArray(
     }
   }
 
-  // const subLineupObj: {
-  //   home: { [key: number]: TGameSubstitution & Partial<{ cardType: string | null | undefined }> };
-  //   away: { [key: number]: TGameSubstitution & Partial<{ cardType: string | null | undefined }> };
-  // } = {
-  //   home: {},
-  //   away: {},
-  // };
-  //
-  // for (const substitution of substitutions) {
-  //   subLineupObj[substitution.substitutionTeam][substitution.playerInId] = substitution;
-  // }
-
-  // for (const player of bookings) {
-  //   if (player.playerId in subLineupObj['home']) {
-  //     subLineupObj['home'][player.playerId]['cardType'] = player.cardType;
-  //   } else if (player.playerId in subLineupObj['away']) {
-  //     subLineupObj['away'][player.playerId]['cardType'] = player.cardType;
-  //   }
-  // }
-  //
-
   for (const player of bookings) {
     if (player.playerId in homeSubLineupObj && homeSubLineupObj[player.playerId].hasSub) {
       homeSubLineupObj[player.playerId].subCardType = player.cardType;
@@ -135,8 +85,6 @@ export function generateSubLineupArray(
   const homeSubLineup = Object.values(homeSubLineupObj);
   const awaySubLineup = Object.values(awaySubLineupObj);
 
-  // homeSubLineup.sort((a, b) => a.minute - b.minute);
-  // awaySubLineup.sort((a, b) => a.minute - b.minute);
   return { homeSubLineup, awaySubLineup };
 }
 

@@ -45,9 +45,6 @@ export default function LineupTable({
         <LineupTableTbody awayLineup={awaySubLineup} homeLineup={homeSubLineup} />
       </table>
       <div className="mb-4 mt-6 text-center font-semibold">교체 출전</div>
-      {/*<table className="table w-full table-fixed">*/}
-      {/*  <SubLineupTableTbody awayLineup={awaySubLineup} homeLineup={homeSubLineup} />*/}
-      {/*</table>*/}
     </div>
   );
 }
