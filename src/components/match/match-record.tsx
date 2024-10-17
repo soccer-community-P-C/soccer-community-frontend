@@ -34,7 +34,8 @@ export default function MatchRecord({
   substitutions,
   homeStatistics,
   awayStatistics,
-
+  homeBenchPlayers,
+  awayBenchPlayers,
   // home,
   // away,
 }: MatchRecordProps) {
@@ -69,7 +70,14 @@ export default function MatchRecord({
     }
   }, [tab, width]);
 
-  if (!homeFormation || !awayFormation || !awayPlayers || !homePlayers) {
+  if (
+    !homeFormation ||
+    !awayFormation ||
+    !awayPlayers ||
+    !homePlayers ||
+    !homeBenchPlayers ||
+    !awayBenchPlayers
+  ) {
     return <div className="text-lg">경기 시작 30분전에 라인업과 포메이션 정보가 나옵니다.</div>;
   }
 
@@ -97,9 +105,11 @@ export default function MatchRecord({
       <Box>
         <BoxHeading hTagType="h3">라인업</BoxHeading>
         <LineupTable
+          awayBenchPlayers={homeBenchPlayers}
           awayLogo={awayLogo}
           awayPlayers={awayPlayers}
           bookings={bookings}
+          homeBenchPlayers={awayBenchPlayers}
           homeLogo={homeLogo}
           homePlayers={homePlayers}
           substitutions={substitutions}

@@ -89,6 +89,9 @@ export type TGameDetails = {
   homePlayers: TGamePlayer[] | null;
   awayPlayers: TGamePlayer[] | null;
 
+  homeBenchPlayers: TGamePlayer[] | null;
+  awayBenchPlayers: TGamePlayer[] | null;
+
   goals: TGoalInfo[];
 
   minute: number;

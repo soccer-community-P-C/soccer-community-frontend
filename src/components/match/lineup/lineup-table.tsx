@@ -11,6 +11,8 @@ type LineupTableProps = {
   homeLogo: string;
   bookings: TGameBooking[];
   substitutions: TGameSubstitution[];
+  homeBenchPlayers: TGamePlayer[];
+  awayBenchPlayers: TGamePlayer[];
 };
 
 export default function LineupTable({
@@ -20,6 +22,8 @@ export default function LineupTable({
   homeLogo,
   bookings,
   substitutions,
+  homeBenchPlayers,
+  awayBenchPlayers,
 }: LineupTableProps) {
   const { homeLineup, awayLineup } = generateLineupArray(
     homePlayers,
@@ -27,6 +31,16 @@ export default function LineupTable({
     bookings,
     substitutions,
   );
+
+  const { homeLineup: homeBenchLineup, awayLineup: awayBenchLineup } = generateLineupArray(
+    homeBenchPlayers,
+    awayBenchPlayers,
+    bookings,
+    substitutions,
+  );
+
+  console.log(homeBenchLineup);
+  console.log(awayBenchLineup);
 
   const { homeSubLineup, awaySubLineup } = generateSubLineupArray(substitutions, bookings);
 
@@ -36,6 +50,10 @@ export default function LineupTable({
       <table className="table w-full table-fixed">
         <LineupTableThead awayLogo={awayLogo} homeLogo={homeLogo} />
         <LineupTableTbody awayLineup={awayLineup} homeLineup={homeLineup} />
+      </table>
+      <div className="mb-4 mt-6 text-center font-semibold">교체 라인업</div>
+      <table className="table w-full table-fixed">
+        <LineupTableTbody awayLineup={awayBenchLineup} homeLineup={homeBenchLineup} />
       </table>
       <div className="mb-4 mt-6 text-center font-semibold">교체 출전</div>
       <table className="table w-full table-fixed">
