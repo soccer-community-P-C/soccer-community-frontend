@@ -1,14 +1,16 @@
 import { TGameBooking, TGamePlayer, TGameSubstitution } from '@/types/schedules';
 
+export const NO_SUB_MINUTE = 9999; // 교체 없을시 기본값
+
 export type TSub = {
   hasSub: boolean;
   subMinute: number;
-  subPlayerInId: number;
-  subPlayerInName: string;
+  subPlayerOutId: number;
+  subPlayerOutName: string;
   subCardType: string | null | undefined;
 };
 
-export type TLineup = TGamePlayer & Partial<TGameBooking> & Partial<TSub>;
+export type TLineup = TGamePlayer & Partial<TGameBooking> & Partial<TSub> & { subMinute: number };
 
 export type TLineupObj = {
   home: { [key: number]: TLineup };
@@ -23,11 +25,17 @@ export function generateLineupArray(
   const lineupObj: TLineupObj = { home: {}, away: {} };
 
   for (const player of homePlayers) {
-    lineupObj['home'][player.playerId] = Object.assign(player, { hasSub: false });
+    lineupObj['home'][player.playerId] = Object.assign(player, {
+      hasSub: false,
+      subMinute: NO_SUB_MINUTE,
+    });
   }
 
   for (const player of awayPlayers) {
-    lineupObj['away'][player.playerId] = Object.assign(player, { hasSub: false });
+    lineupObj['away'][player.playerId] = Object.assign(player, {
+      hasSub: false,
+      subMinute: NO_SUB_MINUTE,
+    });
   }
 
   for (const player of bookings) {
@@ -59,18 +67,18 @@ export function generateSubLineupArray(
   );
 
   for (const substitution of substitutions) {
-    if (substitution.playerOutId in homeSubLineupObj) {
-      homeSubLineupObj[substitution.playerOutId].hasSub = true;
-      homeSubLineupObj[substitution.playerOutId].subMinute = substitution.minute;
-      homeSubLineupObj[substitution.playerOutId].subPlayerInId = substitution.playerInId;
-      homeSubLineupObj[substitution.playerOutId].subPlayerInName = substitution.playerInName;
+    if (substitution.playerInId in homeSubLineupObj) {
+      homeSubLineupObj[substitution.playerInId].hasSub = true;
+      homeSubLineupObj[substitution.playerInId].subMinute = substitution.minute;
+      homeSubLineupObj[substitution.playerInId].subPlayerOutId = substitution.playerOutId;
+      homeSubLineupObj[substitution.playerInId].subPlayerOutName = substitution.playerOutName;
     }
 
-    if (substitution.playerOutId in awaySubLineupObj) {
-      awaySubLineupObj[substitution.playerOutId].hasSub = true;
-      awaySubLineupObj[substitution.playerOutId].subMinute = substitution.minute;
-      awaySubLineupObj[substitution.playerOutId].subPlayerInId = substitution.playerInId;
-      awaySubLineupObj[substitution.playerOutId].subPlayerInName = substitution.playerInName;
+    if (substitution.playerInId in awaySubLineupObj) {
+      awaySubLineupObj[substitution.playerInId].hasSub = true;
+      awaySubLineupObj[substitution.playerInId].subMinute = substitution.minute;
+      awaySubLineupObj[substitution.playerInId].subPlayerOutId = substitution.playerOutId;
+      awaySubLineupObj[substitution.playerInId].subPlayerOutName = substitution.playerOutName;
     }
   }
 
@@ -84,6 +92,9 @@ export function generateSubLineupArray(
 
   const homeSubLineup = Object.values(homeSubLineupObj);
   const awaySubLineup = Object.values(awaySubLineupObj);
+
+  homeSubLineup.sort((a, b) => a.subMinute - b.subMinute);
+  awaySubLineup.sort((a, b) => a.subMinute - b.subMinute);
 
   return { homeSubLineup, awaySubLineup };
 }
