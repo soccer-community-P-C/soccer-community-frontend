@@ -61,8 +61,8 @@ export default function MatchHeader({ ...data }: MatchHeaderProps) {
 
             <div className="relative mx-0 flex min-w-16 flex-col text-center">
               <span>{!homeScore || !awayScore ? '경기전' : `${homeScore} - ${awayScore}`}</span>
-              <span className="absolute bottom-[-24px] left-1/2 translate-x-[-50%] text-[13px] font-normal lg:text-base">
-                {minute}+{injuryTime}
+              <span className="absolute bottom-[-24px] left-1/2 translate-x-[-50%] text-[12px] font-normal lg:text-base">
+                {`${minute}${injuryTime ? `+${injuryTime}` : ''}`}
               </span>
             </div>
             <Image
