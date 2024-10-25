@@ -38,6 +38,7 @@ const ScheduleContent = forwardRef<HTMLDivElement, ScheduleContentProps>(
             gameList.map((game) => (
               <ScheduleContentItem
                 {...game}
+                isHome={isHome}
                 key={`key-${game.homeTeamName}-${game.awayTeamName}`}
               />
             ))
