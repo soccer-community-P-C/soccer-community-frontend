@@ -1,13 +1,13 @@
-import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { TGame } from '@/types/schedules';
 import { shortISOTimeHourMinute } from '@/utils/date-helper';
 import useAllUrls from '@/hooks/use-all-urls';
 import { BEFORE, GAMING, leagueGameMapper } from '@/constants/league-game';
 
 type ScheduleContentItemProps = TGame & {
-  isHome?: boolean;
+  isHome: boolean;
 };
 
 export default function ScheduleContentItem({
@@ -22,24 +22,44 @@ export default function ScheduleContentItem({
   leagueGameStatus,
   venue,
   matchDay,
-  isHome = false,
+  isHome,
 }: ScheduleContentItemProps) {
   const { URL_MATCH } = useAllUrls();
+  const router = useRouter();
 
   // Todo: 스코어가 null일때 게임이 종료되는 경우가 있어 api 수정이 필요, homeScore: null and leagueGameStatus: "END";;
 
   // Todo-24/09/24: 경기 중일 때 일정 색상 변화, 경기 중에 대한 정보가 필요
+
+  // Todo-24/10/26: 당일 경기 일자 api에서 경기 id를 받아와야함.
+  const linkClassName = twMerge(
+    'flex h-10 w-full items-center px-2 transition-colors sm:gap-2 md:h-14 md:gap-6 md:px-8',
+    isHome && 'h-10',
+    !isHome && 'cursor-pointer hover:bg-hover',
+    leagueGameStatus === GAMING && 'bg-gray-100 dark:bg-gray-700 dark:hover:bg-hover',
+  );
+
   return (
-    <Link
-      className={twMerge(
-        'flex h-10 w-full cursor-pointer items-center px-2 transition-colors hover:bg-hover sm:gap-2 md:h-14 md:gap-6 md:px-8',
-        isHome && 'h-10',
-        leagueGameStatus === GAMING && 'bg-gray-100 dark:bg-gray-700 dark:hover:bg-hover',
-      )}
-      href={{
-        pathname: `${URL_MATCH}/${leagueGameId}`,
+    <div
+      className={linkClassName}
+      onClick={() => {
+        if (isHome) {
+          return;
+        }
+
+        router.push(`${URL_MATCH}/${leagueGameId}`);
       }}
     >
+      {/*<Link*/}
+      {/*  className={twMerge(*/}
+      {/*    'flex h-10 w-full cursor-pointer items-center px-2 transition-colors hover:bg-hover sm:gap-2 md:h-14 md:gap-6 md:px-8',*/}
+      {/*    isHome && 'h-10',*/}
+      {/*    leagueGameStatus === GAMING && 'bg-gray-100 dark:bg-gray-700 dark:hover:bg-hover',*/}
+      {/*  )}*/}
+      {/*  href={{*/}
+      {/*    pathname: `${URL_MATCH}/${leagueGameId}`,*/}
+      {/*  }}*/}
+      {/*>*/}
       <div className="flex w-[240px] flex-[0.5_0.5_15%] items-center justify-start text-xs sm:flex-[0.5_0.5_25%]">
         <div className="w-[40px] font-semibold sm:w-[60px]">{shortISOTimeHourMinute(date)}</div>
         <div className="md-block w-[100px] truncate">{venue}</div>
@@ -62,6 +82,6 @@ export default function ScheduleContentItem({
           {leagueGameMapper[leagueGameStatus as keyof typeof leagueGameMapper]}
         </p>
       </div>
-    </Link>
+    </div>
   );
 }
