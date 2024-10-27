@@ -35,7 +35,7 @@ export default function HomePost() {
         {data?.findPosts?.map((post) => (
           <Link
             className={twMerge(
-              'relative flex flex-col py-2 transition-colors sm:flex-row',
+              'relative flex flex-col py-2 transition-colors hover:bg-hover sm:flex-row',
               'sm-in:gap-1 sm-in:p-2',
             )}
             href={`${URL_POST}/${post.postId}`}
@@ -43,7 +43,7 @@ export default function HomePost() {
           >
             <div className="flex gap-1 sm:w-[10%] sm:items-center sm:justify-center sm:border-b-0">
               <IconThumbUp className="h-[16px] w-[16px] flex-shrink-0 md:h-[24px] md:w-[24px]" />
-              <span className="text-xs md:text-base">12K</span>
+              <span className="text-xs md:text-base">{post.likeCount}</span>
             </div>
             <div className="flex items-center sm:w-[85%] sm:pr-3">
               <p className="line-clamp-1">{post.title}</p>
@@ -56,11 +56,11 @@ export default function HomePost() {
             >
               <div className="flex md:gap-2">
                 <IconMessage className="h-[16px] w-[16px] flex-shrink-0 md:h-[24px] md:w-[24px]" />
-                <span className="text-xs md:text-base">1</span>
+                <span className="text-xs md:text-base">{post.commentCount}</span>
               </div>
               <div className="flex md:gap-2">
                 <IconEye className="h-[16px] w-[16px] flex-shrink-0 md:h-[24px] md:w-[24px]" />
-                <span className="text-xs md:text-base">24K</span>
+                <span className="text-xs md:text-base">{post.viewCount}</span>
               </div>
             </div>
           </Link>
