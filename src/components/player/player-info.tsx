@@ -1,11 +1,7 @@
 import PlayerInfoItem from '@/components/player/player-info-item';
+import { TPlayerInfo } from '@/types/players';
 
-type PlayerInfoProps = {
-  leagueTeamName: string;
-  playerName: string;
-  position: string;
-  national: string;
-};
+type PlayerInfoProps = TPlayerInfo;
 
 export default function PlayerInfo({
   leagueTeamName,

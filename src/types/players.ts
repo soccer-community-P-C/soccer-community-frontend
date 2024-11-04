@@ -1,12 +1,13 @@
 export type TPlayerId = { playerId: number };
 
-type TPlayerInfo = {
+export type TPlayerInfo = {
   playerId: number;
   national: string;
   playerName: string;
   position: string;
   leagueTeamName: string;
   leagueTeamId: number;
+  profileImage: string;
 };
 
 // /api/player/search
