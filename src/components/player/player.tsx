@@ -31,6 +31,8 @@ export default function Player({ playerId }: PlayerProps) {
   if (error) {
     return <div>선수 불러오기 실패</div>;
   }
+
+  console.log(playerData);
   const { playerName, position, national, leagueTeamName } = playerData;
 
   return (

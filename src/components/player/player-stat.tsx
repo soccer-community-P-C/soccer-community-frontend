@@ -9,8 +9,8 @@ export default function PlayerStat() {
         <PlayerStatItem description="-" title="득점" />
         <PlayerStatItem description="-" title="도움" />
         <PlayerStatItem description="-" title="공격P" />
-        <PlayerStatItem description="-" title="슈팅" />
-        <PlayerStatItem description="-" title="유효슈팅" />
+        {/*<PlayerStatItem description="-" title="슈팅" />*/}
+        {/*<PlayerStatItem description="-" title="유효슈팅" />*/}
         <PlayerStatItem description="-" title="경기당 득점" />
         <PlayerStatItem description="-" title="출장(분)" />
       </div>

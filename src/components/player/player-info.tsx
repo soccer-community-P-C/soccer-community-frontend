@@ -18,7 +18,7 @@ export default function PlayerInfo({
     <div className="mt-[8px] basis-2/5">
       <h4 className="mb-2 max-w-[432px] truncate text-2xl font-semibold">{playerName}</h4>
       <div className="mb-2 overflow-hidden">
-        <span className="float-left mr-4 text-lg leading-9">-</span>
+        {/*<span className="float-left mr-4 text-lg leading-9">-</span>*/}
         <div className="flex-all-center float-left text-lg leading-9 ">{leagueTeamName}</div>
         {/*<LinkItem*/}
         {/*  className="flex-all-center float-left text-lg leading-9 "*/}
@@ -37,7 +37,7 @@ export default function PlayerInfo({
         </div>
         <div className="float-left pr-[44px]">
           <PlayerInfoItem description={position} title="포지션" />
-          <PlayerInfoItem description="-" title="몸무게" />
+          {/*<PlayerInfoItem description="-" title="몸무게" />*/}
         </div>
       </div>
     </div>
