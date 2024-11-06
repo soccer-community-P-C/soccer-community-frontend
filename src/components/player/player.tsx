@@ -41,9 +41,10 @@ export default function Player({ playerId }: PlayerProps) {
           {/*<span className="relative mr-[40px] h-[180px] w-[180px] rounded-full">*/}
           <ImageWithFallback
             alt="선수 이미지"
-            className="mr-4 h-[180px] w-[180px] overflow-hidden rounded-full"
+            className="mr-4 aspect-square h-[180px] w-[180px] overflow-hidden rounded-full object-cover"
             fallbackSrc={noImage}
             height={180}
+            quality={100}
             src={playerData.profileImage}
             width={180}
           />

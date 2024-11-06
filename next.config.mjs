@@ -51,6 +51,11 @@ const nextConfig = {
         port: '',
         // pathname: '/account123/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'kickoff-pc-s3.s3.ap-northeast-2.amazonaws.com',
+        port: '',
+      },
     ],
   },
 };
