@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import noImage from '@/assets/img/no-image.png';
 // import player_img from '@/assets/img/player_test_img.jpeg';
