@@ -13,6 +13,7 @@ import { LoadingBox } from '@/components/common/loading-spinner';
 import PlayerInfoTab from '@/components/player/player-info-tab';
 import PlayerCareer from '@/components/player/player-career';
 import PlayerComment from '@/components/player/player-comment';
+import ImageWithFallback from '@/components/common/Image-with-fallback';
 
 type PlayerProps = {
   playerId: string;
@@ -31,7 +32,6 @@ export default function Player({ playerId }: PlayerProps) {
   if (error) {
     return <div>선수 불러오기 실패</div>;
   }
-  const { playerName, position, national, leagueTeamName } = playerData;
 
   return (
     <>
@@ -39,20 +39,17 @@ export default function Player({ playerId }: PlayerProps) {
         <BoxHeading hTagType="h3">선수 시즌 기록</BoxHeading>
         <div className="flex flex-col items-start gap-2 sm:flex-row sm:gap-0">
           {/*<span className="relative mr-[40px] h-[180px] w-[180px] rounded-full">*/}
-          <Image
-            alt="썸네일"
-            className="mr-4 h-[180px] w-[180px] overflow-hidden rounded-full"
+          <ImageWithFallback
+            alt="선수 이미지"
+            className="mr-4 aspect-square h-[180px] w-[180px] overflow-hidden rounded-full object-cover"
+            fallbackSrc={noImage}
             height={180}
-            src={noImage}
+            quality={100}
+            src={playerData.profileImage}
             width={180}
           />
           {/*</span>*/}
-          <PlayerInfo
-            leagueTeamName={leagueTeamName}
-            national={national}
-            playerName={playerName}
-            position={position}
-          />
+          <PlayerInfo {...playerData} />
           <PlayerStat />
         </div>
       </Box>
